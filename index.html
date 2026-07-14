@@ -23,21 +23,23 @@
         ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
         .hidden { display: none !important; }
 
+        /* Slider - 10 Images */
         .slider-container {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 220px;
             overflow: hidden;
             border-radius: 16px;
+            margin-bottom: 4px;
         }
         .slider-track {
             display: flex;
-            width: 400%;
+            width: 1000%;
             height: 100%;
-            animation: slide 20s infinite ease-in-out;
+            animation: slide 50s infinite ease-in-out;
         }
         .slider-track .slide-item {
-            width: 25%;
+            width: 10%;
             height: 100%;
             position: relative;
             flex-shrink: 0;
@@ -67,12 +69,27 @@
             font-size: 9px;
             font-weight: bold;
         }
+        .slide-text .prize-badge {
+            display: inline-block;
+            background: #ec4899;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: bold;
+        }
 
         @keyframes slide {
-            0%, 22% { transform: translateX(0); }
-            25%, 47% { transform: translateX(-25%); }
-            50%, 72% { transform: translateX(-50%); }
-            75%, 97% { transform: translateX(-75%); }
+            0%, 8% { transform: translateX(0); }
+            10%, 18% { transform: translateX(-10%); }
+            20%, 28% { transform: translateX(-20%); }
+            30%, 38% { transform: translateX(-30%); }
+            40%, 48% { transform: translateX(-40%); }
+            50%, 58% { transform: translateX(-50%); }
+            60%, 68% { transform: translateX(-60%); }
+            70%, 78% { transform: translateX(-70%); }
+            80%, 88% { transform: translateX(-80%); }
+            90%, 98% { transform: translateX(-90%); }
             100% { transform: translateX(0); }
         }
 
@@ -249,12 +266,8 @@
         }
         .generate-id-btn:hover { transform: scale(1.05); }
 
-        .admin-section {
-            border-color: #ef4444 !important;
-        }
-        .admin-section .admin-label {
-            color: #ef4444;
-        }
+        .admin-section { border-color: #ef4444 !important; }
+        .admin-section .admin-label { color: #ef4444; }
     </style>
 </head>
 <body>
@@ -310,9 +323,12 @@
             <!-- DASHBOARD -->
             <section id="dashboardPage" class="w-full hidden space-y-4">
 
-                <!-- SLIDER -->
+                <!-- ========================================================= -->
+                <!-- ✅ SLIDER - 10 IMAGES                                     -->
+                <!-- ========================================================= -->
                 <div class="slider-container">
                     <div class="slider-track">
+                        <!-- Slide 1: Nature + Buy/Sell -->
                         <div class="slide-item">
                             <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600" alt="Nature">
                             <div class="slide-text">
@@ -321,33 +337,96 @@
                                 <span class="badge">🔥 Live</span>
                             </div>
                         </div>
+                        <!-- Slide 2: ₹50,000 Prize -->
                         <div class="slide-item">
                             <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600" alt="Slim Phone">
                             <div class="slide-text">
                                 <h3>📱 ₹50,000 का Inam!</h3>
                                 <p>✨ Slim Keypad Phone</p>
-                                <span class="badge">🏆 Prize</span>
+                                <span class="prize-badge">🏆 ₹50,000</span>
                             </div>
                         </div>
+                        <!-- Slide 3: ₹100,000 Prize -->
                         <div class="slide-item">
                             <img src="https://images.unsplash.com/photo-1589739900243-4b52cd9dd7df?w=600" alt="Tablet">
                             <div class="slide-text">
                                 <h3>📱 ₹100,000 का Inam!</h3>
-                                <p>📱 Tablet Phone</p>
-                                <span class="badge">🏆 Prize</span>
+                                <p>📱 Tablet Phone - बड़ी स्क्रीन</p>
+                                <span class="prize-badge">🏆 ₹100,000</span>
                             </div>
                         </div>
+                        <!-- Slide 4: ₹200,000 Prize -->
                         <div class="slide-item">
                             <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" alt="Smartphone">
                             <div class="slide-text">
                                 <h3>📱 ₹200,000 का Inam!</h3>
-                                <p>🎁 DOMO Slate SL40</p>
-                                <span class="badge">🏆 Grand Prize</span>
+                                <p>🎁 DOMO Slate SL40 Phone</p>
+                                <span class="prize-badge">🏆 ₹200,000</span>
+                            </div>
+                        </div>
+                        <!-- Slide 5: Money / Rupee -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1580519542036-e47de5166cf5?w=600" alt="Money">
+                            <div class="slide-text">
+                                <h3>💰 Earn Money with CoinX</h3>
+                                <p>📈 आज ही कमाना शुरू करें</p>
+                                <span class="badge">💵 Invest Now</span>
+                            </div>
+                        </div>
+                        <!-- Slide 6: Birds / Freedom -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600" alt="Birds">
+                            <div class="slide-text">
+                                <h3>🕊️ Freedom with CoinX</h3>
+                                <p>🌟 Financial Freedom पाएं</p>
+                                <span class="badge">🚀 Fly High</span>
+                            </div>
+                        </div>
+                        <!-- Slide 7: Nature / Forest -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=600" alt="Forest">
+                            <div class="slide-text">
+                                <h3>🌳 Grow with CoinX</h3>
+                                <p>🌱 आपका पैसा बढ़ेगा</p>
+                                <span class="badge">📈 Growth</span>
+                            </div>
+                        </div>
+                        <!-- Slide 8: Flowers / Beauty -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600" alt="Flowers">
+                            <div class="slide-text">
+                                <h3>🌺 Bloom with CoinX</h3>
+                                <p>🌸 आपका सपना साकार होगा</p>
+                                <span class="badge">💐 Success</span>
+                            </div>
+                        </div>
+                        <!-- Slide 9: Mountains / Heights -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" alt="Mountains">
+                            <div class="slide-text">
+                                <h3>🏔️ Reach New Heights</h3>
+                                <p>⛰️ CoinX के साथ ऊंचाइयों को छूएं</p>
+                                <span class="badge">🏆 Top</span>
+                            </div>
+                        </div>
+                        <!-- Slide 10: Sunset / Future -->
+                        <div class="slide-item">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Sunset">
+                            <div class="slide-text">
+                                <h3>🌅 Bright Future with CoinX</h3>
+                                <p>✨ आपका भविष्य सुनहरा है</p>
+                                <span class="badge">🌟 Shine</span>
                             </div>
                         </div>
                     </div>
                     <div class="slider-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -407,9 +486,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- BUY TAB                                                    -->
-                <!-- ========================================================= -->
+                <!-- BUY TAB -->
                 <div id="buyTab" class="tab-content space-y-3">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-green-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-green-400"><i class="fa-solid fa-arrow-down mr-1"></i> कॉइन खरीदें</h4>
@@ -433,9 +510,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- SELL TAB                                                   -->
-                <!-- ========================================================= -->
+                <!-- SELL TAB -->
                 <div id="sellTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-red-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-red-400"><i class="fa-solid fa-arrow-up mr-1"></i> कॉइन बेचें</h4>
@@ -464,9 +539,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- CHAT TAB                                                   -->
-                <!-- ========================================================= -->
+                <!-- CHAT TAB -->
                 <div id="chatTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-blue-400"><i class="fa-solid fa-headset mr-1"></i> हमसे चैट करें</h4>
@@ -488,9 +561,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- WALLET TAB - Transfer Coins                                -->
-                <!-- ========================================================= -->
+                <!-- WALLET TAB -->
                 <div id="walletTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-purple-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-purple-400"><i class="fa-solid fa-wallet mr-1"></i> कॉइन ट्रांसफर करें</h4>
@@ -513,14 +584,11 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- 🔐 ADMIN TAB - Secret Admin Feature                       -->
-                <!-- ========================================================= -->
+                <!-- ADMIN TAB -->
                 <div id="adminTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-red-500/30 space-y-3 admin-section">
                         <h4 class="text-xs font-bold text-red-400 admin-label"><i class="fa-solid fa-shield-halved mr-1"></i> 🔐 एडमिन - कॉइन भेजें</h4>
                         <p class="text-[10px] text-slate-400">Email या User ID द्वारा Coins भेजें (Buy/Sell Wallet में)</p>
-
                         <div class="space-y-3">
                             <div>
                                 <label class="block text-[10px] text-slate-400 mb-1">यूजर ईमेल / ID</label>
@@ -539,9 +607,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- HISTORY TAB                                                -->
-                <!-- ========================================================= -->
+                <!-- HISTORY TAB -->
                 <div id="historyTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-amber-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-clock mr-1"></i> Transaction History</h4>
@@ -551,9 +617,7 @@
                     </div>
                 </div>
 
-                <!-- ========================================================= -->
-                <!-- PRIZES TAB                                                -->
-                <!-- ========================================================= -->
+                <!-- PRIZES TAB -->
                 <div id="prizesTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-pink-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-pink-400"><i class="fa-solid fa-trophy mr-1"></i> 🎁 Inam & Prizes</h4>
@@ -659,7 +723,7 @@
     let isAdminMode = false;
 
     // ============================================================
-    // CHECK ADMIN MODE (Secret URL)
+    // CHECK ADMIN MODE
     // ============================================================
     function checkAdminMode() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -667,7 +731,6 @@
         if (adminKey === SECRET_ADMIN_KEY) {
             isAdminMode = true;
             document.getElementById('adminTab').classList.remove('hidden');
-            // Also show in bottom nav
             document.getElementById('nav-admin').classList.remove('hidden');
             showToast('🔐 Admin Mode Activated!', 'info');
         } else {
@@ -1018,7 +1081,7 @@
     }
 
     // ============================================================
-    // 🔐 ADMIN: Send Coins to Buy/Sell Wallet (Email या ID द्वारा)
+    // 🔐 ADMIN SEND COINS
     // ============================================================
     async function adminSendCoins() {
         if (!isAdminMode) {
@@ -1043,7 +1106,6 @@
         }
 
         try {
-            // 🔥 Search by Email OR User ID OR CoinX ID
             const targetUser = allUsers.find(u => 
                 u.email === targetId || 
                 u.$id === targetId || 
@@ -1056,7 +1118,6 @@
                 return;
             }
 
-            // 🔥 Coins Buy/Sell Wallet में Add करें (User Panel Balance में नहीं)
             const currentWallet = parseFloat(targetUser.buySellWallet || 0);
             const newWallet = currentWallet + amount;
 
@@ -1064,12 +1125,10 @@
                 buySellWallet: newWallet
             });
 
-            // Update local
             targetUser.buySellWallet = newWallet;
             const idx = allUsers.findIndex(u => u.$id === targetUser.$id);
             if (idx !== -1) allUsers[idx].buySellWallet = newWallet;
 
-            // Add to history
             const tx = {
                 type: 'admin',
                 amount: amount,
