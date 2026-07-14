@@ -26,7 +26,7 @@
         .slider-container {
             position: relative;
             width: 100%;
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             border-radius: 16px;
         }
@@ -52,19 +52,19 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 15px;
+            padding: 20px 15px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: white;
         }
-        .slide-text h3 { font-size: 14px; font-weight: bold; color: #f59e0b; }
-        .slide-text p { font-size: 10px; color: #e2e8f0; }
+        .slide-text h3 { font-size: 16px; font-weight: bold; color: #f59e0b; }
+        .slide-text p { font-size: 11px; color: #e2e8f0; }
         .slide-text .badge {
             display: inline-block;
             background: #f59e0b;
             color: #0f172a;
-            padding: 2px 10px;
+            padding: 2px 12px;
             border-radius: 20px;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: bold;
         }
 
@@ -78,7 +78,7 @@
 
         .slider-dots {
             position: absolute;
-            bottom: 8px;
+            bottom: 10px;
             left: 0;
             right: 0;
             text-align: center;
@@ -86,26 +86,26 @@
         }
         .slider-dots span {
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255,255,255,0.4);
-            margin: 0 3px;
+            margin: 0 4px;
             transition: all 0.5s;
         }
-        .slider-dots span.active { background: #f59e0b; width: 20px; border-radius: 10px; }
+        .slider-dots span.active { background: #f59e0b; width: 25px; border-radius: 10px; }
 
         .price-card {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             border: 1px solid #334155;
             border-radius: 12px;
-            padding: 14px;
+            padding: 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
         }
         .price-card:hover { transform: scale(1.02); }
-        .price-card .price { font-size: 22px; font-weight: bold; color: #f59e0b; }
+        .price-card .price { font-size: 24px; font-weight: bold; color: #f59e0b; }
         .price-card .label { font-size: 10px; color: #94a3b8; }
         .buy-price { border-color: #22c55e; }
         .sell-price { border-color: #ef4444; }
@@ -114,20 +114,20 @@
             background: linear-gradient(135deg, #1e1b4b, #312e81);
             border: 1px solid #4f46e5;
             border-radius: 12px;
-            padding: 14px;
+            padding: 16px;
         }
-        .wallet-card .balance { font-size: 24px; font-weight: bold; color: #a78bfa; }
+        .wallet-card .balance { font-size: 28px; font-weight: bold; color: #a78bfa; }
 
         .session-box {
             background: #0f172a;
             border: 1px solid #2563eb;
             border-radius: 12px;
-            padding: 10px 14px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .session-box .session-id { font-size: 10px; color: #60a5fa; font-family: monospace; word-break: break-all; }
+        .session-box .session-id { font-size: 11px; color: #60a5fa; font-family: monospace; word-break: break-all; }
 
         .bottom-nav {
             position: fixed;
@@ -138,7 +138,7 @@
             margin: 0 auto;
             background: #0f172a;
             border-top: 1px solid #334155;
-            padding: 8px 0;
+            padding: 10px 0;
             display: flex;
             justify-content: space-around;
             z-index: 50;
@@ -148,56 +148,37 @@
             flex-direction: column;
             align-items: center;
             color: #64748b;
-            font-size: 9px;
+            font-size: 10px;
             transition: all 0.3s;
             background: none;
             border: none;
             cursor: pointer;
         }
-        .bottom-nav button i { font-size: 18px; margin-bottom: 1px; }
+        .bottom-nav button i { font-size: 20px; margin-bottom: 2px; }
         .bottom-nav button.active { color: #f59e0b; }
-
-        .session-redirect-btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            transition: all 0.3s;
-        }
-        .session-redirect-btn:hover { transform: scale(1.02); }
-
-        .history-item {
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 10px 12px;
-            transition: all 0.3s;
-        }
-        .history-item:hover { border-color: #f59e0b; }
-        .history-item .type-buy { color: #22c55e; }
-        .history-item .type-sell { color: #ef4444; }
-        .history-item .type-transfer { color: #8b5cf6; }
-        .history-item .type-withdrawal { color: #f59e0b; }
 
         .coinx-id-box {
             background: #0f172a;
             border: 1px solid #f59e0b;
             border-radius: 12px;
-            padding: 10px 14px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .coinx-id-box .coinx-id { font-size: 13px; font-weight: bold; color: #f59e0b; font-family: monospace; }
+        .coinx-id-box .coinx-id { font-size: 14px; font-weight: bold; color: #f59e0b; font-family: monospace; letter-spacing: 1px; }
 
         .transfer-box {
             background: #0f172a;
             border: 1px solid #334155;
             border-radius: 12px;
-            padding: 14px;
+            padding: 16px;
         }
         .transfer-box input {
             background: #1e293b;
             border: 1px solid #334155;
             border-radius: 8px;
-            padding: 8px 12px;
+            padding: 10px 12px;
             color: white;
             font-size: 12px;
             width: 100%;
@@ -208,7 +189,7 @@
             background: linear-gradient(135deg, #8b5cf6, #7c3aed);
             color: white;
             font-weight: bold;
-            padding: 8px;
+            padding: 10px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
@@ -216,68 +197,63 @@
             width: 100%;
         }
         .transfer-btn:hover { transform: scale(1.02); }
-        .max-balance { font-size: 10px; color: #94a3b8; }
 
         .prize-card {
             background: linear-gradient(135deg, #1e1b4b, #312e81);
             border: 2px solid #f59e0b;
             border-radius: 12px;
-            padding: 14px;
+            padding: 16px;
             text-align: center;
             transition: all 0.3s;
         }
         .prize-card:hover { transform: scale(1.03); }
-        .prize-card .prize-icon { font-size: 32px; margin-bottom: 6px; }
-        .prize-card .prize-title { font-size: 13px; font-weight: bold; color: #f59e0b; }
-        .prize-card .prize-desc { font-size: 9px; color: #94a3b8; }
-        .prize-card .prize-amount { font-size: 11px; font-weight: bold; color: #ec4899; }
+        .prize-card .prize-icon { font-size: 40px; margin-bottom: 8px; }
+        .prize-card .prize-title { font-size: 14px; font-weight: bold; color: #f59e0b; }
+        .prize-card .prize-desc { font-size: 10px; color: #94a3b8; }
+        .prize-card .prize-amount { font-size: 12px; font-weight: bold; color: #ec4899; }
 
-        .filter-tabs {
-            display: flex;
-            gap: 3px;
+        .history-item {
             background: #0f172a;
-            padding: 3px;
-            border-radius: 8px;
             border: 1px solid #334155;
-            flex-wrap: wrap;
+            border-radius: 8px;
+            padding: 12px 14px;
         }
-        .filter-tabs button {
-            flex: 1;
-            padding: 3px 5px;
-            border-radius: 6px;
-            font-size: 8px;
-            font-weight: bold;
-            color: #94a3b8;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 40px;
-        }
-        .filter-tabs button.active {
-            background: #f59e0b;
-            color: #0f172a;
-        }
-        .filter-tabs button:hover:not(.active) { color: #e2e8f0; }
+        .history-item .type-buy { color: #22c55e; }
+        .history-item .type-sell { color: #ef4444; }
+        .history-item .type-transfer { color: #8b5cf6; }
+        .history-item .type-withdrawal { color: #f59e0b; }
+        .history-item .type-admin { color: #ef4444; }
 
-        .generate-id-btn {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #0f172a;
-            font-weight: bold;
-            padding: 3px 10px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 9px;
+        .session-redirect-btn {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             transition: all 0.3s;
         }
-        .generate-id-btn:hover { transform: scale(1.05); }
+        .session-redirect-btn:hover { transform: scale(1.02); }
 
         .user-info-box {
             background: #0f172a;
             border: 1px solid #334155;
             border-radius: 12px;
             padding: 12px;
+        }
+        .generate-id-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #0f172a;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            transition: all 0.3s;
+        }
+        .generate-id-btn:hover { transform: scale(1.05); }
+
+        .admin-section {
+            border-color: #ef4444 !important;
+        }
+        .admin-section .admin-label {
+            color: #ef4444;
         }
     </style>
 </head>
@@ -346,7 +322,7 @@
                             </div>
                         </div>
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600" alt="Phone">
+                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600" alt="Slim Phone">
                             <div class="slide-text">
                                 <h3>📱 ₹50,000 का Inam!</h3>
                                 <p>✨ Slim Keypad Phone</p>
@@ -395,14 +371,15 @@
                     <div class="coinx-id-box mt-2">
                         <span class="coinx-id" id="userCoinXId">CoinX123456789</span>
                         <div>
-                            <button onclick="copyToClipboard('userCoinXId', '✅ ID कॉपी हो गई!')" class="text-amber-400 hover:text-white shrink-0 btn-animate text-xs">
+                            <button onclick="copyToClipboard('userCoinXId', '✅ CoinX ID कॉपी हो गई!')" class="text-amber-400 hover:text-white shrink-0 btn-animate text-xs">
                                 <i class="fa-solid fa-copy mr-1"></i>
                             </button>
                             <button onclick="generateNewCoinXId()" class="generate-id-btn ml-1">
-                                <i class="fa-solid fa-rotate"></i>
+                                <i class="fa-solid fa-rotate"></i> नया
                             </button>
                         </div>
                     </div>
+                    <p class="text-[8px] text-slate-500 text-center mt-1">⚠️ इस ID से कहीं से भी Coins भेज सकते हैं</p>
                 </div>
 
                 <!-- Price Cards -->
@@ -430,7 +407,9 @@
                     </div>
                 </div>
 
-                <!-- BUY TAB -->
+                <!-- ========================================================= -->
+                <!-- BUY TAB                                                    -->
+                <!-- ========================================================= -->
                 <div id="buyTab" class="tab-content space-y-3">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-green-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-green-400"><i class="fa-solid fa-arrow-down mr-1"></i> कॉइन खरीदें</h4>
@@ -440,7 +419,7 @@
                             <input type="number" id="buyINR" placeholder="₹ राशि दर्ज करें" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-green-500 text-white" oninput="calculateBuy()">
                             <div class="text-[9px] text-slate-500 mt-1">मिलेंगे: <span id="buyCoinsPreview" class="text-green-400 font-bold">0 CX</span></div>
                         </div>
-                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
                             <i class="fa-brands fa-rocketchat"></i>
                             <span>Session App पर Chat करें</span>
                             <i class="fa-solid fa-arrow-right"></i>
@@ -454,7 +433,9 @@
                     </div>
                 </div>
 
-                <!-- SELL TAB -->
+                <!-- ========================================================= -->
+                <!-- SELL TAB                                                   -->
+                <!-- ========================================================= -->
                 <div id="sellTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-red-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-red-400"><i class="fa-solid fa-arrow-up mr-1"></i> कॉइन बेचें</h4>
@@ -469,7 +450,7 @@
                             <label class="block text-[10px] text-slate-400 mb-1">UPI ID / Bank Account</label>
                             <input type="text" id="sellAddress" placeholder="UPI ID दर्ज करें" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-red-500 text-white">
                         </div>
-                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
                             <i class="fa-brands fa-rocketchat"></i>
                             <span>Session App पर Chat करें</span>
                             <i class="fa-solid fa-arrow-right"></i>
@@ -483,12 +464,14 @@
                     </div>
                 </div>
 
-                <!-- CHAT TAB -->
+                <!-- ========================================================= -->
+                <!-- CHAT TAB                                                   -->
+                <!-- ========================================================= -->
                 <div id="chatTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-blue-400"><i class="fa-solid fa-headset mr-1"></i> हमसे चैट करें</h4>
                         <p class="text-[10px] text-slate-400">Session App के माध्यम से Buy/Sell करें</p>
-                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
                             <i class="fa-brands fa-rocketchat"></i>
                             <span>Session ऐप खोलें</span>
                             <i class="fa-solid fa-external-link"></i>
@@ -505,7 +488,9 @@
                     </div>
                 </div>
 
-                <!-- WALLET TAB -->
+                <!-- ========================================================= -->
+                <!-- WALLET TAB - Transfer Coins                                -->
+                <!-- ========================================================= -->
                 <div id="walletTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-purple-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-purple-400"><i class="fa-solid fa-wallet mr-1"></i> कॉइन ट्रांसफर करें</h4>
@@ -518,7 +503,7 @@
                             <div>
                                 <label class="block text-[10px] text-slate-400 mb-1">कॉइन संख्या</label>
                                 <input type="number" id="transferAmount" placeholder="0" oninput="checkMaxTransfer()">
-                                <div class="max-balance mt-1">अधिकतम: <span id="maxTransferDisplay">0</span> CX</div>
+                                <div class="text-[10px] text-slate-500 mt-1">अधिकतम: <span id="maxTransferDisplay">0</span> CX</div>
                             </div>
                             <button onclick="transferCoins()" class="transfer-btn">
                                 <i class="fa-solid fa-paper-plane mr-2"></i> कॉइन भेजें (User Panel)
@@ -528,24 +513,47 @@
                     </div>
                 </div>
 
-                <!-- HISTORY TAB -->
+                <!-- ========================================================= -->
+                <!-- 🔐 ADMIN TAB - Secret Admin Feature                       -->
+                <!-- ========================================================= -->
+                <div id="adminTab" class="tab-content space-y-3 hidden">
+                    <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-red-500/30 space-y-3 admin-section">
+                        <h4 class="text-xs font-bold text-red-400 admin-label"><i class="fa-solid fa-shield-halved mr-1"></i> 🔐 एडमिन - कॉइन भेजें</h4>
+                        <p class="text-[10px] text-slate-400">Email या User ID द्वारा Coins भेजें (Buy/Sell Wallet में)</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">यूजर ईमेल / ID</label>
+                                <input type="text" id="adminTransferUserId" placeholder="Email या User ID दर्ज करें" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-red-500 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 mb-1">कॉइन संख्या</label>
+                                <input type="number" id="adminTransferAmount" placeholder="0" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-red-500 text-white">
+                            </div>
+                            <button id="adminTransferBtn" onclick="adminSendCoins()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all btn-animate flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>💰 Buy/Sell Wallet में भेजें</span>
+                            </button>
+                            <p class="text-[8px] text-slate-500 text-center">🔑 Secret Admin Feature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================= -->
+                <!-- HISTORY TAB                                                -->
+                <!-- ========================================================= -->
                 <div id="historyTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-amber-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-clock mr-1"></i> Transaction History</h4>
-                        <div class="filter-tabs">
-                            <button class="active" onclick="filterHistory('all')">सभी</button>
-                            <button onclick="filterHistory('buy')">Buy</button>
-                            <button onclick="filterHistory('sell')">Sell</button>
-                            <button onclick="filterHistory('transfer')">Transfer</button>
-                            <button onclick="filterHistory('withdrawal')">Withdrawal</button>
-                        </div>
                         <div id="historyList" class="space-y-2 max-h-[350px] overflow-y-auto">
                             <p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- PRIZES TAB -->
+                <!-- ========================================================= -->
+                <!-- PRIZES TAB                                                -->
+                <!-- ========================================================= -->
                 <div id="prizesTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-pink-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-pink-400"><i class="fa-solid fa-trophy mr-1"></i> 🎁 Inam & Prizes</h4>
@@ -597,6 +605,10 @@
                 <i class="fa-solid fa-wallet"></i>
                 <span>Wallet</span>
             </button>
+            <button onclick="switchTab('admin')" class="nav-admin" id="nav-admin">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Admin</span>
+            </button>
             <button onclick="switchTab('history')" class="nav-history" id="nav-history">
                 <i class="fa-solid fa-clock"></i>
                 <span>History</span>
@@ -626,6 +638,7 @@
     const APPWRITE_PROJECT_ID = "6a43cbf70027f5ff8960";
     const DATABASE_ID = "6a47b7550016c4291ab3";
     const USERS_COLLECTION_ID = "users";
+    const SECRET_ADMIN_KEY = "my-secret-admin";
 
     const { Client, Databases, Account, Query } = Appwrite;
 
@@ -643,7 +656,25 @@
     let currentTab = 'buy';
     let allUsers = [];
     let toastTimer = null;
-    let historyFilter = 'all';
+    let isAdminMode = false;
+
+    // ============================================================
+    // CHECK ADMIN MODE (Secret URL)
+    // ============================================================
+    function checkAdminMode() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const adminKey = urlParams.get('admin');
+        if (adminKey === SECRET_ADMIN_KEY) {
+            isAdminMode = true;
+            document.getElementById('adminTab').classList.remove('hidden');
+            // Also show in bottom nav
+            document.getElementById('nav-admin').classList.remove('hidden');
+            showToast('🔐 Admin Mode Activated!', 'info');
+        } else {
+            document.getElementById('adminTab').classList.add('hidden');
+            document.getElementById('nav-admin').classList.add('hidden');
+        }
+    }
 
     // ============================================================
     // GENERATE UNIQUE CoinX ID
@@ -656,7 +687,7 @@
     function generateNewCoinXId() {
         if (!currentUser) return;
         const newId = generateCoinXId();
-        const exists = allUsers.some(u => u.coinxId === newId);
+        const exists = allUsers.some(u => u.coinxId === newId || u.coinxid === newId);
         if (exists) { generateNewCoinXId(); return; }
         currentUser.coinxId = newId;
         document.getElementById('userCoinXId').innerText = newId;
@@ -679,8 +710,7 @@
         if (!button) return;
         if (isLoading) {
             button.disabled = true;
-            const orig = button.innerHTML;
-            button.setAttribute('data-original', orig);
+            button.setAttribute('data-original', button.innerHTML);
             button.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Loading...`;
         } else {
             button.disabled = false;
@@ -697,7 +727,7 @@
     // ============================================================
     function redirectToSessionChat() {
         window.open('https://getsession.org/download', '_blank');
-        showToastOnce('📱 Session ID कॉपी हो गई!', 'info');
+        showToastOnce('📱 Session ID कॉपी हो गई! Session ऐप डाउनलोड करें', 'info');
         copyToClipboard('sessionChatId', '✅ Session ID कॉपी हो गई!');
     }
 
@@ -712,8 +742,8 @@
     function showToast(message, type = 'success') {
         const toast = document.getElementById('toastNotification');
         document.getElementById('toastMessage').innerText = message;
-        const border = type === 'success' ? 'green' : type === 'error' ? 'red' : 'amber';
-        toast.className = `fixed top-16 max-w-sm w-[90%] bg-slate-900/95 border border-${border}-500/50 text-${border}-400 rounded-xl py-3 px-4 shadow-2xl z-50 text-xs flex items-center justify-between transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]`;
+        const color = type === 'success' ? 'green' : type === 'error' ? 'red' : 'amber';
+        toast.className = `fixed top-16 max-w-sm w-[90%] bg-slate-900/95 border border-${color}-500/50 text-${color}-400 rounded-xl py-3 px-4 shadow-2xl z-50 text-xs flex items-center justify-between transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]`;
         toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
         toast.classList.add('opacity-100', 'translate-y-0');
         if (toastTimer) clearTimeout(toastTimer);
@@ -775,7 +805,7 @@
     animateBg();
 
     // ============================================================
-    // AUTH - FIXED
+    // AUTH
     // ============================================================
     async function handleLogin(btn) {
         const email = document.getElementById('loginUserId').value.trim();
@@ -788,19 +818,10 @@
 
         setButtonLoading(btn, true);
         try {
-            // Clear existing session if any
-            try {
-                await account.get();
-                await account.deleteSession('current');
-            } catch(e) {}
-
-            // Create new session
+            try { await account.get(); await account.deleteSession('current'); } catch(e) {}
             await account.createEmailPasswordSession(email, password);
-            
-            // Load user data
             await loadUser();
             await loadAllUsers();
-
             showToast("✅ लॉगिन सफल!", 'success');
             document.getElementById('loginPage').classList.add('hidden');
             document.getElementById('dashboardPage').classList.remove('hidden');
@@ -809,10 +830,11 @@
             renderHistory();
             updateMaxSell();
             updateMaxTransfer();
+            checkAdminMode();
         } catch(e) {
             console.error('Login Error:', e);
             if (e.message && e.message.includes('user')) {
-                showToast("❌ यूजर मौजूद नहीं! पहले register करें: index.html", 'error');
+                showToast("❌ यूजर नहीं मिला! पहले Register करें: index.html", 'error');
             } else {
                 showToast("❌ " + (e.message || "गलत ईमेल या पासवर्ड"), 'error');
             }
@@ -831,43 +853,34 @@
     }
 
     async function loadUser() {
-        try {
-            const acc = await account.get();
-            const doc = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, acc.$id);
-            currentUser = { 
-                ...doc, 
-                docId: doc.$id,
-                coinxId: doc.coinxId || generateCoinXId(),
-                buySellWallet: parseFloat(doc.buySellWallet || 0),
-                transactions: parseJsonSafe(doc.transactions, []),
-                sellRequests: parseJsonSafe(doc.sell_requests, []),
-                buyRequests: parseJsonSafe(doc.buy_requests, [])
-            };
-            document.getElementById('userCoinXId').innerText = currentUser.coinxId;
-            if (!doc.coinxId) {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, currentUser.$id, {
-                    coinxId: currentUser.coinxId
-                });
-            }
-        } catch(e) {
-            throw e;
+        const acc = await account.get();
+        const doc = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, acc.$id);
+        currentUser = { 
+            ...doc, 
+            docId: doc.$id,
+            coinxId: doc.coinxId || doc.coinxid || generateCoinXId(),
+            buySellWallet: parseFloat(doc.buySellWallet || 0),
+            transactions: parseJsonSafe(doc.transactions, []),
+            sellRequests: parseJsonSafe(doc.sell_requests, []),
+            buyRequests: parseJsonSafe(doc.buy_requests, [])
+        };
+        document.getElementById('userCoinXId').innerText = currentUser.coinxId;
+        if (!doc.coinxId && !doc.coinxid) {
+            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, currentUser.$id, {
+                coinxId: currentUser.coinxId
+            });
         }
     }
 
     async function loadAllUsers() {
-        try {
-            const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.limit(500)]);
-            allUsers = res.documents.map(d => ({ 
-                ...d, 
-                coinxId: d.coinxId || generateCoinXId(),
-                sellRequests: parseJsonSafe(d.sell_requests, []),
-                buySellWallet: parseFloat(d.buySellWallet || 0),
-                transactions: parseJsonSafe(d.transactions, [])
-            }));
-        } catch(e) {
-            console.error('Load users error:', e);
-            allUsers = [];
-        }
+        const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.limit(500)]);
+        allUsers = res.documents.map(d => ({ 
+            ...d, 
+            coinxId: d.coinxId || d.coinxid || generateCoinXId(),
+            sellRequests: parseJsonSafe(d.sell_requests, []),
+            buySellWallet: parseFloat(d.buySellWallet || 0),
+            transactions: parseJsonSafe(d.transactions, [])
+        }));
     }
 
     function updateUI() {
@@ -1005,23 +1018,92 @@
     }
 
     // ============================================================
-    // HISTORY
+    // 🔐 ADMIN: Send Coins to Buy/Sell Wallet (Email या ID द्वारा)
     // ============================================================
-    function filterHistory(type) {
-        historyFilter = type;
-        document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
-        if (event && event.target) event.target.classList.add('active');
-        renderHistory();
+    async function adminSendCoins() {
+        if (!isAdminMode) {
+            showToast("❌ Admin Mode Active नहीं है!", 'error');
+            return;
+        }
+        if (!currentUser) {
+            showToast("❌ पहले लॉगिन करें", 'error');
+            return;
+        }
+
+        const targetId = document.getElementById('adminTransferUserId').value.trim();
+        const amount = parseFloat(document.getElementById('adminTransferAmount').value);
+
+        if (!targetId) {
+            showToast("❌ यूजर ईमेल या ID दर्ज करें", 'error');
+            return;
+        }
+        if (!amount || amount <= 0) {
+            showToast("❌ सही कॉइन संख्या दर्ज करें", 'error');
+            return;
+        }
+
+        try {
+            // 🔥 Search by Email OR User ID OR CoinX ID
+            const targetUser = allUsers.find(u => 
+                u.email === targetId || 
+                u.$id === targetId || 
+                u.coinxId === targetId ||
+                u.coinxid === targetId
+            );
+
+            if (!targetUser) {
+                showToast(`❌ यूजर नहीं मिला: ${targetId}`, 'error');
+                return;
+            }
+
+            // 🔥 Coins Buy/Sell Wallet में Add करें (User Panel Balance में नहीं)
+            const currentWallet = parseFloat(targetUser.buySellWallet || 0);
+            const newWallet = currentWallet + amount;
+
+            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, targetUser.$id, {
+                buySellWallet: newWallet
+            });
+
+            // Update local
+            targetUser.buySellWallet = newWallet;
+            const idx = allUsers.findIndex(u => u.$id === targetUser.$id);
+            if (idx !== -1) allUsers[idx].buySellWallet = newWallet;
+
+            // Add to history
+            const tx = {
+                type: 'admin',
+                amount: amount,
+                toEmail: targetUser.email,
+                fromEmail: currentUser.email,
+                status: 'completed',
+                dateTime: new Date().toLocaleString('hi-IN')
+            };
+            const transactions = [...(currentUser.transactions || [])];
+            transactions.push(tx);
+            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, currentUser.$id, {
+                transactions: JSON.stringify(transactions)
+            });
+            currentUser.transactions = transactions;
+
+            document.getElementById('adminTransferUserId').value = '';
+            document.getElementById('adminTransferAmount').value = '';
+            
+            showToast(`✅ ${amount} CX ${targetUser.name} (${targetUser.email}) के Buy/Sell Wallet में भेज दिए गए!`, 'success');
+            renderHistory();
+            
+        } catch (e) {
+            console.error('Admin Transfer Error:', e);
+            showToast('❌ कॉइन भेजने में त्रुटि: ' + e.message, 'error');
+        }
     }
 
+    // ============================================================
+    // HISTORY
+    // ============================================================
     function renderHistory() {
         const container = document.getElementById('historyList');
         container.innerHTML = '';
-        let transactions = currentUser.transactions || [];
-
-        if (historyFilter !== 'all') {
-            transactions = transactions.filter(t => t.type === historyFilter);
-        }
+        const transactions = currentUser.transactions || [];
 
         if (transactions.length === 0) {
             container.innerHTML = `<p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>`;
@@ -1035,6 +1117,7 @@
             if (t.type === 'buy') { typeClass = 'type-buy'; icon = 'fa-solid fa-arrow-down'; typeLabel = 'Buy'; }
             else if (t.type === 'sell') { typeClass = 'type-sell'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Sell'; }
             else if (t.type === 'withdrawal') { typeClass = 'type-withdrawal'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Withdrawal'; }
+            else if (t.type === 'admin') { typeClass = 'type-admin'; icon = 'fa-solid fa-shield-halved'; typeLabel = '🔐 Admin'; }
 
             div.innerHTML = `
                 <div class="flex justify-between items-center">
@@ -1116,10 +1199,12 @@
                 renderHistory();
                 updateMaxSell();
                 updateMaxTransfer();
+                checkAdminMode();
             }
         } catch(e) {
             document.getElementById('loginPage').classList.remove('hidden');
         }
+        checkAdminMode();
     };
     </script>
 
