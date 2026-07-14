@@ -23,14 +23,12 @@
         ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
         .hidden { display: none !important; }
 
-        /* Slider - 10 Images */
         .slider-container {
             position: relative;
             width: 100%;
             height: 220px;
             overflow: hidden;
             border-radius: 16px;
-            margin-bottom: 4px;
         }
         .slider-track {
             display: flex;
@@ -234,12 +232,18 @@
             border: 1px solid #334155;
             border-radius: 8px;
             padding: 12px 14px;
+            transition: all 0.3s;
         }
+        .history-item:hover { border-color: #f59e0b; }
         .history-item .type-buy { color: #22c55e; }
         .history-item .type-sell { color: #ef4444; }
         .history-item .type-transfer { color: #8b5cf6; }
         .history-item .type-withdrawal { color: #f59e0b; }
-        .history-item .type-admin { color: #ef4444; }
+        .history-item .type-admin { color: #f59e0b; }
+        .history-item .type-prize { color: #ec4899; }
+        .history-item .status-pending { color: #f59e0b; }
+        .history-item .status-completed { color: #22c55e; }
+        .history-item .status-rejected { color: #ef4444; }
 
         .session-redirect-btn {
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -268,6 +272,34 @@
 
         .admin-section { border-color: #ef4444 !important; }
         .admin-section .admin-label { color: #ef4444; }
+
+        .filter-tabs {
+            display: flex;
+            gap: 3px;
+            background: #0f172a;
+            padding: 3px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            flex-wrap: wrap;
+        }
+        .filter-tabs button {
+            flex: 1;
+            padding: 4px 6px;
+            border-radius: 6px;
+            font-size: 9px;
+            font-weight: bold;
+            color: #94a3b8;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 40px;
+        }
+        .filter-tabs button.active {
+            background: #f59e0b;
+            color: #0f172a;
+        }
+        .filter-tabs button:hover:not(.active) { color: #e2e8f0; }
     </style>
 </head>
 <body>
@@ -324,94 +356,94 @@
             <section id="dashboardPage" class="w-full hidden space-y-4">
 
                 <!-- ========================================================= -->
-                <!-- ✅ SLIDER - 10 IMAGES                                     -->
+                <!-- ✅ SLIDER - 10 IMAGES (Picsum.photos - Always Works)      -->
                 <!-- ========================================================= -->
                 <div class="slider-container">
                     <div class="slider-track">
-                        <!-- Slide 1: Nature + Buy/Sell -->
+                        <!-- Slide 1 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600" alt="Nature">
+                            <img src="https://picsum.photos/seed/coinx1/600/400" alt="Nature">
                             <div class="slide-text">
                                 <h3>🌿 Indian Currency में Buy/Sell</h3>
                                 <p>💰 90 CX = ₹101 (Buy) | 90 CX = ₹100 (Sell)</p>
                                 <span class="badge">🔥 Live</span>
                             </div>
                         </div>
-                        <!-- Slide 2: ₹50,000 Prize -->
+                        <!-- Slide 2 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600" alt="Slim Phone">
+                            <img src="https://picsum.photos/seed/coinx2/600/400" alt="Phone">
                             <div class="slide-text">
                                 <h3>📱 ₹50,000 का Inam!</h3>
                                 <p>✨ Slim Keypad Phone</p>
                                 <span class="prize-badge">🏆 ₹50,000</span>
                             </div>
                         </div>
-                        <!-- Slide 3: ₹100,000 Prize -->
+                        <!-- Slide 3 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1589739900243-4b52cd9dd7df?w=600" alt="Tablet">
+                            <img src="https://picsum.photos/seed/coinx3/600/400" alt="Tablet">
                             <div class="slide-text">
                                 <h3>📱 ₹100,000 का Inam!</h3>
                                 <p>📱 Tablet Phone - बड़ी स्क्रीन</p>
                                 <span class="prize-badge">🏆 ₹100,000</span>
                             </div>
                         </div>
-                        <!-- Slide 4: ₹200,000 Prize -->
+                        <!-- Slide 4 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600" alt="Smartphone">
+                            <img src="https://picsum.photos/seed/coinx4/600/400" alt="Smartphone">
                             <div class="slide-text">
                                 <h3>📱 ₹200,000 का Inam!</h3>
                                 <p>🎁 DOMO Slate SL40 Phone</p>
                                 <span class="prize-badge">🏆 ₹200,000</span>
                             </div>
                         </div>
-                        <!-- Slide 5: Money / Rupee -->
+                        <!-- Slide 5 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1580519542036-e47de5166cf5?w=600" alt="Money">
+                            <img src="https://picsum.photos/seed/coinx5/600/400" alt="Money">
                             <div class="slide-text">
                                 <h3>💰 Earn Money with CoinX</h3>
                                 <p>📈 आज ही कमाना शुरू करें</p>
                                 <span class="badge">💵 Invest Now</span>
                             </div>
                         </div>
-                        <!-- Slide 6: Birds / Freedom -->
+                        <!-- Slide 6 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600" alt="Birds">
+                            <img src="https://picsum.photos/seed/coinx6/600/400" alt="Birds">
                             <div class="slide-text">
                                 <h3>🕊️ Freedom with CoinX</h3>
                                 <p>🌟 Financial Freedom पाएं</p>
                                 <span class="badge">🚀 Fly High</span>
                             </div>
                         </div>
-                        <!-- Slide 7: Nature / Forest -->
+                        <!-- Slide 7 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=600" alt="Forest">
+                            <img src="https://picsum.photos/seed/coinx7/600/400" alt="Forest">
                             <div class="slide-text">
                                 <h3>🌳 Grow with CoinX</h3>
                                 <p>🌱 आपका पैसा बढ़ेगा</p>
                                 <span class="badge">📈 Growth</span>
                             </div>
                         </div>
-                        <!-- Slide 8: Flowers / Beauty -->
+                        <!-- Slide 8 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600" alt="Flowers">
+                            <img src="https://picsum.photos/seed/coinx8/600/400" alt="Flowers">
                             <div class="slide-text">
                                 <h3>🌺 Bloom with CoinX</h3>
                                 <p>🌸 आपका सपना साकार होगा</p>
                                 <span class="badge">💐 Success</span>
                             </div>
                         </div>
-                        <!-- Slide 9: Mountains / Heights -->
+                        <!-- Slide 9 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" alt="Mountains">
+                            <img src="https://picsum.photos/seed/coinx9/600/400" alt="Mountains">
                             <div class="slide-text">
                                 <h3>🏔️ Reach New Heights</h3>
                                 <p>⛰️ CoinX के साथ ऊंचाइयों को छूएं</p>
                                 <span class="badge">🏆 Top</span>
                             </div>
                         </div>
-                        <!-- Slide 10: Sunset / Future -->
+                        <!-- Slide 10 -->
                         <div class="slide-item">
-                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Sunset">
+                            <img src="https://picsum.photos/seed/coinx10/600/400" alt="Sunset">
                             <div class="slide-text">
                                 <h3>🌅 Bright Future with CoinX</h3>
                                 <p>✨ आपका भविष्य सुनहरा है</p>
@@ -561,7 +593,7 @@
                     </div>
                 </div>
 
-                <!-- WALLET TAB -->
+                <!-- WALLET TAB - Transfer -->
                 <div id="walletTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-purple-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-purple-400"><i class="fa-solid fa-wallet mr-1"></i> कॉइन ट्रांसफर करें</h4>
@@ -611,7 +643,16 @@
                 <div id="historyTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-amber-500/30 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-clock mr-1"></i> Transaction History</h4>
-                        <div id="historyList" class="space-y-2 max-h-[350px] overflow-y-auto">
+                        <p class="text-[10px] text-slate-400">सभी लेनदेन का पूरा इतिहास</p>
+                        <div class="filter-tabs">
+                            <button class="active" onclick="filterHistory('all')">सभी</button>
+                            <button onclick="filterHistory('buy')">🟢 Buy</button>
+                            <button onclick="filterHistory('sell')">🔴 Sell</button>
+                            <button onclick="filterHistory('transfer')">🔄 Transfer</button>
+                            <button onclick="filterHistory('withdrawal')">🟡 Withdrawal</button>
+                            <button onclick="filterHistory('admin')">📞 Support</button>
+                        </div>
+                        <div id="historyList" class="space-y-2 max-h-[400px] overflow-y-auto">
                             <p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>
                         </div>
                     </div>
@@ -721,6 +762,7 @@
     let allUsers = [];
     let toastTimer = null;
     let isAdminMode = false;
+    let historyFilter = 'all';
 
     // ============================================================
     // CHECK ADMIN MODE
@@ -1055,8 +1097,8 @@
             const tx = {
                 type: 'transfer',
                 amount: amount,
-                toEmail: email,
-                fromEmail: currentUser.email,
+                toCoinXId: targetUser.coinxId || targetUser.coinxid || 'Unknown',
+                fromCoinXId: currentUser.coinxId || currentUser.coinxid || 'Unknown',
                 status: 'completed',
                 dateTime: new Date().toLocaleString('hi-IN')
             };
@@ -1074,14 +1116,14 @@
             document.getElementById('transferAmount').value = '';
             updateUI();
             renderHistory();
-            showToast(`✅ ${amount} CX ${email} को भेज दिए गए!`, 'success');
+            showToast(`✅ ${amount} CX ${targetUser.coinxId || targetUser.email} को भेज दिए गए!`, 'success');
         } catch(e) {
             showToast("❌ ट्रांसफर में त्रुटि: " + e.message, 'error');
         }
     }
 
     // ============================================================
-    // 🔐 ADMIN SEND COINS
+    // ADMIN SEND COINS
     // ============================================================
     async function adminSendCoins() {
         if (!isAdminMode) {
@@ -1132,8 +1174,8 @@
             const tx = {
                 type: 'admin',
                 amount: amount,
-                toEmail: targetUser.email,
-                fromEmail: currentUser.email,
+                toCoinXId: targetUser.coinxId || targetUser.coinxid || 'Unknown',
+                fromCoinXId: 'CoinX Network Customer Support',
                 status: 'completed',
                 dateTime: new Date().toLocaleString('hi-IN')
             };
@@ -1147,7 +1189,7 @@
             document.getElementById('adminTransferUserId').value = '';
             document.getElementById('adminTransferAmount').value = '';
             
-            showToast(`✅ ${amount} CX ${targetUser.name} (${targetUser.email}) के Buy/Sell Wallet में भेज दिए गए!`, 'success');
+            showToast(`✅ ${amount} CX ${targetUser.name} (${targetUser.coinxId}) के Buy/Sell Wallet में भेज दिए गए!`, 'success');
             renderHistory();
             
         } catch (e) {
@@ -1159,10 +1201,21 @@
     // ============================================================
     // HISTORY
     // ============================================================
+    function filterHistory(type) {
+        historyFilter = type;
+        document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
+        if (event && event.target) event.target.classList.add('active');
+        renderHistory();
+    }
+
     function renderHistory() {
         const container = document.getElementById('historyList');
         container.innerHTML = '';
-        const transactions = currentUser.transactions || [];
+        let transactions = currentUser.transactions || [];
+
+        if (historyFilter !== 'all') {
+            transactions = transactions.filter(t => t.type === historyFilter);
+        }
 
         if (transactions.length === 0) {
             container.innerHTML = `<p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>`;
@@ -1173,22 +1226,58 @@
             const div = document.createElement('div');
             div.className = 'history-item';
             let typeClass = 'type-transfer', icon = 'fa-solid fa-exchange', typeLabel = 'Transfer';
-            if (t.type === 'buy') { typeClass = 'type-buy'; icon = 'fa-solid fa-arrow-down'; typeLabel = 'Buy'; }
-            else if (t.type === 'sell') { typeClass = 'type-sell'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Sell'; }
-            else if (t.type === 'withdrawal') { typeClass = 'type-withdrawal'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Withdrawal'; }
-            else if (t.type === 'admin') { typeClass = 'type-admin'; icon = 'fa-solid fa-shield-halved'; typeLabel = '🔐 Admin'; }
+            let amountDisplay = t.amount || t.coins || 0;
+            
+            if (t.type === 'buy') { 
+                typeClass = 'type-buy'; 
+                icon = 'fa-solid fa-arrow-down'; 
+                typeLabel = '🟢 Buy'; 
+            }
+            else if (t.type === 'sell') { 
+                typeClass = 'type-sell'; 
+                icon = 'fa-solid fa-arrow-up'; 
+                typeLabel = '🔴 Sell'; 
+            }
+            else if (t.type === 'withdrawal') { 
+                typeClass = 'type-withdrawal'; 
+                icon = 'fa-solid fa-arrow-up'; 
+                typeLabel = '🟡 Withdrawal'; 
+            }
+            else if (t.type === 'admin') { 
+                typeClass = 'type-admin'; 
+                icon = 'fa-solid fa-headset'; 
+                typeLabel = '📞 Customer Support'; 
+            }
+            else if (t.type === 'transfer') { 
+                typeClass = 'type-transfer'; 
+                icon = 'fa-solid fa-exchange'; 
+                typeLabel = '🔄 Transfer'; 
+            }
+
+            let fromDisplay = '';
+            let toDisplay = '';
+            
+            if (t.type === 'admin') {
+                fromDisplay = `<span>⬅️ From: <span class="text-amber-400 font-bold">🏢 CoinX Network Customer Support</span></span>`;
+                toDisplay = t.toCoinXId ? `<span>➡️ To: <span class="text-amber-400">${t.toCoinXId}</span></span>` : '';
+            } else {
+                fromDisplay = t.fromCoinXId ? `<span>⬅️ From: <span class="text-blue-400">${t.fromCoinXId}</span></span>` : '';
+                toDisplay = t.toCoinXId ? `<span>➡️ To: <span class="text-amber-400">${t.toCoinXId}</span></span>` : '';
+            }
+
+            const amountColor = t.type === 'admin' ? 'text-amber-400' : 'text-white';
 
             div.innerHTML = `
                 <div class="flex justify-between items-center">
                     <div>
                         <span class="font-bold ${typeClass}"><i class="${icon} mr-1"></i> ${typeLabel}</span>
-                        <span class="text-xs text-white ml-2">${t.amount || t.coins || 0} CX</span>
+                        <span class="text-xs font-bold ${amountColor} ml-2">${amountDisplay} CX</span>
                     </div>
                     <span class="text-[10px] text-slate-500">${t.dateTime || ''}</span>
                 </div>
                 <div class="text-[9px] text-slate-500 flex justify-between flex-wrap gap-1">
-                    ${t.toEmail ? `<span>➡️ To: ${t.toEmail}</span>` : ''}
-                    ${t.fromEmail ? `<span>⬅️ From: ${t.fromEmail}</span>` : ''}
+                    ${toDisplay}
+                    ${fromDisplay}
                     ${t.inr ? `<span>₹${t.inr}</span>` : ''}
                     ${t.address ? `<span>UPI: ${t.address}</span>` : ''}
                 </div>
@@ -1219,7 +1308,7 @@
             const tx = {
                 type: 'withdrawal',
                 amount: amount,
-                fromEmail: fromEmail,
+                fromCoinXId: user.coinxId || user.coinxid || 'Unknown',
                 status: 'completed',
                 dateTime: new Date().toLocaleString('hi-IN')
             };
