@@ -23,11 +23,11 @@
         ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
         .hidden { display: none !important; }
 
-        /* Slider Styles */
+        /* Slider */
         .slider-container {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 180px;
             overflow: hidden;
             border-radius: 16px;
         }
@@ -63,13 +63,13 @@
             z-index: 5;
         }
         .slider-overlay-text h2 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #f59e0b;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
         .slider-overlay-text p {
-            font-size: 12px;
+            font-size: 11px;
             color: #e2e8f0;
             text-shadow: 0 2px 8px rgba(0,0,0,0.8);
             margin-top: 4px;
@@ -117,9 +117,19 @@
             color: #94a3b8;
         }
         .buy-price { border-color: #22c55e; }
-        .buy-price:hover { box-shadow: 0 0 25px rgba(34,197,94,0.2); }
         .sell-price { border-color: #ef4444; }
-        .sell-price:hover { box-shadow: 0 0 25px rgba(239,68,68,0.2); }
+
+        .wallet-card {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 1px solid #4f46e5;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .wallet-card .balance {
+            font-size: 28px;
+            font-weight: bold;
+            color: #a78bfa;
+        }
 
         .session-box {
             background: #0f172a;
@@ -136,6 +146,7 @@
             font-family: monospace;
             word-break: break-all;
         }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -166,19 +177,7 @@
         .bottom-nav .nav-buy.active i { color: #22c55e; }
         .bottom-nav .nav-sell.active i { color: #ef4444; }
         .bottom-nav .nav-chat.active i { color: #3b82f6; }
-        .bottom-nav .nav-wallet.active i { color: #8b5cf6; }
-
-        .wallet-card {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            border: 1px solid #4f46e5;
-            border-radius: 12px;
-            padding: 16px;
-        }
-        .wallet-card .balance {
-            font-size: 28px;
-            font-weight: bold;
-            color: #a78bfa;
-        }
+        .bottom-nav .nav-history.active i { color: #f59e0b; }
 
         .session-redirect-btn {
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -189,36 +188,16 @@
             box-shadow: 0 0 30px rgba(37,99,235,0.3);
         }
 
-        /* Transfer Section */
-        .transfer-box {
+        .history-item {
             background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 16px;
-        }
-        .transfer-box input {
-            background: #1e293b;
             border: 1px solid #334155;
             border-radius: 8px;
             padding: 10px 12px;
-            color: white;
-            font-size: 12px;
-            width: 100%;
-            outline: none;
         }
-        .transfer-box input:focus { border-color: #8b5cf6; }
-        .transfer-btn {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-        }
-        .transfer-btn:hover { transform: scale(1.02); }
+        .history-item .type-buy { color: #22c55e; }
+        .history-item .type-sell { color: #ef4444; }
+        .history-item .type-transfer { color: #8b5cf6; }
+        .history-item .type-withdrawal { color: #f59e0b; }
     </style>
 </head>
 <body>
@@ -246,9 +225,7 @@
         <!-- MAIN CONTENT -->
         <main class="w-full px-4 pt-4 pb-24 flex-1 flex flex-col justify-start z-10">
 
-            <!-- ========================================================= -->
-            <!-- LOGIN PAGE                                                 -->
-            <!-- ========================================================= -->
+            <!-- LOGIN PAGE -->
             <section id="loginPage" class="w-full space-y-6">
                 <div class="text-center space-y-2 py-6">
                     <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-slate-950 font-extrabold text-3xl mx-auto gold-glow border-2 border-amber-300">CX</div>
@@ -273,12 +250,10 @@
                 </div>
             </section>
 
-            <!-- ========================================================= -->
-            <!-- DASHBOARD                                                 -->
-            <!-- ========================================================= -->
+            <!-- DASHBOARD -->
             <section id="dashboardPage" class="w-full hidden space-y-4">
 
-                <!-- ✅ SLIDER: Nature Images (फूल, पत्ती, गार्डन) -->
+                <!-- Slider -->
                 <div class="slider-container">
                     <div class="slider-track">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600" alt="Nature 1">
@@ -339,7 +314,7 @@
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- BUY TAB (Session Chat Redirect)                            -->
+                <!-- BUY TAB (Session Redirect)                                 -->
                 <!-- ========================================================= -->
                 <div id="buyTab" class="tab-content space-y-3">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-green-500/30 space-y-3">
@@ -352,7 +327,6 @@
                             <div class="text-[9px] text-slate-500 mt-1">मिलेंगे: <span id="buyCoinsPreview" class="text-green-400 font-bold">0 CX</span></div>
                         </div>
 
-                        <!-- ✅ Session Chat Redirect Button -->
                         <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
                             <i class="fa-brands fa-rocketchat"></i>
                             <span>Session App पर Chat करें</span>
@@ -365,12 +339,12 @@
                                 <i class="fa-solid fa-copy mr-1"></i> कॉपी
                             </button>
                         </div>
-                        <p class="text-[8px] text-slate-500 text-center">Session ID कॉपी करें, Session App में Paste करें और हमसे Chat करें</p>
+                        <p class="text-[8px] text-slate-500 text-center">Session ID कॉपी करें, Session App में Paste करें</p>
                     </div>
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- SELL TAB (Withdrawal from User Panel)                     -->
+                <!-- SELL TAB (Session Redirect)                                -->
                 <!-- ========================================================= -->
                 <div id="sellTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-red-500/30 space-y-3">
@@ -381,6 +355,7 @@
                             <label class="block text-[10px] text-slate-400 mb-1">CX Amount</label>
                             <input type="number" id="sellAmount" placeholder="कॉइन संख्या" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-red-500 text-white" oninput="calculateSell()">
                             <div class="text-[9px] text-slate-500 mt-1">मिलेंगे: ₹<span id="sellInrPreview" class="text-red-400 font-bold">0</span></div>
+                            <div class="text-[9px] text-yellow-400 mt-0.5">⚠️ अधिकतम: <span id="maxSellDisplay">0</span> CX</div>
                         </div>
 
                         <div>
@@ -388,14 +363,24 @@
                             <input type="text" id="sellAddress" placeholder="UPI ID दर्ज करें" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2.5 px-3 text-xs focus:outline-none focus:border-red-500 text-white">
                         </div>
 
-                        <button id="btn-sell" onclick="submitSell(this)" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg text-xs transition-all btn-animate">
-                            बेचें (Sell)
+                        <button onclick="redirectToSessionChat()" class="w-full session-redirect-btn text-white font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-rocketchat"></i>
+                            <span>Session App पर Chat करें</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </button>
+
+                        <div class="session-box">
+                            <span class="session-id" id="sessionChatId2">05f912bceb6aa605c84a64826fb856282788e8cf06484f48d3890481ebbc211938</span>
+                            <button onclick="copyToClipboard('sessionChatId2', '✅ Session ID कॉपी हो गई!')" class="text-blue-400 hover:text-white shrink-0 btn-animate text-xs">
+                                <i class="fa-solid fa-copy mr-1"></i> कॉपी
+                            </button>
+                        </div>
+                        <p class="text-[8px] text-slate-500 text-center">Session ID कॉपी करें, Session App में Paste करें</p>
                     </div>
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- CHAT TAB (Session Support)                                 -->
+                <!-- CHAT TAB                                                   -->
                 <!-- ========================================================= -->
                 <div id="chatTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
@@ -413,44 +398,24 @@
                         </a>
 
                         <div class="session-box">
-                            <span class="session-id" id="sessionChatId2">05f912bceb6aa605c84a64826fb856282788e8cf06484f48d3890481ebbc211938</span>
-                            <button onclick="copyToClipboard('sessionChatId2', '✅ Session ID कॉपी हो गई!')" class="text-blue-400 hover:text-white shrink-0 btn-animate text-xs">
+                            <span class="session-id" id="sessionChatId3">05f912bceb6aa605c84a64826fb856282788e8cf06484f48d3890481ebbc211938</span>
+                            <button onclick="copyToClipboard('sessionChatId3', '✅ Session ID कॉपी हो गई!')" class="text-blue-400 hover:text-white shrink-0 btn-animate text-xs">
                                 <i class="fa-solid fa-copy mr-1"></i> कॉपी
                             </button>
                         </div>
-                        <p class="text-[8px] text-slate-500 text-center">Session ID कॉपी करें, ऐप में Paste करें और चैट करें</p>
+                        <p class="text-[8px] text-slate-500 text-center">Session ID कॉपी करें, ऐप में Paste करें</p>
                     </div>
                 </div>
 
                 <!-- ========================================================= -->
-                <!-- WALLET TAB (Transfer Coins via Email)                      -->
+                <!-- HISTORY TAB                                                -->
                 <!-- ========================================================= -->
-                <div id="walletTab" class="tab-content space-y-3 hidden">
-                    <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-purple-500/30 space-y-3">
-                        <h4 class="text-xs font-bold text-purple-400"><i class="fa-solid fa-wallet mr-1"></i> कॉइन ट्रांसफर करें</h4>
-                        <p class="text-[10px] text-slate-400">Email द्वारा किसी भी User को Coins भेजें</p>
-
-                        <div class="transfer-box space-y-3">
-                            <div>
-                                <label class="block text-[10px] text-slate-400 mb-1">यूजर ईमेल</label>
-                                <input type="email" id="transferEmail" placeholder="user@email.com">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] text-slate-400 mb-1">कॉइन संख्या</label>
-                                <input type="number" id="transferAmount" placeholder="0">
-                            </div>
-                            <button onclick="transferCoins()" class="transfer-btn">
-                                <i class="fa-solid fa-paper-plane mr-2"></i> कॉइन भेजें
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- User Panel Withdrawal Requests -->
+                <div id="historyTab" class="tab-content space-y-3 hidden">
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-amber-500/30 space-y-3">
-                        <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-arrow-up mr-1"></i> User Panel Withdrawal Requests</h4>
-                        <p class="text-[10px] text-slate-400">User Panel से आने वाले Withdrawal Requests</p>
-                        <div id="withdrawalRequests" class="space-y-2 max-h-[200px] overflow-y-auto">
-                            <p class="text-[10px] text-slate-500 text-center py-2">कोई Withdrawal Request नहीं है</p>
+                        <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-clock mr-1"></i> Transaction History</h4>
+                        <p class="text-[10px] text-slate-400">सभी लेनदेन का इतिहास</p>
+                        <div id="historyList" class="space-y-2 max-h-[350px] overflow-y-auto">
+                            <p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>
                         </div>
                     </div>
                 </div>
@@ -478,9 +443,9 @@
                 <i class="fa-solid fa-comments"></i>
                 <span>Chat</span>
             </button>
-            <button onclick="switchTab('wallet')" class="nav-wallet" id="nav-wallet">
-                <i class="fa-solid fa-wallet"></i>
-                <span>Wallet</span>
+            <button onclick="switchTab('history')" class="nav-history" id="nav-history">
+                <i class="fa-solid fa-clock"></i>
+                <span>History</span>
             </button>
         </div>
 
@@ -519,6 +484,7 @@
     let currentUser = null;
     let currentTab = 'buy';
     let allUsers = [];
+    let toastTimer = null;
 
     // ============================================================
     // UTILITY
@@ -549,49 +515,56 @@
     // ============================================================
     function redirectToSessionChat() {
         const sessionId = document.getElementById('sessionChatId').innerText;
-        // Open Session App
         window.open('https://getsession.org/download', '_blank');
-        showToast('📱 Session ऐप डाउनलोड करें और ID Paste करें', 'info');
-        // Copy ID automatically
-        copyToClipboard('sessionChatId', '✅ Session ID कॉपी हो गई! अब Session ऐप में Paste करें');
+        showToastOnce('📱 Session ID कॉपी हो गई! Session ऐप डाउनलोड करें और ID Paste करें', 'info');
+        copyToClipboard('sessionChatId', '✅ Session ID कॉपी हो गई!');
     }
 
     // ============================================================
-    // TOAST
+    // TOAST (एक बार ही आएगा)
     // ============================================================
-    let toastTimeout;
+    function showToastOnce(message, type = 'success') {
+        if (toastTimer) {
+            clearTimeout(toastTimer);
+            toastTimer = null;
+        }
+        showToast(message, type);
+    }
+
     function showToast(message, type = 'success') {
         const toast = document.getElementById('toastNotification');
         document.getElementById('toastMessage').innerText = message;
         toast.className = `fixed top-16 max-w-sm w-[90%] bg-slate-900/95 border ${type === 'success' ? 'border-green-500/50 text-green-400' : type === 'error' ? 'border-red-500/50 text-red-400' : 'border-amber-500/50 text-amber-400'} rounded-xl py-3 px-4 shadow-2xl z-50 text-xs flex items-center justify-between transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]`;
         toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
         toast.classList.add('opacity-100', 'translate-y-0');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(hideToast, 4000);
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 4000);
     }
+
     function hideToast() {
         const toast = document.getElementById('toastNotification');
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+        toastTimer = null;
     }
 
     function copyToClipboard(elementId, successText) {
         const copyText = document.getElementById(elementId).innerText;
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(copyText)
-                .then(() => showToast(successText || "कॉपी हो गया!", 'success'))
-                .catch(() => legacyCopyFallback(copyText, successText));
+            navigator.clipboard.writeText(copyText).then(() => {
+                // Silent copy - no extra toast
+            }).catch(() => legacyCopyFallback(copyText));
         } else {
-            legacyCopyFallback(copyText, successText);
+            legacyCopyFallback(copyText);
         }
     }
-    function legacyCopyFallback(copyText, successText) {
+
+    function legacyCopyFallback(copyText) {
         const tempInput = document.createElement("input");
         tempInput.value = copyText;
         document.body.appendChild(tempInput);
         tempInput.select();
         document.execCommand("copy");
         document.body.removeChild(tempInput);
-        showToast(successText || "कॉपी हो गया!", 'success');
     }
 
     // ============================================================
@@ -643,7 +616,8 @@
             document.getElementById('dashboardPage').classList.remove('hidden');
             document.getElementById('bottomNavBar').classList.remove('hidden');
             updateUI();
-            loadWithdrawalRequests();
+            renderHistory();
+            updateMaxSell();
         } catch(e) { 
             showToast("❌ गलत ईमेल या पासवर्ड", 'error'); 
         }
@@ -664,7 +638,9 @@
         const doc = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, acc.$id);
         currentUser = { 
             ...doc, 
-            docId: doc.$id, 
+            docId: doc.$id,
+            buySellWallet: parseFloat(doc.buySellWallet || 0),
+            transactions: parseJsonSafe(doc.transactions, []),
             sellRequests: parseJsonSafe(doc.sell_requests, []),
             buyRequests: parseJsonSafe(doc.buy_requests, [])
         };
@@ -672,14 +648,25 @@
 
     async function loadAllUsers() {
         const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.limit(500)]);
-        allUsers = res.documents.map(d => ({ ...d, sellRequests: parseJsonSafe(d.sell_requests, []) }));
+        allUsers = res.documents.map(d => ({ 
+            ...d, 
+            sellRequests: parseJsonSafe(d.sell_requests, []),
+            buySellWallet: parseFloat(d.buySellWallet || 0)
+        }));
     }
 
     function updateUI() {
         if (!currentUser) return;
         document.getElementById('userWelcomeName').innerText = currentUser.name;
         document.getElementById('userWelcomeId').innerText = `ID: ${currentUser.email}`;
-        document.getElementById('walletBalance').innerText = `${parseFloat(currentUser.coins || 0).toFixed(2)} CX`;
+        const wallet = parseFloat(currentUser.buySellWallet || 0);
+        document.getElementById('walletBalance').innerText = wallet.toFixed(2) + ' CX';
+        updateMaxSell();
+    }
+
+    function updateMaxSell() {
+        const wallet = parseFloat(currentUser.buySellWallet || 0);
+        document.getElementById('maxSellDisplay').innerText = wallet.toFixed(0);
     }
 
     async function saveUserFields(fields) {
@@ -688,7 +675,10 @@
         Object.assign(currentUser, fields);
         if ('sell_requests' in fields) currentUser.sellRequests = parseJsonSafe(fields.sell_requests, []);
         if ('buy_requests' in fields) currentUser.buyRequests = parseJsonSafe(fields.buy_requests, []);
+        if ('transactions' in fields) currentUser.transactions = parseJsonSafe(fields.transactions, []);
+        if ('buySellWallet' in fields) currentUser.buySellWallet = parseFloat(fields.buySellWallet);
         updateUI();
+        renderHistory();
     }
 
     // ============================================================
@@ -700,11 +690,12 @@
         document.getElementById(tab + 'Tab').classList.remove('hidden');
         document.querySelectorAll('#bottomNavBar button').forEach(b => b.classList.remove('active'));
         document.getElementById('nav-' + tab).classList.add('active');
-        if (tab === 'wallet') loadWithdrawalRequests();
+        if (tab === 'history') renderHistory();
+        if (tab === 'sell') updateMaxSell();
     }
 
     // ============================================================
-    // BUY
+    // BUY (Session Redirect)
     // ============================================================
     function calculateBuy() {
         const inr = parseFloat(document.getElementById('buyINR').value) || 0;
@@ -712,187 +703,78 @@
     }
 
     // ============================================================
-    // SELL
+    // SELL (Session Redirect - Max Limit)
     // ============================================================
     function calculateSell() {
         const coins = parseFloat(document.getElementById('sellAmount').value) || 0;
+        const wallet = parseFloat(currentUser.buySellWallet || 0);
+        if (coins > wallet) {
+            document.getElementById('sellAmount').value = wallet;
+            document.getElementById('sellInrPreview').innerText = getINRfromCoins(wallet).toFixed(0);
+            showToastOnce(`⚠️ आपके पास सिर्फ ${wallet.toFixed(0)} CX है!`, 'info');
+            return;
+        }
         document.getElementById('sellInrPreview').innerText = getINRfromCoins(coins).toFixed(0);
     }
 
-    async function submitSell(btn) {
-        if (!currentUser) { showToast("पहले लॉगिन करें", 'error'); return; }
-        const coins = parseFloat(document.getElementById('sellAmount').value) || 0;
-        const address = document.getElementById('sellAddress').value.trim();
-        if (coins <= 0) { showToast("कॉइन संख्या दर्ज करें", 'error'); return; }
-        if (coins < 100) { showToast("न्यूनतम 100 CX", 'error'); return; }
-        if (coins > parseFloat(currentUser.coins || 0)) { showToast("पर्याप्त कॉइन नहीं", 'error'); return; }
-        if (!address) { showToast("UPI ID दर्ज करें", 'error'); return; }
-
-        setButtonLoading(btn, true);
-        try {
-            const inr = getINRfromCoins(coins);
-            const sellReq = {
-                type: 'sell', coins, inr, address,
-                status: 'pending', dateTime: new Date().toLocaleString('hi-IN'),
-                userEmail: currentUser.email, userName: currentUser.name
-            };
-            const sellRequests = [...(currentUser.sellRequests || [])];
-            sellRequests.push(sellReq);
-
-            const newCoins = parseFloat(currentUser.coins) - coins;
-            await saveUserFields({ coins: newCoins, sell_requests: JSON.stringify(sellRequests) });
-
-            document.getElementById('sellAmount').value = '';
-            document.getElementById('sellAddress').value = '';
-            document.getElementById('sellInrPreview').innerText = '0';
-            showToast(`✅ ${coins} CX की Sell रिक्वेस्ट भेज दी गई!`, 'success');
-        } catch(e) { showToast("❌ त्रुटि: " + e.message, 'error'); }
-        finally { setButtonLoading(btn, false); }
-    }
-
     // ============================================================
-    // WALLET - TRANSFER COINS VIA EMAIL
+    // HISTORY
     // ============================================================
-    async function transferCoins() {
-        if (!currentUser) { showToast("पहले लॉगिन करें", 'error'); return; }
-        const email = document.getElementById('transferEmail').value.trim();
-        const amount = parseFloat(document.getElementById('transferAmount').value);
-
-        if (!email) { showToast("यूजर ईमेल दर्ज करें", 'error'); return; }
-        if (!amount || amount <= 0) { showToast("सही कॉइन संख्या दर्ज करें", 'error'); return; }
-
-        try {
-            // Find user by email
-            const targetUser = allUsers.find(u => u.email === email);
-            if (!targetUser) { showToast("❌ यूजर नहीं मिला!", 'error'); return; }
-
-            const newCoins = parseFloat(targetUser.coins || 0) + amount;
-            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, targetUser.$id, {
-                coins: newCoins
-            });
-
-            // Update local user data
-            targetUser.coins = newCoins;
-            if (currentUser.email === email) {
-                currentUser.coins = newCoins;
-                updateUI();
-            }
-
-            // Also update in allUsers array
-            const idx = allUsers.findIndex(u => u.$id === targetUser.$id);
-            if (idx !== -1) allUsers[idx].coins = newCoins;
-
-            document.getElementById('transferEmail').value = '';
-            document.getElementById('transferAmount').value = '';
-            showToast(`✅ ${amount} CX ${email} को भेज दिए गए!`, 'success');
-        } catch(e) {
-            showToast("❌ ट्रांसफर में त्रुटि: " + e.message, 'error');
-        }
-    }
-
-    // ============================================================
-    // WITHDRAWAL REQUESTS FROM USER PANEL
-    // ============================================================
-    function loadWithdrawalRequests() {
-        const container = document.getElementById('withdrawalRequests');
+    function renderHistory() {
+        const container = document.getElementById('historyList');
         container.innerHTML = '';
 
-        let allWithdrawals = [];
-        allUsers.forEach(u => {
-            (u.sellRequests || []).forEach(r => {
-                if (r.status === 'pending') {
-                    allWithdrawals.push({ ...r, userEmail: u.email, userName: u.name, userDocId: u.$id });
-                }
-            });
-        });
-
-        if (allWithdrawals.length === 0) {
-            container.innerHTML = `<p class="text-[10px] text-slate-500 text-center py-2">कोई Withdrawal Request नहीं है</p>`;
+        const transactions = currentUser.transactions || [];
+        
+        if (transactions.length === 0) {
+            container.innerHTML = `<p class="text-[10px] text-slate-500 text-center py-4">कोई लेनदेन नहीं है</p>`;
             return;
         }
 
-        allWithdrawals.forEach(r => {
+        transactions.reverse().forEach(t => {
             const div = document.createElement('div');
-            div.className = 'bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1';
+            div.className = 'history-item';
+            
+            let typeClass = 'type-transfer';
+            let icon = 'fa-solid fa-exchange';
+            let typeLabel = 'Transfer';
+            
+            if (t.type === 'buy') { typeClass = 'type-buy'; icon = 'fa-solid fa-arrow-down'; typeLabel = 'Buy'; }
+            else if (t.type === 'sell') { typeClass = 'type-sell'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Sell'; }
+            else if (t.type === 'withdrawal') { typeClass = 'type-withdrawal'; icon = 'fa-solid fa-arrow-up'; typeLabel = 'Withdrawal'; }
+            
             div.innerHTML = `
                 <div class="flex justify-between items-center">
-                    <span class="font-bold text-slate-300 text-xs">${r.userName} (${r.userEmail})</span>
-                    <span class="text-amber-400">${r.coins} CX</span>
+                    <div>
+                        <span class="font-bold ${typeClass}"><i class="${icon} mr-1"></i> ${typeLabel}</span>
+                        <span class="text-xs text-white ml-2">${t.amount || t.coins || 0} CX</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500">${t.dateTime || ''}</span>
                 </div>
-                <div class="text-[10px] text-slate-500 flex justify-between">
-                    <span>₹${r.inr.toFixed(2)}</span>
-                    <span>UPI: ${r.address}</span>
+                <div class="text-[9px] text-slate-500 flex justify-between">
+                    ${t.toEmail ? `<span>To: ${t.toEmail}</span>` : ''}
+                    ${t.fromEmail ? `<span>From: ${t.fromEmail}</span>` : ''}
+                    ${t.inr ? `<span>₹${t.inr}</span>` : ''}
+                    ${t.address ? `<span>UPI: ${t.address}</span>` : ''}
                 </div>
-                <div class="text-[9px] text-yellow-400">⏳ Pending</div>
-                <div class="flex gap-2 justify-end pt-1">
-                    <button onclick="approveWithdrawal('${r.userDocId}', this)" class="bg-green-500 text-slate-950 font-bold px-3 py-1 rounded text-[10px] btn-animate">✅ Approve</button>
-                    <button onclick="rejectWithdrawal('${r.userDocId}', this)" class="bg-red-500 text-white font-bold px-3 py-1 rounded text-[10px] btn-animate">❌ Reject</button>
-                </div>
+                <div class="text-[8px] text-slate-600">${t.status || 'completed'}</div>
             `;
             container.appendChild(div);
         });
     }
 
-    async function approveWithdrawal(userDocId, btn) {
-        setButtonLoading(btn, true);
-        try {
-            const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
-            const sellRequests = parseJsonSafe(fresh.sell_requests, []);
-            const pendingIdx = sellRequests.findIndex(r => r.status === 'pending');
-            if (pendingIdx === -1) { showToast('कोई पेंडिंग Request नहीं है', 'info'); return; }
-
-            sellRequests[pendingIdx].status = 'approved';
-            sellRequests[pendingIdx].approvedAt = new Date().toISOString();
-
-            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                sell_requests: JSON.stringify(sellRequests)
-            });
-
-            // Update local data
-            const uIdx = allUsers.findIndex(u => u.$id === userDocId);
-            if (uIdx !== -1) allUsers[uIdx].sellRequests = sellRequests;
-
-            showToast(`✅ Withdrawal Approved! ₹${sellRequests[pendingIdx].inr.toFixed(2)} भेज दिए गए।`, 'success');
-            loadWithdrawalRequests();
-        } catch(e) {
-            showToast("❌ त्रुटि: " + e.message, 'error');
-        }
-        finally { setButtonLoading(btn, false); }
-    }
-
-    async function rejectWithdrawal(userDocId, btn) {
-        setButtonLoading(btn, true);
-        try {
-            const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
-            const sellRequests = parseJsonSafe(fresh.sell_requests, []);
-            const pendingIdx = sellRequests.findIndex(r => r.status === 'pending');
-            if (pendingIdx === -1) { showToast('कोई पेंडिंग Request नहीं है', 'info'); return; }
-
-            // Refund coins
-            const refundCoins = sellRequests[pendingIdx].coins;
-            const newCoins = parseFloat(fresh.coins || 0) + parseFloat(refundCoins);
-
-            sellRequests[pendingIdx].status = 'rejected';
-            sellRequests[pendingIdx].rejectedAt = new Date().toISOString();
-
-            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                coins: newCoins,
-                sell_requests: JSON.stringify(sellRequests)
-            });
-
-            // Update local data
-            const uIdx = allUsers.findIndex(u => u.$id === userDocId);
-            if (uIdx !== -1) {
-                allUsers[uIdx].coins = newCoins;
-                allUsers[uIdx].sellRequests = sellRequests;
-            }
-
-            showToast(`❌ Withdrawal Rejected! ${refundCoins} CX वापस कर दिए गए।`, 'info');
-            loadWithdrawalRequests();
-        } catch(e) {
-            showToast("❌ त्रुटि: " + e.message, 'error');
-        }
-        finally { setButtonLoading(btn, false); }
+    // ============================================================
+    // ADD TRANSACTION
+    // ============================================================
+    async function addTransaction(tx) {
+        const transactions = [...(currentUser.transactions || [])];
+        transactions.push({
+            ...tx,
+            dateTime: new Date().toLocaleString('hi-IN'),
+            timestamp: Date.now()
+        });
+        await saveUserFields({ transactions: JSON.stringify(transactions) });
+        renderHistory();
     }
 
     // ============================================================
@@ -907,7 +789,8 @@
                 document.getElementById('bottomNavBar').classList.remove('hidden');
                 await loadAllUsers();
                 updateUI();
-                loadWithdrawalRequests();
+                renderHistory();
+                updateMaxSell();
             }
         } catch(e) {
             document.getElementById('loginPage').classList.remove('hidden');
