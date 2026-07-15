@@ -291,12 +291,24 @@
             font-family: monospace;
             word-break: break-all;
         }
-        /* Ensure login page is always visible by default, dashboard hidden */
-        #loginPage { display: block; }
-        #dashboardPage { display: none; }
-        #dashboardPage.show { display: block; }
-        #bottomNavBar { display: none; }
-        #bottomNavBar.show { display: flex; }
+
+        /* 🔥 CRITICAL FIX: By default, dashboard and bottom nav are hidden */
+        #dashboardPage, #bottomNavBar {
+            display: none !important;
+        }
+        #dashboardPage.show, #bottomNavBar.show {
+            display: block !important;
+        }
+        #bottomNavBar.show {
+            display: flex !important;
+        }
+        /* Login page is visible by default */
+        #loginPage {
+            display: block !important;
+        }
+        #loginPage.hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -323,7 +335,7 @@
         <main class="w-full px-4 pt-4 pb-24 flex-1 flex flex-col justify-start z-10">
 
             <!-- ========================================================= -->
-            <!-- LOGIN PAGE – ALWAYS VISIBLE BY DEFAULT                     -->
+            <!-- LOGIN PAGE (visible by default)                           -->
             <!-- ========================================================= -->
             <section id="loginPage" class="w-full space-y-6">
                 <div class="text-center space-y-2 py-6">
@@ -350,7 +362,7 @@
             </section>
 
             <!-- ========================================================= -->
-            <!-- DASHBOARD – HIDDEN BY DEFAULT (display:none)              -->
+            <!-- DASHBOARD (hidden by default, shown only after login)     -->
             <!-- ========================================================= -->
             <section id="dashboardPage" class="w-full space-y-4">
 
@@ -686,7 +698,7 @@
 
         </main>
 
-        <!-- BOTTOM NAVIGATION -->
+        <!-- BOTTOM NAVIGATION (hidden by default) -->
         <div id="bottomNavBar" class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 backdrop-blur-md border-t border-slate-800 flex items-center justify-around py-3 z-30 shadow-2xl hidden">
             <button onclick="switchTab('buy')" id="nav-buy" class="flex flex-col items-center justify-center text-green-400 text-center transition-all btn-animate">
                 <i class="fa-solid fa-arrow-down text-lg mb-0.5"></i>
@@ -924,9 +936,10 @@
             await loadUser();
             await loadAllUsers();
             showToast("✅ लॉगिन सफल!", 'success');
+            // Show dashboard, hide login
             document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('dashboardPage').classList.remove('hidden');
-            document.getElementById('bottomNavBar').classList.remove('hidden');
+            document.getElementById('dashboardPage').classList.add('show');
+            document.getElementById('bottomNavBar').classList.add('show');
             updateUI();
             renderHistory();
             updateMaxSell();
@@ -938,8 +951,8 @@
             console.error('Login Error:', e);
             showToast("❌ " + (e.message || "गलत ईमेल या पासवर्ड"), 'error');
             document.getElementById('loginPage').classList.remove('hidden');
-            document.getElementById('dashboardPage').classList.add('hidden');
-            document.getElementById('bottomNavBar').classList.add('hidden');
+            document.getElementById('dashboardPage').classList.remove('show');
+            document.getElementById('bottomNavBar').classList.remove('show');
         } finally {
             setButtonLoading(btn, false);
         }
@@ -950,8 +963,8 @@
         try { await account.deleteSession('current'); } catch(e) {}
         currentUser = null;
         document.getElementById('loginPage').classList.remove('hidden');
-        document.getElementById('dashboardPage').classList.add('hidden');
-        document.getElementById('bottomNavBar').classList.add('hidden');
+        document.getElementById('dashboardPage').classList.remove('show');
+        document.getElementById('bottomNavBar').classList.remove('show');
         showToast("लॉगआउट हो गया", 'info');
     }
 
@@ -1745,7 +1758,7 @@
     }
 
     // ============================================================
-    // INITIALIZATION
+    // INITIALIZATION – FINAL FIX
     // ============================================================
     window.onload = async function() {
         detectAdminMode();
@@ -1754,11 +1767,12 @@
             await checkExistingAdminSession();
         } else {
             try {
-                await loadUser();
+                await loadUser(); // sets currentUser if logged in
                 if (currentUser && !currentUser.isBlocked) {
+                    // ✅ LOGGED IN – Show dashboard, hide login
                     document.getElementById('loginPage').classList.add('hidden');
-                    document.getElementById('dashboardPage').classList.remove('hidden');
-                    document.getElementById('bottomNavBar').classList.remove('hidden');
+                    document.getElementById('dashboardPage').classList.add('show');
+                    document.getElementById('bottomNavBar').classList.add('show');
                     await loadAllUsers();
                     updateUI();
                     renderHistory();
@@ -1768,15 +1782,17 @@
                     updateMaxTransferOther();
                     switchTab('buy');
                 } else {
+                    // ❌ NOT LOGGED IN – Show login, hide dashboard
                     document.getElementById('loginPage').classList.remove('hidden');
-                    document.getElementById('dashboardPage').classList.add('hidden');
-                    document.getElementById('bottomNavBar').classList.add('hidden');
+                    document.getElementById('dashboardPage').classList.remove('show');
+                    document.getElementById('bottomNavBar').classList.remove('show');
                 }
             } catch (e) {
+                // Error – show login
                 console.error('Init error:', e);
                 document.getElementById('loginPage').classList.remove('hidden');
-                document.getElementById('dashboardPage').classList.add('hidden');
-                document.getElementById('bottomNavBar').classList.add('hidden');
+                document.getElementById('dashboardPage').classList.remove('show');
+                document.getElementById('bottomNavBar').classList.remove('show');
             }
         }
     };
