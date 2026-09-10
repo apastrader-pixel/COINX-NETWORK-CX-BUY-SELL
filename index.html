@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>SupriX Global – 3D Animated Rose Edition</title>
+    <meta name="theme-color" content="#070104" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>SupriX Global – 3D Real Mobile App Edition</title>
     <meta name="google" content="notranslate" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -17,7 +20,7 @@
         --rose-primary: #ff0055;
         --rose-glow: #ff00aa;
         --bg-dark: #070104;
-        --card-bg: rgba(18, 4, 10, 0.75);
+        --card-bg: rgba(18, 4, 10, 0.78);
       }
       * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
       
@@ -32,7 +35,7 @@
         position: relative;
       }
 
-      /* ── DYNAMIC RUNNING MULTI-COLOR ANIMATION (Sabhi Colour Chalte Hue) ── */
+      /* ── DYNAMIC RUNNING MULTI-COLOR ANIMATION ── */
       @keyframes dynamicHueFlow {
         0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
         50% { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
@@ -47,13 +50,8 @@
         100% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055; }
       }
 
-      .animated-hue-border {
-        animation: rainbowBorder 8s linear infinite;
-      }
-
-      .animated-hue-text {
-        animation: dynamicHueFlow 10s linear infinite;
-      }
+      .animated-hue-border { animation: rainbowBorder 8s linear infinite; }
+      .animated-hue-text { animation: dynamicHueFlow 10s linear infinite; }
 
       /* ── HEADER WOBBLE / SHAKING BUTTON ANIMATION ── */
       @keyframes headerWobble {
@@ -64,15 +62,9 @@
         80% { transform: translateY(1px) rotate(1deg) scale(1.01); }
       }
 
-      .wobble-btn {
-        animation: headerWobble 3.5s ease-in-out infinite;
-      }
-      .wobble-btn-delay {
-        animation: headerWobble 3.5s ease-in-out infinite 0.8s;
-      }
-      .wobble-btn-delay2 {
-        animation: headerWobble 3.5s ease-in-out infinite 1.6s;
-      }
+      .wobble-btn { animation: headerWobble 3.5s ease-in-out infinite; }
+      .wobble-btn-delay { animation: headerWobble 3.5s ease-in-out infinite 0.8s; }
+      .wobble-btn-delay2 { animation: headerWobble 3.5s ease-in-out infinite 1.6s; }
 
       /* ── 3D GLASS CARDS ── */
       .glass-rose {
@@ -102,7 +94,6 @@
         box-shadow: 0 0px 0 #59001a, 0 4px 10px rgba(255, 0, 85, 0.5), inset 0 2px 4px rgba(255,255,255,0.4);
       }
 
-      /* ── DASHBOARD STAR SPINNING ANIMATION ── */
       .mining-btn-3d {
         background: radial-gradient(circle at 30% 30%, #ff4d88, #ff0055, #660022);
         border: 4px solid #ff6699;
@@ -116,7 +107,6 @@
         box-shadow: 0 0 20px var(--rose-primary), inset 0 0 20px var(--rose-glow), 0 0px 0 #4d0016;
       }
 
-      /* Continuous Star Spin when triggered */
       .star-spinning {
         animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
       }
@@ -126,7 +116,7 @@
         100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 15px #ff0055); }
       }
 
-      /* ── TWINKLING MULTI-COLOR STARS BACKGROUND ── */
+      /* ── TWINKLING STARS CANVAS ── */
       #starsCanvas {
         position: fixed;
         top: 0; left: 0;
@@ -135,7 +125,6 @@
         z-index: 1;
       }
 
-      /* ── INPUT FIELDS ── */
       input, select, textarea {
         background: rgba(0, 0, 0, 0.65) !important;
         border: 2px solid rgba(255, 0, 85, 0.5) !important;
@@ -149,11 +138,10 @@
         outline: none;
       }
 
-      /* ── BOTTOM DOCK ── */
       .bottom-nav {
         position: fixed; bottom: 0; left: 0; right: 0;
         max-width: 440px; margin: 0 auto;
-        background: rgba(10, 2, 6, 0.92);
+        background: rgba(10, 2, 6, 0.94);
         backdrop-filter: blur(20px);
         border-top: 2px solid var(--rose-primary);
         box-shadow: 0 -10px 40px rgba(255, 0, 85, 0.4);
@@ -165,7 +153,7 @@
       .bottom-nav button {
         color: rgba(255, 255, 255, 0.4);
         font-size: 10px; display: flex; flex-direction: column; align-items: center;
-        background: none; border: none; transition: all 0.3s;
+        background: none; border: none; transition: all 0.3s; cursor: pointer;
       }
       .bottom-nav button.active {
         color: #ff6699;
@@ -176,7 +164,6 @@
         color: var(--rose-primary); transform: scale(1.2);
       }
 
-      /* ── RECEIPT MODAL ── */
       .receipt-modal .receipt-card {
         background: #0d0105;
         border: 3px solid var(--rose-primary);
@@ -184,7 +171,6 @@
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
       }
 
-      /* ── LEVEL ACHIEVEMENT GRID SCROLL ── */
       .level-grid-container {
         max-height: 280px;
         overflow-y: auto;
@@ -192,14 +178,13 @@
         scrollbar-color: var(--rose-primary) #1a050f;
       }
 
-      /* Toast */
       #toastNotification {
         background: rgba(18, 4, 10, 0.95);
         border: 2px solid var(--rose-primary);
         box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,85,0.5);
         color: white; border-radius: 16px; position: fixed; top: 20px; left: 50%;
         transform: translateX(-50%) translateY(-20px); z-index: 9999; opacity: 0; pointer-events: none; transition: all 0.4s;
-        padding: 12px 20px; font-size: 13px; width: 90%; max-width: 400px; text-center;
+        padding: 12px 20px; font-size: 13px; width: 90%; max-width: 400px; text-align: center;
       }
       #toastNotification.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
@@ -211,10 +196,8 @@
     </style>
   </head>
   <body>
-    <!-- TWINKLING MULTI-COLOR STARS CANVAS -->
     <canvas id="starsCanvas"></canvas>
 
-    <!-- LOADING OVERLAY -->
     <div id="loadingOverlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[10000] hidden flex-col items-center justify-center">
       <div class="w-14 h-14 border-4 border-t-[#ff0055] border-r-[#00f0ff] border-b-[#00ff66] border-l-[#ffaa00] rounded-full animate-spin"></div>
       <p class="mt-4 font-bold text-rose-light text-sm">लोड हो रहा है...</p>
@@ -223,7 +206,6 @@
     <!-- MAIN APP CONTAINER -->
     <div id="appContainer" class="w-full max-w-md mx-auto relative z-10 min-h-screen flex flex-col">
       
-      <!-- HEADER -->
       <header id="mainHeader" class="w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 rounded-b-2xl border-t-0 border-l-0 border-r-0 animated-hue-border">
         <div class="flex items-center gap-3">
           <div class="relative">
@@ -237,7 +219,6 @@
           </div>
         </div>
 
-        <!-- Header Referral Badge, App Download & Voice Audio -->
         <div class="flex items-center gap-1.5">
           <button onclick="openAppDownloadModal()" class="wobble-btn bg-gradient-to-r from-emerald-600 to-teal-600 border border-emerald-400 text-white px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 shadow-[0_0_10px_rgba(16,185,129,0.5)]">
             <i class="fa-solid fa-download text-amber-300 animate-bounce"></i> <span>App</span>
@@ -253,7 +234,6 @@
 
       <main class="w-full px-4 pt-4 pb-28 flex-1 flex flex-col justify-start z-10">
         
-        <!-- REGISTRATION PAGE -->
         <section id="registrationPage" class="app-page w-full space-y-5">
           <div class="text-center space-y-2 py-3">
             <div class="w-20 h-20 mx-auto rounded-full p-1 glass-rose animated-hue-border">
@@ -288,7 +268,6 @@
           </div>
         </section>
 
-        <!-- REGISTRATION SUCCESS -->
         <section id="regSuccessPage" class="app-page w-full hidden space-y-5 text-center py-4">
           <div class="glass-rose p-6 space-y-5 animated-hue-border">
             <div class="w-16 h-16 bg-[#22c55e]/20 text-[#22c55e] rounded-full flex items-center justify-center text-3xl mx-auto border-2 border-[#22c55e] shadow-[0_0_15px_#22c55e]">
@@ -309,7 +288,6 @@
           </div>
         </section>
 
-        <!-- LOGIN PAGE -->
         <section id="loginPage" class="app-page w-full hidden space-y-5">
           <div class="text-center space-y-2 py-4">
             <div class="w-20 h-20 mx-auto rounded-full p-1 glass-rose animated-hue-border">
@@ -336,9 +314,7 @@
           </div>
         </section>
 
-        <!-- DASHBOARD PAGE -->
         <section id="dashboardPage" class="app-page w-full hidden space-y-4">
-          <!-- User Welcome Bar -->
           <div class="glass-rose p-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
               <div class="w-11 h-11 rounded-full border-2 border-[#ff0055] bg-[rgba(255,0,85,0.2)] flex items-center justify-center text-white shadow-[0_0_10px_#ff0055]">
@@ -352,7 +328,6 @@
             <span class="text-[9px] bg-[#22c55e] text-white px-2.5 py-1 rounded-full font-bold shadow-[0_0_10px_#22c55e]">सक्रिय</span>
           </div>
 
-          <!-- Stats Grid -->
           <div class="grid grid-cols-2 gap-3">
             <div class="glass-rose p-3.5 flex flex-col justify-between">
               <span class="text-[10px] text-gray-400 block mb-1"><i class="fa-solid fa-dollar-sign mr-1 text-[#ff6699]"></i> Total Investment</span>
@@ -373,14 +348,12 @@
             </div>
           </div>
 
-          <!-- 3D Mining Star Section with Smooth Continuous 360 Spin -->
           <div class="glass-rose p-6 flex flex-col items-center justify-center text-center space-y-5 animated-hue-border">
             <div class="space-y-1">
               <h3 class="text-xs font-extrabold tracking-wider text-white uppercase rose-text-gradient">🌟 3D Mining Star Reward</h3>
               <p class="text-[10px] text-[#ff6699]">डेली 0.5% कॉइन रिलीज करने के लिए स्टार पर क्लिक करें</p>
             </div>
             
-            <!-- Mining Star Button with Rotation Event -->
             <button id="miningStarBtn" onclick="triggerMiningReward(this)" class="w-32 h-32 mining-btn-3d flex items-center justify-center relative group">
               <i id="starIconInside" class="fa-solid fa-star text-5xl text-amber-300 drop-shadow-[0_0_20px_#f59e0b] transition-transform duration-300"></i>
             </button>
@@ -397,7 +370,6 @@
           </div>
         </section>
 
-        <!-- PURCHASE PAGE -->
         <section id="purchasePage" class="app-page w-full hidden space-y-4">
           <div class="glass-rose p-4">
             <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-cart-shopping mr-1.5 text-[#ff0055]"></i> कॉइन परचेज करें (USDT BEP20)</h3>
@@ -408,14 +380,13 @@
             <label class="text-xs font-bold text-[#ff6699]">कस्टम USDT अमाउंट दर्ज करें</label>
             <div class="flex gap-2">
               <input type="number" id="customUSDAmount" oninput="calculateCustomCoins(this.value)" placeholder="USD ($10+)" class="w-full py-2.5 px-3 text-sm font-mono" min="10" />
-              <div class="bg-black/60 border border-[#ff0055] rounded-xl px-3 flex items-center text-xs font-bold currency-usdt" id="calculatedCoinsPreview">0 USDT</div>
+              <div class="bg-black/60 border border-[#ff0055] rounded-xl px-3 flex items-center text-xs font-bold currency-usdt shrink-0" id="calculatedCoinsPreview">10 USDT</div>
             </div>
             <button onclick="generateCustomPurchase()" class="w-full btn-3d-rose py-3 text-xs flex justify-center items-center gap-2">
               <span>USDT QR जनरेट करें</span> <i class="fa-solid fa-qrcode"></i>
             </button>
           </div>
 
-          <!-- Payment Gateway Card -->
           <div id="paymentGatewayCard" class="glass-rose p-4 space-y-3 hidden">
             <div class="flex justify-between border-b border-[#ff0055] pb-2">
               <h4 class="text-xs font-bold text-white"><i class="fa-solid fa-qrcode mr-1 text-[#ff6699]"></i> डिपॉजिट क्यूआर कोड</h4>
@@ -439,7 +410,6 @@
           </div>
         </section>
 
-        <!-- STAKING PAGE -->
         <section id="stakingPage" class="app-page w-full hidden space-y-4">
           <div class="glass-rose p-4 space-y-3">
             <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-vault mr-1 text-[#ff0055]"></i> USDT स्टेकिंग (Staking)</h3>
@@ -448,19 +418,24 @@
               <span id="stakingAvailableCoins" class="font-bold currency-usdt">0.00 USDT</span>
             </div>
             <input type="number" id="stakeInputCoins" placeholder="अमाउंट (Min 10 USDT)" class="w-full py-2.5 px-3 text-sm font-mono" min="10" />
+            
+            <div class="grid grid-cols-4 gap-1.5 pt-1">
+              <button onclick="setStakingPreset(25)" class="bg-black/60 border border-[#ff0055]/50 text-[10px] py-1.5 rounded-lg text-rose-light">25%</button>
+              <button onclick="setStakingPreset(50)" class="bg-black/60 border border-[#ff0055]/50 text-[10px] py-1.5 rounded-lg text-rose-light">50%</button>
+              <button onclick="setStakingPreset(75)" class="bg-black/60 border border-[#ff0055]/50 text-[10px] py-1.5 rounded-lg text-rose-light">75%</button>
+              <button onclick="setStakingPreset(100)" class="bg-black/60 border border-[#ff0055]/50 text-[10px] py-1.5 rounded-lg text-amber-300 font-bold">100% MAX</button>
+            </div>
+
             <button id="btn-submit-stake" onclick="submitStake(this)" class="w-full btn-3d-rose py-3 text-xs">अभी स्टेक करें</button>
           </div>
 
           <div class="glass-rose p-4 space-y-2">
-            <h4 class="text-xs font-bold text-[#ff6699]">सक्रिय स्टेकिंग</h4>
-            <div id="activeStakesList" class="space-y-2 text-xs max-h-40 overflow-y-auto"></div>
+            <h4 class="text-xs font-bold text-[#ff6699]">सक्रिय स्टेकिंग सूची</h4>
+            <div id="activeStakesList" class="space-y-2 text-xs max-h-52 overflow-y-auto"></div>
           </div>
         </section>
 
-        <!-- PROFILE PAGE (UPDATED WITH ALL USER REQUIREMENTS) -->
         <section id="profilePage" class="app-page w-full hidden space-y-4">
-          
-          <!-- 1. Profile Photo & User Header -->
           <div class="glass-rose p-4 flex items-center gap-4 animated-hue-border">
             <div class="relative">
               <img id="profileAvatarImg" src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" class="w-16 h-16 rounded-full object-cover border-2 border-[#ff0055] shadow-[0_0_15px_#ff0055]" />
@@ -478,12 +453,10 @@
             </div>
           </div>
 
-          <!-- 2. YOUR ID SECTION (Email & SPX ID with Copy Buttons) -->
           <div class="glass-rose p-4 space-y-3">
             <h4 class="text-xs font-bold text-[#ff6699] border-b border-[#ff0055]/40 pb-1">
               <i class="fa-solid fa-id-badge mr-1"></i> YOUR ID
             </h4>
-            <!-- Email Box -->
             <div class="bg-black/60 border border-[#ff0055]/50 p-2.5 rounded-xl flex items-center justify-between">
               <div class="overflow-hidden mr-2">
                 <span class="text-[9px] text-gray-400 block">ईमेल आईडी (Email)</span>
@@ -493,7 +466,6 @@
                 <i class="fa-solid fa-copy"></i> Copy
               </button>
             </div>
-            <!-- SPX ID Box -->
             <div class="bg-black/60 border border-[#ff0055]/50 p-2.5 rounded-xl flex items-center justify-between">
               <div class="overflow-hidden mr-2">
                 <span class="text-[9px] text-gray-400 block">SPX ID</span>
@@ -503,7 +475,6 @@
                 <i class="fa-solid fa-copy"></i> Copy
               </button>
             </div>
-            <!-- Referral Code Box -->
             <div class="bg-black/60 border border-[#ff0055]/50 p-2.5 rounded-xl flex items-center justify-between">
               <div class="overflow-hidden mr-2">
                 <span class="text-[9px] text-gray-400 block">रेफरल कोड (Referral Code)</span>
@@ -515,19 +486,15 @@
             </div>
           </div>
 
-          <!-- 3. INVITE FRIENDS (Referral QR, Link, Share & Copy Button) -->
           <div class="glass-rose p-4 space-y-3">
             <h4 class="text-xs font-bold text-white flex items-center justify-between">
               <span><i class="fa-solid fa-user-plus text-[#ff0055] mr-1"></i> INVITE FRIENDS</span>
               <span class="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/50 px-2 py-0.5 rounded-full">2% Direct Bonus</span>
             </h4>
-            <!-- QR Center -->
             <div class="flex justify-center bg-white p-2.5 rounded-xl w-32 h-32 mx-auto shadow-[0_0_18px_#ff0055]" id="referralQrContainer"></div>
-            <!-- Link Display -->
             <div class="bg-black/60 border border-[#ff0055]/50 p-2 rounded-xl">
               <span id="referralShareLink" class="text-[10px] text-gray-300 font-mono block truncate text-center">https://suprixglobal.online/?ref=</span>
             </div>
-            <!-- Action Buttons -->
             <div class="flex gap-2">
               <button onclick="copyToClipboard('referralShareLink', '✅ रेफरल लिंक कॉपी!')" class="flex-1 btn-3d-rose py-2.5 text-xs flex items-center justify-center gap-1">
                 <i class="fa-solid fa-copy"></i> Copy Link
@@ -538,21 +505,17 @@
             </div>
           </div>
 
-          <!-- 4. LEVEL ACHIEVEMENT SECTION (L1 to L100 Grid) -->
           <div class="glass-rose p-4 space-y-3">
             <div class="flex justify-between items-center border-b border-[#ff0055]/40 pb-2">
               <h4 class="text-xs font-bold text-white"><i class="fa-solid fa-trophy text-amber-400 mr-1"></i> LEVEL ACHIEVEMENT (L1 - L100)</h4>
               <span id="achievementCountText" class="text-[10px] text-[#00f0ff] font-mono font-bold">0 / 100 Achieved</span>
             </div>
             <p class="text-[9px] text-gray-300 bg-black/40 p-2 rounded-lg border border-amber-500/30">
-              💡 नियम: $1000 USDT (₹1,00,000) कॉइन परचेज करने पर <strong>L1 Achieved (✅ Sahi Tick Green)</strong> प्राप्त होगा। इसी तरह L1 से L100 तक हर $1,000 पर अगला लेवल अनलॉक होगा!
+              💡 नियम: $1,000 USDT (₹1,00,000) कॉइन परचेज करने पर <strong>L1 Achieved (✅ Sahi Tick Green)</strong> प्राप्त होगा। इसी तरह L1 से L100 तक हर $1,000 पर अगला लेवल अनलॉक होगा!
             </p>
-            <div class="level-grid-container space-y-2 pr-1" id="levelAchievementGrid">
-              <!-- Dynamically Populated L1 to L100 cards -->
-            </div>
+            <div class="level-grid-container space-y-2 pr-1" id="levelAchievementGrid"></div>
           </div>
 
-          <!-- 5. WITHDRAWAL SYSTEM (Pure USDT - INR Option Removed) -->
           <div class="glass-rose p-4 space-y-3">
             <h4 class="text-xs font-bold text-white border-b border-[#ff0055]/40 pb-2 flex items-center justify-between">
               <span><i class="fa-solid fa-money-bill-transfer text-[#ff0055] mr-1"></i> USDT WITHDRAWAL SYSTEM</span>
@@ -572,18 +535,14 @@
             </div>
           </div>
 
-          <!-- 6. TRANSACTIONS SECTION (All History with View, Download & Print Receipt) -->
           <div class="glass-rose p-4 space-y-3">
             <div class="flex justify-between items-center border-b border-[#ff0055]/40 pb-2">
               <h4 class="text-xs font-bold text-white"><i class="fa-solid fa-list-check text-[#ff0055] mr-1"></i> TRANSACTIONS HISTORY</h4>
               <button onclick="toggleTxHistoryModal(true)" class="text-[10px] text-[#ff6699] underline font-bold">सब देखें</button>
             </div>
-            <div id="profileRecentTxList" class="space-y-2 text-xs max-h-48 overflow-y-auto">
-              <!-- Recent Transactions rendered here -->
-            </div>
+            <div id="profileRecentTxList" class="space-y-2 text-xs max-h-48 overflow-y-auto"></div>
           </div>
 
-          <!-- 7. TEAM SECTION (Sabhi Team Dikhaye) -->
           <div class="glass-rose p-4 space-y-3">
             <div class="flex justify-between items-center border-b border-[#ff0055]/40 pb-2">
               <h4 class="text-xs font-bold text-white"><i class="fa-solid fa-people-group text-[#ff0055] mr-1"></i> TEAM MEMBERS</h4>
@@ -596,27 +555,21 @@
             </div>
           </div>
 
-          <!-- 8. REFERRAL SECTION (Referral & Rewards with View Receipt) -->
           <div class="glass-rose p-4 space-y-3">
             <div class="flex justify-between items-center border-b border-[#ff0055]/40 pb-2">
               <h4 class="text-xs font-bold text-white"><i class="fa-solid fa-award text-amber-400 mr-1"></i> REFERRAL REWARDS</h4>
               <button onclick="toggleMyReferralsModal(true)" class="text-[10px] text-[#ff6699] underline font-bold">सूची देखें</button>
             </div>
-            <div id="profileReferralListArea" class="space-y-2 text-xs max-h-36 overflow-y-auto">
-              <!-- Referral records -->
-            </div>
+            <div id="profileReferralListArea" class="space-y-2 text-xs max-h-36 overflow-y-auto"></div>
           </div>
 
-          <!-- Logout Button -->
           <button onclick="handleLogout()" class="w-full bg-red-950/60 border-2 border-red-500/80 text-white font-bold py-3.5 rounded-xl text-xs shadow-[0_0_15px_rgba(255,0,0,0.4)] active:scale-95 transition-all">
             <i class="fa-solid fa-power-off mr-1"></i> अकाउंट लॉगआउट करें
           </button>
-
         </section>
 
       </main>
 
-      <!-- BOTTOM NAVIGATION DOCK -->
       <nav id="bottomNavBar" class="bottom-nav hidden">
         <button onclick="showPage('dashboardPage')" id="nav-dashboardPage" class="active">
           <i class="fa-solid fa-house-chimney text-xl mb-0.5"></i><span>डैशबोर्ड</span>
@@ -632,7 +585,6 @@
         </button>
       </nav>
 
-      <!-- PREMIUM APP DOWNLOAD MODAL -->
       <div id="appDownloadModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[200] hidden flex items-center justify-center p-4">
         <div class="glass-rose border-2 border-[#00f0ff] shadow-[0_0_40px_#00f0ff] rounded-3xl w-full max-w-sm p-6 relative text-center space-y-4 animated-hue-border">
           <button class="absolute top-4 right-4 text-[#ff0055] text-xl" onclick="closeAppDownloadModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -660,7 +612,6 @@
         </div>
       </div>
 
-      <!-- RECEIPT MODAL (WITH SAVE, PRINT, AND DETAILED VIEW) -->
       <div id="receiptModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] hidden flex items-center justify-center p-4">
         <div id="receiptContainerToPrint" class="receipt-card bg-[#0d0105] border-2 border-[#ff0055] shadow-[0_0_40px_#ff0055] rounded-3xl w-full max-w-sm p-6 relative">
           <button class="absolute top-4 right-4 text-[#ff0055] text-xl" onclick="closeReceipt()"><i class="fa-solid fa-xmark"></i></button>
@@ -671,9 +622,7 @@
             <span id="receiptTxIdDisplay" class="text-[9px] text-gray-400 font-mono">Tx: SPX-000000</span>
           </div>
 
-          <div id="receiptContent" class="py-4 space-y-2.5 text-xs text-gray-200">
-            <!-- Dynamic Receipt Details -->
-          </div>
+          <div id="receiptContent" class="py-4 space-y-2.5 text-xs text-gray-200"></div>
 
           <div class="flex gap-2 pt-3 border-t border-[#ff0055]/50">
             <button class="flex-1 btn-3d-rose py-2.5 text-xs flex justify-center items-center gap-1" onclick="downloadReceiptImage()">
@@ -686,15 +635,13 @@
         </div>
       </div>
 
-      <!-- REFERRALS LIST MODAL -->
       <div id="myReferralsModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 hidden">
         <div class="glass-rose p-5 w-full max-w-sm flex flex-col max-h-[85vh]">
-          <div class="flex justify-between border-b border-[#ff0055] pb-2"><h4 class="font-bold text-white text-xs">सबही रेफ़रल रिकॉर्ड्स</h4><button onclick="toggleMyReferralsModal(false)" class="text-[#ff0055] text-lg"><i class="fa-solid fa-xmark"></i></button></div>
+          <div class="flex justify-between border-b border-[#ff0055] pb-2"><h4 class="font-bold text-white text-xs">सभी रेफ़रल रिकॉर्ड्स</h4><button onclick="toggleMyReferralsModal(false)" class="text-[#ff0055] text-lg"><i class="fa-solid fa-xmark"></i></button></div>
           <div id="referralsListArea" class="flex-1 overflow-y-auto space-y-2 mt-3 text-xs"></div>
         </div>
       </div>
 
-      <!-- TRANSACTION HISTORY MODAL -->
       <div id="txHistoryModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 hidden">
         <div class="glass-rose p-5 w-full max-w-sm flex flex-col max-h-[85vh]">
           <div class="flex justify-between border-b border-[#ff0055] pb-2"><h4 class="font-bold text-white text-xs">सम्पूर्ण ट्रांजैक्शन हिस्ट्री</h4><button onclick="toggleTxHistoryModal(false)" class="text-[#ff0055] text-lg"><i class="fa-solid fa-xmark"></i></button></div>
@@ -708,7 +655,6 @@
         </div>
       </div>
 
-      <!-- TEAM MODAL -->
       <div id="teamModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 hidden">
         <div class="glass-rose p-5 w-full max-w-sm flex flex-col max-h-[85vh]">
           <div class="flex justify-between border-b border-[#ff0055] pb-2"><h4 class="font-bold text-white text-xs">मेरी टीम सूची</h4><button onclick="toggleTeamModal(false)" class="text-[#ff0055] text-lg"><i class="fa-solid fa-xmark"></i></button></div>
@@ -716,19 +662,17 @@
         </div>
       </div>
 
-      <!-- TOAST NOTIFICATION -->
       <div id="toastNotification"><span id="toastMessage"></span></div>
 
     </div>
 
     <script>
-      /* ── APPWRITE & ENGINE CONFIG ── */
       const APPWRITE_ENDPOINT = "https://fra.cloud.appwrite.io/v1";
       const APPWRITE_PROJECT_ID = "6a43cbf70027f5ff8960";
       const DATABASE_ID = "6a47b7550016c4291ab3";
       const USERS_COLLECTION_ID = "users";
       const SCREENSHOT_BUCKET_ID = "6a47d26c00001f17b543";
-      const EXCHANGE_RATE = 100; // $1 = ₹100 INR reference calculation
+      const EXCHANGE_RATE = 100;
 
       const { Client, Databases, Storage, Account, Query, ID } = Appwrite;
       const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT_ID);
@@ -742,8 +686,8 @@
       let cooldownTimerInterval = null;
       let selectedPurchaseUsd = 10;
       let selectedPurchaseCoins = 10;
+      let activeTxFilter = 'all';
 
-      // ── TWINKLING MULTI-COLOR STARS CANVAS LOGIC ──
       const canvas = document.getElementById('starsCanvas');
       const ctx = canvas.getContext('2d');
       let stars = [];
@@ -756,9 +700,7 @@
       resizeCanvas();
 
       class TwinkleStar {
-        constructor() {
-          this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height;
@@ -793,28 +735,32 @@
       function initStars() {
         stars = [];
         const count = Math.min(100, Math.floor(window.innerWidth / 4));
-        for (let i = 0; i < count; i++) {
-          stars.push(new TwinkleStar());
-        }
+        for (let i = 0; i < count; i++) stars.push(new TwinkleStar());
       }
 
       function animateStars() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-          star.update();
-          star.draw();
-        });
+        stars.forEach(star => { star.update(); star.draw(); });
         requestAnimationFrame(animateStars);
       }
       initStars();
       animateStars();
 
-      // ── HELPER FUNCTIONS ──
+      function speakText(text) {
+        if (!voiceEnabled || !('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'hi-IN';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+
       function showToast(msg, type = 'success') {
         const toast = document.getElementById('toastNotification');
         document.getElementById('toastMessage').innerText = msg;
         toast.style.borderColor = type === 'error' ? '#ff3333' : '#ff0055';
         toast.classList.add('show');
+        if (navigator.vibrate) navigator.vibrate(50);
         clearTimeout(toast._timer);
         toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
       }
@@ -830,33 +776,36 @@
         }
       }
 
-      function copyHeaderReferral() {
-        if (!currentUser) return;
-        const refCode = currentUser.docId ? currentUser.docId.slice(-6).toUpperCase() : 'SUPRIX';
-        if (navigator.clipboard) navigator.clipboard.writeText(refCode);
-        showToast('✅ रेफरल कोड कॉपी हुआ: ' + refCode);
-      }
-
-      /* ── APP DOWNLOAD MODAL HANDLERS ── */
-      function openAppDownloadModal() {
-        document.getElementById('appDownloadModal').classList.remove('hidden');
-      }
-      function closeAppDownloadModal() {
-        document.getElementById('appDownloadModal').classList.add('hidden');
-      }
-      function downloadAppApk() {
-        showToast('⏳ APK डाउनलोड शुरू हो रहा है (18.5 MB)...');
-        setTimeout(() => {
-          showToast('✅ SupriX_3D_Global.apk सफलतापूर्वक डाउनलोड हुआ!');
-          closeAppDownloadModal();
-        }, 1500);
-      }
-
       function fallbackCopy(text, msg) {
         const inp = document.createElement('input');
         inp.value = text; document.body.appendChild(inp);
         inp.select(); document.execCommand('copy');
         inp.remove(); showToast(msg);
+      }
+
+      function copyHeaderReferral() {
+        if (!currentUser) return;
+        const refCode = currentUser.docId ? currentUser.docId.slice(-6).toUpperCase() : 'SUPRIX';
+        copyToClipboardText(refCode, '✅ रेफरल कोड कॉपी हुआ: ' + refCode);
+      }
+
+      function copyToClipboardText(text, msg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(() => fallbackCopy(text, msg));
+        } else {
+          fallbackCopy(text, msg);
+        }
+      }
+
+      function openAppDownloadModal() { document.getElementById('appDownloadModal').classList.remove('hidden'); }
+      function closeAppDownloadModal() { document.getElementById('appDownloadModal').classList.add('hidden'); }
+      function downloadAppApk() {
+        showToast('⏳ APK डाउनलोड शुरू हो रहा है (18.5 MB)...');
+        speakText('एपीके डाउनलोड शुरू हो रहा है');
+        setTimeout(() => {
+          showToast('✅ SupriX_3D_Global.apk सफलतापूर्वक डाउनलोड हुआ!');
+          closeAppDownloadModal();
+        }, 1500);
       }
 
       function parseJsonSafe(val, fallback) {
@@ -865,14 +814,13 @@
         try { return JSON.parse(val); } catch (e) { return fallback; }
       }
 
-      function generateReceiptId() {
-        return 'SPX-RC' + Math.floor(100000 + Math.random() * 900000);
-      }
+      function generateReceiptId() { return 'SPX-RC' + Math.floor(100000 + Math.random() * 900000); }
 
       function toggleVoice() {
         voiceEnabled = !voiceEnabled;
         document.getElementById('voiceToggleLabel').innerText = voiceEnabled ? 'ऑन' : 'ऑफ';
         showToast(voiceEnabled ? '🔊 वॉइस गाइड चालू' : '🔇 वॉइस गाइड बंद');
+        if (voiceEnabled) speakText('वॉइस सहायता चालू की गई');
       }
 
       function showPage(pageId) {
@@ -892,7 +840,6 @@
         }
       }
 
-      // ── LEVEL ACHIEVEMENT GRID (L1 to L100) LOGIC ──
       function renderLevelAchievementGrid() {
         const grid = document.getElementById('levelAchievementGrid');
         grid.innerHTML = '';
@@ -901,7 +848,6 @@
         let achievedCount = 0;
 
         for (let i = 1; i <= 100; i++) {
-          // Required purchase tier: L1 = $1000, L2 = $2000, ... L100 = $100000
           const requiredAmount = i * 1000;
           const isAchieved = totalInvestment >= requiredAmount;
           if (isAchieved) achievedCount++;
@@ -939,17 +885,16 @@
         document.getElementById('userLevelBadgeDisplay').innerText = `L${achievedCount} Achieved`;
       }
 
-      // ── DASHBOARD STAR BUTTON CLICK & ROTATION ──
       async function triggerMiningReward(btn) {
         if (!currentUser) return;
         const staked = parseFloat(currentUser.staked || 0);
 
-        // Spin animation trigger on click
         btn.classList.add('star-spinning');
         setTimeout(() => btn.classList.remove('star-spinning'), 1500);
 
         if (staked < 10) {
           showToast('⚠️ डेली रिवॉर्ड के लिए कम से कम 10 USDT स्टेक करें!', 'error');
+          speakText('डेली रिवॉर्ड के लिए कम से कम 10 यूएसडीटी स्टेक करें');
           return;
         }
 
@@ -957,6 +902,7 @@
         const lastClaimed = parseInt(localStorage.getItem('cx_last_claimed_' + currentUser.$id) || '0', 10);
         if (lastClaimed && (now - lastClaimed) < 86400000) {
           showToast('⌛ आज का माइनिंग रिवॉर्ड पहले ही प्राप्त हो चुका है।', 'error');
+          speakText('आज का माइनिंग रिवॉर्ड पहले ही प्राप्त हो चुका है');
           return;
         }
 
@@ -984,6 +930,7 @@
 
           updateDashboardStats();
           showToast(`✨ ${reward.toFixed(2)} USDT डेली रिवॉर्ड क्रेडिट हुआ!`);
+          speakText(`${reward.toFixed(2)} यूएसडीटी क्रेडिट हो गया`);
           openReceipt({
             receiptId: rId,
             type: 'Daily Reward (0.5%)',
@@ -995,7 +942,111 @@
         }
       }
 
-      // ── PROFILE PHOTO UPLOAD ──
+      function setStakingPreset(pct) {
+        const avail = parseFloat(currentUser?.coins || 0);
+        const val = (avail * (pct / 100)).toFixed(2);
+        document.getElementById('stakeInputCoins').value = val;
+      }
+
+      async function submitStake(btn) {
+        if (!currentUser) return;
+        const amt = parseFloat(document.getElementById('stakeInputCoins').value);
+        const avail = parseFloat(currentUser.coins || 0);
+
+        if (isNaN(amt) || amt < 10) {
+          showToast('न्यूनतम स्टेकिंग अमाउंट 10 USDT है!', 'error');
+          speakText('न्यूनतम स्टेकिंग अमाउंट 10 यूएसडीटी है');
+          return;
+        }
+        if (amt > avail) {
+          showToast('अपरियाप्त उपलब्ध USDT बैलेंस!', 'error');
+          return;
+        }
+
+        try {
+          btn.disabled = true;
+          document.getElementById('loadingOverlay').classList.add('show');
+          const rId = generateReceiptId();
+          const stakeRecord = {
+            receiptId: rId,
+            amount: amt,
+            dateTime: new Date().toLocaleString('hi-IN'),
+            status: 'ACTIVE'
+          };
+
+          const newCoins = avail - amt;
+          const newStaked = parseFloat(currentUser.staked || 0) + amt;
+          const existingStakes = parseJsonSafe(currentUser.stakes_history, []);
+          const updatedStakes = [...existingStakes, stakeRecord];
+          const updatedTxs = [...(currentUser.transactions || []), {
+            receiptId: rId,
+            type: 'staking',
+            coinsAmount: amt,
+            dateTime: stakeRecord.dateTime,
+            status: 'SUCCESS'
+          }];
+
+          await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, currentUser.docId, {
+            coins: newCoins,
+            staked: newStaked,
+            stakes_history: JSON.stringify(updatedStakes),
+            transactions: JSON.stringify(updatedTxs)
+          });
+
+          currentUser.coins = newCoins;
+          currentUser.staked = newStaked;
+          currentUser.stakes_history = updatedStakes;
+          currentUser.transactions = updatedTxs;
+
+          document.getElementById('stakeInputCoins').value = '';
+          renderStakingDetails();
+          updateDashboardStats();
+
+          showToast(`✅ ${amt.toFixed(2)} USDT सफलतापूर्वक स्टेक हुआ!`);
+          speakText(`${amt.toFixed(2)} यूएसडीटी स्टेक हो गया`);
+          openReceipt({
+            receiptId: rId,
+            type: 'USDT Staking Locked',
+            coinsAmount: amt,
+            dateTime: stakeRecord.dateTime
+          });
+        } catch (e) {
+          showToast('स्टेकिंग में त्रुटि हुई', 'error');
+        } finally {
+          document.getElementById('loadingOverlay').classList.remove('show');
+          btn.disabled = false;
+        }
+      }
+
+      function renderStakingDetails() {
+        if (!currentUser) return;
+        document.getElementById('stakingAvailableCoins').innerText = `${parseFloat(currentUser.coins || 0).toFixed(2)} USDT`;
+        
+        const list = document.getElementById('activeStakesList');
+        list.innerHTML = '';
+        const stakes = parseJsonSafe(currentUser.stakes_history, []);
+
+        if (stakes.length === 0) {
+          list.innerHTML = `<p class="text-gray-400 text-[10px] text-center py-3">कोई सक्रिय स्टेकिंग नहीं है।</p>`;
+          return;
+        }
+
+        stakes.slice().reverse().forEach(stk => {
+          const item = document.createElement('div');
+          item.className = 'bg-black/60 border border-[#ff0055]/40 p-2.5 rounded-xl flex items-center justify-between';
+          item.innerHTML = `
+            <div>
+              <strong class="text-white font-bold text-xs">${parseFloat(stk.amount).toFixed(2)} USDT</strong>
+              <span class="text-[9px] text-gray-400 block">${stk.dateTime}</span>
+            </div>
+            <span class="bg-[#22c55e]/20 border border-[#22c55e] text-[#22c55e] text-[9px] px-2 py-0.5 rounded-full font-bold">
+              <i class="fa-solid fa-lock mr-1"></i> Locked (0.5%/day)
+            </span>
+          `;
+          list.appendChild(item);
+        });
+      }
+
       async function handleProfilePhotoUpload(e) {
         const file = e.target.files[0];
         if (!file) return;
@@ -1040,12 +1091,10 @@
         document.getElementById('withdrawAvailable').innerText = `${parseFloat(currentUser.coins || 0).toFixed(2)} USDT`;
         document.getElementById('userWithdrawAddress').value = currentUser.withdrawal_address || '';
 
-        // Generate QR for referral link
         const qrBox = document.getElementById('referralQrContainer');
         qrBox.innerHTML = '';
         new QRCode(qrBox, { text: refLink, width: 110, height: 110 });
 
-        // Load Avatar if present
         if (currentUser.withdrawal_screenshot && currentUser.withdrawal_screenshot.length > 5) {
           try {
             const avatarUrl = storage.getFileView(SCREENSHOT_BUCKET_ID, currentUser.withdrawal_screenshot).href;
@@ -1058,6 +1107,7 @@
         renderLevelAchievementGrid();
         renderRecentTransactions();
         renderReferralList();
+        renderTeamSummary();
       }
 
       function shareReferralLink() {
@@ -1065,7 +1115,7 @@
         if (navigator.share) {
           navigator.share({ title: 'SupriX Global', text: '3D Crypto Mining Platform', url: refLink });
         } else {
-          copyToClipboard('referralShareLink', '✅ लिंक कॉपी हुआ!');
+          copyToClipboardText(refLink, '✅ लिंक कॉपी हुआ!');
         }
       }
 
@@ -1093,6 +1143,7 @@
 
         if (!add || !amt || amt < 2) {
           showToast('कृपया सही USDT एड्रेस और Min $2 दर्ज करें', 'error');
+          speakText('कृपया सही एड्रेस और न्यूनतम 2 डॉलर भरें');
           return;
         }
         if (amt > parseFloat(currentUser.coins || 0)) {
@@ -1122,6 +1173,7 @@
           renderProfilePage();
           updateDashboardStats();
           showToast('✅ विथड्रॉवल रिक्वेस्ट सफलतापूर्वक भेजी गई!');
+          speakText('विथड्रॉवल अनुरोध भेजा गया');
           openReceipt({
             receiptId: rId,
             type: 'USDT Withdrawal',
@@ -1135,7 +1187,6 @@
         }
       }
 
-      // ── RECEIPT MODAL SYSTEM WITH PRINT AND DOWNLOAD ──
       function openReceipt(data) {
         const content = document.getElementById('receiptContent');
         const inr = (parseFloat(data.coinsAmount || 0) * EXCHANGE_RATE).toFixed(2);
@@ -1156,9 +1207,7 @@
         document.getElementById('receiptModal').classList.remove('hidden');
       }
 
-      function closeReceipt() {
-        document.getElementById('receiptModal').classList.add('hidden');
-      }
+      function closeReceipt() { document.getElementById('receiptModal').classList.add('hidden'); }
 
       function downloadReceiptImage() {
         const elem = document.getElementById('receiptContainerToPrint');
@@ -1181,7 +1230,6 @@
         mywindow.close();
       }
 
-      // ── TRANSACTIONS & REFERRAL RENDER ──
       function renderRecentTransactions() {
         const list = document.getElementById('profileRecentTxList');
         list.innerHTML = '';
@@ -1192,29 +1240,74 @@
           return;
         }
 
-        txs.forEach(tx => {
+        txs.slice(0, 5).forEach(tx => {
           const card = document.createElement('div');
           card.className = 'bg-black/60 border border-[#ff0055]/40 p-2.5 rounded-xl flex items-center justify-between';
           card.innerHTML = `
             <div>
-              <strong class="text-white font-bold text-xs">${tx.coinsAmount} USDT</strong>
+              <strong class="text-white font-bold text-xs">${parseFloat(tx.coinsAmount || 0).toFixed(2)} USDT</strong>
               <span class="text-[9px] text-gray-400 block">${tx.type} • ${tx.dateTime}</span>
             </div>
             <button onclick='openReceipt(${JSON.stringify(tx)})' class="bg-[#ff0055]/20 border border-[#ff0055] text-[#ff6699] text-[10px] px-2 py-1 rounded-lg hover:bg-[#ff0055] hover:text-white transition-all">
-              <i class="fa-solid fa-receipt mr-1"></i> रसीद देखें
+              <i class="fa-solid fa-receipt mr-1"></i> रसीद
             </button>
           `;
           list.appendChild(card);
         });
       }
 
+      function filterTxModal(filterType) {
+        activeTxFilter = filterType;
+        ['all','deposit','withdraw','daily'].forEach(t => {
+          const btn = document.getElementById('txTab-' + t);
+          if (btn) {
+            btn.className = t === filterType 
+              ? 'flex-1 bg-[#ff0055] text-white py-1.5 rounded text-[10px] font-bold' 
+              : 'flex-1 bg-white/10 text-white py-1.5 rounded text-[10px]';
+          }
+        });
+
+        const container = document.getElementById('txHistoryListArea');
+        container.innerHTML = '';
+        let txs = (currentUser?.transactions || []).slice().reverse();
+
+        if (filterType === 'deposit') txs = txs.filter(t => t.type === 'deposit' || t.type === 'USDT Deposit');
+        if (filterType === 'withdraw') txs = txs.filter(t => t.type === 'withdraw' || t.type === 'USDT Withdrawal');
+        if (filterType === 'daily') txs = txs.filter(t => t.type === 'daily_reward' || t.type.includes('Daily'));
+
+        if (txs.length === 0) {
+          container.innerHTML = `<p class="text-gray-400 text-[10px] text-center py-4">कोई रिकॉर्ड नहीं मिला।</p>`;
+          return;
+        }
+
+        txs.forEach(tx => {
+          const card = document.createElement('div');
+          card.className = 'bg-black/60 border border-[#ff0055]/40 p-2.5 rounded-xl flex items-center justify-between';
+          card.innerHTML = `
+            <div>
+              <strong class="text-white font-bold text-xs">${parseFloat(tx.coinsAmount || 0).toFixed(2)} USDT</strong>
+              <span class="text-[9px] text-gray-400 block">${tx.type} • ${tx.dateTime}</span>
+            </div>
+            <button onclick='openReceipt(${JSON.stringify(tx)})' class="bg-[#ff0055]/20 border border-[#ff0055] text-[#ff6699] text-[10px] px-2 py-1 rounded-lg">
+              <i class="fa-solid fa-receipt mr-1"></i> रसीद
+            </button>
+          `;
+          container.appendChild(card);
+        });
+      }
+
       function renderReferralList() {
         const list = document.getElementById('profileReferralListArea');
+        const modalList = document.getElementById('referralsListArea');
         list.innerHTML = '';
+        if (modalList) modalList.innerHTML = '';
+
         const refs = currentUser?.referrals || [];
 
         if (refs.length === 0) {
-          list.innerHTML = `<p class="text-gray-400 text-[10px] text-center py-2">कोई रेफरल नहीं मिला।</p>`;
+          const empty = `<p class="text-gray-400 text-[10px] text-center py-2">कोई रेफरल नहीं मिला।</p>`;
+          list.innerHTML = empty;
+          if (modalList) modalList.innerHTML = empty;
           return;
         }
 
@@ -1225,7 +1318,7 @@
             coinsAmount: parseFloat(r.bonus || 0.2),
             dateTime: r.date || new Date().toLocaleDateString('hi-IN')
           };
-          list.innerHTML += `
+          const rowHtml = `
             <div class="bg-black/60 border border-[#ff0055]/40 p-2 rounded-xl flex justify-between items-center">
               <div>
                 <strong class="text-white">${r.name || 'User'}</strong>
@@ -1237,6 +1330,37 @@
                   <i class="fa-solid fa-receipt"></i>
                 </button>
               </div>
+            </div>
+          `;
+          list.innerHTML += rowHtml;
+          if (modalList) modalList.innerHTML += rowHtml;
+        });
+      }
+
+      function renderTeamSummary() {
+        const refs = currentUser?.referrals || [];
+        document.getElementById('teamTotalMembers').innerText = refs.length;
+        const totBonus = refs.reduce((acc, r) => acc + parseFloat(r.bonus || 0), 0);
+        document.getElementById('teamTotalBonus').innerText = totBonus.toFixed(2) + ' USDT';
+        document.getElementById('teamTotalStaked').innerText = (refs.length * 10).toFixed(2) + ' USDT';
+
+        const teamList = document.getElementById('teamListArea');
+        if (!teamList) return;
+        teamList.innerHTML = '';
+
+        if (refs.length === 0) {
+          teamList.innerHTML = `<p class="text-gray-400 text-[10px] text-center py-4">आपकी टीम में कोई सदस्य नहीं है।</p>`;
+          return;
+        }
+
+        refs.forEach(mem => {
+          teamList.innerHTML += `
+            <div class="bg-black/60 border border-[#ff0055]/40 p-2.5 rounded-xl flex justify-between items-center">
+              <div>
+                <h5 class="text-white font-bold text-xs">${mem.name || 'Direct Referral'}</h5>
+                <span class="text-[9px] text-gray-400">${mem.email || 'Direct User'}</span>
+              </div>
+              <span class="bg-emerald-950/80 border border-emerald-500 text-emerald-400 text-[9px] px-2 py-0.5 rounded-full font-bold">L1 Direct</span>
             </div>
           `;
         });
@@ -1255,13 +1379,8 @@
         document.getElementById('paymentGatewayCard').classList.remove('hidden');
       }
 
-      function hidePaymentCard() {
-        document.getElementById('paymentGatewayCard').classList.add('hidden');
-      }
-
-      function handlePurchaseScreenshot(e) {
-        uploadReceiptFile = e.target.files[0];
-      }
+      function hidePaymentCard() { document.getElementById('paymentGatewayCard').classList.add('hidden'); }
+      function handlePurchaseScreenshot(e) { uploadReceiptFile = e.target.files[0]; }
 
       async function submitDepositRequest(btn) {
         if (!uploadReceiptFile) return showToast('स्क्रीनशॉट अपलोड करें', 'error');
@@ -1293,6 +1412,7 @@
           hidePaymentCard();
           updateDashboardStats();
           showToast('✅ डिपॉजिट सफलतापूर्वक स्वीकृत!');
+          speakText('डिपॉजिट स्वीकृत हो गया');
           openReceipt({
             receiptId: rId,
             type: 'USDT Deposit',
@@ -1306,7 +1426,6 @@
         }
       }
 
-      // ── LOGIN & REGISTER HANDLERS ──
       async function handleLogin(btn) {
         const uid = document.getElementById('loginUserId').value.trim();
         const pwd = document.getElementById('loginPassword').value.trim();
@@ -1339,6 +1458,7 @@
             };
           }
           showToast('✅ सफलतापूर्वक लॉगिन हुआ!');
+          speakText('लॉगिन सफल रहा');
           showPage('dashboardPage');
         } catch (e) {
           showToast('❌ लॉगिन विफल', 'error');
@@ -1373,6 +1493,7 @@
           document.getElementById('successUserId').innerText = e;
           document.getElementById('successSpxId').innerText = spxId;
           showPage('regSuccessPage');
+          speakText('रजिस्ट्रेशन सफल रहा');
         } catch (er) {
           showToast('❌ रजिस्ट्रेशन विफल', 'error');
         } finally {
@@ -1389,7 +1510,10 @@
       }
 
       function toggleMyReferralsModal(show) { document.getElementById('myReferralsModal').classList.toggle('hidden', !show); }
-      function toggleTxHistoryModal(show) { document.getElementById('txHistoryModal').classList.toggle('hidden', !show); }
+      function toggleTxHistoryModal(show) { 
+        document.getElementById('txHistoryModal').classList.toggle('hidden', !show); 
+        if (show) filterTxModal('all');
+      }
       function toggleTeamModal(show) { document.getElementById('teamModal').classList.toggle('hidden', !show); }
 
       function startCooldownTimer() {
