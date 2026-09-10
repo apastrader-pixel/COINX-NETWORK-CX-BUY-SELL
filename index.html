@@ -11,15 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <link rel="manifest" href="https://progressier.app/G0WQxZazNmz8jdGV9hOh/progressier.json"/>
-    <!-- Cropper.js for image cropping -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 
     <style>
         /* ═══════════════════════════════════════════
            SUPRIX GLOBAL 3D — ROSE THEME DESIGN SYSTEM
            ═══════════════════════════════════════════ */
 
+        /* ── 1. ROOT COLOR VARIABLES (THEME) ── */
         :root {
             --rose-primary: #ff0055;
             --rose-glow: #ff00aa;
@@ -31,6 +29,7 @@
             --usdt-green: #34d399;
         }
 
+        /* ── 2. GLOBAL RESET & BODY ── */
         * {
             margin: 0;
             padding: 0;
@@ -49,7 +48,7 @@
             position: relative;
         }
 
-        /* ── KEYFRAME ANIMATIONS ── */
+        /* ── 3. KEYFRAME ANIMATIONS ── */
         @keyframes dynamicHueFlow {
             0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
             50%  { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
@@ -113,12 +112,15 @@
             50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.9); }
         }
 
+        /* ── 4. ANIMATION UTILITY CLASSES ── */
         .animated-hue-border { animation: rainbowBorder 8s linear infinite; }
         .animated-hue-text   { animation: dynamicHueFlow 10s linear infinite; }
         .wobble-btn        { animation: headerWobble 3.5s ease-in-out infinite; }
+        .wobble-btn-delay  { animation: headerWobble 3.5s ease-in-out infinite 0.8s; }
+        .wobble-btn-delay2 { animation: headerWobble 3.5s ease-in-out infinite 1.6s; }
         .star-spinning { animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
 
-        /* ── 3D GLASS CARDS ── */
+        /* ── 5. 3D GLASS CARDS ── */
         .glass-rose {
             background: var(--card-bg);
             backdrop-filter: blur(18px);
@@ -133,7 +135,7 @@
             box-shadow: 0 15px 45px rgba(0, 240, 255, 0.3), inset 0 0 20px rgba(0, 240, 255, 0.15);
         }
 
-        /* ── 3D PRESSABLE BUTTONS ── */
+        /* ── 6. 3D PRESSABLE BUTTONS ── */
         .btn-3d-rose {
             background: linear-gradient(145deg, #ff0055, #990033);
             color: #ffffff !important;
@@ -176,7 +178,7 @@
             box-shadow: 0 0 20px var(--rose-primary), inset 0 0 20px var(--rose-glow), 0 0px 0 #4d0016;
         }
 
-        /* ── TWINKLING STARS ── */
+        /* ── 7. STARS CANVAS ── */
         .star-bg {
             position: fixed;
             top: 0; left: 0;
@@ -191,7 +193,7 @@
             will-change: opacity, transform;
         }
 
-        /* ── INPUT STYLING ── */
+        /* ── 8. INPUT / SELECT / TEXTAREA STYLING ── */
         input, select, textarea {
             background: rgba(0, 0, 0, 0.65) !important;
             border: 2px solid rgba(255, 0, 85, 0.5) !important;
@@ -206,7 +208,7 @@
         }
         input::placeholder { color: rgba(255,255,255,0.3); }
 
-        /* ── BOTTOM NAVIGATION ── */
+        /* ── 9. BOTTOM NAVIGATION BAR ── */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -249,7 +251,7 @@
             margin-bottom: 2px;
         }
 
-        /* ── RECEIPT MODAL ── */
+        /* ── 10. RECEIPT MODAL ── */
         .receipt-modal .receipt-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
@@ -257,6 +259,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
         }
 
+        /* ── 11. SCROLLABLE LEVEL GRID ── */
         .level-grid-container {
             max-height: 280px;
             overflow-y: auto;
@@ -267,6 +270,7 @@
         .level-grid-container::-webkit-scrollbar-track { background: #1a050f; }
         .level-grid-container::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
 
+        /* ── 12. TOAST NOTIFICATION ── */
         #toastNotification {
             background: rgba(18, 4, 10, 0.95);
             border: 2px solid var(--rose-primary);
@@ -292,6 +296,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ── 13. TEXT GRADIENT & UTILITY ── */
         .currency-usdt {
             color: #34d399 !important;
             text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
@@ -307,7 +312,7 @@
             background-clip: text;
         }
 
-        /* ── SLIDER ── */
+        /* ── 14. SLIDER ── */
         .slider-container {
             position: relative;
             width: 100%;
@@ -396,7 +401,7 @@
             box-shadow: 0 0 16px rgba(255, 0, 85, 0.8);
         }
 
-        /* ── PROFILE PHOTO ── */
+        /* ── 15. PROFILE PHOTO ── */
         .profile-photo-wrapper {
             position: relative;
             display: inline-block;
@@ -424,7 +429,7 @@
             box-shadow: 0 4px 25px rgba(255, 0, 85, 0.7);
         }
 
-        /* ── LEVEL BADGE ── */
+        /* ── 16. LEVEL BADGE ── */
         .level-badge {
             display: inline-flex;
             align-items: center;
@@ -467,7 +472,7 @@
             border: 2px solid #fff;
         }
 
-        /* ── WELCOME POPUP ── */
+        /* ── 17. WELCOME POPUP ── */
         .welcome-popup {
             position: fixed;
             inset: 0;
@@ -541,7 +546,7 @@
             color: #ff0055;
         }
 
-        /* ── WITHDRAWAL POPUP ── */
+        /* ── 18. WITHDRAWAL POPUP ── */
         .withdraw-popup {
             position: fixed;
             inset: 0;
@@ -588,7 +593,7 @@
             background: rgba(255, 0, 85, 0.3);
         }
 
-        /* ── APP DOWNLOAD POPUP ── */
+        /* ── 19. APP DOWNLOAD POPUP ── */
         .app-download-popup {
             position: fixed;
             inset: 0;
@@ -640,7 +645,6 @@
             margin: 0 auto 12px;
             border: 3px solid rgba(255, 0, 85, 0.3);
             object-fit: cover;
-            animation: floatStar 2s ease-in-out infinite;
         }
         .app-download-popup .download-card h3 {
             font-size: 20px;
@@ -706,7 +710,7 @@
             border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
-        /* ── HEADER APK BUTTON ── */
+        /* ── 20. HEADER APK BUTTON ── */
         .header-apk-btn {
             background: linear-gradient(145deg, #ff0055, #990033);
             border: 2px solid #ff6699;
@@ -733,7 +737,7 @@
             display: none !important;
         }
 
-        /* ── FLOATING APK BUTTON ── */
+        /* ── 21. FLOATING APK BUTTON ── */
         .floating-apk-btn {
             position: fixed;
             bottom: 100px;
@@ -769,7 +773,7 @@
             display: none !important;
         }
 
-        /* ── ID BOX ── */
+        /* ── 22. ID BOX ── */
         .id-box {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 14px;
@@ -804,6 +808,7 @@
             color: #ff99bb;
         }
 
+        /* ── 23. SPX ID DISPLAY ── */
         .spx-id-display {
             font-size: 16px;
             font-weight: 800;
@@ -817,6 +822,7 @@
             display: inline-block;
         }
 
+        /* ── 24. COPY BUTTONS ── */
         .copy-email-btn {
             background: rgba(255, 0, 85, 0.1);
             border: 1px solid rgba(255, 0, 85, 0.2);
@@ -844,6 +850,7 @@
             background: rgba(255, 0, 85, 0.25);
         }
 
+        /* ── 25. STAKING ITEMS ── */
         .staking-history-item {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 0, 85, 0.1);
@@ -873,6 +880,7 @@
             border-color: rgba(255, 0, 85, 0.4);
         }
 
+        /* ── 26. COOLDOWN BADGE ── */
         .cooldown-badge {
             background: rgba(255, 0, 85, 0.1);
             border: 1px solid rgba(255, 0, 85, 0.2);
@@ -889,6 +897,7 @@
             font-size: 10px;
         }
 
+        /* ── 27. VOICE TOGGLE ── */
         .voice-toggle-btn {
             background: rgba(255, 0, 85, 0.12);
             border: 1px solid rgba(255, 0, 85, 0.25);
@@ -915,6 +924,7 @@
             opacity: 0.4;
         }
 
+        /* ── 28. EX RATE BADGE ── */
         .ex-rate-badge {
             background: rgba(255, 0, 85, 0.12);
             border: 1px solid rgba(255, 0, 85, 0.2);
@@ -928,6 +938,7 @@
             gap: 4px;
         }
 
+        /* ── 29. VOICE TOAST ── */
         .voice-toast {
             position: fixed;
             bottom: 90px;
@@ -975,6 +986,7 @@
             background: rgba(255, 0, 85, 0.3);
         }
 
+        /* ── 30. LOADING OVERLAY ── */
         #loadingOverlay {
             position: fixed;
             inset: 0;
@@ -1004,6 +1016,7 @@
             font-weight: 500;
         }
 
+        /* ── 31. CONFETTI ── */
         .confetti-piece {
             position: fixed;
             z-index: 999;
@@ -1013,6 +1026,7 @@
             line-height: 1;
         }
 
+        /* ── 32. RECEIPT MODAL SPECIFIC ── */
         .receipt-modal {
             position: fixed;
             inset: 0;
@@ -1262,6 +1276,7 @@
             z-index: 0;
         }
 
+        /* ── 33. REFERRAL QR ── */
         .referral-qr-container {
             display: flex;
             justify-content: center;
@@ -1276,6 +1291,7 @@
             height: auto;
         }
 
+        /* ── 34. RESPONSIVE ── */
         @media (max-width: 440px) {
             .bottom-nav button i { font-size: 17px; }
             .bottom-nav button { font-size: 8px; padding: 2px 4px; }
@@ -1289,6 +1305,7 @@
             .slider-track .slide-item .slide-overlay .line2 { font-size: 9px; }
         }
 
+        /* ── 35. UTILITY ── */
         .hidden { display: none !important; }
         .app-page { display: block; }
         .app-page.hidden { display: none !important; }
@@ -1297,81 +1314,94 @@
         .admin-sec { display: block; }
         .admin-sec.hidden { display: none !important; }
 
-        /* ── CROPPER MODAL ── */
-        .cropper-modal {
+        /* ── 36. CROP MODAL ── */
+        .crop-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.85);
             backdrop-filter: blur(12px);
-            z-index: 2000;
+            z-index: 1100;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             animation: fadeIn 0.3s ease;
         }
-        .cropper-modal .cropper-card {
+        .crop-modal .crop-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
             border-radius: 24px;
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
             padding: 20px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 0, 85, 0.2);
             animation: rainbowBorder 5s linear infinite;
         }
-        .cropper-modal .cropper-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #ff99bb;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .cropper-modal .cropper-card .cropper-container {
+        .crop-modal .crop-card .crop-area {
             width: 100%;
-            height: 280px;
+            aspect-ratio: 1;
             background: #000;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 12px;
+            position: relative;
+            border: 2px solid rgba(255, 0, 85, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .cropper-modal .cropper-card .cropper-container img {
+        .crop-modal .crop-card .crop-area img {
             max-width: 100%;
             max-height: 100%;
+            object-fit: contain;
         }
-        .cropper-modal .cropper-card .cropper-actions {
+        .crop-modal .crop-card .crop-area .crop-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border: 2px dashed rgba(255, 0, 85, 0.6);
+            border-radius: 16px;
+        }
+        .crop-modal .crop-card .crop-controls {
+            margin-top: 12px;
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 8px;
         }
-        .cropper-modal .cropper-card .cropper-actions button {
+        .crop-modal .crop-card .crop-controls input[type="range"] {
             flex: 1;
-            padding: 10px 16px;
+            accent-color: #ff0055;
+        }
+        .crop-modal .crop-card .crop-actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .crop-modal .crop-card .crop-actions button {
+            flex: 1;
+            padding: 10px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
-        .cropper-modal .cropper-card .cropper-actions .btn-crop-save {
-            background: linear-gradient(145deg, #ff0055, #990033);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(255, 0, 85, 0.3);
-        }
-        .cropper-modal .cropper-card .cropper-actions .btn-crop-save:hover {
-            transform: scale(1.02);
-        }
-        .cropper-modal .cropper-card .cropper-actions .btn-crop-cancel {
+        .crop-modal .crop-card .crop-actions .crop-cancel {
             background: rgba(255, 255, 255, 0.05);
             color: rgba(255,255,255,0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .cropper-modal .cropper-card .cropper-actions .btn-crop-cancel:hover {
+        .crop-modal .crop-card .crop-actions .crop-cancel:hover {
             background: rgba(255, 255, 255, 0.1);
+        }
+        .crop-modal .crop-card .crop-actions .crop-save {
+            background: linear-gradient(145deg, #ff0055, #990033);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 0, 85, 0.3);
+        }
+        .crop-modal .crop-card .crop-actions .crop-save:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 30px rgba(255, 0, 85, 0.4);
         }
     </style>
 </head>
@@ -1597,7 +1627,7 @@
                     </div>
                 </section>
 
-                <!-- PURCHASE + WITHDRAWAL BUTTONS -->
+                <!-- PURCHASE + WITHDRAWAL BUTTON -->
                 <section id="purchasePage" class="app-page w-full hidden space-y-4">
                     <div class="glass-rose p-4 rounded-2xl border-rose-500/30"><h3 class="text-sm font-bold text-rose-300"><i class="fa-solid fa-cart-shopping mr-1.5"></i> कॉइन परचेज करें</h3><p class="text-[11px] text-purple-300/60">USDT (BEP20) के माध्यम से कॉइन सुरक्षित परचेज करें। <span class="text-rose-300 font-semibold">$1 = 1 USDT</span></p><p class="text-[10px] text-green-400 font-semibold mt-1">💰 Minimum Deposit: $10 USDT</p></div>
                     <div class="glass-rose p-4 rounded-2xl border-rose-500/30 space-y-3">
@@ -1613,7 +1643,7 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3 max-h-[160px] overflow-y-auto pr-1" id="purchaseGrid"></div>
-                    <!-- WITHDRAWAL BUTTON NEXT TO PURCHASE -->
+                    <!-- WITHDRAWAL BUTTON -->
                     <button onclick="openWithdrawPopup()" class="w-full btn-3d-rose py-3 rounded-2xl text-sm flex items-center justify-center gap-2 font-bold shadow-xl border-2 border-rose-400/40">
                         <i class="fa-solid fa-money-bill-transfer"></i> विथड्रॉवल करें
                     </button>
@@ -1673,7 +1703,7 @@
                                 <label class="photo-edit-btn" for="profilePhotoInput" title="फोटो बदलें">
                                     <i class="fa-solid fa-camera"></i>
                                 </label>
-                                <input type="file" id="profilePhotoInput" class="hidden" accept="image/*" onchange="handleProfilePhotoSelect(event)">
+                                <input type="file" id="profilePhotoInput" class="hidden" accept="image/*" onchange="handleProfilePhotoUpload(event)">
                             </div>
                             <div>
                                 <h3 id="profileName" class="font-bold text-white">User Profile</h3>
@@ -1687,30 +1717,22 @@
                             <button onclick="copyToClipboard('profileReferralCode', '✅ रेफरल कोड कॉपी हो गया!')" class="text-rose-300 hover:text-white btn-animate text-xs mt-0.5"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                         </div>
                     </div>
-                    <!-- YOUR ID – SPX ID with Referral Code beside it, and Email with copy -->
+                    <!-- YOUR ID – SPX ID + Referral Code side by side with copy -->
                     <div class="id-box id-box-gold flex-col items-start gap-2" style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,0,85,0.4); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(6px);">
-                        <!-- Row 1: SPX ID + Referral Code side by side -->
-                        <div class="w-full flex items-start justify-between gap-2 flex-wrap">
-                            <div class="flex-1 min-w-[140px]">
-                                <span class="id-label text-indigo-300" style="font-size: 9px; color: rgba(255,255,255,0.5); display: block;">🆔 आपकी Unique SPX ID</span>
-                                <div class="flex items-center justify-between w-full mt-0.5">
-                                    <span class="id-value spx-id-display" id="profileCoinXIdDisplay" style="font-size: 15px; font-weight: 800; color: #ff99bb; letter-spacing: 1px; font-family: monospace; background: rgba(255,0,85,0.1); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,0,85,0.2); display: inline-block;">SPX123456789</span>
-                                    <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी हो गई!')" class="text-rose-300 hover:text-white shrink-0 btn-animate text-xs bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20 ml-1"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
-                                </div>
-                            </div>
-                            <div class="flex-1 min-w-[120px]">
-                                <span class="id-label text-pink-300" style="font-size: 9px; color: rgba(255,255,255,0.5); display: block;">🔗 रेफरल कोड</span>
-                                <div class="flex items-center justify-between w-full mt-0.5">
-                                    <span class="text-xs font-bold text-rose-300 uppercase select-all font-mono" id="profileReferralCodeBeside">SPX-XXXX</span>
-                                    <button onclick="copyToClipboard('profileReferralCodeBeside', '✅ रेफरल कोड कॉपी हो गया!')" class="text-rose-300 hover:text-white shrink-0 btn-animate text-xs bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20 ml-1"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full mt-1 pt-2 border-t border-rose-500/15">
-                            <span class="id-label text-pink-300" style="font-size: 9px; color: rgba(255,255,255,0.5); display: block;">📧 आपकी ईमेल आईडी</span>
+                        <div class="w-full">
+                            <span class="id-label text-indigo-300" style="font-size: 9px; color: rgba(255,255,255,0.5); display: block;">🆔 आपकी Unique SPX ID</span>
                             <div class="flex items-center justify-between w-full">
-                                <span class="text-xs text-rose-300/60 font-mono break-all" id="profileEmailDisplay">user@example.com</span>
-                                <button onclick="copyToClipboard('profileEmailDisplay', '✅ Email कॉपी हो गई!')" class="text-rose-300 hover:text-white shrink-0 btn-animate text-xs bg-rose-500/10 px-3 py-1.5 rounded-full border border-rose-500/20"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
+                                <span class="id-value spx-id-display" id="profileCoinXIdDisplay" style="font-size: 16px; font-weight: 800; color: #ff99bb; letter-spacing: 1px; font-family: monospace; background: rgba(255,0,85,0.1); padding: 4px 12px; border-radius: 8px; border: 1px solid rgba(255,0,85,0.2); display: inline-block;">SPX123456789</span>
+                                <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी हो गई!')" class="text-rose-300 hover:text-white shrink-0 btn-animate text-xs bg-rose-500/10 px-3 py-1.5 rounded-full border border-rose-500/20"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
+                            </div>
+                            <span class="id-usage" style="font-size: 8px; color: #ff99bb; display: block; margin-top: 2px;">इस ID से USDT (BEP20) भेजें/ले सकते हैं</span>
+                        </div>
+                        <!-- Referral Code next to SPX ID -->
+                        <div class="w-full mt-1 pt-2 border-t border-rose-500/15">
+                            <span class="id-label text-pink-300" style="font-size: 9px; color: rgba(255,255,255,0.5); display: block;">🎁 आपका रेफरल कोड</span>
+                            <div class="flex items-center justify-between w-full">
+                                <span class="text-xs text-rose-300 font-bold font-mono break-all" id="profileReferralCodeDisplay">SPX-XXXX</span>
+                                <button onclick="copyToClipboard('profileReferralCodeDisplay', '✅ रेफरल कोड कॉपी हो गया!')" class="text-rose-300 hover:text-white shrink-0 btn-animate text-xs bg-rose-500/10 px-3 py-1.5 rounded-full border border-rose-500/20"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                             </div>
                         </div>
                     </div>
@@ -1942,17 +1964,23 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- CROPPER MODAL -->
+        <!-- CROP MODAL -->
         <!-- ============================================================ -->
-        <div id="cropperModal" class="cropper-modal hidden">
-            <div class="cropper-card">
-                <h3><i class="fa-solid fa-crop mr-1"></i> फोटो क्रॉप करें</h3>
-                <div class="cropper-container">
-                    <img id="cropperImage" src="" alt="Crop Image" />
+        <div id="cropModal" class="crop-modal hidden">
+            <div class="crop-card">
+                <h4 class="text-sm font-bold text-rose-300 mb-3"><i class="fa-solid fa-crop mr-1"></i> फोटो क्रॉप करें</h4>
+                <div class="crop-area" id="cropArea">
+                    <img id="cropImage" src="" alt="Crop" />
+                    <div class="crop-overlay"></div>
                 </div>
-                <div class="cropper-actions">
-                    <button class="btn-crop-cancel" onclick="closeCropperModal()"><i class="fa-solid fa-xmark"></i> रद्द करें</button>
-                    <button class="btn-crop-save" onclick="saveCroppedPhoto()"><i class="fa-solid fa-check"></i> सेव करें</button>
+                <div class="crop-controls">
+                    <i class="fa-solid fa-magnifying-glass-minus text-rose-300/60 text-xs"></i>
+                    <input type="range" id="cropZoom" min="0.5" max="3" step="0.01" value="1">
+                    <i class="fa-solid fa-magnifying-glass-plus text-rose-300/60 text-xs"></i>
+                </div>
+                <div class="crop-actions">
+                    <button class="crop-cancel" onclick="closeCropModal()">रद्द करें</button>
+                    <button class="crop-save" onclick="saveCroppedPhoto()">सेव करें</button>
                 </div>
             </div>
         </div>
@@ -2055,8 +2083,8 @@
         let isAppInstalled = false;
         let sliderIndex = 0;
         let sliderInterval = null;
-        let cropperInstance = null;
-        let originalPhotoFile = null;
+        let cropImageSrc = null;
+        let cropZoom = 1;
 
         // ============================================================
         // UTILITY FUNCTIONS
@@ -2070,7 +2098,7 @@
         function resolveImageUrl(value) {
             if (!value) return '';
             if (value.startsWith('http://') || value.startsWith('https://')) return value;
-            if (value.startsWith('data:')) return value; // base64 local storage
+            if (value.startsWith('data:image')) return value;
             try { return storage.getFileView(SCREENSHOT_BUCKET_ID, value).href; } catch (e) { return ''; }
         }
 
@@ -2169,6 +2197,77 @@
         }
 
         // ============================================================
+        // PROFILE PHOTO CROP FUNCTIONS
+        // ============================================================
+        function openCropModal(imageSrc) {
+            cropImageSrc = imageSrc;
+            cropZoom = 1;
+            document.getElementById('cropImage').src = imageSrc;
+            document.getElementById('cropZoom').value = 1;
+            document.getElementById('cropImage').style.transform = 'scale(1)';
+            document.getElementById('cropModal').classList.remove('hidden');
+        }
+
+        function closeCropModal() {
+            document.getElementById('cropModal').classList.add('hidden');
+            cropImageSrc = null;
+            cropZoom = 1;
+        }
+
+        function saveCroppedPhoto() {
+            if (!cropImageSrc) return;
+            const img = document.getElementById('cropImage');
+            const zoom = parseFloat(document.getElementById('cropZoom').value);
+            
+            const canvas = document.createElement('canvas');
+            const size = 300;
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw the image with zoom centered
+            const imgAspect = img.naturalWidth / img.naturalHeight;
+            let drawW, drawH;
+            if (imgAspect > 1) {
+                drawH = size * zoom;
+                drawW = drawH * imgAspect;
+            } else {
+                drawW = size * zoom;
+                drawH = drawW / imgAspect;
+            }
+            const offsetX = (size - drawW) / 2;
+            const offsetY = (size - drawH) / 2;
+            
+            ctx.fillStyle = '#0d0105';
+            ctx.fillRect(0, 0, size, size);
+            ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
+            
+            const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+            
+            // Save to localStorage
+            try {
+                localStorage.setItem('suprix_profile_photo', croppedDataUrl);
+            } catch (e) {
+                console.warn('localStorage save failed:', e);
+            }
+            
+            // Save to currentUser object
+            if (currentUser) {
+                currentUser.profilePhoto = croppedDataUrl;
+            }
+            
+            // Update display
+            const photoDisplay = document.getElementById('profilePhotoDisplay');
+            if (photoDisplay) {
+                photoDisplay.innerHTML = `<img src="${croppedDataUrl}" class="w-full h-full object-cover">`;
+            }
+            
+            closeCropModal();
+            showToast('✅ प्रोफाइल फोटो सेट हो गई!', 'success');
+            if (voiceEnabled) speakHindi('प्रोफाइल फोटो सफलतापूर्वक सेट हो गई।');
+        }
+
+        // ============================================================
         // APK DIRECT DOWNLOAD
         // ============================================================
         function downloadApkDirect(event) {
@@ -2228,7 +2327,7 @@
         });
 
         // ============================================================
-        // VOICE SYSTEM – Real Bold Girl Voice
+        // VOICE SYSTEM
         // ============================================================
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
@@ -2852,104 +2951,6 @@
         }
 
         // ============================================================
-        // CROPPER FUNCTIONS
-        // ============================================================
-        function handleProfilePhotoSelect(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            if (file.size > 5 * 1024 * 1024) { showToast('फ़ाइल 5MB से बड़ी!', 'error'); e.target.value = ''; return; }
-            originalPhotoFile = file;
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                openCropperModal(ev.target.result);
-            };
-            reader.readAsDataURL(file);
-            e.target.value = ''; // reset so same file can be selected again
-        }
-
-        function openCropperModal(imageSrc) {
-            const modal = document.getElementById('cropperModal');
-            const img = document.getElementById('cropperImage');
-            img.src = imageSrc;
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
-                cropperInstance = new Cropper(img, {
-                    aspectRatio: 1,
-                    viewMode: 1,
-                    dragMode: 'move',
-                    autoCropArea: 0.8,
-                    cropBoxMovable: true,
-                    cropBoxResizable: true,
-                    background: false,
-                    guides: true,
-                    center: true,
-                    highlight: false,
-                    responsive: true,
-                    restore: false,
-                    checkCrossOrigin: false,
-                    checkOrientation: false,
-                    modal: true,
-                    scalable: true,
-                    zoomable: true,
-                    rotatable: false,
-                    minContainerWidth: 200,
-                    minContainerHeight: 200,
-                    minCropBoxWidth: 50,
-                    minCropBoxHeight: 50
-                });
-            }, 200);
-        }
-
-        function closeCropperModal() {
-            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
-            document.getElementById('cropperModal').classList.add('hidden');
-            document.getElementById('cropperImage').src = '';
-            originalPhotoFile = null;
-        }
-
-        async function saveCroppedPhoto() {
-            if (!cropperInstance) { showToast('क्रॉपर तैयार नहीं!', 'error'); return; }
-            try {
-                const canvas = cropperInstance.getCroppedCanvas({
-                    width: 300,
-                    height: 300,
-                    minWidth: 256,
-                    minHeight: 256,
-                    maxWidth: 4096,
-                    maxHeight: 4096,
-                    fillColor: '#fff',
-                    imageSmoothingEnabled: true,
-                    imageSmoothingQuality: 'high'
-                });
-                if (!canvas) { showToast('क्रॉप विफल!', 'error'); return; }
-                const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-                // Save to localStorage for instant persistence
-                localStorage.setItem('suprix_profile_photo_' + (currentUser?.$id || 'guest'), dataUrl);
-                // Update UI immediately
-                const photoDisplay = document.getElementById('profilePhotoDisplay');
-                photoDisplay.innerHTML = `<img src="${dataUrl}" class="w-full h-full object-cover">`;
-                // Try to save to Appwrite too (non-blocking)
-                try {
-                    canvas.toBlob(async (blob) => {
-                        if (blob) {
-                            try {
-                                const uploaded = await storage.createFile(SCREENSHOT_BUCKET_ID, ID.unique(), new File([blob], 'profile.jpg', { type: 'image/jpeg' }));
-                                await saveUserFields({ profilePhoto: uploaded.$id });
-                            } catch (err) { console.warn('Appwrite photo upload failed, using local only:', err); }
-                        }
-                    }, 'image/jpeg', 0.85);
-                } catch (err) { console.warn('Blob conversion error:', err); }
-                showToast('✅ प्रोफाइल फोटो सेव हो गई!', 'success');
-                if (voiceEnabled) speakHindi('प्रोफाइल फोटो सफलतापूर्वक सेव हो गई।');
-                closeCropperModal();
-            } catch (e) {
-                console.error('Crop save error:', e);
-                showToast('क्रॉप सेव में त्रुटि!', 'error');
-            }
-        }
-
-        // ============================================================
         // RECEIPT MODAL
         // ============================================================
         function openReceipt(data) {
@@ -3378,11 +3379,6 @@
 
                 await loadStakingSettings();
                 await autoUnlockMaturedStakes();
-                // Load profile photo from localStorage if exists
-                const savedPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
-                if (savedPhoto) {
-                    currentUser.profilePhoto = savedPhoto;
-                }
                 showToast('✅ लॉगिन सफल!', 'success');
                 showPage('dashboardPage');
                 startCooldownTimer();
@@ -3536,7 +3532,7 @@
         }
 
         // ============================================================
-        // MINING REWARD – with spinning star
+        // MINING REWARD
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3958,7 +3954,7 @@
             document.getElementById('profileCoinXIdDisplay').innerText = currentUser.coinxId || 'N/A';
             const ref = currentUser.$id;
             document.getElementById('profileReferralCode').innerText = ref;
-            document.getElementById('profileReferralCodeBeside').innerText = ref;
+            document.getElementById('profileReferralCodeDisplay').innerText = ref;
             document.getElementById('referralShareLink').innerText = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
             document.getElementById('withdrawAvailablePopup').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
             document.getElementById('userWithdrawAddress').value = currentUser.withdrawal_address || '';
@@ -3970,10 +3966,11 @@
                 qrPreview.classList.add('flex');
                 document.getElementById('qrUploadStatus').innerText = '✅ क्यूआर अपडेट';
             } else { qrPreview.classList.add('hidden'); }
-            // Load photo from localStorage or currentUser
             const photoDisplay = document.getElementById('profilePhotoDisplay');
-            const localPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
-            const photoSrc = localPhoto || (currentUser.profilePhoto ? resolveImageUrl(currentUser.profilePhoto) : null);
+            // First try localStorage, then currentUser
+            let savedPhoto = null;
+            try { savedPhoto = localStorage.getItem('suprix_profile_photo'); } catch(e) {}
+            const photoSrc = savedPhoto || (currentUser.profilePhoto ? resolveImageUrl(currentUser.profilePhoto) : null);
             if (photoSrc) {
                 photoDisplay.innerHTML = `<img src="${photoSrc}" class="w-full h-full object-cover">`;
             } else {
@@ -3993,6 +3990,18 @@
             if (typeof QRCode !== 'undefined') {
                 try { new QRCode(container, { text: url, width: 100, height: 100, colorDark: '#ff0055', colorLight: '#ffffff' }); } catch (e) { container.innerHTML = `<p class="text-[8px] text-rose-300/30">QR जनरेट नहीं हो सका</p>`; }
             } else { container.innerHTML = `<p class="text-[8px] text-rose-300/30">QR लोड हो रहा...</p>`; }
+        }
+
+        function handleProfilePhotoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) { showToast('फ़ाइल 5MB से बड़ी!', 'error'); e.target.value = ''; return; }
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                openCropModal(ev.target.result);
+            };
+            reader.readAsDataURL(file);
+            e.target.value = '';
         }
 
         function renderLevelAchievements() {
@@ -4177,7 +4186,6 @@
                 { url: "https://i.postimg.cc/FHRzp4Rr/file-000000002878820b8b1bdec0b2578d5d.png", line1: "आज की मेहनत", line2: "कल का सुख" },
                 { url: "https://i.postimg.cc/FzpFbWXP/1786547008768.png", line1: "कभी पीछे मत हटो", line2: "आगे बढ़ते रहो" },
                 { url: "https://i.postimg.cc/vmnQ2Hd6/file-00000000020c820b91c52e506903a683.png", line1: "सपनों को पूरा करने के लिए", line2: "जुनून ज़रूरी है" },
-                { url: "https://i.postimg.cc/7ZRxHJN9/1788087971847.png", line1: "सफलता का कोई शॉर्टकट नहीं", line2: "मेहनत ही कुंजी है" },
                 { url: "https://picsum.photos/seed/gold1/800/400", line1: "हर सुबह एक नई उम्मीद", line2: "नई शुरुआत लेकर आती है" },
                 { url: "https://picsum.photos/seed/gold2/800/400", line1: "असंभव को संभव बनाना", line2: "ही असली जीत है" },
                 { url: "https://picsum.photos/seed/gold3/800/400", line1: "गिरना बुरा नहीं", line2: "गिर के न उठना बुरा है" },
@@ -4337,13 +4345,19 @@
             renderSlider();
             checkAppInstallation();
 
+            // Crop zoom slider
+            const cropZoomInput = document.getElementById('cropZoom');
+            if (cropZoomInput) {
+                cropZoomInput.addEventListener('input', function() {
+                    const img = document.getElementById('cropImage');
+                    img.style.transform = `scale(${this.value})`;
+                });
+            }
+
             try {
                 const loaded = await loadCurrentUserData();
                 if (loaded && !currentUser.isBlocked) {
                     await autoUnlockMaturedStakes();
-                    // Load profile photo from localStorage
-                    const savedPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
-                    if (savedPhoto) currentUser.profilePhoto = savedPhoto;
                     showPage('dashboardPage');
                     startCooldownTimer();
                     setTimeout(() => {
@@ -4450,10 +4464,11 @@
         window.openWithdrawPopup = openWithdrawPopup;
         window.closeWithdrawPopup = closeWithdrawPopup;
         window.closeWelcomePopup = closeWelcomePopup;
-        window.handleProfilePhotoSelect = handleProfilePhotoSelect;
-        window.closeCropperModal = closeCropperModal;
-        window.saveCroppedPhoto = saveCroppedPhoto;
+        window.handleProfilePhotoUpload = handleProfilePhotoUpload;
         window.renderLevelAchievements = renderLevelAchievements;
+        window.openCropModal = openCropModal;
+        window.closeCropModal = closeCropModal;
+        window.saveCroppedPhoto = saveCroppedPhoto;
     </script>
 <script>
 if ('serviceWorker' in navigator) {
