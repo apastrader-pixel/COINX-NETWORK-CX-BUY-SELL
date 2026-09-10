@@ -17,7 +17,6 @@
            SUPRIX GLOBAL 3D — COMPLETE DESIGN SYSTEM
            ═══════════════════════════════════════════ */
 
-        /* ── 1. ROOT COLOR VARIABLES (THEME) ── */
         :root {
             --rose-primary: #ff0055;
             --rose-glow: #ff00aa;
@@ -29,7 +28,6 @@
             --usdt-green: #34d399;
         }
 
-        /* ── 2. GLOBAL RESET & BODY ── */
         * {
             margin: 0;
             padding: 0;
@@ -48,7 +46,7 @@
             position: relative;
         }
 
-        /* ── 3. KEYFRAME ANIMATIONS ── */
+        /* ── KEYFRAME ANIMATIONS ── */
         @keyframes dynamicHueFlow {
             0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
             50%  { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
@@ -56,11 +54,14 @@
         }
 
         @keyframes rainbowBorder {
-            0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055; }
-            25%  { border-color: #00f0ff; box-shadow: 0 0 15px #00f0ff; }
-            50%  { border-color: #00ff66; box-shadow: 0 0 15px #00ff66; }
-            75%  { border-color: #ffaa00; box-shadow: 0 0 15px #ffaa00; }
-            100% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055; }
+            0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
+            14%  { border-color: #ff00aa; box-shadow: 0 0 15px #ff00aa, inset 0 0 10px rgba(255,0,170,0.3); }
+            28%  { border-color: #00f0ff; box-shadow: 0 0 15px #00f0ff, inset 0 0 10px rgba(0,240,255,0.3); }
+            42%  { border-color: #22c55e; box-shadow: 0 0 15px #22c55e, inset 0 0 10px rgba(34,197,94,0.3); }
+            57%  { border-color: #f59e0b; box-shadow: 0 0 15px #f59e0b, inset 0 0 10px rgba(245,158,11,0.3); }
+            71%  { border-color: #8b5cf6; box-shadow: 0 0 15px #8b5cf6, inset 0 0 10px rgba(139,92,246,0.3); }
+            85%  { border-color: #ec4899; box-shadow: 0 0 15px #ec4899, inset 0 0 10px rgba(236,72,153,0.3); }
+            100% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
         }
 
         @keyframes headerWobble {
@@ -104,20 +105,27 @@
             to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to   { transform: translateX(0); }
+        @keyframes rainbowText {
+            0%   { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
+            14%  { color: #ff00aa; text-shadow: 0 0 10px #ff00aa; }
+            28%  { color: #00f0ff; text-shadow: 0 0 10px #00f0ff; }
+            42%  { color: #22c55e; text-shadow: 0 0 10px #22c55e; }
+            57%  { color: #f59e0b; text-shadow: 0 0 10px #f59e0b; }
+            71%  { color: #8b5cf6; text-shadow: 0 0 10px #8b5cf6; }
+            85%  { color: #ec4899; text-shadow: 0 0 10px #ec4899; }
+            100% { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
         }
 
-        /* ── 4. ANIMATION UTILITY CLASSES ── */
-        .animated-hue-border { animation: rainbowBorder 8s linear infinite; }
+        /* ── ANIMATION UTILITY CLASSES ── */
+        .animated-hue-border { animation: rainbowBorder 6s linear infinite; }
         .animated-hue-text   { animation: dynamicHueFlow 10s linear infinite; }
         .wobble-btn        { animation: headerWobble 3.5s ease-in-out infinite; }
         .wobble-btn-delay  { animation: headerWobble 3.5s ease-in-out infinite 0.8s; }
         .wobble-btn-delay2 { animation: headerWobble 3.5s ease-in-out infinite 1.6s; }
         .star-spinning     { animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
+        .rainbow-text      { animation: rainbowText 5s linear infinite; }
 
-        /* ── 5. 3D GLASS CARDS ── */
+        /* ── 3D GLASS CARDS ── */
         .glass-rose {
             background: var(--card-bg);
             backdrop-filter: blur(18px);
@@ -126,6 +134,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 85, 0.25);
             transition: transform 0.3s ease, border-color 0.3s ease;
+            animation: rainbowBorder 8s linear infinite;
         }
 
         .glass-rose-light {
@@ -135,9 +144,10 @@
             border: 1.5px solid rgba(255, 0, 85, 0.4);
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 0, 85, 0.15);
+            animation: rainbowBorder 10s linear infinite;
         }
 
-        /* ── 6. 3D PRESSABLE BUTTONS ── */
+        /* ── 3D PRESSABLE BUTTONS ── */
         .btn-3d-rose {
             background: linear-gradient(145deg, #ff0055, #990033);
             color: #ffffff !important;
@@ -167,7 +177,7 @@
             box-shadow: 0 0 20px var(--rose-primary), inset 0 0 20px var(--rose-glow), 0 0px 0 #4d0016;
         }
 
-        /* ── 7. STARS CANVAS ── */
+        /* ── STARS CANVAS ── */
         #starsCanvas {
             position: fixed;
             top: 0; left: 0;
@@ -176,7 +186,7 @@
             z-index: 1;
         }
 
-        /* ── 8. INPUT / SELECT / TEXTAREA STYLING ── */
+        /* ── INPUT / SELECT / TEXTAREA ── */
         input, select, textarea {
             background: rgba(0, 0, 0, 0.65) !important;
             border: 2px solid rgba(255, 0, 85, 0.5) !important;
@@ -191,7 +201,7 @@
         }
         input::placeholder { color: rgba(255, 255, 255, 0.3); }
 
-        /* ── 9. BOTTOM NAVIGATION BAR ── */
+        /* ── BOTTOM NAVIGATION BAR ── */
         .bottom-nav {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -202,15 +212,16 @@
             -webkit-backdrop-filter: blur(20px);
             border-top: 2px solid var(--rose-primary);
             box-shadow: 0 -10px 40px rgba(255, 0, 85, 0.4);
-            padding: 10px 0 16px;
+            padding: 8px 0 14px;
             display: flex;
             justify-content: space-around;
             border-radius: 25px 25px 0 0;
             z-index: 50;
+            animation: rainbowBorder 8s linear infinite;
         }
         .bottom-nav button {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 10px;
+            font-size: 9px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -231,121 +242,28 @@
             transform: scale(1.2);
         }
 
-        /* ── 10. RECEIPT MODAL ── */
-        .receipt-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        .receipt-modal .receipt-card {
-            background: #0d0105;
-            border: 3px solid var(--rose-primary);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 480px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 28px 24px;
-            position: relative;
-            color: #fff;
-        }
-        .receipt-modal .receipt-card::-webkit-scrollbar { width: 3px; }
-        .receipt-modal .receipt-card::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
-
-        /* ── 11. SCROLLABLE LEVEL GRID ── */
-        .level-grid-container {
-            max-height: 280px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--rose-primary) #1a050f;
-        }
-        .level-grid-container::-webkit-scrollbar { width: 4px; }
-        .level-grid-container::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
-
-        /* ── 12. TOAST NOTIFICATION ── */
-        #toastNotification {
-            background: rgba(18, 4, 10, 0.95);
-            border: 2px solid var(--rose-primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 85, 0.5);
-            color: white;
-            border-radius: 16px;
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-20px);
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s;
-            padding: 12px 20px;
-            font-size: 13px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-        #toastNotification.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* ── 13. TEXT GRADIENT & UTILITY ── */
-        .currency-usdt { color: #34d399 !important; text-shadow: 0 0 10px rgba(52, 211, 153, 0.5); }
-        .currency-inr { color: #22c55e !important; text-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
-        .rose-text-gradient {
-            background: linear-gradient(135deg, #ff99bb, #ff0055, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .gold-text-gradient {
-            background: linear-gradient(135deg, #f5d97e, #d4af37, #c9a030);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .text-amber-600 { color: #f59e0b; }
-        .text-amber-500 { color: #f59e0b; }
-        .text-amber-400 { color: #fbbf24; }
-        .text-amber-700 { color: #d97706; }
-        .text-green-600 { color: #22c55e; }
-        .text-green-500 { color: #22c55e; }
-        .text-blue-600 { color: #3b82f6; }
-        .text-purple-600 { color: #a855f7; }
-        .text-pink-600 { color: #ec4899; }
-        .text-indigo-600 { color: #6366f1; }
-        .text-cyan-600 { color: #06b6d4; }
-        .text-teal-600 { color: #14b8a6; }
-        .text-orange-600 { color: #f97316; }
-        .text-rose-600 { color: #f43f5e; }
-        .text-yellow-600 { color: #eab308; }
-
-        /* ── 14. SLIDER ── */
+        /* ── SLIDER — WIDER & TALLER ── */
         .slider-container {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 320px;
             overflow: hidden;
             border-radius: 20px;
-            border: 2px solid var(--rose-primary);
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.3), inset 0 0 15px rgba(255, 0, 85, 0.1);
+            border: 3px solid var(--rose-primary);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.4), inset 0 0 20px rgba(255, 0, 85, 0.15);
             background: #0d0105;
+            animation: rainbowBorder 8s linear infinite;
         }
         .slider-track {
             display: flex;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
+            width: 100%;
         }
         .slider-track .slide-item {
             min-width: 100%;
+            width: 100%;
             height: 100%;
             flex-shrink: 0;
             position: relative;
@@ -353,49 +271,54 @@
             align-items: center;
             justify-content: center;
             background: #0d0105;
+            overflow: hidden;
         }
         .slider-track .slide-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         .slider-track .slide-item .slide-text {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 20px 16px 14px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            padding: 30px 16px 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
             text-align: center;
+            z-index: 2;
         }
         .slider-track .slide-item .slide-text .line1 {
-            font-size: 15px;
+            font-size: 17px;
             font-weight: 800;
             color: #fff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 85, 0.5);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 0, 85, 0.6);
             display: block;
-            line-height: 1.3;
+            line-height: 1.4;
         }
         .slider-track .slide-item .slide-text .line2 {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: #ff99bb;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
             display: block;
-            margin-top: 2px;
-            line-height: 1.3;
+            margin-top: 3px;
+            line-height: 1.4;
         }
         .slider-dots {
             position: absolute;
-            bottom: 8px;
+            bottom: 10px;
             left: 0;
             right: 0;
             text-align: center;
             z-index: 10;
             display: flex;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
             flex-wrap: wrap;
             padding: 0 8px;
         }
@@ -412,16 +335,14 @@
             background: var(--rose-primary);
             width: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 16px rgba(255, 0, 85, 0.6);
+            box-shadow: 0 0 16px rgba(255, 0, 85, 0.8);
         }
 
-        /* ── 15. BUTTERFLIES ── */
+        /* ── BUTTERFLIES ── */
         .butterfly-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -434,7 +355,7 @@
             will-change: transform;
         }
 
-        /* ── 16. CONFETTI ── */
+        /* ── CONFETTI ── */
         .confetti-piece {
             position: fixed;
             z-index: 999;
@@ -444,7 +365,7 @@
             line-height: 1;
         }
 
-        /* ── 17. LOADING OVERLAY ── */
+        /* ── LOADING OVERLAY ── */
         #loadingOverlay {
             position: fixed;
             inset: 0;
@@ -458,8 +379,7 @@
         }
         #loadingOverlay.show { display: flex; }
         #loadingOverlay .spinner {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border: 5px solid rgba(255, 0, 85, 0.2);
             border-top-color: var(--rose-primary);
             border-radius: 50%;
@@ -472,7 +392,7 @@
             font-weight: 500;
         }
 
-        /* ── 18. VOICE TOAST ── */
+        /* ── VOICE TOAST ── */
         .voice-toast {
             position: fixed;
             bottom: 90px;
@@ -514,416 +434,36 @@
             cursor: pointer;
         }
 
-        /* ── 19. ADMIN BADGE ── */
-        .admin-badge {
-            background: linear-gradient(135deg, #ff0055, #990033);
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-        }
-
-        /* ── 20. CREDENTIAL BOX ── */
-        .credential-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 0, 85, 0.3);
-            border-radius: 14px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .credential-box .value {
-            font-size: 14px;
-            font-weight: 700;
-            color: #ff6699;
-            font-family: monospace;
-            word-break: break-all;
-        }
-
-        /* ── 21. ID BOX ── */
-        .id-box {
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 14px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1.5px solid rgba(255, 0, 85, 0.3);
-        }
-        .id-box .id-label {
-            font-size: 9px;
-            color: #ff99bb;
-            display: block;
-        }
-        .id-box .id-value {
-            font-size: 13px;
-            font-weight: 700;
-            font-family: monospace;
-            word-break: break-all;
-            color: #fff;
-        }
-
-        /* ── 22. PROFILE PHOTO ── */
-        .profile-photo-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        .profile-photo-wrapper .edit-icon {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: var(--rose-primary);
-            color: #fff;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 2px solid #0d0105;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
-            transition: all 0.3s;
-        }
-        .profile-photo-wrapper .edit-icon:hover {
-            transform: scale(1.1);
-        }
-        .profile-photo {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--rose-primary);
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
-        }
-
-        /* ── 23. LEVEL ACHIEVEMENT ── */
-        .level-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 4px;
-            transition: all 0.3s;
-        }
-        .level-item.achieved {
-            border-color: rgba(34, 197, 94, 0.5);
-            background: rgba(34, 197, 94, 0.08);
-        }
-        .level-item .level-badge {
-            font-size: 11px;
-            font-weight: 700;
-            color: #ff6699;
-        }
-        .level-item.achieved .level-badge {
-            color: #22c55e;
-        }
-        .level-item .level-amount {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .level-item .level-check {
-            font-size: 14px;
-            color: #22c55e;
-        }
-        .level-item .level-check.pending {
-            color: rgba(255, 255, 255, 0.15);
-        }
-
-        /* ── 24. WITHDRAWAL POPUP ── */
-        .withdraw-popup {
+        /* ── RECEIPT STYLES ── */
+        .receipt-modal {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
-            z-index: 200;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             animation: fadeIn 0.3s ease;
         }
-        .withdraw-popup .withdraw-card {
+        .receipt-modal .receipt-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 440px;
+            max-width: 480px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 24px 20px;
-            position: relative;
-        }
-        .withdraw-popup .withdraw-card::-webkit-scrollbar { width: 3px; }
-        .withdraw-popup .withdraw-card::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
-
-        /* ── 25. APP DOWNLOAD POPUP ── */
-        .app-popup {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 300;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        .app-popup .app-card {
-            background: #0d0105;
-            border: 3px solid var(--rose-primary);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 380px;
-            width: 100%;
             padding: 28px 24px;
             position: relative;
-            text-align: center;
-        }
-        .app-popup .app-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            object-fit: cover;
-            border: 3px solid var(--rose-primary);
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
-            margin: 0 auto 12px;
-        }
-
-        /* ── 26. LOGIN POPUP ── */
-        .login-popup {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 250;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        .login-popup .login-card {
-            background: #0d0105;
-            border: 3px solid var(--rose-primary);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            position: relative;
-            text-align: center;
-        }
-
-        /* ── 27. FLOATING APK BUTTON ── */
-        .floating-apk-btn {
-            position: fixed;
-            bottom: 100px;
-            right: 16px;
-            z-index: 60;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #ff0055, #990033);
-            box-shadow: 0 4px 25px rgba(255, 0, 85, 0.6), 0 0 40px rgba(255, 0, 85, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: headerWobble 3s ease-in-out infinite;
-            border: 2px solid #ff6699;
             color: #fff;
-            font-size: 20px;
-            text-decoration: none;
+            animation: rainbowBorder 8s linear infinite;
         }
-        .floating-apk-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 35px rgba(255, 0, 85, 0.8);
-        }
-        .floating-apk-btn.hidden-app { display: none !important; }
-        .floating-apk-btn.web-only { display: flex; }
+        .receipt-modal .receipt-card::-webkit-scrollbar { width: 3px; }
+        .receipt-modal .receipt-card::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
 
-        /* ── 28. HEADER APK BUTTON ── */
-        .header-apk-btn {
-            background: linear-gradient(145deg, #ff0055, #990033);
-            border: 2px solid #ff6699;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: headerWobble 2.8s ease-in-out infinite;
-            box-shadow: 0 2px 15px rgba(255, 0, 85, 0.5);
-            color: #fff;
-            font-size: 14px;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
-        .header-apk-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 25px rgba(255, 0, 85, 0.7);
-        }
-        .header-apk-btn.hidden-app { display: none !important; }
-
-        /* ── 29. VOICE TOGGLE ── */
-        .voice-toggle-btn {
-            background: rgba(255, 0, 85, 0.15);
-            border: 1px solid rgba(255, 0, 85, 0.4);
-            color: #ff6699;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 9px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            animation: headerWobble 3.2s ease-in-out infinite;
-        }
-        .voice-toggle-btn:hover { background: rgba(255, 0, 85, 0.25); }
-        .voice-toggle-btn.off { color: rgba(255, 255, 255, 0.3); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); }
-
-        /* ── 30. CRYPTO ADDRESS BOX ── */
-        .crypto-address-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 0, 85, 0.3);
-            border-radius: 12px;
-            padding: 10px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .crypto-address-box .address {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: monospace;
-            word-break: break-all;
-        }
-
-        /* ── 31. STAKING PLAN ── */
-        .staking-plan-btn {
-            transition: all 0.3s;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1.5px solid rgba(255, 0, 85, 0.2);
-            color: rgba(255, 255, 255, 0.5);
-            text-align: center;
-            padding: 8px 4px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .staking-plan-btn.active {
-            background: rgba(255, 0, 85, 0.2);
-            border-color: var(--rose-primary);
-            color: #ff6699;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
-        }
-        .staking-plan-btn:hover:not(.active) {
-            border-color: rgba(255, 0, 85, 0.5);
-        }
-
-        /* ── 32. HISTORY ITEM ── */
-        .history-item {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 0, 85, 0.12);
-            border-radius: 12px;
-            padding: 12px 14px;
-            transition: all 0.3s;
-        }
-        .history-item:hover {
-            border-color: rgba(255, 0, 85, 0.3);
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.05);
-        }
-
-        /* ── 33. FILTER TABS ── */
-        .filter-tabs {
-            display: flex;
-            gap: 3px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 3px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            flex-wrap: wrap;
-        }
-        .filter-tabs button {
-            flex: 1;
-            padding: 4px 6px;
-            border-radius: 8px;
-            font-size: 9px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.4);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 40px;
-        }
-        .filter-tabs button.active {
-            background: var(--rose-primary);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.25);
-        }
-
-        /* ── 34. REFERRAL QR ── */
-        .referral-qr-container {
-            display: flex;
-            justify-content: center;
-            padding: 8px 0;
-        }
-        .referral-qr-container canvas {
-            border-radius: 12px;
-            border: 2px solid rgba(255, 0, 85, 0.3);
-            padding: 6px;
-            background: #fff;
-            max-width: 120px;
-            height: auto;
-        }
-
-        /* ── 35. COPY BUTTON ── */
-        .copy-btn {
-            background: rgba(255, 0, 85, 0.15);
-            border: 1px solid rgba(255, 0, 85, 0.3);
-            color: #ff6699;
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 9px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .copy-btn:hover {
-            background: rgba(255, 0, 85, 0.3);
-        }
-        .copy-btn-sm {
-            background: rgba(255, 0, 85, 0.1);
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            color: #ff6699;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .copy-btn-sm:hover {
-            background: rgba(255, 0, 85, 0.25);
-        }
-
-        /* ── 36. RECEIPT STYLES ── */
         .receipt-row {
             display: flex;
             justify-content: space-between;
@@ -934,9 +474,6 @@
         .receipt-row .label { color: rgba(255, 255, 255, 0.5); font-weight: 400; }
         .receipt-row .value { color: #fff; font-weight: 500; text-align: right; word-break: break-all; max-width: 60%; font-family: monospace; }
         .receipt-row .value.highlight { color: #ff6699; font-weight: 600; }
-        .receipt-row .value.green { color: #22c55e; font-weight: 700; font-size: 14px; }
-        .receipt-row .value.usdt { color: #34d399; font-weight: 700; font-size: 14px; }
-        .receipt-row .value.red { color: #ef4444; }
 
         .receipt-currency-box {
             border: 3px solid var(--rose-primary);
@@ -948,33 +485,10 @@
             position: relative;
             overflow: hidden;
         }
-        .receipt-currency-box .inr-amount {
-            font-size: 32px;
-            font-weight: 800;
-            color: #22c55e;
-            letter-spacing: 1px;
-        }
-        .receipt-currency-box .inr-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #22c55e;
-            display: block;
-            margin-top: 2px;
-        }
-        .receipt-currency-box .usdt-amount {
-            font-size: 20px;
-            font-weight: 700;
-            color: #34d399;
-            margin-top: 6px;
-            display: block;
-            border-top: 1px solid rgba(52, 211, 153, 0.2);
-            padding-top: 6px;
-        }
-        .receipt-currency-box .usdt-label {
-            font-size: 12px;
-            font-weight: 500;
-            color: #34d399;
-        }
+        .receipt-currency-box .inr-amount { font-size: 32px; font-weight: 800; color: #22c55e; letter-spacing: 1px; }
+        .receipt-currency-box .inr-label { font-size: 14px; font-weight: 600; color: #22c55e; display: block; margin-top: 2px; }
+        .receipt-currency-box .usdt-amount { font-size: 20px; font-weight: 700; color: #34d399; margin-top: 6px; display: block; border-top: 1px solid rgba(52, 211, 153, 0.2); padding-top: 6px; }
+        .receipt-currency-box .usdt-label { font-size: 12px; font-weight: 500; color: #34d399; }
 
         .receipt-badge {
             display: inline-block;
@@ -1037,21 +551,317 @@
         }
         .receipt-footer .btn-print:hover { background: rgba(255, 0, 85, 0.1); }
 
-        /* ── 37. RESPONSIVE ── */
-        @media (max-width: 440px) {
-            .bottom-nav button i { font-size: 17px; }
-            .bottom-nav button { font-size: 8px; padding: 2px 4px; }
-            .slider-container { height: 190px; }
-            .receipt-modal .receipt-card { padding: 18px 14px; }
-            .receipt-modal .receipt-row { font-size: 10px; padding: 4px 0; }
-            .receipt-modal .receipt-footer button { font-size: 10px; padding: 8px 12px; min-width: 70px; }
-            .receipt-currency-box .inr-amount { font-size: 24px; }
-            .receipt-currency-box .usdt-amount { font-size: 16px; }
-            .withdraw-popup .withdraw-card { padding: 18px 14px; }
-            .app-popup .app-card { padding: 20px 16px; }
+        /* ── WITHDRAWAL POPUP ── */
+        .withdraw-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .withdraw-popup .withdraw-card {
+            background: #0d0105;
+            border: 3px solid var(--rose-primary);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
+            max-width: 440px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px 20px;
+            position: relative;
+            animation: rainbowBorder 8s linear infinite;
+        }
+        .withdraw-popup .withdraw-card::-webkit-scrollbar { width: 3px; }
+        .withdraw-popup .withdraw-card::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
+
+        /* ── APP POPUP ── */
+        .app-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .app-popup .app-card {
+            background: #0d0105;
+            border: 3px solid var(--rose-primary);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
+            max-width: 380px;
+            width: 100%;
+            padding: 28px 24px;
+            position: relative;
+            text-align: center;
+            animation: rainbowBorder 8s linear infinite;
+        }
+        .app-popup .app-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--rose-primary);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+            margin: 0 auto 12px;
         }
 
-        /* ── 38. UTILITY CLASSES ── */
+        /* ── LOGIN POPUP ── */
+        .login-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 250;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .login-popup .login-card {
+            background: #0d0105;
+            border: 3px solid var(--rose-primary);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            animation: rainbowBorder 8s linear infinite;
+        }
+
+        /* ── FLOATING APK BUTTON ── */
+        .floating-apk-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 16px;
+            z-index: 60;
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #ff0055, #990033);
+            box-shadow: 0 4px 25px rgba(255, 0, 85, 0.6), 0 0 40px rgba(255, 0, 85, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: headerWobble 3s ease-in-out infinite;
+            border: 2px solid #ff6699;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .floating-apk-btn:hover { transform: scale(1.1); box-shadow: 0 6px 35px rgba(255, 0, 85, 0.8); }
+        .floating-apk-btn.hidden-app { display: none !important; }
+        .floating-apk-btn.web-only { display: flex; }
+
+        /* ── HEADER APK BUTTON ── */
+        .header-apk-btn {
+            background: linear-gradient(145deg, #ff0055, #990033);
+            border: 2px solid #ff6699;
+            border-radius: 50%;
+            width: 34px; height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: headerWobble 2.8s ease-in-out infinite;
+            box-shadow: 0 2px 15px rgba(255, 0, 85, 0.5);
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .header-apk-btn:hover { transform: scale(1.1); box-shadow: 0 4px 25px rgba(255, 0, 85, 0.7); }
+        .header-apk-btn.hidden-app { display: none !important; }
+
+        /* ── VOICE TOGGLE ── */
+        .voice-toggle-btn {
+            background: rgba(255, 0, 85, 0.15);
+            border: 1px solid rgba(255, 0, 85, 0.4);
+            color: #ff6699;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            animation: headerWobble 3.2s ease-in-out infinite;
+        }
+        .voice-toggle-btn:hover { background: rgba(255, 0, 85, 0.25); }
+        .voice-toggle-btn.off { color: rgba(255, 255, 255, 0.3); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); }
+
+        /* ── PROFILE PHOTO ── */
+        .profile-photo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-photo-wrapper .edit-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--rose-primary);
+            color: #fff;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 2px solid #0d0105;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            transition: all 0.3s;
+        }
+        .profile-photo-wrapper .edit-icon:hover { transform: scale(1.1); }
+        .profile-photo {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--rose-primary);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+        }
+
+        /* ── LEVEL ACHIEVEMENT ── */
+        .level-grid-container {
+            max-height: 350px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--rose-primary) #1a050f;
+        }
+        .level-grid-container::-webkit-scrollbar { width: 4px; }
+        .level-grid-container::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
+
+        .level-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px 10px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255, 0, 85, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .level-item:hover {
+            border-color: rgba(255, 0, 85, 0.5);
+            background: rgba(255, 0, 85, 0.05);
+        }
+        .level-item.achieved {
+            border-color: rgba(34, 197, 94, 0.6);
+            background: rgba(34, 197, 94, 0.1);
+        }
+        .level-item .level-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff6699;
+        }
+        .level-item.achieved .level-badge {
+            color: #22c55e;
+        }
+        .level-item .level-amount {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .level-item .level-check {
+            font-size: 16px;
+            color: #22c55e;
+        }
+        .level-item .level-check.pending {
+            color: rgba(255, 255, 255, 0.15);
+        }
+        .level-item.active-level {
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        /* ── HISTORY ITEM ── */
+        .history-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 0, 85, 0.12);
+            border-radius: 12px;
+            padding: 12px 14px;
+            transition: all 0.3s;
+        }
+        .history-item:hover {
+            border-color: rgba(255, 0, 85, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.05);
+        }
+
+        /* ── COPY BUTTONS ── */
+        .copy-btn {
+            background: rgba(255, 0, 85, 0.15);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            color: #ff6699;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 9px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover { background: rgba(255, 0, 85, 0.3); }
+        .copy-btn-sm {
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            color: #ff6699;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .copy-btn-sm:hover { background: rgba(255, 0, 85, 0.25); }
+
+        /* ── CRYPTO ADDRESS BOX ── */
+        .crypto-address-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 12px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .crypto-address-box .address {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        /* ── UTILITY ── */
+        .currency-usdt { color: #34d399 !important; text-shadow: 0 0 10px rgba(52, 211, 153, 0.5); }
+        .currency-inr { color: #22c55e !important; text-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
+        .rose-text-gradient {
+            background: linear-gradient(135deg, #ff99bb, #ff0055, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .text-amber-600 { color: #f59e0b; }
+        .text-green-600 { color: #22c55e; }
+        .text-blue-600 { color: #3b82f6; }
+        .text-purple-600 { color: #a855f7; }
+        .text-cyan-600 { color: #06b6d4; }
+        .text-red-600 { color: #ef4444; }
+        .text-yellow-600 { color: #eab308; }
+
         .hidden { display: none !important; }
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
@@ -1066,32 +876,7 @@
         .text-right { text-align: right; }
         .relative { position: relative; }
         .absolute { position: absolute; }
-        .fixed { position: fixed; }
-        .inset-0 { inset: 0; }
-        .z-10 { z-index: 10; }
-        .z-20 { z-index: 20; }
-        .z-30 { z-index: 30; }
-        .z-40 { z-index: 40; }
-        .z-50 { z-index: 50; }
         .mx-auto { margin-left: auto; margin-right: auto; }
-        .mt-1 { margin-top: 4px; }
-        .mt-2 { margin-top: 8px; }
-        .mt-3 { margin-top: 12px; }
-        .mt-4 { margin-top: 16px; }
-        .mb-1 { margin-bottom: 4px; }
-        .mb-2 { margin-bottom: 8px; }
-        .mb-3 { margin-bottom: 12px; }
-        .p-2 { padding: 8px; }
-        .p-3 { padding: 12px; }
-        .p-4 { padding: 16px; }
-        .p-5 { padding: 20px; }
-        .px-2 { padding-left: 8px; padding-right: 8px; }
-        .px-3 { padding-left: 12px; padding-right: 12px; }
-        .px-4 { padding-left: 16px; padding-right: 16px; }
-        .py-1 { padding-top: 4px; padding-bottom: 4px; }
-        .py-2 { padding-top: 8px; padding-bottom: 8px; }
-        .py-3 { padding-top: 12px; padding-bottom: 12px; }
-        .py-4 { padding-top: 16px; padding-bottom: 16px; }
         .rounded-lg { border-radius: 8px; }
         .rounded-xl { border-radius: 12px; }
         .rounded-2xl { border-radius: 16px; }
@@ -1111,8 +896,6 @@
         .font-semibold { font-weight: 600; }
         .font-medium { font-weight: 500; }
         .font-mono { font-family: monospace; }
-        .opacity-50 { opacity: 0.5; }
-        .opacity-30 { opacity: 0.3; }
         .cursor-pointer { cursor: pointer; }
         .select-all { user-select: all; }
         .break-all { word-break: break-all; }
@@ -1124,6 +907,86 @@
         .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
         .col-span-2 { grid-column: span 2; }
         .col-span-3 { grid-column: span 3; }
+        .p-2 { padding: 8px; }
+        .p-3 { padding: 12px; }
+        .p-4 { padding: 16px; }
+        .p-5 { padding: 20px; }
+        .px-2 { padding-left: 8px; padding-right: 8px; }
+        .px-3 { padding-left: 12px; padding-right: 12px; }
+        .px-4 { padding-left: 16px; padding-right: 16px; }
+        .py-1 { padding-top: 4px; padding-bottom: 4px; }
+        .py-2 { padding-top: 8px; padding-bottom: 8px; }
+        .py-3 { padding-top: 12px; padding-bottom: 12px; }
+        .py-4 { padding-top: 16px; padding-bottom: 16px; }
+        .mt-1 { margin-top: 4px; }
+        .mt-2 { margin-top: 8px; }
+        .mt-3 { margin-top: 12px; }
+        .mt-4 { margin-top: 16px; }
+        .mb-1 { margin-bottom: 4px; }
+        .mb-2 { margin-bottom: 8px; }
+        .mb-3 { margin-bottom: 12px; }
+        .z-10 { z-index: 10; }
+        .z-20 { z-index: 20; }
+        .z-30 { z-index: 30; }
+        .z-40 { z-index: 40; }
+        .z-50 { z-index: 50; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 440px) {
+            .bottom-nav button i { font-size: 16px; }
+            .bottom-nav button { font-size: 7.5px; padding: 2px 3px; }
+            .slider-container { height: 260px; }
+            .slider-track .slide-item .slide-text .line1 { font-size: 14px; }
+            .slider-track .slide-item .slide-text .line2 { font-size: 11px; }
+            .receipt-modal .receipt-card { padding: 18px 14px; }
+            .receipt-modal .receipt-row { font-size: 10px; padding: 4px 0; }
+            .receipt-modal .receipt-footer button { font-size: 10px; padding: 8px 12px; min-width: 70px; }
+            .receipt-currency-box .inr-amount { font-size: 24px; }
+            .receipt-currency-box .usdt-amount { font-size: 16px; }
+            .withdraw-popup .withdraw-card { padding: 18px 14px; }
+            .app-popup .app-card { padding: 20px 16px; }
+        }
+
+        /* ── ANIMATED BORDERS FOR ALL CARDS ── */
+        .animated-border-card {
+            animation: rainbowBorder 8s linear infinite;
+        }
+
+        /* ── QUICK ACTION BUTTONS ── */
+        .quick-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 8px;
+            border-radius: 16px;
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            border: 2px solid var(--rose-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 0, 85, 0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            animation: rainbowBorder 8s linear infinite;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 0, 85, 0.3);
+        }
+        .quick-action-btn i {
+            font-size: 24px;
+            color: var(--rose-primary);
+            margin-bottom: 4px;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.6));
+        }
+        .quick-action-btn span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .quick-action-btn small {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -1141,7 +1004,7 @@
     <div id="appContainer" class="w-full max-w-md mx-auto relative z-10">
 
         <!-- HEADER -->
-        <header id="mainHeader" class="w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl user-header border-b-2 border-rose-500" style="border-radius: 0 0 20px 20px;">
+        <header id="mainHeader" class="w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl user-header" style="border-radius: 0 0 20px 20px;">
             <div class="flex items-center gap-2">
                 <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" class="logo-img" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover;" />
                 <div>
@@ -1167,7 +1030,7 @@
         <!-- ADMIN SEARCH BOX -->
         <div id="adminSearchBox" class="hidden w-full glass-rose p-3 rounded-xl mx-4 my-2" style="width: calc(100% - 32px);">
             <div class="flex gap-2">
-                <input type="text" id="adminSecretInput" placeholder="एडमिन कोड दर्ज करें" class="flex-1 py-2 px-3 text-xs" style="background: rgba(0,0,0,0.6); border: 2px solid rgba(255,0,85,0.4); border-radius: 14px; color: #fff;">
+                <input type="text" id="adminSecretInput" placeholder="एडमिन कोड दर्ज करें" class="flex-1 py-2 px-3 text-xs">
                 <button onclick="verifyAdminCode()" class="btn-3d-rose px-4 py-2 rounded-xl text-xs font-bold">Verify</button>
             </div>
         </div>
@@ -1228,8 +1091,8 @@
                             <div class="glass-rose-light text-left space-y-4 mt-4 p-4">
                                 <div>
                                     <div class="text-[10px] font-bold text-rose-300/70 mb-1"><i class="fa-solid fa-envelope text-rose-400 mr-1"></i> आपकी ईमेल आईडी (Login ID)</div>
-                                    <div class="credential-box mt-1">
-                                        <span id="successUserId" class="value text-blue-400">user@example.com</span>
+                                    <div class="credential-box mt-1" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,0,85,0.3); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                                        <span id="successUserId" class="value text-blue-400" style="font-size: 14px; font-weight: 700; color: #60a5fa; font-family: monospace; word-break: break-all;">user@example.com</span>
                                         <button onclick="copyToClipboard('successUserId', '✅ ईमेल कॉपी हो गई!')" class="copy-btn">
                                             <i class="fa-solid fa-copy"></i> कॉपी
                                         </button>
@@ -1237,8 +1100,8 @@
                                 </div>
                                 <div>
                                     <div class="text-[10px] font-bold text-rose-300/70 mb-1"><i class="fa-solid fa-id-card text-rose-400 mr-1"></i> आपकी SPX ID (Login ID)</div>
-                                    <div class="credential-box mt-1">
-                                        <span id="successSpxId" class="value text-rose-400">SPX000000</span>
+                                    <div class="credential-box mt-1" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,0,85,0.3); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                                        <span id="successSpxId" class="value text-rose-400" style="font-size: 14px; font-weight: 700; color: #ff6699; font-family: monospace; word-break: break-all;">SPX000000</span>
                                         <button onclick="copyToClipboard('successSpxId', '✅ SPX ID कॉपी हो गई!')" class="copy-btn">
                                             <i class="fa-solid fa-copy"></i> कॉपी
                                         </button>
@@ -1247,8 +1110,8 @@
                                 </div>
                                 <div>
                                     <div class="text-[10px] font-bold text-rose-300/70 mb-1"><i class="fa-solid fa-lock text-rose-400 mr-1"></i> आपका पासवर्ड</div>
-                                    <div class="credential-box mt-1">
-                                        <span id="successPassword" class="value text-teal-400">XXXXXXXXXX</span>
+                                    <div class="credential-box mt-1" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,0,85,0.3); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                                        <span id="successPassword" class="value text-teal-400" style="font-size: 14px; font-weight: 700; color: #2dd4bf; font-family: monospace; word-break: break-all;">XXXXXXXXXX</span>
                                         <span class="text-[9px] text-rose-300/60 bg-rose-500/10 px-2.5 py-0.5 rounded-full">(मोबाइल नंबर)</span>
                                     </div>
                                 </div>
@@ -1302,7 +1165,7 @@
 
                 <!-- DASHBOARD -->
                 <section id="dashboardPage" class="app-page w-full hidden space-y-4">
-                    <!-- SLIDER -->
+                    <!-- SLIDER — WIDER & TALLER -->
                     <div class="slider-container">
                         <div class="slider-track" id="sliderTrack"></div>
                         <div class="slider-dots" id="sliderDots"></div>
@@ -1327,7 +1190,7 @@
 
                     <!-- STATS -->
                     <div class="grid grid-cols-2 gap-3">
-                        <div class="glass-rose-light p-3.5 rounded-2xl" style="transform: perspective(1000px) rotateX(0deg); transition: transform 0.3s;">
+                        <div class="glass-rose-light p-3.5 rounded-2xl">
                             <span class="text-[9px] text-rose-300/60 block mb-1"><i class="fa-solid fa-dollar-sign mr-1 text-green-400"></i> Total Investment</span>
                             <span id="statInvestment" class="text-md font-bold text-blue-400">$0.00</span>
                         </div>
@@ -1362,7 +1225,7 @@
                                 <i class="fa-solid fa-circle-play mr-1 text-green-400 animate-pulse"></i>
                                 <span>रिलीज के लिए अभी दबाएं!</span>
                             </div>
-                            <div id="cooldownBadge" class="hidden cooldown-badge justify-center" style="background: rgba(255,0,85,0.1); border: 1px solid rgba(255,0,85,0.2); border-radius: 30px; padding: 2px 14px; font-size: 10px; color: #ff6699; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+                            <div id="cooldownBadge" class="hidden justify-center" style="background: rgba(255,0,85,0.1); border: 1px solid rgba(255,0,85,0.2); border-radius: 30px; padding: 2px 14px; font-size: 10px; color: #ff6699; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
                                 <i class="fa-regular fa-clock"></i>
                                 <span id="cooldownTimeDisplay">--:--:--</span>
                             </div>
@@ -1372,17 +1235,17 @@
                         </div>
                     </div>
 
-                    <!-- QUICK ACTIONS: PURCHASE & WITHDRAWAL -->
+                    <!-- QUICK ACTIONS: PURCHASE & WITHDRAWAL (side by side) -->
                     <div class="grid grid-cols-2 gap-3">
-                        <button onclick="showPage('purchasePage')" class="glass-rose p-4 rounded-2xl text-center hover:border-rose-400 transition-all btn-animate">
-                            <i class="fa-solid fa-cart-shopping text-2xl text-rose-400 mb-1"></i>
-                            <span class="text-xs font-bold text-white block">परचेज</span>
-                            <span class="text-[9px] text-rose-300/50">USDT खरीदें</span>
+                        <button onclick="showPage('purchasePage')" class="quick-action-btn">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>परचेज</span>
+                            <small>USDT खरीदें</small>
                         </button>
-                        <button onclick="toggleWithdrawPopup(true)" class="glass-rose p-4 rounded-2xl text-center hover:border-rose-400 transition-all btn-animate">
-                            <i class="fa-solid fa-money-bill-transfer text-2xl text-rose-400 mb-1"></i>
-                            <span class="text-xs font-bold text-white block">विथड्रॉवल</span>
-                            <span class="text-[9px] text-rose-300/50">USDT निकालें</span>
+                        <button onclick="toggleWithdrawPopup(true)" class="quick-action-btn">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                            <span>विथड्रॉवल</span>
+                            <small>USDT निकालें</small>
                         </button>
                     </div>
                 </section>
@@ -1409,7 +1272,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-3 max-h-[160px] overflow-y-auto pr-1" id="purchaseGrid"></div>
+                    <div class="grid grid-cols-2 gap-3 max-h-[200px] overflow-y-auto pr-1" id="purchaseGrid"></div>
                     <div id="paymentGatewayCard" class="glass-rose p-5 rounded-2xl space-y-4 hidden">
                         <div class="flex items-center justify-between border-b border-rose-500/15 pb-2">
                             <h4 class="text-xs font-bold text-rose-400"><i class="fa-solid fa-qrcode mr-1"></i> भुगतान विवरण</h4>
@@ -1516,12 +1379,12 @@
                         </div>
                     </div>
 
-                    <!-- YOUR ID BOX -->
-                    <div class="id-box">
+                    <!-- YOUR ID BOX with Email + SPX ID copy buttons -->
+                    <div class="id-box" style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
                         <div>
-                            <span class="id-label text-rose-300/60">🆔 आपकी Unique SPX ID</span>
-                            <span class="id-value spx-id-display" id="profileCoinXIdDisplay" style="font-size: 14px; font-weight: 800; color: #ff6699; letter-spacing: 1px; font-family: monospace;">SPX123456789</span>
-                            <span class="id-label text-rose-300/40" style="font-size: 8px;">इस ID से USDT (BEP20) भेजें/ले सकते हैं</span>
+                            <span class="id-label" style="font-size: 9px; color: #ff99bb; display: block;">🆔 आपकी Unique SPX ID</span>
+                            <span id="profileCoinXIdDisplay" style="font-size: 14px; font-weight: 800; color: #ff6699; letter-spacing: 1px; font-family: monospace;">SPX123456789</span>
+                            <span class="id-label" style="font-size: 8px; color: rgba(255,255,255,0.4); display: block; margin-top: 2px;">इस ID से USDT (BEP20) भेजें/ले सकते हैं</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी हो गई!')" class="copy-btn">
@@ -1543,16 +1406,16 @@
                                 <i class="fa-solid fa-copy"></i>
                             </button>
                         </div>
-                        <div class="referral-qr-container" id="referralQrContainer"></div>
+                        <div class="referral-qr-container" id="referralQrContainer" style="display: flex; justify-content: center; padding: 8px 0;"></div>
                         <button onclick="shareReferralLink()" class="w-full btn-3d-rose py-2 rounded-xl text-xs flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-share-nodes"></i> Share Referral Link
                         </button>
                     </div>
 
-                    <!-- LEVEL ACHIEVEMENT -->
+                    <!-- LEVEL ACHIEVEMENT L1-L100 -->
                     <div class="glass-rose p-4 rounded-2xl space-y-3">
                         <h4 class="text-xs font-bold text-rose-400"><i class="fa-solid fa-trophy mr-1"></i> Level Achievement (L1 - L100)</h4>
-                        <p class="text-[10px] text-rose-300/60">हर $1000 USDT / ₹100000 पर्चेज़ पर एक लेवल पूरा होगा</p>
+                        <p class="text-[10px] text-rose-300/60">हर $1000 USDT / ₹100000 पर्चेज़ पर एक लेवल पूरा होगा — ऑटोमैटिक ग्रीन टिक</p>
                         <div class="level-grid-container" id="levelGridContainer"></div>
                     </div>
 
@@ -1598,7 +1461,7 @@
                     </button>
                 </section>
 
-                <!-- BOTTOM NAV -->
+                <!-- BOTTOM NAV (Purchase + Withdrawal side by side) -->
                 <nav id="bottomNavBar" class="bottom-nav hidden">
                     <button onclick="showPage('dashboardPage')" id="nav-dashboardPage" class="active">
                         <i class="fa-solid fa-house-chimney text-lg mb-0.5"></i>
@@ -1607,6 +1470,10 @@
                     <button onclick="showPage('purchasePage')" id="nav-purchasePage">
                         <i class="fa-solid fa-cart-shopping text-lg mb-0.5"></i>
                         <span class="text-[9px] font-medium">परचेज</span>
+                    </button>
+                    <button onclick="toggleWithdrawPopup(true)" id="nav-withdrawal">
+                        <i class="fa-solid fa-money-bill-transfer text-lg mb-0.5"></i>
+                        <span class="text-[9px] font-medium">विथड्रॉवल</span>
                     </button>
                     <button onclick="showPage('stakingPage')" id="nav-stakingPage">
                         <i class="fa-solid fa-lock text-lg mb-0.5"></i>
@@ -1768,16 +1635,12 @@
 
         </main>
 
-        <!-- ============================================================ -->
-        <!-- FLOATING APK DOWNLOAD BUTTON (Visible on Web only, hidden in App) -->
-        <!-- ============================================================ -->
+        <!-- FLOATING APK DOWNLOAD BUTTON -->
         <a id="floatingApkBtn" class="floating-apk-btn web-only wobble-btn" href="#" onclick="showAppDownloadPopup(event)" title="ऐप डाउनलोड करें">
             <i class="fa-solid fa-download"></i>
         </a>
 
-        <!-- ============================================================ -->
         <!-- WITHDRAWAL POPUP -->
-        <!-- ============================================================ -->
         <div id="withdrawPopup" class="withdraw-popup hidden">
             <div class="withdraw-card">
                 <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 mb-4">
@@ -1787,7 +1650,6 @@
                     </button>
                 </div>
 
-                <!-- Withdrawal Form -->
                 <div class="space-y-4">
                     <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-center">
                         <span class="text-xs font-bold text-red-400 block"><i class="fa-solid fa-circle-exclamation mr-1"></i> USDT (BEP20) में ही Withdrawal लें।</span>
@@ -1828,7 +1690,6 @@
                         </div>
                     </div>
 
-                    <!-- SupriX Wallet Withdrawal (SPX ID) -->
                     <div class="pt-3 border-t border-rose-500/15">
                         <h5 class="text-[10px] font-bold text-rose-400 mb-2"><i class="fa-solid fa-wallet mr-1"></i> SupriX Wallet में विथड्रॉवल</h5>
                         <p class="text-[9px] text-rose-300/60 mb-2">SPX ID के माध्यम से SupriX Wallet में विथड्रॉवल करें (10% शुल्क)</p>
@@ -1848,9 +1709,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- APP DOWNLOAD POPUP -->
-        <!-- ============================================================ -->
         <div id="appDownloadPopup" class="app-popup hidden">
             <div class="app-card">
                 <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" class="app-logo" />
@@ -1887,9 +1746,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- LOGIN POPUP (After successful login) -->
-        <!-- ============================================================ -->
+        <!-- LOGIN POPUP -->
         <div id="loginPopup" class="login-popup hidden">
             <div class="login-card">
                 <img src="https://i.postimg.cc/9fLKWGn1/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png" alt="Welcome" class="w-full rounded-xl mb-3" style="max-height: 300px; object-fit: contain;" />
@@ -1901,9 +1758,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- RECEIPT MODAL -->
-        <!-- ============================================================ -->
         <div id="receiptModal" class="receipt-modal hidden">
             <div class="receipt-card" id="receiptCard">
                 <div class="receipt-logo" style="text-align: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,0,85,0.1);">
@@ -1924,9 +1779,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- MODALS -->
-        <!-- ============================================================ -->
         <div id="fullscreenImageModal" class="fixed inset-0 bg-black/95 flex flex-col items-center justify-center z-50 p-4 hidden">
             <div class="absolute top-4 right-4 z-50">
                 <button onclick="closeFullscreenImage()" class="bg-rose-500/20 hover:bg-rose-500 text-rose-400 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all btn-animate">
@@ -2016,16 +1869,14 @@
         </div>
 
         <!-- TOAST -->
-        <div id="toastNotification">
+        <div id="toastNotification" style="background: rgba(18, 4, 10, 0.95); border: 2px solid var(--rose-primary); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 85, 0.5); color: white; border-radius: 16px; position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-20px); z-index: 9999; opacity: 0; pointer-events: none; transition: all 0.4s; padding: 12px 20px; font-size: 13px; width: 90%; max-width: 400px; text-align: center;">
             <span id="toastMessage"></span>
             <button onclick="hideToast()"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
     </div>
 
-    <!-- ============================================================ -->
     <!-- JAVASCRIPT -->
-    <!-- ============================================================ -->
     <script>
         // ============================================================
         // APPWRITE CONFIGURATION
@@ -2063,6 +1914,7 @@
         let selectedStakingDays = 30;
         let selectedPurchaseUsd = 0;
         let selectedPurchaseCoins = 0;
+        let selectedLevel = 0;
         let currentTxHistoryTab = 'deposit';
         let uploadReceiptFile = null;
         let currentAdminTab = 'users';
@@ -2074,6 +1926,7 @@
         let isAppInstalled = false;
         let sliderIndex = 0;
         let sliderInterval = null;
+        let sliderAnimating = false;
 
         // ============================================================
         // UTILITY FUNCTIONS
@@ -2233,6 +2086,11 @@
                     `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
                 document.getElementById('userWithdrawAddress').value = currentUser.withdrawal_address || '';
                 document.getElementById('coinxWalletSCAddress').value = currentUser.coinxWalletSC || '';
+                // Update bottom nav active state
+                document.querySelectorAll('#bottomNavBar button').forEach(b => {
+                    b.classList.remove('text-rose-400', 'active');
+                    b.classList.add('text-rose-300/40');
+                });
             }
         }
 
@@ -2346,7 +2204,7 @@
         }
 
         // ============================================================
-        // STARS CANVAS - Twinkling multicolor stars
+        // STARS CANVAS
         // ============================================================
         function initStars() {
             const canvas = document.getElementById('starsCanvas');
@@ -2362,7 +2220,7 @@
 
             const starColors = ['#ff0055', '#ff00aa', '#00f0ff', '#22c55e', '#f59e0b', '#34d399', '#ec4899', '#8b5cf6', '#f97316', '#fbbf24', '#a855f7', '#06b6d4'];
 
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 150; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -2428,7 +2286,7 @@
                 isAdminMode = true;
                 document.getElementById('userPanelContainer').classList.add('hidden');
                 document.getElementById('adminPanelContainer').classList.remove('hidden');
-                document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl admin-header border-b-2 border-rose-500';
+                document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl admin-header';
                 document.getElementById('headerTitle').className = 'font-extrabold text-sm tracking-wider leading-none text-rose-400';
                 document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
                 document.getElementById('headerSubtitle').innerText = 'Super Admin';
@@ -2446,7 +2304,7 @@
             isAdminMode = false;
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
-            document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl user-header border-b-2 border-rose-500';
+            document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl user-header';
             document.getElementById('headerTitle').className = 'font-extrabold text-sm tracking-wider leading-none rose-text-gradient';
             document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL';
             document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
@@ -2668,11 +2526,20 @@
                 approved.push(tx);
                 const txs = parseJsonSafe(fresh.transactions, []);
                 txs.push({ type: 'deposit', amountUSD: pending.amountUSD, coinsAmount: pending.coinsAmount, receiptFileId: pending.receiptFileId, dateTime: pending.dateTime, status: 'Approved', receiptId: receiptId });
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, { coins: newCoins, approved_deposit: JSON.stringify(approved), pending_deposit: '', transactions: JSON.stringify(txs) });
+                // Update totalPurchased for level achievements
+                const newTotalPurchased = parseFloat(fresh.totalPurchased || 0) + parseFloat(pending.amountUSD || 0);
+                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
+                    coins: newCoins,
+                    approved_deposit: JSON.stringify(approved),
+                    pending_deposit: '',
+                    transactions: JSON.stringify(txs),
+                    totalPurchased: newTotalPurchased
+                });
                 users[idx].coins = newCoins;
                 users[idx].approvedDeposits = approved;
                 users[idx].pendingDeposit = null;
                 users[idx].transactions = txs;
+                users[idx].totalPurchased = newTotalPurchased;
                 showToast('✅ डिपॉजिट स्वीकृत', 'success');
                 updateAdminStats();
                 renderAdminDeposits();
@@ -2948,6 +2815,7 @@
             const isDeposit = data.type === 'deposit';
             const isWithdrawal = data.type === 'withdrawal';
             const isDaily = data.type === 'daily';
+            const isReferral = data.type === 'referral';
 
             const usdtAmount = parseFloat(data.coinsAmount || data.amount || 0);
             const inrAmount = (usdtAmount * EXCHANGE_RATE).toFixed(2);
@@ -2964,7 +2832,7 @@
                 statusBadge = '<span class="receipt-badge approved">✅ ' + (data.status || 'Completed') + '</span>';
             }
 
-            let typeLabel = isDeposit ? '💰 डिपॉजिट' : isWithdrawal ? '💸 विथड्रॉवल' : isDaily ? '🌟 डेली रिवॉर्ड' : '🔄 ट्रांसफर';
+            let typeLabel = isDeposit ? '💰 डिपॉजिट' : isWithdrawal ? '💸 विथड्रॉवल' : isDaily ? '🌟 डेली रिवॉर्ड' : isReferral ? '🎁 रेफरल बोनस' : '🔄 ट्रांसफर';
 
             const memberName = currentUser?.name || 'N/A';
             const memberId = currentUser?.coinxId || 'N/A';
@@ -2990,6 +2858,11 @@
                 <div class="receipt-row"><span class="label">📅 तारीख & समय</span><span class="value">${data.dateTime || 'N/A'}</span></div>
                 <div class="receipt-row"><span class="label">📊 स्थिति</span><span class="value">${statusBadge}</span></div>
                 <div class="receipt-row"><span class="label">🔗 ट्रांजैक्शन हैश</span><span class="value" style="font-size:10px;">${txHash}</span></div>
+                ${isReferral ? `
+                <div class="receipt-row"><span class="label">👥 रेफर किया गया</span><span class="value">${data.referredName || 'N/A'}</span></div>
+                <div class="receipt-row"><span class="label">💰 स्टेक किया</span><span class="value">${data.stakedAmount || 0} USDT</span></div>
+                <div class="receipt-row"><span class="label">📅 स्टेकिंग दिन</span><span class="value">${data.stakingDays || 0} दिन</span></div>
+                ` : ''}
                 <div class="receipt-row" style="border-bottom:none;padding-bottom:2px;"><span class="label">💱 दर</span><span class="value" style="color:#ff6699;font-weight:600;">$1 = ₹${EXCHANGE_RATE}</span></div>
                 ${data.receiptFileId ? `<div class="receipt-row" style="flex-direction:column;align-items:center;padding:8px 0;"><span class="label" style="margin-bottom:6px;">🧾 रसीद स्क्रीनशॉट</span><img src="${resolveImageUrl(data.receiptFileId)}" class="w-24 h-24 object-contain rounded-lg border border-rose-500/20 cursor-pointer" onclick="openFullscreenImage('${resolveImageUrl(data.receiptFileId)}')"></div>` : ''}
                 <div class="receipt-qr-box"><div id="receiptQrContainer"></div></div>
@@ -3359,10 +3232,7 @@
 
                 await loadStakingSettings();
                 await autoUnlockMaturedStakes();
-
-                // Show login popup
                 showLoginPopup();
-
                 showToast('✅ लॉगिन सफल!', 'success');
                 showPage('dashboardPage');
                 startCooldownTimer();
@@ -3527,7 +3397,10 @@
             document.getElementById('statAvailable').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
 
             // Update dashboard profile photo
-            if (currentUser.profilePhoto) {
+            const savedPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
+            if (savedPhoto) {
+                document.getElementById('dashboardProfilePhoto').src = savedPhoto;
+            } else if (currentUser.profilePhoto) {
                 document.getElementById('dashboardProfilePhoto').src = currentUser.profilePhoto;
             }
 
@@ -3549,7 +3422,6 @@
             reader.onload = function(ev) {
                 const img = new Image();
                 img.onload = function() {
-                    // Create canvas for cropping to square
                     const size = Math.min(img.width, img.height);
                     const canvas = document.createElement('canvas');
                     canvas.width = 200;
@@ -3560,20 +3432,14 @@
                     ctx.drawImage(img, sx, sy, size, size, 0, 0, 200, 200);
                     const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
 
-                    // Save to localStorage
                     localStorage.setItem('suprix_profile_photo_' + currentUser.$id, croppedDataUrl);
-
-                    // Update UI
                     document.getElementById('profilePhoto').src = croppedDataUrl;
                     document.getElementById('dashboardProfilePhoto').src = croppedDataUrl;
 
-                    // Try to save to database (optional)
                     if (currentUser.docId) {
                         databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, currentUser.docId, {
                             profilePhoto: croppedDataUrl
-                        }).then(() => {
-                            currentUser.profilePhoto = croppedDataUrl;
-                        }).catch(err => console.warn('Could not save photo to DB:', err));
+                        }).then(() => { currentUser.profilePhoto = croppedDataUrl; }).catch(err => console.warn('Could not save photo:', err));
                     }
 
                     showToast('✅ प्रोफाइल फोटो अपडेट हो गई!', 'success');
@@ -3586,7 +3452,7 @@
         }
 
         // ============================================================
-        // LEVEL ACHIEVEMENTS
+        // LEVEL ACHIEVEMENTS — Auto green tick based on purchase
         // ============================================================
         function renderLevelAchievements() {
             const container = document.getElementById('levelGridContainer');
@@ -3600,10 +3466,13 @@
                 const isAchieved = achievedLevels >= i;
                 const div = document.createElement('div');
                 div.className = `level-item ${isAchieved ? 'achieved' : ''}`;
+                div.setAttribute('data-level', i);
+                div.setAttribute('data-amount', targetAmount);
+                div.onclick = () => selectLevelForPurchase(i, targetAmount);
                 div.innerHTML = `
                     <div>
                         <span class="level-badge">L${i}</span>
-                        <span class="level-amount">$${targetAmount} USDT / ₹${(targetAmount * EXCHANGE_RATE).toLocaleString('en-IN')}</span>
+                        <span class="level-amount">$${targetAmount.toLocaleString()} USDT / ₹${(targetAmount * EXCHANGE_RATE).toLocaleString('en-IN')}</span>
                     </div>
                     <span class="level-check ${isAchieved ? '' : 'pending'}">
                         <i class="fa-solid ${isAchieved ? 'fa-circle-check' : 'fa-circle'}"></i>
@@ -3611,6 +3480,27 @@
                 `;
                 container.appendChild(div);
             }
+        }
+
+        function selectLevelForPurchase(level, amount) {
+            selectedLevel = level;
+            selectedPurchaseUsd = amount;
+            selectedPurchaseCoins = amount;
+
+            // Highlight selected level
+            document.querySelectorAll('.level-item').forEach(el => el.classList.remove('active-level'));
+            const levelEl = document.querySelector(`.level-item[data-level="${level}"]`);
+            if (levelEl) levelEl.classList.add('active-level');
+
+            // Go to purchase page and show payment
+            showPage('purchasePage');
+            setTimeout(() => {
+                document.getElementById('paymentUSDVal').innerHTML = `$${amount}.00 USDT (L${level})`;
+                document.getElementById('paymentGatewayCard').classList.remove('hidden');
+                document.getElementById('paymentGatewayCard').scrollIntoView({ behavior: 'smooth' });
+                showToast(`✅ L${level} के लिए $${amount} USDT का QR दिखाया गया है।`, 'info');
+                if (voiceEnabled) speakHindi(`लेवल ${level} के लिए ${amount} यूएसडीटी का क्यूआर कोड दिखाया गया है। कृपया पेमेंट करें।`);
+            }, 300);
         }
 
         // ============================================================
@@ -3661,9 +3551,7 @@
                 });
 
                 const docId = currentUser.docId || currentUser.$id;
-                if (!docId) {
-                    throw new Error('User document ID not found');
-                }
+                if (!docId) throw new Error('User document ID not found');
 
                 await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, {
                     coins: newCoins,
@@ -3672,7 +3560,6 @@
 
                 currentUser.coins = newCoins;
                 currentUser.transactions = txs;
-
                 localStorage.setItem('cx_last_claimed_' + currentUser.$id, String(now));
 
                 updateDashboardStats();
@@ -3683,7 +3570,6 @@
                 }
                 showToast(`✅ ${reward.toFixed(2)} USDT (₹${(reward * EXCHANGE_RATE).toFixed(2)}) रिवॉर्ड मिला!`, 'success');
 
-                // Open receipt for daily reward
                 openReceipt({
                     type: 'daily',
                     coinsAmount: reward,
@@ -3731,10 +3617,11 @@
             if ('coinxWalletSC' in fields) currentUser.coinxWalletSC = fields.coinxWalletSC;
             if ('staked' in fields) currentUser.staked = parseFloat(fields.staked);
             if ('profilePhoto' in fields) currentUser.profilePhoto = fields.profilePhoto;
+            if ('totalPurchased' in fields) currentUser.totalPurchased = parseFloat(fields.totalPurchased);
         }
 
         // ============================================================
-        // PURCHASE
+        // PURCHASE — with Level-based auto QR
         // ============================================================
         function calculateCustomCoins(usd) {
             const val = parseFloat(usd) || 0;
@@ -3751,7 +3638,7 @@
         function renderPurchaseSlabs() {
             const grid = document.getElementById('purchaseGrid');
             grid.innerHTML = '';
-            const slabs = [10, 15, 20, 25, 30, 35, 40, 50, 100, 200, 500, 1000];
+            const slabs = [10, 15, 20, 25, 30, 35, 40, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
             slabs.forEach(usd => {
                 const coins = usd;
                 const card = document.createElement('div');
@@ -3813,7 +3700,8 @@
                     receiptFileId: uploaded.$id,
                     dateTime: new Date().toLocaleString('hi-IN'),
                     type: 'user',
-                    network: 'BEP20 (USDT)'
+                    network: 'BEP20 (USDT)',
+                    level: selectedLevel || null
                 };
                 await saveUserFields({ pending_deposit: JSON.stringify(deposit) });
                 uploadReceiptFile = null;
@@ -3825,7 +3713,7 @@
                 document.getElementById('purchaseScreenshotFile').value = '';
                 showToast('✅ पेमेंट रिक्वेस्ट भेजी गई!', 'success');
                 hidePaymentCard();
-                if (voiceEnabled) speakHindi('आपकी डिपॉजिट रिक्वेस्ट सफलतापूर्वक भेजी गई।');
+                if (voiceEnabled) speakHindi('आपकी डिपॉजिट रिक्वेस्ट सफलतापूर्वक भेजी गई। एडमिन अप्रूव के बाद आपका लेवल अपडेट हो जाएगा।');
             } catch (e) { showToast('त्रुटि! ' + (e.message || ''), 'error'); } finally { setButtonLoading(btn, false); }
         }
 
@@ -3995,7 +3883,6 @@
             document.getElementById('referralShareLink').innerText = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
             document.getElementById('withdrawAvailable').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
 
-            // Profile photo from localStorage
             const savedPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
             if (savedPhoto) {
                 document.getElementById('profilePhoto').src = savedPhoto;
@@ -4006,6 +3893,7 @@
             }
 
             generateReferralQR();
+            renderLevelAchievements();
         }
 
         function generateReferralQR() {
@@ -4069,9 +3957,6 @@
             } catch (e) { showToast('त्रुटि!', 'error'); } finally { setButtonLoading(btn, false); }
         }
 
-        // ============================================================
-        // SUPRIX WALLET WITHDRAWAL (SPX ID)
-        // ============================================================
         async function submitCoinXWalletWithdrawal() {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
             const targetSPX = document.getElementById('coinxWalletSCAddress').value.trim();
@@ -4308,7 +4193,7 @@
         }
 
         // ============================================================
-        // SLIDER - Fixed with smooth sliding and motivational text
+        // SLIDER — FIXED smooth sliding
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
@@ -4322,29 +4207,30 @@
                 { url: "https://i.postimg.cc/W41RgjYJ/IMG-20260910-121325.png", text1: "जो आज तकलीफ देता है", text2: "वही कल ताकत देता है" },
                 { url: "https://i.postimg.cc/g2D8Lrsr/IMG-20260910-121405.png", text1: "सफलता की कोई लिफ्ट नहीं है", text2: "सीढ़ियों से ही चढ़ना पड़ता है" },
                 { url: "https://i.postimg.cc/fRZYbYx5/IMG-20260910-123036.png", text1: "अपने आप पर विश्वास रखो", text2: "सब कुछ संभव है" },
-                { url: "https://picsum.photos/seed/gold1/800/400", text1: "मेहनत करने वालों की", text2: "कभी हार नहीं होती" },
-                { url: "https://picsum.photos/seed/gold2/800/400", text1: "कल का दिन आज से", text2: "बेहतर बनाओ" },
-                { url: "https://picsum.photos/seed/gold3/800/400", text1: "निरंतर प्रयास ही", text2: "सफलता की कुंजी है" },
-                { url: "https://picsum.photos/seed/gold4/800/400", text1: "गिरकर उठना ही", text2: "जीवन का असली अर्थ है" },
-                { url: "https://picsum.photos/seed/gold5/800/400", text1: "अपना समय बचाओ", text2: "क्योंकि यही जीवन है" },
-                { url: "https://picsum.photos/seed/gold6/800/400", text1: "आज की मेहनत", text2: "कल का सुख देगी" },
-                { url: "https://picsum.photos/seed/gold7/800/400", text1: "सफल होने के लिए", text2: "पहले शुरुआत करो" },
-                { url: "https://picsum.photos/seed/gold8/800/400", text1: "जोखिम लेने से ही", text2: "जीत मिलती है" },
-                { url: "https://picsum.photos/seed/gold9/800/400", text1: "अपने सपनों को", text2: "सच कर दिखाओ" },
-                { url: "https://picsum.photos/seed/gold10/800/400", text1: "हर दिन एक", text2: "नया मौका है" },
-                { url: "https://picsum.photos/seed/gold11/800/400", text1: "मन के हारे हार है", text2: "मन के जीते जीत" },
-                { url: "https://picsum.photos/seed/gold12/800/400", text1: "छोटी शुरुआत करो", text2: "बड़े सपने देखो" },
-                { url: "https://picsum.photos/seed/gold13/800/400", text1: "समय और अवसर", text2: "किसी का इंतजार नहीं करते" },
-                { url: "https://picsum.photos/seed/gold14/800/400", text1: "सफलता उन्हें मिलती है", text2: "जो प्रयास करते रहते हैं" },
-                { url: "https://picsum.photos/seed/gold15/800/400", text1: "अपने अंदर की", text2: "आग को जगाओ" }
+                { url: "https://picsum.photos/seed/gold1/1200/600", text1: "मेहनत करने वालों की", text2: "कभी हार नहीं होती" },
+                { url: "https://picsum.photos/seed/gold2/1200/600", text1: "कल का दिन आज से", text2: "बेहतर बनाओ" },
+                { url: "https://picsum.photos/seed/gold3/1200/600", text1: "निरंतर प्रयास ही", text2: "सफलता की कुंजी है" },
+                { url: "https://picsum.photos/seed/gold4/1200/600", text1: "गिरकर उठना ही", text2: "जीवन का असली अर्थ है" },
+                { url: "https://picsum.photos/seed/gold5/1200/600", text1: "अपना समय बचाओ", text2: "क्योंकि यही जीवन है" },
+                { url: "https://picsum.photos/seed/gold6/1200/600", text1: "आज की मेहनत", text2: "कल का सुख देगी" },
+                { url: "https://picsum.photos/seed/gold7/1200/600", text1: "सफल होने के लिए", text2: "पहले शुरुआत करो" },
+                { url: "https://picsum.photos/seed/gold8/1200/600", text1: "जोखिम लेने से ही", text2: "जीत मिलती है" },
+                { url: "https://picsum.photos/seed/gold9/1200/600", text1: "अपने सपनों को", text2: "सच कर दिखाओ" },
+                { url: "https://picsum.photos/seed/gold10/1200/600", text1: "हर दिन एक", text2: "नया मौका है" },
+                { url: "https://picsum.photos/seed/gold11/1200/600", text1: "मन के हारे हार है", text2: "मन के जीते जीत" },
+                { url: "https://picsum.photos/seed/gold12/1200/600", text1: "छोटी शुरुआत करो", text2: "बड़े सपने देखो" },
+                { url: "https://picsum.photos/seed/gold13/1200/600", text1: "समय और अवसर", text2: "किसी का इंतजार नहीं करते" },
+                { url: "https://picsum.photos/seed/gold14/1200/600", text1: "सफलता उन्हें मिलती है", text2: "जो प्रयास करते रहते हैं" },
+                { url: "https://picsum.photos/seed/gold15/1200/600", text1: "अपने अंदर की", text2: "आग को जगाओ" }
             ];
 
             track.innerHTML = '';
             slides.forEach((slide, index) => {
                 const div = document.createElement('div');
                 div.className = 'slide-item';
+                div.style.minWidth = '100%';
                 div.innerHTML = `
-                    <img src="${slide.url}" alt="Slider ${index + 1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+                    <img src="${slide.url}" alt="Slider ${index + 1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" onerror="this.src='https://picsum.photos/seed/fallback${index}/1200/600'" />
                     <div class="slide-text">
                         <span class="line1">${slide.text1}</span>
                         <span class="line2">${slide.text2}</span>
@@ -4353,7 +4239,6 @@
                 track.appendChild(div);
             });
 
-            // Dots
             if (dots) {
                 dots.innerHTML = '';
                 for (let i = 0; i < slides.length; i++) {
@@ -4365,9 +4250,9 @@
                 }
             }
 
-            // Start slider
             sliderIndex = 0;
             track.style.transform = `translateX(0%)`;
+            track.style.transition = 'transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             startSlider();
         }
 
@@ -4379,11 +4264,14 @@
                 if (!track) return;
                 const total = track.children.length;
                 if (total === 0) return;
+                if (sliderAnimating) return;
+                sliderAnimating = true;
                 sliderIndex = (sliderIndex + 1) % total;
                 track.style.transform = `translateX(-${sliderIndex * 100}%)`;
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === sliderIndex);
                 });
+                setTimeout(() => { sliderAnimating = false; }, 900);
             }, 4000);
         }
 
@@ -4393,11 +4281,14 @@
             if (!track) return;
             const total = track.children.length;
             if (index < 0 || index >= total) return;
+            if (sliderAnimating) return;
+            sliderAnimating = true;
             sliderIndex = index;
             track.style.transform = `translateX(-${index * 100}%)`;
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
+            setTimeout(() => { sliderAnimating = false; }, 900);
             startSlider();
         }
 
@@ -4429,7 +4320,7 @@
                 isAdminMode = true;
                 document.getElementById('userPanelContainer').classList.add('hidden');
                 document.getElementById('adminPanelContainer').classList.remove('hidden');
-                document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl admin-header border-b-2 border-rose-500';
+                document.querySelector('#mainHeader').className = 'w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl admin-header';
                 document.getElementById('headerTitle').className = 'font-extrabold text-sm tracking-wider leading-none text-rose-400';
                 document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
                 document.getElementById('headerSubtitle').innerText = 'Super Admin';
@@ -4529,9 +4420,6 @@
             } catch (e) { return false; }
         }
 
-        // ============================================================
-        // APP INSTALLATION CHECK
-        // ============================================================
         function checkAppInstallation() {
             if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
                 isAppInstalled = true;
@@ -4618,6 +4506,7 @@
         window.showLoginPopup = showLoginPopup;
         window.closeLoginPopup = closeLoginPopup;
         window.renderLevelAchievements = renderLevelAchievements;
+        window.selectLevelForPurchase = selectLevelForPurchase;
         window.startSlider = startSlider;
         window.goToSlide = goToSlide;
         window.renderSlider = renderSlider;
