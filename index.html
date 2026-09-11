@@ -1645,11 +1645,11 @@
             </div>
         </div>
 
-        <!-- LOGIN POPUP - Fixed image -->
+        <!-- LOGIN POPUP - UPDATED WITH NEW IMAGE -->
         <div id="loginPopup" class="login-popup hidden">
             <div class="login-card">
-                <div id="loginPopupImgContainer" style="position: relative; width: 100%; min-height: 200px; background: linear-gradient(145deg, #1a0510, #2b0010); border-radius: 16px; border: 2px solid rgba(255,0,85,0.3); overflow: hidden; margin-bottom: 12px; display: flex; align-items: center; justify-content: center;">
-                    <img id="loginPopupImg" src="" alt="Welcome" style="width: 100%; height: auto; max-height: 300px; object-fit: contain; display: block;" onerror="handleLoginPopupImgError(this)" />
+                <div id="loginPopupImgContainer" style="position: relative; width: 100%; min-height: 220px; background: linear-gradient(145deg, #1a0510, #2b0010); border-radius: 16px; border: 2px solid rgba(255,0,85,0.3); overflow: hidden; margin-bottom: 12px; display: flex; align-items: center; justify-content: center;">
+                    <img id="loginPopupImg" src="" alt="Welcome" style="width: 100%; height: auto; max-height: 320px; object-fit: contain; display: block;" onerror="handleLoginPopupImgError(this)" />
                     <div id="loginPopupImgFallback" style="position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; padding: 20px;">
                         <span style="font-size: 60px;">🎉</span>
                         <h3 style="font-size: 18px; font-weight: 800; color: #22c55e; margin-top: 10px;">Welcome!</h3>
@@ -1809,7 +1809,9 @@
         const SECRET_ADMIN_KEY = "";
 
         const EXCHANGE_RATE = 100;
-        const LOGIN_POPUP_IMG = "https://i.postimg.cc/9fLKWGn1/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
+        // ⚡ UPDATED: New login popup image URL
+        const LOGIN_POPUP_IMG = "https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
+        const LOGIN_POPUP_IMG_FALLBACK = "https://i.postimg.cc/9fLKWGn1/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
         const DEFAULT_PROFILE_PHOTO = "https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png";
 
         const { Client, Databases, Storage, Account, Teams, Query, ID } = Appwrite;
@@ -1959,18 +1961,17 @@
         }
 
         // ============================================================
-        // LOGIN POPUP IMAGE HANDLER
+        // LOGIN POPUP IMAGE HANDLER — with new ImgBB image
         // ============================================================
         function handleLoginPopupImgError(img) {
             console.log('Login popup image failed, trying fallback...');
-            // Try alternative URL once
-            if (!img.dataset.retried) {
-                img.dataset.retried = 'true';
-                // Try with a different URL format
-                img.src = 'https://i.postimg.cc/9fLKWGn1/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png?t=' + Date.now();
+            // Try fallback URL once
+            if (!img.dataset.fallbackTried) {
+                img.dataset.fallbackTried = 'true';
+                img.src = LOGIN_POPUP_IMG_FALLBACK;
                 return;
             }
-            // Show fallback
+            // Show fallback UI
             img.style.display = 'none';
             const fallback = document.getElementById('loginPopupImgFallback');
             if (fallback) fallback.style.display = 'flex';
@@ -1979,20 +1980,27 @@
         function preloadLoginImage() {
             const img = new Image();
             img.onload = function() {
-                document.getElementById('loginPopupImg').src = LOGIN_POPUP_IMG;
+                const target = document.getElementById('loginPopupImg');
+                target.src = LOGIN_POPUP_IMG;
+                target.style.display = 'block';
+                document.getElementById('loginPopupImgFallback').style.display = 'none';
             };
             img.onerror = function() {
-                // Try alternative
+                // Try fallback URL
                 const img2 = new Image();
                 img2.onload = function() {
-                    document.getElementById('loginPopupImg').src = LOGIN_POPUP_IMG;
+                    const target = document.getElementById('loginPopupImg');
+                    target.src = LOGIN_POPUP_IMG_FALLBACK;
+                    target.style.display = 'block';
+                    document.getElementById('loginPopupImgFallback').style.display = 'none';
                 };
                 img2.onerror = function() {
-                    // Show fallback
-                    document.getElementById('loginPopupImg').style.display = 'none';
+                    // Show fallback UI
+                    const target = document.getElementById('loginPopupImg');
+                    target.style.display = 'none';
                     document.getElementById('loginPopupImgFallback').style.display = 'flex';
                 };
-                img2.src = LOGIN_POPUP_IMG + '?t=' + Date.now();
+                img2.src = LOGIN_POPUP_IMG_FALLBACK;
             };
             img.src = LOGIN_POPUP_IMG;
         }
@@ -2092,7 +2100,7 @@
             // Reset image state
             const img = document.getElementById('loginPopupImg');
             img.style.display = 'block';
-            img.dataset.retried = '';
+            img.dataset.fallbackTried = '';
             document.getElementById('loginPopupImgFallback').style.display = 'none';
             preloadLoginImage();
         }
@@ -2469,36 +2477,29 @@
                 const txs = parseJsonSafe(fresh.transactions, []);
                 txs.push({ type: 'deposit', amountUSD: pending.amountUSD, coinsAmount: pending.coinsAmount, receiptFileId: pending.receiptFileId, dateTime: pending.dateTime, status: 'Approved', receiptId: receiptId });
 
-                const oldTotal = parseFloat(fresh.totalPurchased || 0);
-                const newTotal = oldTotal + parseFloat(pending.amountUSD || 0);
-                const oldLevel = Math.floor(oldTotal / 1000);
-                const newLevel = Math.floor(newTotal / 1000);
+                // Note: totalPurchased is already updated on user submit
+                // But if not (legacy), we ensure it's correct
+                const currentTotal = parseFloat(fresh.totalPurchased || 0);
+                const expectedTotal = currentTotal + (currentTotal < parseFloat(pending.amountUSD) ? parseFloat(pending.amountUSD) : 0);
 
                 await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
                     coins: newCoins,
                     approved_deposit: JSON.stringify(approved),
                     pending_deposit: '',
-                    transactions: JSON.stringify(txs),
-                    totalPurchased: newTotal
+                    transactions: JSON.stringify(txs)
                 });
 
                 users[idx].coins = newCoins;
                 users[idx].approvedDeposits = approved;
                 users[idx].pendingDeposit = null;
                 users[idx].transactions = txs;
-                users[idx].totalPurchased = newTotal;
 
                 // 2% referral bonus
                 if (fresh.referredBy) {
                     await awardReferralBonusOnPurchase(fresh.referredBy, parseFloat(pending.amountUSD || 0), fresh);
                 }
 
-                // Store pending congrats level flag for user
-                if (newLevel > oldLevel) {
-                    localStorage.setItem('cx_pending_level_' + fresh.$id, String(newLevel));
-                }
-
-                showToast('✅ डिपॉजिट स्वीकृत' + (newLevel > oldLevel ? ` — L${newLevel} अचीव!` : ''), 'success');
+                showToast('✅ डिपॉजिट स्वीकृत', 'success');
                 updateAdminStats();
                 renderAdminDeposits();
             } catch (e) { console.error(e); showToast('त्रुटि', 'error'); }
@@ -3091,7 +3092,7 @@
                 await loadStakingSettings();
                 await autoUnlockMaturedStakes();
 
-                // Check for pending congrats level — show after login popup
+                // Check pending congrats level
                 const pendingLevel = localStorage.getItem('cx_pending_level_' + currentUser.$id);
                 if (pendingLevel) {
                     const lvl = parseInt(pendingLevel);
@@ -3286,7 +3287,7 @@
         }
 
         // ============================================================
-        // LEVEL ACHIEVEMENTS — auto green tick based on totalPurchased
+        // LEVEL ACHIEVEMENTS
         // ============================================================
         function renderLevelAchievements() {
             const container = document.getElementById('levelGridContainer');
@@ -3479,7 +3480,7 @@
         }
 
         // ============================================================
-        // SUBMIT DEPOSIT — IMMEDIATE level update (green tick + congrats)
+        // SUBMIT DEPOSIT — IMMEDIATE level update
         // ============================================================
         async function submitDepositRequest(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
@@ -3498,7 +3499,7 @@
                     level: selectedLevel || null
                 };
 
-                // === CRITICAL FIX: Update totalPurchased IMMEDIATELY on submit ===
+                // === CRITICAL: Update totalPurchased IMMEDIATELY on submit ===
                 const oldTotal = parseFloat(currentUser.totalPurchased || 0);
                 const newTotal = oldTotal + parseFloat(selectedPurchaseUsd || 0);
                 const oldLevel = Math.floor(oldTotal / 1000);
@@ -4102,8 +4103,6 @@
                 const loaded = await loadCurrentUserData();
                 if (loaded && !currentUser.isBlocked) {
                     await autoUnlockMaturedStakes();
-
-                    // Check pending congrats level
                     const pendingLevel = localStorage.getItem('cx_pending_level_' + currentUser.$id);
                     if (pendingLevel) {
                         const lvl = parseInt(pendingLevel);
@@ -4112,7 +4111,6 @@
                             localStorage.removeItem('cx_pending_level_' + currentUser.$id);
                         }, 1500);
                     }
-
                     showPage('dashboardPage');
                     startCooldownTimer();
                     showLoginPopup();
