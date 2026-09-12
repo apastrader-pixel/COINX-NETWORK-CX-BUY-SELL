@@ -37,6 +37,11 @@
             position: relative;
         }
 
+        @keyframes dynamicHueFlow {
+            0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
+            50%  { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
+            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
+        }
         @keyframes rainbowBorder {
             0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
             14%  { border-color: #ff00aa; box-shadow: 0 0 15px #ff00aa, inset 0 0 10px rgba(255,0,170,0.3); }
@@ -113,10 +118,21 @@
             0%   { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        @keyframes rainbowText {
+            0%   { color: #ff0055; text-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
+            14%  { color: #ff00aa; text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff00aa; }
+            28%  { color: #00f0ff; text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff; }
+            42%  { color: #22c55e; text-shadow: 0 0 15px #22c55e, 0 0 30px #22c55e; }
+            57%  { color: #f59e0b; text-shadow: 0 0 15px #f59e0b, 0 0 30px #f59e0b; }
+            71%  { color: #8b5cf6; text-shadow: 0 0 15px #8b5cf6, 0 0 30px #8b5cf6; }
+            85%  { color: #ec4899; text-shadow: 0 0 15px #ec4899, 0 0 30px #ec4899; }
+            100% { color: #ff0055; text-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
+        }
 
         .animated-hue-border { animation: rainbowBorder 6s linear infinite; }
         .wobble-btn { animation: headerWobble 3.5s ease-in-out infinite; }
         .star-spinning { animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
+        .rainbow-text { animation: rainbowText 3s linear infinite; }
 
         .glass-rose {
             background: var(--card-bg);
@@ -283,6 +299,7 @@
             transform: scale(1.2);
         }
 
+        /* ============ SLIDER ============ */
         .slider-container {
             position: relative;
             width: 100%;
@@ -1051,19 +1068,19 @@
 
     <div id="appContainer" class="w-full max-w-md mx-auto relative z-10">
 
-        <header id="mainHeader" class="w-full glass-rose py-2 px-3 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px;">
+        <header id="mainHeader" class="w-full glass-rose py-2 px-3 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px; min-height: 58px;">
             <div class="flex items-center gap-2 flex-1 min-w-0">
-                <img id="headerLogo" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover; flex-shrink: 0;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
-                <h1 id="headerTitle" class="font-extrabold text-xl tracking-wider leading-none rose-text-gradient truncate" style="font-size: 1.35rem;">SUPRIX GLOBAL 🌍</h1>
+                <img id="headerLogo" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="SupriX Global" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover; flex-shrink: 0;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                <h1 id="headerTitle" class="rainbow-text font-extrabold tracking-wider leading-none truncate" style="font-size: 1.6rem; animation: rainbowText 3s linear infinite;">SUPRIX GLOBAL 🌍</h1>
             </div>
             <div class="flex items-center gap-1 flex-shrink-0">
-                <button onclick="toggleVoice()" id="voiceToggleBtn" class="voice-toggle-btn" title="वॉइस गाइड ऑन/ऑफ" style="padding: 3px 8px; font-size: 8px;">
-                    <i class="fa-solid fa-volume-high"></i> <span id="voiceToggleLabel">ऑन</span>
+                <button onclick="toggleVoice()" id="voiceToggleBtn" class="voice-toggle-btn" title="वॉइस गाइड ऑन/ऑफ" style="padding: 3px 8px; font-size: 8px; width: 26px; height: 26px; justify-content: center;">
+                    <i class="fa-solid fa-volume-high"></i>
                 </button>
-                <a id="headerApkBtn" class="header-apk-btn web-only wobble-btn" href="#" onclick="showAppDownloadPopup(event)" title="ऐप डाउनलोड करें" style="width: 28px; height: 28px; font-size: 12px;">
+                <a id="headerApkBtn" class="header-apk-btn web-only wobble-btn" href="#" onclick="showAppDownloadPopup(event)" title="ऐप डाउनलोड करें" style="width: 26px; height: 26px; font-size: 11px;">
                     <i class="fa-solid fa-download"></i>
                 </a>
-                <button onclick="toggleAdminSearch()" class="text-rose-300/50 hover:text-rose-400 transition-all text-xs">
+                <button onclick="toggleAdminSearch()" class="text-rose-300/50 hover:text-rose-400 transition-all text-xs" style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;">
                     <i class="fa-solid fa-search"></i>
                 </button>
                 <span id="headerBadge" class="text-[7px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-1.5 py-0.5 rounded-full font-bold">User</span>
@@ -1084,7 +1101,7 @@
                 <!-- REGISTRATION -->
                 <section id="registrationPage" class="app-page w-full space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                        <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">रजिस्ट्रेशन करें</h2>
                         <p class="text-xs text-rose-300/60">SupriX Global परिवार में आपका स्वागत है</p>
                     </div>
@@ -1164,7 +1181,7 @@
                 <!-- LOGIN -->
                 <section id="loginPage" class="app-page w-full hidden space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                        <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">लॉगिन अकाउंट</h2>
                         <p class="text-xs text-rose-300/60">सुरक्षित माइनिंग डैशबोर्ड में प्रवेश करें</p>
                     </div>
@@ -1202,7 +1219,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="dashboardProfilePhoto" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                                <img id="dashboardProfilePhoto" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                             </div>
                             <div>
                                 <h4 id="userWelcomeName" class="font-bold text-sm text-white">User</h4>
@@ -1328,7 +1345,7 @@
                         <div class="flex flex-col items-center justify-center text-center space-y-2">
                             <span class="text-[11px] text-rose-300/50">स्कैन करके पेमेंट करें: <strong id="paymentUSDVal" class="text-white">$5.00 USDT</strong></span>
                             <div class="bg-white p-2 rounded-lg inline-block shadow-xl">
-                                <img id="paymentQrImage" src="https://i.postimg.cc/SRrcGvzT/Screenshot-2026-0716-065409.jpg" alt="Payment QR" class="w-32 h-32 object-contain">
+                                <img src="https://i.postimg.cc/SRrcGvzT/Screenshot-2026-0716-065409.jpg" alt="Payment QR" class="w-32 h-32 object-contain">
                             </div>
                             <div class="crypto-address-box w-full">
                                 <span class="address" id="cryptoAddressText">0x7be243182b7442D17a13e2C019f0d0174F196817</span>
@@ -1402,7 +1419,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="profilePhoto" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="Profile" class="profile-photo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                                <img id="profilePhoto" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="Profile" class="profile-photo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                                 <label for="profilePhotoInput" class="edit-icon">
                                     <i class="fa-solid fa-camera"></i>
                                 </label>
@@ -1575,7 +1592,7 @@
                         <button onclick="switchAdminTab('withdrawals')" id="adminTab-withdrawals" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Withdrawals</button>
                         <button onclick="switchAdminTab('staking')" id="adminTab-staking" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Staking</button>
                         <button onclick="switchAdminTab('referrals')" id="adminTab-referrals" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Referrals</button>
-                        <button onclick="switchAdminTab('settings')" id="adminTab-settings" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Settings</button>
+                        <button onclick="switchAdminTab('transfer')" id="adminTab-transfer" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Transfer</button>
                     </div>
                     <div id="adminSection-users" class="admin-sec space-y-3">
                         <div class="glass-rose p-4 rounded-2xl space-y-3">
@@ -1629,52 +1646,14 @@
                             <div id="adminReferralsList" class="space-y-2 text-xs max-h-[300px] overflow-y-auto"></div>
                         </div>
                     </div>
-                    <div id="adminSection-settings" class="admin-sec space-y-3 hidden">
+                    <div id="adminSection-transfer" class="admin-sec space-y-3 hidden">
                         <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <h4 class="text-xs font-bold text-rose-300/80">ऐप सेटिंग्स</h4>
+                            <h4 class="text-xs font-bold text-rose-300/80">USDT ट्रांसफर</h4>
                             <div class="grid grid-cols-2 gap-2 text-xs">
-                                <div>
-                                    <label class="block text-[10px] text-rose-300/50 mb-1">Logo URL</label>
-                                    <input type="text" id="adminLogoUrl" placeholder="Logo URL" class="col-span-2 p-2 text-xs">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] text-rose-300/50 mb-1">Header Title</label>
-                                    <input type="text" id="adminHeaderTitle" placeholder="Header Title" class="col-span-2 p-2 text-xs">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] text-rose-300/50 mb-1">USDT Address</label>
-                                    <input type="text" id="adminUsdtAddress" placeholder="USDT BEP20 Address" class="col-span-2 p-2 text-xs">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] text-rose-300/50 mb-1">Payment QR URL</label>
-                                    <input type="text" id="adminPaymentQr" placeholder="Payment QR Image URL" class="col-span-2 p-2 text-xs">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] text-rose-300/50 mb-1">Exchange Rate</label>
-                                    <input type="number" id="adminExchangeRate" placeholder="100" class="col-span-2 p-2 text-xs" value="100">
-                                </div>
-                                <button onclick="saveAppSettings()" class="col-span-2 btn-3d-rose py-2 rounded-xl text-xs">सेटिंग्स सेव करें</button>
-                            </div>
-                        </div>
-                        <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <h4 class="text-xs font-bold text-rose-300/80">स्लाइडर इमेजेस</h4>
-                            <div class="space-y-2">
-                                <div id="adminSliderImages" class="space-y-2 text-xs max-h-[200px] overflow-y-auto"></div>
-                                <div class="flex gap-2">
-                                    <input type="text" id="adminNewSliderImage" placeholder="नई इमेज URL" class="flex-1 p-2 text-xs">
-                                    <button onclick="addSliderImage()" class="btn-3d-rose px-4 py-2 rounded-xl text-xs">जोड़ें</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <h4 class="text-xs font-bold text-rose-300/80">मोटिवेशन लाइन्स</h4>
-                            <div class="space-y-2">
-                                <div id="adminMotivationLines" class="space-y-2 text-xs max-h-[200px] overflow-y-auto"></div>
-                                <div class="flex gap-2">
-                                    <input type="text" id="adminNewMotivationLine1" placeholder="लाइन 1" class="flex-1 p-2 text-xs">
-                                    <input type="text" id="adminNewMotivationLine2" placeholder="लाइन 2" class="flex-1 p-2 text-xs">
-                                    <button onclick="addMotivationLine()" class="btn-3d-rose px-4 py-2 rounded-xl text-xs">जोड़ें</button>
-                                </div>
+                                <input type="text" id="adminTransferFrom" placeholder="स्रोत SPX ID" class="col-span-2 p-2 text-xs">
+                                <input type="text" id="adminTransferTo" placeholder="लक्ष्य SPX ID" class="col-span-2 p-2 text-xs">
+                                <input type="number" id="adminTransferAmount" placeholder="USDT संख्या" class="col-span-2 p-2 text-xs">
+                                <button id="btn-admin-transfer" onclick="adminTransferUSDT(this)" class="col-span-2 btn-3d-rose py-2 rounded-xl text-xs">USDT ट्रांसफर करें</button>
                             </div>
                         </div>
                     </div>
@@ -1755,7 +1734,7 @@
         <!-- APP DOWNLOAD POPUP -->
         <div id="appDownloadPopup" class="app-popup hidden">
             <div class="app-card">
-                <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="app-logo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="app-logo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                 <h3 class="text-lg font-extrabold rose-text-gradient">SupriX Global</h3>
                 <p class="text-[10px] text-rose-300/60 mb-3">Premium • Gold Edition</p>
                 <div class="glass-rose-light p-3 rounded-xl text-left space-y-1.5 mb-4">
@@ -1820,7 +1799,7 @@
         <div id="receiptModal" class="receipt-modal hidden">
             <div class="receipt-card" id="receiptCard">
                 <div class="receipt-logo" style="text-align: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,0,85,0.1);">
-                    <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                    <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                     <small style="display: block; font-size: 9px; color: #ff99bb; letter-spacing: 2px;">Premium • Gold Edition</small>
                 </div>
                 <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 mb-3">
@@ -1932,26 +1911,24 @@
         const DATABASE_ID = "6a47b7550016c4291ab3";
         const USERS_COLLECTION_ID = "users";
         const STAKING_SETTINGS_COLLECTION_ID = "staking_plan_settings";
-        const APP_SETTINGS_COLLECTION_ID = "app_settings";
         const SCREENSHOT_BUCKET_ID = "6a47d26c00001f17b543";
         const STAKING_SETTINGS_DOC_ID = "global_config";
-        const APP_SETTINGS_DOC_ID = "global_config";
         const ADMIN_TEAM_ID = "6a4a84580012aed57e61";
         const SECRET_ADMIN_KEY = "";
 
-        let EXCHANGE_RATE = 100;
+        const EXCHANGE_RATE = 100;
 
-        // ⚡ FAST-LOADING Google Drive images using thumbnail API
+        // ⚡ Google Drive images — lh3.googleusercontent.com format (hotlink-friendly)
         function gdrive(id, size) {
             size = size || 1200;
-            return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + size;
+            return "https://lh3.googleusercontent.com/d/" + id + "=w" + size;
         }
 
         // Fallback image
         const FALLBACK_IMG = "https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
 
-        // Default Slider images (will be overridden by admin settings)
-        let SLIDER_IMAGES = [
+        // Slider images from Google Drive (24 images)
+        const SLIDER_IMAGES = [
             gdrive("1tMFYEsmqHYhHGEPuOWZYxN3Uvc-fPIms", 1200),
             gdrive("1ZTphMUqbqdg6rnJHo-cANP1dI7CatFJY", 1200),
             gdrive("1H8IpmKgrZ1w2_0eeihLKJnKbmMQqSCYx", 1200),
@@ -1978,8 +1955,32 @@
             gdrive("19zV3C_5v0UF0nCdtzb0GPa8t4pMgaqTA", 1200)
         ];
 
-        // Motivation lines (2 lines each) - will be overridden by admin
-        let MOTIVATION_LINES = [
+        // Picsum images (20 reliable id-based images)
+        const PICSUM_IMAGES = [
+            "https://picsum.photos/id/1015/1200/600",
+            "https://picsum.photos/id/1016/1200/600",
+            "https://picsum.photos/id/1018/1200/600",
+            "https://picsum.photos/id/1019/1200/600",
+            "https://picsum.photos/id/1020/1200/600",
+            "https://picsum.photos/id/1021/1200/600",
+            "https://picsum.photos/id/1022/1200/600",
+            "https://picsum.photos/id/1024/1200/600",
+            "https://picsum.photos/id/1025/1200/600",
+            "https://picsum.photos/id/1026/1200/600",
+            "https://picsum.photos/id/1027/1200/600",
+            "https://picsum.photos/id/1028/1200/600",
+            "https://picsum.photos/id/1029/1200/600",
+            "https://picsum.photos/id/1031/1200/600",
+            "https://picsum.photos/id/1032/1200/600",
+            "https://picsum.photos/id/1033/1200/600",
+            "https://picsum.photos/id/1035/1200/600",
+            "https://picsum.photos/id/1036/1200/600",
+            "https://picsum.photos/id/1037/1200/600",
+            "https://picsum.photos/id/1038/1200/600"
+        ];
+
+        // Motivation lines (2 lines each)
+        const MOTIVATION_LINES = [
             { line1: "सपने वो नहीं जो सोते हुए देखें", line2: "सपने वो हैं जो सोने न दें" },
             { line1: "मेहनत इतनी खामोशी से करो", line2: "कि कामयाबी शोर मचा दे" },
             { line1: "हार तब होती है जब", line2: "मान लिया जाए हार गए" },
@@ -1989,21 +1990,22 @@
             { line1: "मेहनत करने वालों की", line2: "कभी हार नहीं होती" },
             { line1: "कल का दिन आज से", line2: "बेहतर बनाओ" },
             { line1: "निरंतर प्रयास ही", line2: "सफलता की कुंजी है" },
-            { line1: "गिरकर उठना ही", line2: "जीवन का असली अर्थ है" }
+            { line1: "गिरकर उठना ही", line2: "जीवन का असली अर्थ है" },
+            { line1: "अपना समय बचाओ", line2: "क्योंकि यही जीवन है" },
+            { line1: "आज की मेहनत", line2: "कल का सुख देगी" },
+            { line1: "सफल होने के लिए", line2: "पहले शुरुआत करो" },
+            { line1: "जोखिम लेने से ही", line2: "जीत मिलती है" },
+            { line1: "अपने सपनों को", line2: "सच कर दिखाओ" },
+            { line1: "हर दिन एक", line2: "नया मौका है" },
+            { line1: "मन के हारे हार है", line2: "मन के जीते जीत" },
+            { line1: "छोटी शुरुआत करो", line2: "बड़े सपने देखो" },
+            { line1: "समय और अवसर", line2: "किसी का इंतजार नहीं करते" },
+            { line1: "सफलता उन्हें मिलती है", line2: "जो प्रयास करते रहते हैं" },
+            { line1: "अपने अंदर की", line2: "आग को जगाओ" },
+            { line1: "हर सुबह एक", line2: "नई उम्मीद लेकर आती है" },
+            { line1: "कठिन रास्ते ही", line2: "मंजिल तक पहुंचाते हैं" },
+            { line1: "खुद पर विश्वास", line2: "सबसे बड़ी ताकत है" }
         ];
-
-        // App settings (will be loaded from DB)
-        let appSettings = {
-            logoUrl: gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400),
-            headerTitle: "SUPRIX GLOBAL 🌍",
-            usdtAddress: "0x7be243182b7442D17a13e2C019f0d0174F196817",
-            paymentQrUrl: "https://i.postimg.cc/SRrcGvzT/Screenshot-2026-0716-065409.jpg",
-            exchangeRate: 100,
-            sliderImages: SLIDER_IMAGES,
-            motivationLines: MOTIVATION_LINES,
-            loginPopupImg: gdrive("1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn", 800),
-            welcomeImg: gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400)
-        };
 
         const LOGIN_POPUP_IMG = gdrive("1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn", 800);
         const APP_LOGO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400);
@@ -2158,51 +2160,6 @@
         }
 
         // ============================================================
-        // LOAD APP SETTINGS FROM DB
-        // ============================================================
-        async function loadAppSettings() {
-            try {
-                const doc = await databases.getDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID);
-                if (doc.logoUrl) appSettings.logoUrl = doc.logoUrl;
-                if (doc.headerTitle) appSettings.headerTitle = doc.headerTitle;
-                if (doc.usdtAddress) appSettings.usdtAddress = doc.usdtAddress;
-                if (doc.paymentQrUrl) appSettings.paymentQrUrl = doc.paymentQrUrl;
-                if (doc.exchangeRate) { appSettings.exchangeRate = parseFloat(doc.exchangeRate); EXCHANGE_RATE = parseFloat(doc.exchangeRate); }
-                if (doc.sliderImages) appSettings.sliderImages = parseJsonSafe(doc.sliderImages, SLIDER_IMAGES);
-                if (doc.motivationLines) appSettings.motivationLines = parseJsonSafe(doc.motivationLines, MOTIVATION_LINES);
-                if (doc.loginPopupImg) appSettings.loginPopupImg = doc.loginPopupImg;
-                if (doc.welcomeImg) appSettings.welcomeImg = doc.welcomeImg;
-                
-                // Apply settings to UI
-                applyAppSettings();
-            } catch (e) {
-                console.log('App settings not found, using defaults');
-            }
-        }
-
-        function applyAppSettings() {
-            // Apply logo
-            const headerLogo = document.getElementById('headerLogo');
-            if (headerLogo) headerLogo.src = appSettings.logoUrl;
-            
-            // Apply header title
-            const headerTitle = document.getElementById('headerTitle');
-            if (headerTitle) headerTitle.textContent = appSettings.headerTitle;
-            
-            // Apply USDT address
-            const cryptoAddressText = document.getElementById('cryptoAddressText');
-            if (cryptoAddressText) cryptoAddressText.textContent = appSettings.usdtAddress;
-            
-            // Apply payment QR
-            const paymentQrImage = document.getElementById('paymentQrImage');
-            if (paymentQrImage) paymentQrImage.src = appSettings.paymentQrUrl;
-            
-            // Apply slider images and motivation lines
-            SLIDER_IMAGES = appSettings.sliderImages;
-            MOTIVATION_LINES = appSettings.motivationLines;
-        }
-
-        // ============================================================
         // LOGIN POPUP IMAGE HANDLER
         // ============================================================
         function handleLoginPopupImgError(img) {
@@ -2221,7 +2178,7 @@
             const img = new Image();
             img.onload = function() {
                 const target = document.getElementById('loginPopupImg');
-                target.src = appSettings.loginPopupImg || LOGIN_POPUP_IMG;
+                target.src = LOGIN_POPUP_IMG;
                 target.style.display = 'block';
                 document.getElementById('loginPopupImgFallback').style.display = 'none';
             };
@@ -2240,7 +2197,7 @@
                 };
                 img2.src = FALLBACK_IMG;
             };
-            img.src = appSettings.loginPopupImg || LOGIN_POPUP_IMG;
+            img.src = LOGIN_POPUP_IMG;
         }
 
         // ============================================================
@@ -2272,15 +2229,12 @@
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
             const btn = document.getElementById('voiceToggleBtn');
-            const label = document.getElementById('voiceToggleLabel');
             if (voiceEnabled) {
                 btn.classList.remove('off');
-                label.innerText = 'ऑन';
                 showToast('🔊 वॉइस गाइड सक्रिय', 'info');
                 speakHindi('वॉइस गाइड सक्रिय हो गया है।');
             } else {
                 btn.classList.add('off');
-                label.innerText = 'ऑफ';
                 showToast('🔇 वॉइस गाइड बंद', 'info');
             }
         }
@@ -2423,12 +2377,10 @@
         function toggleWithdrawPopup(show) {
             document.getElementById('withdrawPopup').classList.toggle('hidden', !show);
             if (show && currentUser) {
-                // Check if there's already a pending withdrawal
                 if (currentUser.pendingWithdrawal) {
-                    const pendingMsg = '⏳ आपकी एक withdrawal पहले से pending है। 24 Hour में एक बार Withdrawal ले सकते है। Success होने के बाद फिर से withdrawal ले सकते है।';
-                    showToast('⚠️ ' + pendingMsg, 'error');
-                    showVoiceToast('⚠️ ' + pendingMsg);
-                    if (voiceEnabled) speakHindi('आपकी एक विथड्रॉवल पहले से पेंडिंग है। 24 घंटे में एक बार विथड्रॉवल ले सकते हैं। सक्सेस होने के बाद फिर से विथड्रॉवल ले सकते हैं।');
+                    const msg = 'आपकी एक withdrawal पहले से pending है 24 Hour में एक बार Withdrawal ले सकते है success होने के बाद फिर से withdrawal ले सकते है';
+                    showToast('⏳ ' + msg, 'info');
+                    if (voiceEnabled) speakHindi(msg);
                     return;
                 }
                 document.getElementById('withdrawAvailable').innerHTML =
@@ -2533,8 +2485,8 @@
             isAdminMode = false;
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
-            document.getElementById('headerTitle').innerText = appSettings.headerTitle || 'SUPRIX GLOBAL 🌍';
-            document.getElementById('headerBadge').className = 'text-[7px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-1.5 py-0.5 rounded-full font-bold';
+            document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
+            document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
             document.getElementById('headerBadge').innerHTML = 'User';
             showToast('एडमिन मोड बंद', 'info');
         }
@@ -2545,14 +2497,12 @@
                 const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.limit(500)]);
                 users = res.documents.map(mapUserDoc);
                 await loadStakingSettings();
-                await loadAppSettings();
                 updateAdminStats();
                 renderAdminUsers();
                 renderAdminDeposits();
                 renderAdminWithdrawals();
                 renderAdminStaking();
                 renderAdminReferrals();
-                renderAdminSettings();
             } catch (e) { showToast('डेटा लोड नहीं हो सका', 'error'); }
         }
 
@@ -2593,7 +2543,6 @@
             if (tab === 'withdrawals') renderAdminWithdrawals();
             if (tab === 'staking') renderAdminStaking();
             if (tab === 'referrals') renderAdminReferrals();
-            if (tab === 'settings') renderAdminSettings();
         }
 
         function renderAdminUsers() {
@@ -2652,6 +2601,35 @@
                 showToast(action === 'add' ? `${coinAmount} USDT क्रेडिट!` : `${coinAmount} USDT डेबिट!`, 'success');
                 document.getElementById('adminCoinUserId').value = '';
                 document.getElementById('adminCoinAmount').value = '';
+                updateAdminStats();
+                renderAdminUsers();
+            } catch (e) { showToast('त्रुटि!', 'error'); } finally { setButtonLoading(btn, false); }
+        }
+
+        async function adminTransferUSDT(btn) {
+            if (!isAdminMode) return;
+            const fromId = document.getElementById('adminTransferFrom').value.trim();
+            const toId = document.getElementById('adminTransferTo').value.trim();
+            const amount = parseFloat(document.getElementById('adminTransferAmount').value);
+            if (!fromId || !toId || !amount || amount <= 0) { showToast('सभी फील्ड्स भरें।', 'error'); return; }
+            if (fromId === toId) { showToast('खुद को ट्रांसफर नहीं!', 'error'); return; }
+            setButtonLoading(btn, true);
+            const fromIdx = users.findIndex(u => u.coinxId === fromId || u.email === fromId || u.$id === fromId);
+            const toIdx = users.findIndex(u => u.coinxId === toId || u.email === toId || u.$id === toId);
+            if (fromIdx === -1 || toIdx === -1) { setButtonLoading(btn, false); showToast('SPX ID नहीं मिली!', 'error'); return; }
+            const fromBal = parseFloat(users[fromIdx].coins || 0);
+            if (fromBal < amount) { setButtonLoading(btn, false); showToast('पर्याप्त USDT नहीं!', 'error'); return; }
+            const newFrom = fromBal - amount;
+            const newTo = parseFloat(users[toIdx].coins || 0) + amount;
+            try {
+                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, users[fromIdx].docId, { coins: newFrom });
+                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, users[toIdx].docId, { coins: newTo });
+                users[fromIdx].coins = newFrom;
+                users[toIdx].coins = newTo;
+                showToast(`✅ ${amount} USDT ट्रांसफर!`, 'success');
+                document.getElementById('adminTransferFrom').value = '';
+                document.getElementById('adminTransferTo').value = '';
+                document.getElementById('adminTransferAmount').value = '';
                 updateAdminStats();
                 renderAdminUsers();
             } catch (e) { showToast('त्रुटि!', 'error'); } finally { setButtonLoading(btn, false); }
@@ -2962,157 +2940,6 @@
             });
         }
 
-        function renderAdminSettings() {
-            if (!isAdminMode) return;
-            document.getElementById('adminLogoUrl').value = appSettings.logoUrl || '';
-            document.getElementById('adminHeaderTitle').value = appSettings.headerTitle || '';
-            document.getElementById('adminUsdtAddress').value = appSettings.usdtAddress || '';
-            document.getElementById('adminPaymentQr').value = appSettings.paymentQrUrl || '';
-            document.getElementById('adminExchangeRate').value = appSettings.exchangeRate || 100;
-
-            // Render slider images
-            const sliderContainer = document.getElementById('adminSliderImages');
-            sliderContainer.innerHTML = '';
-            (appSettings.sliderImages || []).forEach((img, i) => {
-                sliderContainer.innerHTML += `
-                    <div class="flex items-center gap-2 bg-black/40 p-2 rounded border border-rose-500/15">
-                        <img src="${img}" class="w-10 h-10 rounded object-cover" onerror="this.src='${FALLBACK_IMG}'">
-                        <span class="text-[9px] text-rose-300/50 flex-1 truncate">${img}</span>
-                        <button onclick="removeSliderImage(${i})" class="text-red-400 hover:text-red-300 text-xs"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-
-            // Render motivation lines
-            const motivationContainer = document.getElementById('adminMotivationLines');
-            motivationContainer.innerHTML = '';
-            (appSettings.motivationLines || []).forEach((line, i) => {
-                motivationContainer.innerHTML += `
-                    <div class="flex items-center gap-2 bg-black/40 p-2 rounded border border-rose-500/15">
-                        <div class="flex-1 text-[9px]">
-                            <div class="text-rose-300/70">${line.line1}</div>
-                            <div class="text-rose-300/50">${line.line2}</div>
-                        </div>
-                        <button onclick="removeMotivationLine(${i})" class="text-red-400 hover:text-red-300 text-xs"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        async function saveAppSettings() {
-            if (!isAdminMode) return;
-            const logoUrl = document.getElementById('adminLogoUrl').value.trim();
-            const headerTitle = document.getElementById('adminHeaderTitle').value.trim();
-            const usdtAddress = document.getElementById('adminUsdtAddress').value.trim();
-            const paymentQrUrl = document.getElementById('adminPaymentQr').value.trim();
-            const exchangeRate = parseFloat(document.getElementById('adminExchangeRate').value) || 100;
-
-            try {
-                await databases.updateDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                    logoUrl,
-                    headerTitle,
-                    usdtAddress,
-                    paymentQrUrl,
-                    exchangeRate
-                });
-                appSettings.logoUrl = logoUrl;
-                appSettings.headerTitle = headerTitle;
-                appSettings.usdtAddress = usdtAddress;
-                appSettings.paymentQrUrl = paymentQrUrl;
-                appSettings.exchangeRate = exchangeRate;
-                EXCHANGE_RATE = exchangeRate;
-                applyAppSettings();
-                showToast('✅ सेटिंग्स सेव हो गईं!', 'success');
-            } catch (e) {
-                // Try to create the document if it doesn't exist
-                try {
-                    await databases.createDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                        logoUrl,
-                        headerTitle,
-                        usdtAddress,
-                        paymentQrUrl,
-                        exchangeRate
-                    });
-                    appSettings.logoUrl = logoUrl;
-                    appSettings.headerTitle = headerTitle;
-                    appSettings.usdtAddress = usdtAddress;
-                    appSettings.paymentQrUrl = paymentQrUrl;
-                    appSettings.exchangeRate = exchangeRate;
-                    EXCHANGE_RATE = exchangeRate;
-                    applyAppSettings();
-                    showToast('✅ सेटिंग्स सेव हो गईं!', 'success');
-                } catch (e2) {
-                    showToast('सेटिंग्स सेव नहीं हो सकीं: ' + e2.message, 'error');
-                }
-            }
-        }
-
-        async function addSliderImage() {
-            if (!isAdminMode) return;
-            const url = document.getElementById('adminNewSliderImage').value.trim();
-            if (!url) { showToast('इमेज URL दर्ज करें', 'error'); return; }
-            appSettings.sliderImages = appSettings.sliderImages || [];
-            appSettings.sliderImages.push(url);
-            try {
-                await databases.updateDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                    sliderImages: JSON.stringify(appSettings.sliderImages)
-                });
-                SLIDER_IMAGES = appSettings.sliderImages;
-                document.getElementById('adminNewSliderImage').value = '';
-                renderAdminSettings();
-                renderSlider();
-                showToast('✅ स्लाइडर इमेज जोड़ी गई!', 'success');
-            } catch (e) { showToast('त्रुटि: ' + e.message, 'error'); }
-        }
-
-        async function removeSliderImage(index) {
-            if (!isAdminMode) return;
-            appSettings.sliderImages.splice(index, 1);
-            try {
-                await databases.updateDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                    sliderImages: JSON.stringify(appSettings.sliderImages)
-                });
-                SLIDER_IMAGES = appSettings.sliderImages;
-                renderAdminSettings();
-                renderSlider();
-                showToast('✅ इमेज हटाई गई!', 'success');
-            } catch (e) { showToast('त्रुटि: ' + e.message, 'error'); }
-        }
-
-        async function addMotivationLine() {
-            if (!isAdminMode) return;
-            const line1 = document.getElementById('adminNewMotivationLine1').value.trim();
-            const line2 = document.getElementById('adminNewMotivationLine2').value.trim();
-            if (!line1 || !line2) { showToast('दोनों लाइनें दर्ज करें', 'error'); return; }
-            appSettings.motivationLines = appSettings.motivationLines || [];
-            appSettings.motivationLines.push({ line1, line2 });
-            try {
-                await databases.updateDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                    motivationLines: JSON.stringify(appSettings.motivationLines)
-                });
-                MOTIVATION_LINES = appSettings.motivationLines;
-                document.getElementById('adminNewMotivationLine1').value = '';
-                document.getElementById('adminNewMotivationLine2').value = '';
-                renderAdminSettings();
-                renderSlider();
-                showToast('✅ मोटिवेशन लाइन जोड़ी गई!', 'success');
-            } catch (e) { showToast('त्रुटि: ' + e.message, 'error'); }
-        }
-
-        async function removeMotivationLine(index) {
-            if (!isAdminMode) return;
-            appSettings.motivationLines.splice(index, 1);
-            try {
-                await databases.updateDocument(DATABASE_ID, APP_SETTINGS_COLLECTION_ID, APP_SETTINGS_DOC_ID, {
-                    motivationLines: JSON.stringify(appSettings.motivationLines)
-                });
-                MOTIVATION_LINES = appSettings.motivationLines;
-                renderAdminSettings();
-                renderSlider();
-                showToast('✅ लाइन हटाई गई!', 'success');
-            } catch (e) { showToast('त्रुटि: ' + e.message, 'error'); }
-        }
-
         function exportAllUserData() {
             if (!isAdminMode || users.length === 0) { showToast('कोई डेटा नहीं', 'error'); return; }
             let csv = "Name,Email,Phone,SPX_ID,USDT_Balance,Staked_USDT,Withdrawn_USDT,TotalPurchased,Level\n";
@@ -3180,7 +3007,7 @@
                 <div class="receipt-row"><span class="label">📋 लेनदेन प्रकार</span><span class="value highlight">${typeLabel}</span></div>
                 <div class="receipt-currency-box">
                     <span class="inr-amount">₹${inrAmount}</span>
-                    <span class="inr-label">💵 इंडियन रुपये (INR) — $1 = ₹${EXCHANGE_RATE}</span>
+                    <span class="inr-label">💵 इंडियन रुपये (INR) — $1 = ₹100</span>
                     <span class="usdt-amount">${usdtDisplay} USDT</span>
                     <span class="usdt-label">💲 USDT (BEP-20)</span>
                 </div>
@@ -3273,7 +3100,7 @@
                     .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
                 </style></head><body>
                 <div class="receipt-card">
-                    <img src="${appSettings.logoUrl || APP_LOGO}" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" />
+                    <img src="${APP_LOGO}" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" />
                     ${content.innerHTML}
                 </div>
                 </body></html>
@@ -3469,7 +3296,6 @@
                 }
 
                 await loadStakingSettings();
-                await loadAppSettings();
                 await autoUnlockMaturedStakes();
 
                 const pendingLevel = localStorage.getItem('cx_pending_level_' + currentUser.$id);
@@ -3631,7 +3457,7 @@
             } else if (currentUser.profilePhoto) {
                 document.getElementById('dashboardProfilePhoto').src = currentUser.profilePhoto;
             } else {
-                document.getElementById('dashboardProfilePhoto').src = appSettings.logoUrl || DEFAULT_PROFILE_PHOTO;
+                document.getElementById('dashboardProfilePhoto').src = DEFAULT_PROFILE_PHOTO;
             }
             updateCooldownDisplay();
         }
@@ -3724,7 +3550,7 @@
         }
 
         // ============================================================
-        // MINING
+        // MINING — SPINNING 3D STAR BUTTON + VOICE
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3863,10 +3689,9 @@
 
         function selectPurchaseSlab(usd, coins) {
             if (currentUser?.pendingDeposit) {
-                const pendingMsg = '⏳ आपकी एक Deposite पहले से pending में है। Success होने के बाद फिर से deposite कर सकते है।';
-                showToast('⚠️ ' + pendingMsg, 'error');
-                showVoiceToast('⚠️ ' + pendingMsg);
-                if (voiceEnabled) speakHindi('आपकी एक डिपॉजिट पहले से पेंडिंग में है। सक्सेस होने के बाद फिर से डिपॉजिट कर सकते हैं।');
+                const msg = 'आपकी एक Deposite पहले से pending में है success होने के बाद फिर से deposite कर सकते है';
+                showToast('⏳ ' + msg, 'info');
+                if (voiceEnabled) speakHindi(msg);
                 return;
             }
             selectedPurchaseUsd = usd;
@@ -3897,14 +3722,16 @@
             reader.readAsDataURL(file);
         }
 
+        // ============================================================
+        // SUBMIT DEPOSIT
+        // ============================================================
         async function submitDepositRequest(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
             if (!uploadReceiptFile) { showToast('स्क्रीनशॉट अपलोड करें।', 'error'); return; }
             if (currentUser.pendingDeposit) {
-                const pendingMsg = '⏳ आपकी एक Deposite पहले से pending में है। Success होने के बाद फिर से deposite कर सकते है।';
-                showToast('⚠️ ' + pendingMsg, 'error');
-                showVoiceToast('⚠️ ' + pendingMsg);
-                if (voiceEnabled) speakHindi('आपकी एक डिपॉजिट पहले से पेंडिंग में है। सक्सेस होने के बाद फिर से डिपॉजिट कर सकते हैं।');
+                const msg = 'आपकी एक Deposite पहले से pending में है success होने के बाद फिर से deposite कर सकते है';
+                showToast('⏳ ' + msg, 'info');
+                if (voiceEnabled) speakHindi(msg);
                 return;
             }
             setButtonLoading(btn, true);
@@ -4091,8 +3918,8 @@
                 document.getElementById('profilePhoto').src = currentUser.profilePhoto;
                 document.getElementById('dashboardProfilePhoto').src = currentUser.profilePhoto;
             } else {
-                document.getElementById('profilePhoto').src = appSettings.logoUrl || DEFAULT_PROFILE_PHOTO;
-                document.getElementById('dashboardProfilePhoto').src = appSettings.logoUrl || DEFAULT_PROFILE_PHOTO;
+                document.getElementById('profilePhoto').src = DEFAULT_PROFILE_PHOTO;
+                document.getElementById('dashboardProfilePhoto').src = DEFAULT_PROFILE_PHOTO;
             }
 
             generateReferralQR();
@@ -4143,16 +3970,12 @@
         // ============================================================
         async function submitWithdrawal(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
-
-            // Check if there's already a pending withdrawal
             if (currentUser.pendingWithdrawal) {
-                const pendingMsg = '⏳ आपकी एक withdrawal पहले से pending है। 24 Hour में एक बार Withdrawal ले सकते है। Success होने के बाद फिर से withdrawal ले सकते है।';
-                showToast('⚠️ ' + pendingMsg, 'error');
-                showVoiceToast('⚠️ ' + pendingMsg);
-                if (voiceEnabled) speakHindi('आपकी एक विथड्रॉवल पहले से पेंडिंग है। 24 घंटे में एक बार विथड्रॉवल ले सकते हैं। सक्सेस होने के बाद फिर से विथड्रॉवल ले सकते हैं।');
+                const msg = 'आपकी एक withdrawal पहले से pending है 24 Hour में एक बार Withdrawal ले सकते है success होने के बाद फिर से withdrawal ले सकते है';
+                showToast('⏳ ' + msg, 'info');
+                if (voiceEnabled) speakHindi(msg);
                 return;
             }
-
             const address = document.getElementById('userWithdrawAddress').value.trim();
             const amount = parseFloat(document.getElementById('withdrawAmountInput').value);
             if (!address) { showToast('USDT एड्रेस पेस्ट करें।', 'error'); return; }
@@ -4172,15 +3995,12 @@
 
         async function submitCoinXWalletWithdrawal() {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
-
             if (currentUser.pendingWithdrawal) {
-                const pendingMsg = '⏳ आपकी एक withdrawal पहले से pending है। 24 Hour में एक बार Withdrawal ले सकते है। Success होने के बाद फिर से withdrawal ले सकते है।';
-                showToast('⚠️ ' + pendingMsg, 'error');
-                showVoiceToast('⚠️ ' + pendingMsg);
-                if (voiceEnabled) speakHindi('आपकी एक विथड्रॉवल पहले से पेंडिंग है। 24 घंटे में एक बार विथड्रॉवल ले सकते हैं। सक्सेस होने के बाद फिर से विथड्रॉवल ले सकते हैं।');
+                const msg = 'आपकी एक withdrawal पहले से pending है 24 Hour में एक बार Withdrawal ले सकते है success होने के बाद फिर से withdrawal ले सकते है';
+                showToast('⏳ ' + msg, 'info');
+                if (voiceEnabled) speakHindi(msg);
                 return;
             }
-
             const targetSPX = document.getElementById('coinxWalletSCAddress').value.trim();
             const amount = parseFloat(document.getElementById('coinxWalletWithdrawAmount').value);
             if (!targetSPX) { showToast('SPX ID दर्ज करें।', 'error'); return; }
@@ -4383,7 +4203,7 @@
         }
 
         // ============================================================
-        // SLIDER
+        // SLIDER — Google Drive (lh3) + Picsum (id) + Motivation Lines
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
@@ -4398,8 +4218,10 @@
                 const div = document.createElement('div');
                 div.className = 'slide-item';
                 const mot = MOTIVATION_LINES[index % MOTIVATION_LINES.length];
+                const fallbackUrl = PICSUM_IMAGES[index % PICSUM_IMAGES.length];
                 div.innerHTML = `
-                    <img src="${url}" alt="Slider ${index + 1}" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/fallback${index}/1200/600'" />
+                    <img src="${url}" alt="Slider ${index + 1}" loading="lazy"
+                         onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='${fallbackUrl}';}else{this.src='https://picsum.photos/id/${1015 + (index % 20)}/1200/600';}" />
                     <div class="slide-text">
                         <span class="line1">${mot.line1}</span>
                         <span class="line2">${mot.line2}</span>
@@ -4520,7 +4342,6 @@
         window.onload = async function() {
             initStars();
             createButterflies();
-            await loadAppSettings();
             renderSlider();
             checkAppInstallation();
             checkReferralInURL();
@@ -4528,8 +4349,7 @@
             try {
                 if (window.speechSynthesis) {
                     window.speechSynthesis.getVoices();
-                    setTimeout(() => { selectedVoice = pickVoice(); }, 500);
-                    window.speechSynthesis.onvoiceschanged = () => { selectedVoice = pickVoice(); };
+                    window.speechSynthesis.onvoiceschanged = () => {};
                 }
             } catch(e) {}
 
@@ -4651,6 +4471,7 @@
         window.printReceipt = printReceipt;
         window.toggleForgotPasswordModal = toggleForgotPasswordModal;
         window.handleForgotPassword = handleForgotPassword;
+        window.adminTransferUSDT = adminTransferUSDT;
         window.submitAdminLogin = submitAdminLogin;
         window.closeVoiceToast = closeVoiceToast;
         window.installApp = installApp;
@@ -4674,11 +4495,6 @@
         window.startSlider = startSlider;
         window.goToSlide = goToSlide;
         window.renderSlider = renderSlider;
-        window.saveAppSettings = saveAppSettings;
-        window.addSliderImage = addSliderImage;
-        window.removeSliderImage = removeSliderImage;
-        window.addMotivationLine = addMotivationLine;
-        window.removeMotivationLine = removeMotivationLine;
     </script>
     <script>
         if ('serviceWorker' in navigator) {
