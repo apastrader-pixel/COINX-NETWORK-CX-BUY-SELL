@@ -64,6 +64,10 @@
             50%  { transform: rotate(180deg) scale(1.12); filter: drop-shadow(0 0 35px #00f0ff); }
             100% { transform: rotate(360deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
         }
+        @keyframes spinContinuous {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         @keyframes floatButterfly {
             0%   { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.08; }
             25%  { transform: translate(80px, -120px) rotate(12deg) scale(1.1); opacity: 0.3; }
@@ -98,6 +102,21 @@
             0% { transform: scale(0) rotate(-180deg); opacity: 0; }
             60% { transform: scale(1.4) rotate(10deg); opacity: 1; }
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        @keyframes miningSpinGlow {
+            0%   { transform: rotate(0deg); box-shadow: 0 0 40px #ff0055, 0 0 80px #ff00aa, inset 0 0 30px rgba(255,0,85,0.8); }
+            25%  { box-shadow: 0 0 60px #00f0ff, 0 0 100px #00f0ff, inset 0 0 40px rgba(0,240,255,0.8); }
+            50%  { transform: rotate(180deg); box-shadow: 0 0 60px #22c55e, 0 0 100px #22c55e, inset 0 0 40px rgba(34,197,94,0.8); }
+            75%  { box-shadow: 0 0 60px #f59e0b, 0 0 100px #f59e0b, inset 0 0 40px rgba(245,158,11,0.8); }
+            100% { transform: rotate(360deg); box-shadow: 0 0 40px #ff0055, 0 0 80px #ff00aa, inset 0 0 30px rgba(255,0,85,0.8); }
+        }
+        @keyframes miningPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        @keyframes ringRotate {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .animated-hue-border { animation: rainbowBorder 6s linear infinite; }
@@ -138,17 +157,86 @@
             box-shadow: 0 0px 0 #59001a, 0 4px 10px rgba(255, 0, 85, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
         }
 
+        /* ============================================================
+           NEW 3D MINING STAR BUTTON DESIGN
+           ============================================================ */
         .mining-btn-3d {
+            position: relative;
             background: radial-gradient(circle at 30% 30%, #ff4d88, #ff0055, #660022);
-            border: 4px solid #ff6699;
-            box-shadow: 0 0 40px var(--rose-primary), inset 0 0 20px var(--rose-glow), 0 12px 0 #4d0016;
+            border: 5px solid #ff6699;
+            box-shadow: 0 0 50px var(--rose-primary), inset 0 0 30px var(--rose-glow), 0 14px 0 #4d0016;
             border-radius: 50%;
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            overflow: visible;
         }
         .mining-btn-3d:active {
             transform: translateY(10px) scale(0.95);
             box-shadow: 0 0 20px var(--rose-primary), inset 0 0 20px var(--rose-glow), 0 0px 0 #4d0016;
+        }
+        .mining-btn-3d .mining-ring {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 3px dashed rgba(255, 102, 153, 0.6);
+            pointer-events: none;
+            animation: ringRotate 4s linear infinite;
+        }
+        .mining-btn-3d .mining-ring-2 {
+            position: absolute;
+            inset: -22px;
+            border-radius: 50%;
+            border: 2px dotted rgba(0, 240, 255, 0.4);
+            pointer-events: none;
+            animation: ringRotate 6s linear infinite reverse;
+        }
+        .mining-btn-3d .mining-star-icon {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .mining-btn-3d .mining-star-icon i {
+            font-size: 3.5rem;
+            color: #ffe4ef;
+            text-shadow: 0 0 30px #ff0055, 0 0 60px #ff00aa, 0 0 90px #00f0ff;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.9));
+        }
+        .mining-btn-3d .mining-inner-glow {
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15), transparent 70%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .mining-btn-3d .mining-pulse-ring {
+            position: absolute;
+            inset: -30px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 0, 85, 0.4);
+            pointer-events: none;
+            animation: miningPulse 2s ease-in-out infinite;
+        }
+        .mining-btn-3d.spinning {
+            animation: miningSpinGlow 1.2s linear infinite;
+        }
+        .mining-btn-3d.spinning .mining-ring {
+            animation: ringRotate 0.8s linear infinite;
+        }
+        .mining-btn-3d.spinning .mining-ring-2 {
+            animation: ringRotate 1.2s linear infinite reverse;
+        }
+        .mining-btn-3d.spinning .mining-star-icon i {
+            animation: spinContinuous 0.8s linear infinite;
+            color: #ffffff;
+            text-shadow: 0 0 40px #00f0ff, 0 0 80px #ff00aa, 0 0 120px #22c55e;
+        }
+        .mining-btn-3d.spinning .mining-pulse-ring {
+            animation: miningPulse 0.6s ease-in-out infinite;
         }
 
         #starsCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
@@ -959,6 +1047,7 @@
             .withdraw-popup .withdraw-card { padding: 18px 14px; }
             .app-popup .app-card { padding: 20px 16px; }
             .congrats-popup .congrats-card { padding: 24px 18px; }
+            .mining-btn-3d .mining-star-icon i { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -972,7 +1061,7 @@
 
         <header id="mainHeader" class="w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px;">
             <div class="flex items-center gap-2">
-                <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover;" />
+                <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="SupriX Global" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover;" />
                 <div>
                     <h1 id="headerTitle" class="font-extrabold text-sm tracking-wider leading-none rose-text-gradient">SUPRIX GLOBAL</h1>
                     <span id="headerSubtitle" class="text-[8px] text-rose-300/60">Premium • Gold Edition</span>
@@ -1007,7 +1096,7 @@
                 <!-- REGISTRATION -->
                 <section id="registrationPage" class="app-page w-full space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" />
+                        <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">रजिस्ट्रेशन करें</h2>
                         <p class="text-xs text-rose-300/60">SupriX Global परिवार में आपका स्वागत है</p>
                     </div>
@@ -1087,7 +1176,7 @@
                 <!-- LOGIN -->
                 <section id="loginPage" class="app-page w-full hidden space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" />
+                        <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">लॉगिन अकाउंट</h2>
                         <p class="text-xs text-rose-300/60">सुरक्षित माइनिंग डैशबोर्ड में प्रवेश करें</p>
                     </div>
@@ -1125,7 +1214,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="dashboardProfilePhoto" src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" />
+                                <img id="dashboardProfilePhoto" src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" />
                             </div>
                             <div>
                                 <h4 id="userWelcomeName" class="font-bold text-sm text-white">User</h4>
@@ -1163,10 +1252,15 @@
                             <h3 class="text-sm font-bold tracking-wider text-rose-300/80 uppercase">🌟 माइनिंग रिवॉर्ड स्टार</h3>
                             <p class="text-[11px] text-rose-300/50">डेली 0.5% कॉइन रिलीज — कम से कम 10 USDT स्टेक करें</p>
                         </div>
-                        <button id="miningStarBtn" onclick="triggerMiningReward(this)" class="w-32 h-32 rounded-full mining-btn-3d flex items-center justify-center relative group">
-                            <div class="absolute inset-2 bg-black/40 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                <i class="fa-solid fa-star text-5xl text-rose-300 drop-shadow-[0_0_30px_rgba(255,0,85,0.8)]"></i>
-                            </div>
+                        <!-- NEW 3D MINING STAR BUTTON -->
+                        <button id="miningStarBtn" onclick="triggerMiningReward(this)" class="w-36 h-36 rounded-full mining-btn-3d flex items-center justify-center relative group">
+                            <span class="mining-pulse-ring"></span>
+                            <span class="mining-ring"></span>
+                            <span class="mining-ring-2"></span>
+                            <span class="mining-inner-glow"></span>
+                            <span class="mining-star-icon">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
                         </button>
                         <div class="w-full bg-black/40 rounded-xl p-3 border border-rose-500/20 space-y-1">
                             <div id="miningTimerText" class="text-xs text-rose-300 font-semibold tracking-wide flex items-center justify-center gap-2">
@@ -1321,7 +1415,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="profilePhoto" src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="Profile" class="profile-photo" />
+                                <img id="profilePhoto" src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="Profile" class="profile-photo" />
                                 <label for="profilePhotoInput" class="edit-icon">
                                     <i class="fa-solid fa-camera"></i>
                                 </label>
@@ -1332,23 +1426,34 @@
                                 <p id="profileEmail" class="text-[10px] text-rose-300/50">user@example.com</p>
                             </div>
                         </div>
-                        <div class="text-right flex flex-col items-end">
-                            <span class="text-[9px] text-rose-300/40">रेफरल कोड:</span>
-                            <span id="profileReferralCode" class="text-xs font-bold text-rose-400 uppercase select-all font-mono">SPX-XXXX</span>
-                            <button onclick="copyToClipboard('profileReferralCode', '✅ रेफरल कोड कॉपी!')" class="copy-btn-sm mt-0.5">
-                                <i class="fa-solid fa-copy mr-1"></i> कॉपी
-                            </button>
-                        </div>
                     </div>
 
-                    <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
-                        <div>
-                            <span style="font-size: 9px; color: #ff99bb; display: block;">🆔 आपकी Unique SPX ID</span>
-                            <span id="profileCoinXIdDisplay" style="font-size: 14px; font-weight: 800; color: #ff6699; letter-spacing: 1px; font-family: monospace;">SPX123456789</span>
+                    <!-- SPX ID & Referral Code Section -->
+                    <div class="glass-rose p-4 rounded-2xl space-y-3">
+                        <h4 class="text-xs font-bold text-rose-400"><i class="fa-solid fa-id-card mr-1.5"></i> आपकी जानकारी</h4>
+                        
+                        <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
+                            <div>
+                                <span style="font-size: 9px; color: #ff99bb; display: block;">🆔 SPX ID</span>
+                                <span id="profileCoinXIdDisplay" style="font-size: 14px; font-weight: 800; color: #ff6699; letter-spacing: 1px; font-family: monospace;">SPX123456789</span>
+                            </div>
+                            <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                         </div>
-                        <div class="flex flex-col gap-1">
-                            <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> SPX ID</button>
-                            <button onclick="copyToClipboard('profileEmail', '✅ Email कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> Email</button>
+
+                        <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
+                            <div>
+                                <span style="font-size: 9px; color: #ff99bb; display: block;">📧 ईमेल</span>
+                                <span id="profileEmailDisplay" style="font-size: 13px; font-weight: 700; color: #60a5fa; font-family: monospace; word-break: break-all;">user@example.com</span>
+                            </div>
+                            <button onclick="copyToClipboard('profileEmailDisplay', '✅ ईमेल कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
+                        </div>
+
+                        <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
+                            <div>
+                                <span style="font-size: 9px; color: #ff99bb; display: block;">🎁 रेफरल कोड</span>
+                                <span id="profileReferralCode" style="font-size: 14px; font-weight: 800; color: #22c55e; letter-spacing: 1px; font-family: monospace;">SPX-XXXX</span>
+                            </div>
+                            <button onclick="copyToClipboard('profileReferralCode', '✅ रेफरल कोड कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                         </div>
                     </div>
 
@@ -1626,7 +1731,7 @@
         <!-- APP DOWNLOAD POPUP -->
         <div id="appDownloadPopup" class="app-popup hidden">
             <div class="app-card">
-                <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" class="app-logo" />
+                <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="SupriX Global" class="app-logo" />
                 <h3 class="text-lg font-extrabold rose-text-gradient">SupriX Global</h3>
                 <p class="text-[10px] text-rose-300/60 mb-3">Premium • Gold Edition</p>
                 <div class="glass-rose-light p-3 rounded-xl text-left space-y-1.5 mb-4">
@@ -1691,7 +1796,7 @@
         <div id="receiptModal" class="receipt-modal hidden">
             <div class="receipt-card" id="receiptCard">
                 <div class="receipt-logo" style="text-align: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,0,85,0.1);">
-                    <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" />
+                    <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" />
                     <small style="display: block; font-size: 9px; color: #ff99bb; letter-spacing: 2px;">Premium • Gold Edition</small>
                 </div>
                 <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 mb-3">
@@ -1809,10 +1914,95 @@
         const SECRET_ADMIN_KEY = "";
 
         const EXCHANGE_RATE = 100;
-        // ⚡ UPDATED: New login popup image URL
-        const LOGIN_POPUP_IMG = "https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
-        const LOGIN_POPUP_IMG_FALLBACK = "https://i.postimg.cc/9fLKWGn1/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
-        const DEFAULT_PROFILE_PHOTO = "https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png";
+
+        // ⚡ Google Drive image helper
+        function gdrive(id) {
+            return "https://drive.google.com/uc?export=view&id=" + id;
+        }
+
+        // Slider images from Google Drive
+        const SLIDER_IMAGES = [
+            gdrive("1tMFYEsmqHYhHGEPuOWZYxN3Uvc-fPIms"),
+            gdrive("1ZTphMUqbqdg6rnJHo-cANP1dI7CatFJY"),
+            gdrive("1H8IpmKgrZ1w2_0eeihLKJnKbmMQqSCYx"),
+            gdrive("1nvnVYmmBFm5nz70lu-VYraOqCYM9nc8g"),
+            gdrive("1diX9lFaPttIDlc4raTZbDxtoDZSqIpEr"),
+            gdrive("1KdEpzSxcPwQUQnxj9Tb3B_0HQXyPUS4T"),
+            gdrive("1H2OYhHKYqlni-rCfJYZ2wOQd22SUtyq9"),
+            gdrive("1_OtKPZVqjU1FO6Ieh-nmFNbF0Ts7mJXU"),
+            gdrive("1bt8ww38Sde73gcqgXVBR2p5s1Hb4qPbt"),
+            gdrive("18G1FM5yI7CIqdoeVNrcUq9onKuR4zBBO"),
+            gdrive("1bzY8FJUbLi2VZodZY-rewlZBJ45GsdKG"),
+            gdrive("1eUZKi4feh5YnOk_qqnYxxZ8h0AFz_1Eb"),
+            gdrive("10fx4aUjwmH4zblZKyAiuZBh1ak2cBZ-W"),
+            gdrive("1bSPmRRpAmn7erYhGCFjGC3nQOWvG209N"),
+            gdrive("1kpAKSldSqDfLPlDluliHzrIU_RH920Zo"),
+            gdrive("1c-_wmM5EqIww0E_MiiyVvbSRfYrY0HrM"),
+            gdrive("1WVKVQfvXmcpIzADoFREOZUGDAuYR5LL_"),
+            gdrive("1FGIZulpAAbL6_i0crlrV5uGAXv1tZ_0x"),
+            gdrive("1mLdGrjpgQu62NSjfzNcHNccBbei496MB"),
+            gdrive("1bdizOzWqEFBIKFU_yExIaUF-1XrkjVJR"),
+            gdrive("1fvlPulALOU4EEaVUHELQhFkeXiO5x760"),
+            gdrive("1SKGy8B8zGLq9iIB9cmwgl78jCdtkmDD4"),
+            gdrive("1MBf_VbO3LVvCAKVPM6qPeOFWuTLshYrm"),
+            gdrive("19zV3C_5v0UF0nCdtzb0GPa8t4pMgaqTA")
+        ];
+
+        // Picsum images for extra slides (20 images)
+        const PICSUM_IMAGES = [
+            "https://picsum.photos/seed/gold1/1200/600",
+            "https://picsum.photos/seed/gold2/1200/600",
+            "https://picsum.photos/seed/gold3/1200/600",
+            "https://picsum.photos/seed/gold4/1200/600",
+            "https://picsum.photos/seed/gold5/1200/600",
+            "https://picsum.photos/seed/gold6/1200/600",
+            "https://picsum.photos/seed/gold7/1200/600",
+            "https://picsum.photos/seed/gold8/1200/600",
+            "https://picsum.photos/seed/gold9/1200/600",
+            "https://picsum.photos/seed/gold10/1200/600",
+            "https://picsum.photos/seed/gold11/1200/600",
+            "https://picsum.photos/seed/gold12/1200/600",
+            "https://picsum.photos/seed/gold13/1200/600",
+            "https://picsum.photos/seed/gold14/1200/600",
+            "https://picsum.photos/seed/gold15/1200/600",
+            "https://picsum.photos/seed/gold16/1200/600",
+            "https://picsum.photos/seed/gold17/1200/600",
+            "https://picsum.photos/seed/gold18/1200/600",
+            "https://picsum.photos/seed/gold19/1200/600",
+            "https://picsum.photos/seed/gold20/1200/600"
+        ];
+
+        // Motivation lines (2 lines each)
+        const MOTIVATION_LINES = [
+            { line1: "सपने वो नहीं जो सोते हुए देखें", line2: "सपने वो हैं जो सोने न दें" },
+            { line1: "मेहनत इतनी खामोशी से करो", line2: "कि कामयाबी शोर मचा दे" },
+            { line1: "हार तब होती है जब", line2: "मान लिया जाए हार गए" },
+            { line1: "जो आज तकलीफ देता है", line2: "वही कल ताकत देता है" },
+            { line1: "सफलता की कोई लिफ्ट नहीं है", line2: "सीढ़ियों से ही चढ़ना पड़ता है" },
+            { line1: "अपने आप पर विश्वास रखो", line2: "सब कुछ संभव है" },
+            { line1: "मेहनत करने वालों की", line2: "कभी हार नहीं होती" },
+            { line1: "कल का दिन आज से", line2: "बेहतर बनाओ" },
+            { line1: "निरंतर प्रयास ही", line2: "सफलता की कुंजी है" },
+            { line1: "गिरकर उठना ही", line2: "जीवन का असली अर्थ है" },
+            { line1: "अपना समय बचाओ", line2: "क्योंकि यही जीवन है" },
+            { line1: "आज की मेहनत", line2: "कल का सुख देगी" },
+            { line1: "सफल होने के लिए", line2: "पहले शुरुआत करो" },
+            { line1: "जोखिम लेने से ही", line2: "जीत मिलती है" },
+            { line1: "अपने सपनों को", line2: "सच कर दिखाओ" },
+            { line1: "हर दिन एक", line2: "नया मौका है" },
+            { line1: "मन के हारे हार है", line2: "मन के जीते जीत" },
+            { line1: "छोटी शुरुआत करो", line2: "बड़े सपने देखो" },
+            { line1: "समय और अवसर", line2: "किसी का इंतजार नहीं करते" },
+            { line1: "सफलता उन्हें मिलती है", line2: "जो प्रयास करते रहते हैं" },
+            { line1: "अपने अंदर की", line2: "आग को जगाओ" },
+            { line1: "हर सुबह एक", line2: "नई उम्मीद लेकर आती है" },
+            { line1: "कठिन रास्ते ही", line2: "मंजिल तक पहुंचाते हैं" },
+            { line1: "खुद पर विश्वास", line2: "सबसे बड़ी ताकत है" }
+        ];
+
+        const LOGIN_POPUP_IMG = gdrive("1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn");
+        const APP_LOGO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR");
+        const DEFAULT_PROFILE_PHOTO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR");
 
         const { Client, Databases, Storage, Account, Teams, Query, ID } = Appwrite;
         const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT_ID);
@@ -1850,6 +2040,7 @@
         let sliderIndex = 0;
         let sliderInterval = null;
         let sliderAnimating = false;
+        let miningSpinning = false;
 
         // ============================================================
         // UTILS
@@ -1961,17 +2152,15 @@
         }
 
         // ============================================================
-        // LOGIN POPUP IMAGE HANDLER — with new ImgBB image
+        // LOGIN POPUP IMAGE HANDLER
         // ============================================================
         function handleLoginPopupImgError(img) {
             console.log('Login popup image failed, trying fallback...');
-            // Try fallback URL once
             if (!img.dataset.fallbackTried) {
                 img.dataset.fallbackTried = 'true';
-                img.src = LOGIN_POPUP_IMG_FALLBACK;
+                img.src = "https://drive.google.com/uc?export=view&id=1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn";
                 return;
             }
-            // Show fallback UI
             img.style.display = 'none';
             const fallback = document.getElementById('loginPopupImgFallback');
             if (fallback) fallback.style.display = 'flex';
@@ -1986,21 +2175,19 @@
                 document.getElementById('loginPopupImgFallback').style.display = 'none';
             };
             img.onerror = function() {
-                // Try fallback URL
                 const img2 = new Image();
                 img2.onload = function() {
                     const target = document.getElementById('loginPopupImg');
-                    target.src = LOGIN_POPUP_IMG_FALLBACK;
+                    target.src = "https://drive.google.com/uc?export=view&id=1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn";
                     target.style.display = 'block';
                     document.getElementById('loginPopupImgFallback').style.display = 'none';
                 };
                 img2.onerror = function() {
-                    // Show fallback UI
                     const target = document.getElementById('loginPopupImg');
                     target.style.display = 'none';
                     document.getElementById('loginPopupImgFallback').style.display = 'flex';
                 };
-                img2.src = LOGIN_POPUP_IMG_FALLBACK;
+                img2.src = "https://drive.google.com/uc?export=view&id=1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn";
             };
             img.src = LOGIN_POPUP_IMG;
         }
@@ -2097,7 +2284,6 @@
         function showLoginPopup() {
             const popup = document.getElementById('loginPopup');
             popup.classList.remove('hidden');
-            // Reset image state
             const img = document.getElementById('loginPopupImg');
             img.style.display = 'block';
             img.dataset.fallbackTried = '';
@@ -2127,7 +2313,7 @@
         }
 
         // ============================================================
-        // VOICE
+        // VOICE — Google Gemini Bold Female Voice
         // ============================================================
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
@@ -2144,17 +2330,30 @@
             }
         }
 
+        // Google Gemini Bold Female Voice Guide
         function speakHindi(text, callback) {
             if (!voiceEnabled) { if (callback) callback(); return; }
             try {
+                window.speechSynthesis.cancel();
                 const speech = new SpeechSynthesisUtterance(text);
                 speech.lang = 'hi-IN';
-                speech.rate = 0.85;
-                speech.pitch = 1.2;
+                speech.rate = 0.92;
+                speech.pitch = 1.45;
                 speech.volume = 1;
                 const voices = window.speechSynthesis.getVoices();
-                const femaleVoice = voices.find(v => v.lang === 'hi-IN' && (v.name.includes('Female') || v.name.includes('Google हिन्दी')));
-                if (femaleVoice) speech.voice = femaleVoice;
+                // Prioritize Google Gemini-like bold female Hindi voices
+                let selectedVoice = null;
+                // 1. Google हिन्दी (Google's Hindi voice - bold female)
+                selectedVoice = voices.find(v => v.lang === 'hi-IN' && v.name.includes('Google'));
+                // 2. Microsoft Swara (Indian female)
+                if (!selectedVoice) selectedVoice = voices.find(v => v.name.includes('Swara'));
+                // 3. Any Hindi female voice
+                if (!selectedVoice) selectedVoice = voices.find(v => v.lang === 'hi-IN' && v.name.toLowerCase().includes('female'));
+                // 4. Any Hindi voice
+                if (!selectedVoice) selectedVoice = voices.find(v => v.lang === 'hi-IN');
+                // 5. Any Indian English female
+                if (!selectedVoice) selectedVoice = voices.find(v => v.lang === 'en-IN' && v.name.toLowerCase().includes('female'));
+                if (selectedVoice) speech.voice = selectedVoice;
                 window.speechSynthesis.speak(speech);
                 if (callback) setTimeout(callback, Math.max(2500, text.length * 70));
             } catch (e) { if (callback) callback(); }
@@ -2477,11 +2676,6 @@
                 const txs = parseJsonSafe(fresh.transactions, []);
                 txs.push({ type: 'deposit', amountUSD: pending.amountUSD, coinsAmount: pending.coinsAmount, receiptFileId: pending.receiptFileId, dateTime: pending.dateTime, status: 'Approved', receiptId: receiptId });
 
-                // Note: totalPurchased is already updated on user submit
-                // But if not (legacy), we ensure it's correct
-                const currentTotal = parseFloat(fresh.totalPurchased || 0);
-                const expectedTotal = currentTotal + (currentTotal < parseFloat(pending.amountUSD) ? parseFloat(pending.amountUSD) : 0);
-
                 await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
                     coins: newCoins,
                     approved_deposit: JSON.stringify(approved),
@@ -2494,7 +2688,6 @@
                 users[idx].pendingDeposit = null;
                 users[idx].transactions = txs;
 
-                // 2% referral bonus
                 if (fresh.referredBy) {
                     await awardReferralBonusOnPurchase(fresh.referredBy, parseFloat(pending.amountUSD || 0), fresh);
                 }
@@ -2898,7 +3091,7 @@
                     .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
                 </style></head><body>
                 <div class="receipt-card">
-                    <img src="https://i.postimg.cc/8PrDtLc2/file-00000000e6508211a748edb691eaf455.png" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" />
+                    <img src="https://drive.google.com/uc?export=view&id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" />
                     ${content.innerHTML}
                 </div>
                 </body></html>
@@ -3092,7 +3285,6 @@
                 await loadStakingSettings();
                 await autoUnlockMaturedStakes();
 
-                // Check pending congrats level
                 const pendingLevel = localStorage.getItem('cx_pending_level_' + currentUser.$id);
                 if (pendingLevel) {
                     const lvl = parseInt(pendingLevel);
@@ -3338,7 +3530,7 @@
         }
 
         // ============================================================
-        // MINING
+        // MINING — NEW SPINNING 3D STAR BUTTON
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3359,7 +3551,10 @@
                 showVoiceToast(msg);
                 return;
             }
-            if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; btn.style.cursor = 'not-allowed'; }
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('spinning');
+            }
             try {
                 const reward = staked * 0.005;
                 const newCoins = parseFloat(currentUser.coins || 0) + reward;
@@ -3378,12 +3573,22 @@
                 if (voiceEnabled) speakHindi(`बधाई हो! आपका आज का डेली रिवॉर्ड ${reward.toFixed(2)} यूएसडीटी सफलतापूर्वक जोड़ा गया।`);
                 showToast(`✅ ${reward.toFixed(2)} USDT रिवॉर्ड!`, 'success');
                 openReceipt({ type: 'daily', coinsAmount: reward, dateTime: new Date().toLocaleString('hi-IN'), status: 'SUCCESS', receiptId: receiptId, network: 'USDT BEP20' });
+                // Keep spinning for a moment after success
+                setTimeout(() => {
+                    if (btn) {
+                        btn.classList.remove('spinning');
+                        btn.disabled = false;
+                    }
+                }, 3000);
             } catch (e) {
                 console.error('Mining reward error:', e);
                 showVoiceToast('क्षमा करें, डेली रिवॉर्ड नहीं मिल सका।');
                 showToast('❌ त्रुटि: ' + (e.message || ''), 'error');
+                if (btn) {
+                    btn.classList.remove('spinning');
+                    btn.disabled = false;
+                }
             } finally {
-                if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; }
                 updateCooldownDisplay();
             }
         }
@@ -3480,7 +3685,7 @@
         }
 
         // ============================================================
-        // SUBMIT DEPOSIT — IMMEDIATE level update
+        // SUBMIT DEPOSIT
         // ============================================================
         async function submitDepositRequest(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
@@ -3499,7 +3704,6 @@
                     level: selectedLevel || null
                 };
 
-                // === CRITICAL: Update totalPurchased IMMEDIATELY on submit ===
                 const oldTotal = parseFloat(currentUser.totalPurchased || 0);
                 const newTotal = oldTotal + parseFloat(selectedPurchaseUsd || 0);
                 const oldLevel = Math.floor(oldTotal / 1000);
@@ -3510,7 +3714,6 @@
                     totalPurchased: newTotal
                 });
 
-                // Reset purchase form
                 uploadReceiptFile = null;
                 document.getElementById('purchaseScreenshotName').innerText = 'अपलोड इमेज';
                 document.getElementById('purchaseScreenshotPreview').classList.add('hidden');
@@ -3520,7 +3723,6 @@
                 document.getElementById('purchaseScreenshotFile').value = '';
                 hidePaymentCard();
 
-                // Update level grid immediately
                 if (document.getElementById('profilePage') && !document.getElementById('profilePage').classList.contains('hidden')) {
                     renderLevelAchievements();
                 }
@@ -3529,7 +3731,6 @@
                 showToast('✅ पेमेंट रिक्वेस्ट भेजी गई!' + (newLevel > oldLevel ? ` — L${newLevel} अचीव!` : ''), 'success');
                 if (voiceEnabled) speakHindi('आपकी डिपॉजिट रिक्वेस्ट सफलतापूर्वक भेजी गई।');
 
-                // Show Congratulations popup for new level
                 if (newLevel > oldLevel) {
                     setTimeout(() => {
                         showCongratsPopup(newLevel, newLevel * 1000);
@@ -3656,6 +3857,7 @@
             document.getElementById('profileName').innerText = currentUser.name || 'User';
             document.getElementById('profileEmail').innerText = currentUser.email || '';
             document.getElementById('profileCoinXIdDisplay').innerText = currentUser.coinxId || 'N/A';
+            document.getElementById('profileEmailDisplay').innerText = currentUser.email || 'N/A';
             const ref = currentUser.$id;
             document.getElementById('profileReferralCode').innerText = ref;
             document.getElementById('referralShareLink').innerText = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
@@ -3940,51 +4142,34 @@
         }
 
         // ============================================================
-        // SLIDER
+        // SLIDER — Google Drive + Picsum + Motivation Lines
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
             const dots = document.getElementById('sliderDots');
             if (!track) return;
-            const slides = [
-                { url: "https://i.postimg.cc/wjhyLnjg/file-00000000046c81fa82b937d92b84ceab.png", text1: "सपने वो नहीं जो सोते हुए देखें", text2: "सपने वो हैं जो सोने न दें" },
-                { url: "https://i.postimg.cc/jSKyjyHs/1789022975997.png", text1: "मेहनत इतनी खामोशी से करो", text2: "कि कामयाबी शोर मचा दे" },
-                { url: "https://i.postimg.cc/SxqcKc60/1789023100893.png", text1: "हार तब होती है जब", text2: "मान लिया जाए हार गए" },
-                { url: "https://i.postimg.cc/W41RgjYJ/IMG-20260910-121325.png", text1: "जो आज तकलीफ देता है", text2: "वही कल ताकत देता है" },
-                { url: "https://i.postimg.cc/g2D8Lrsr/IMG-20260910-121405.png", text1: "सफलता की कोई लिफ्ट नहीं है", text2: "सीढ़ियों से ही चढ़ना पड़ता है" },
-                { url: "https://i.postimg.cc/fRZYbYx5/IMG-20260910-123036.png", text1: "अपने आप पर विश्वास रखो", text2: "सब कुछ संभव है" },
-                { url: "https://picsum.photos/seed/gold1/1200/600", text1: "मेहनत करने वालों की", text2: "कभी हार नहीं होती" },
-                { url: "https://picsum.photos/seed/gold2/1200/600", text1: "कल का दिन आज से", text2: "बेहतर बनाओ" },
-                { url: "https://picsum.photos/seed/gold3/1200/600", text1: "निरंतर प्रयास ही", text2: "सफलता की कुंजी है" },
-                { url: "https://picsum.photos/seed/gold4/1200/600", text1: "गिरकर उठना ही", text2: "जीवन का असली अर्थ है" },
-                { url: "https://picsum.photos/seed/gold5/1200/600", text1: "अपना समय बचाओ", text2: "क्योंकि यही जीवन है" },
-                { url: "https://picsum.photos/seed/gold6/1200/600", text1: "आज की मेहनत", text2: "कल का सुख देगी" },
-                { url: "https://picsum.photos/seed/gold7/1200/600", text1: "सफल होने के लिए", text2: "पहले शुरुआत करो" },
-                { url: "https://picsum.photos/seed/gold8/1200/600", text1: "जोखिम लेने से ही", text2: "जीत मिलती है" },
-                { url: "https://picsum.photos/seed/gold9/1200/600", text1: "अपने सपनों को", text2: "सच कर दिखाओ" },
-                { url: "https://picsum.photos/seed/gold10/1200/600", text1: "हर दिन एक", text2: "नया मौका है" },
-                { url: "https://picsum.photos/seed/gold11/1200/600", text1: "मन के हारे हार है", text2: "मन के जीते जीत" },
-                { url: "https://picsum.photos/seed/gold12/1200/600", text1: "छोटी शुरुआत करो", text2: "बड़े सपने देखो" },
-                { url: "https://picsum.photos/seed/gold13/1200/600", text1: "समय और अवसर", text2: "किसी का इंतजार नहीं करते" },
-                { url: "https://picsum.photos/seed/gold14/1200/600", text1: "सफलता उन्हें मिलती है", text2: "जो प्रयास करते रहते हैं" },
-                { url: "https://picsum.photos/seed/gold15/1200/600", text1: "अपने अंदर की", text2: "आग को जगाओ" }
-            ];
+
+            const allImages = [...SLIDER_IMAGES, ...PICSUM_IMAGES];
+            const totalSlides = allImages.length;
+
             track.innerHTML = '';
-            slides.forEach((slide, index) => {
+            allImages.forEach((url, index) => {
                 const div = document.createElement('div');
                 div.className = 'slide-item';
+                const mot = MOTIVATION_LINES[index % MOTIVATION_LINES.length];
                 div.innerHTML = `
-                    <img src="${slide.url}" alt="Slider ${index + 1}" loading="lazy" onerror="this.src='https://picsum.photos/seed/fallback${index}/1200/600'" />
+                    <img src="${url}" alt="Slider ${index + 1}" loading="lazy" onerror="this.src='https://picsum.photos/seed/fallback${index}/1200/600'" />
                     <div class="slide-text">
-                        <span class="line1">${slide.text1}</span>
-                        <span class="line2">${slide.text2}</span>
+                        <span class="line1">${mot.line1}</span>
+                        <span class="line2">${mot.line2}</span>
                     </div>
                 `;
                 track.appendChild(div);
             });
+
             if (dots) {
                 dots.innerHTML = '';
-                for (let i = 0; i < slides.length; i++) {
+                for (let i = 0; i < totalSlides; i++) {
                     const span = document.createElement('span');
                     if (i === 0) span.className = 'active';
                     span.dataset.index = i;
