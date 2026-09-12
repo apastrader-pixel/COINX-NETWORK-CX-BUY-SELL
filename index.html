@@ -37,11 +37,6 @@
             position: relative;
         }
 
-        @keyframes dynamicHueFlow {
-            0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
-            50%  { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
-            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
-        }
         @keyframes rainbowBorder {
             0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
             14%  { border-color: #ff00aa; box-shadow: 0 0 15px #ff00aa, inset 0 0 10px rgba(255,0,170,0.3); }
@@ -58,11 +53,6 @@
             40%      { transform: translateY(2px) rotate(3deg) scale(1.02); }
             60%      { transform: translateY(-2px) rotate(-2deg) scale(1.03); }
             80%      { transform: translateY(1px) rotate(1deg) scale(1.01); }
-        }
-        @keyframes spinStar360 {
-            0%   { transform: rotate(0deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
-            50%  { transform: rotate(180deg) scale(1.12); filter: drop-shadow(0 0 35px #00f0ff); }
-            100% { transform: rotate(360deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
         }
         @keyframes spinContinuous {
             0%   { transform: rotate(0deg); }
@@ -119,9 +109,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        .animated-hue-border { animation: rainbowBorder 6s linear infinite; }
         .wobble-btn { animation: headerWobble 3.5s ease-in-out infinite; }
-        .star-spinning { animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
 
         .glass-rose {
             background: var(--card-bg);
@@ -864,15 +852,6 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        .copy-btn-sm {
-            background: rgba(255, 0, 85, 0.1);
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            color: #ff6699;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 8px;
-            cursor: pointer;
-        }
 
         .crypto-address-box {
             background: rgba(0, 0, 0, 0.5);
@@ -900,75 +879,6 @@
         }
 
         .hidden { display: none !important; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .justify-between { justify-content: space-between; }
-        .gap-1 { gap: 4px; }
-        .gap-2 { gap: 8px; }
-        .gap-3 { gap: 12px; }
-        .w-full { width: 100%; }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .relative { position: relative; }
-        .absolute { position: absolute; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .rounded-lg { border-radius: 8px; }
-        .rounded-xl { border-radius: 12px; }
-        .rounded-2xl { border-radius: 16px; }
-        .rounded-3xl { border-radius: 24px; }
-        .rounded-full { border-radius: 9999px; }
-        .overflow-hidden { overflow: hidden; }
-        .overflow-y-auto { overflow-y: auto; }
-        .text-xs { font-size: 12px; }
-        .text-sm { font-size: 14px; }
-        .text-md { font-size: 16px; }
-        .text-lg { font-size: 18px; }
-        .text-xl { font-size: 20px; }
-        .text-2xl { font-size: 24px; }
-        .text-3xl { font-size: 30px; }
-        .font-bold { font-weight: 700; }
-        .font-extrabold { font-weight: 800; }
-        .font-semibold { font-weight: 600; }
-        .font-medium { font-weight: 500; }
-        .font-mono { font-family: monospace; }
-        .cursor-pointer { cursor: pointer; }
-        .select-all { user-select: all; }
-        .break-all { word-break: break-all; }
-        .shrink-0 { flex-shrink: 0; }
-        .flex-1 { flex: 1; }
-        .flex-wrap { flex-wrap: wrap; }
-        .grid { display: grid; }
-        .grid-cols-2 { grid-template-columns: 1fr 1fr; }
-        .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-        .grid-cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-        .col-span-2 { grid-column: span 2; }
-        .col-span-3 { grid-column: span 3; }
-        .col-span-4 { grid-column: span 4; }
-        .p-2 { padding: 8px; }
-        .p-3 { padding: 12px; }
-        .p-4 { padding: 16px; }
-        .p-5 { padding: 20px; }
-        .px-2 { padding-left: 8px; padding-right: 8px; }
-        .px-3 { padding-left: 12px; padding-right: 12px; }
-        .px-4 { padding-left: 16px; padding-right: 16px; }
-        .py-1 { padding-top: 4px; padding-bottom: 4px; }
-        .py-2 { padding-top: 8px; padding-bottom: 8px; }
-        .py-3 { padding-top: 12px; padding-bottom: 12px; }
-        .py-4 { padding-top: 16px; padding-bottom: 16px; }
-        .mt-1 { margin-top: 4px; }
-        .mt-2 { margin-top: 8px; }
-        .mt-3 { margin-top: 12px; }
-        .mt-4 { margin-top: 16px; }
-        .mb-1 { margin-bottom: 4px; }
-        .mb-2 { margin-bottom: 8px; }
-        .mb-3 { margin-bottom: 12px; }
-        .z-10 { z-index: 10; }
-        .z-20 { z-index: 20; }
-        .z-30 { z-index: 30; }
-        .z-40 { z-index: 40; }
-        .z-50 { z-index: 50; }
 
         .quick-action-btn {
             display: flex;
@@ -1420,7 +1330,6 @@
                         </div>
                     </div>
 
-                    <!-- SPX ID & Referral Code Section -->
                     <div class="glass-rose p-4 rounded-2xl space-y-3">
                         <h4 class="text-xs font-bold text-rose-400"><i class="fa-solid fa-id-card mr-1.5"></i> आपकी जानकारी</h4>
                         
@@ -1532,121 +1441,6 @@
                     </button>
                 </nav>
 
-            </div>
-
-            <!-- ADMIN PANEL -->
-            <div id="adminPanelContainer" class="hidden">
-                <section id="adminLoginPage" class="admin-page w-full space-y-6">
-                    <div class="text-center space-y-2 py-6">
-                        <div class="w-20 h-20 rounded-full bg-black/60 text-rose-400 flex items-center justify-center text-3xl mx-auto border-2 border-rose-500 shadow-xl">
-                            <i class="fa-solid fa-lock"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-rose-400 mt-2">एडमिन लॉगिन</h2>
-                    </div>
-                    <div class="glass-rose p-6 rounded-2xl space-y-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-rose-300/70 mb-1.5">एडमिन ईमेल</label>
-                            <input type="email" id="adminUsernameInput" placeholder="एडमिन ईमेल" class="w-full py-3 px-4 text-sm font-mono">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-rose-300/70 mb-1.5">एडमिन पासवर्ड</label>
-                            <input type="password" id="adminPasswordInput" placeholder="पासवर्ड" class="w-full py-3 px-4 text-sm font-mono">
-                        </div>
-                        <button id="btn-admin-login" onclick="submitAdminLogin(this)" class="w-full btn-3d-rose py-3.5 rounded-xl text-sm mt-2 flex items-center justify-center gap-1.5">
-                            <span>एडमिन एक्सेस खोलें</span> <i class="fa-solid fa-unlock-keyhole"></i>
-                        </button>
-                    </div>
-                </section>
-                <section id="adminDashboardPage" class="admin-page w-full hidden space-y-4">
-                    <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
-                        <div>
-                            <h3 class="text-sm font-bold text-rose-400"><i class="fa-solid fa-house-laptop mr-1"></i> एडमिन डैशबोर्ड</h3>
-                        </div>
-                        <div class="flex gap-1.5">
-                            <button onclick="exportAllUserData()" class="bg-rose-500 hover:bg-rose-600 text-white text-[9px] font-bold px-2 py-1 rounded"><i class="fa-solid fa-file-export"></i> Export</button>
-                            <button onclick="logoutAdmin()" class="bg-rose-500/10 text-rose-400 text-[9px] font-bold px-2 py-1 rounded border border-rose-500/30"><i class="fa-solid fa-right-from-bracket"></i> लॉगआउट</button>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Total Users</span><strong id="statTotalUsers" class="text-white text-md">0</strong></div>
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Approved Deposits</span><strong id="statTotalDeposits" class="text-green-400 text-md">$0.00</strong></div>
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Locked Staking</span><strong id="statTotalStaked" class="currency-usdt text-md">0 USDT</strong></div>
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Pending Dep.</span><strong id="statPendingDep" class="text-yellow-400 text-md">0</strong></div>
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Pending With.</span><strong id="statPendingWith" class="text-yellow-400 text-md">0</strong></div>
-                        <div class="bg-black/40 p-2.5 rounded-xl border border-rose-500/15"><span class="text-[8px] text-rose-300/30 block mb-0.5">Total Referral</span><strong id="statReferrals" class="text-blue-400 text-md">0 USDT</strong></div>
-                    </div>
-                    <div class="flex bg-black/40 p-1 rounded-xl border border-rose-500/15 text-[10px] flex-wrap">
-                        <button onclick="switchAdminTab('users')" id="adminTab-users" class="flex-1 py-1.5 text-center font-semibold rounded bg-rose-500 text-white">Users</button>
-                        <button onclick="switchAdminTab('deposits')" id="adminTab-deposits" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Deposits</button>
-                        <button onclick="switchAdminTab('withdrawals')" id="adminTab-withdrawals" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Withdrawals</button>
-                        <button onclick="switchAdminTab('staking')" id="adminTab-staking" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Staking</button>
-                        <button onclick="switchAdminTab('referrals')" id="adminTab-referrals" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Referrals</button>
-                        <button onclick="switchAdminTab('transfer')" id="adminTab-transfer" class="flex-1 py-1.5 text-center font-semibold text-rose-300/40 rounded">Transfer</button>
-                    </div>
-                    <div id="adminSection-users" class="admin-sec space-y-3">
-                        <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <h4 class="text-xs font-bold text-rose-300/80">यूजर USDT कस्टमाइज़ेशन</h4>
-                            <div class="grid grid-cols-2 gap-2 text-xs">
-                                <input type="text" id="adminCoinUserId" placeholder="SPX ID / ईमेल" class="col-span-2 p-2 text-xs">
-                                <input type="number" id="adminCoinAmount" placeholder="USDT संख्या" class="p-2 text-xs">
-                                <select id="adminCoinAction" class="p-2 text-xs text-rose-300/60">
-                                    <option value="add">जोड़ें</option>
-                                    <option value="subtract">घटाएं</option>
-                                </select>
-                                <button id="btn-admin-coin" onclick="updateUserCoinsManually(this)" class="col-span-2 btn-3d-rose py-2 rounded-xl text-xs">अपडेट करें</button>
-                            </div>
-                        </div>
-                        <div class="glass-rose p-4 rounded-2xl space-y-2">
-                            <h4 class="text-xs font-bold text-rose-300/80">सभी यूज़र्स</h4>
-                            <div id="adminUserList" class="space-y-2 text-xs max-h-[180px] overflow-y-auto font-mono"></div>
-                        </div>
-                    </div>
-                    <div id="adminSection-deposits" class="admin-sec space-y-3 hidden">
-                        <div class="glass-rose p-4 rounded-2xl space-y-2">
-                            <h4 class="text-xs font-bold text-rose-300/80">पेंडिंग डिपॉजिट्स</h4>
-                            <div id="adminDepositsList" class="space-y-2 text-xs max-h-[300px] overflow-y-auto"></div>
-                        </div>
-                    </div>
-                    <div id="adminSection-withdrawals" class="admin-sec space-y-3 hidden">
-                        <div class="glass-rose p-4 rounded-2xl space-y-2">
-                            <h4 class="text-xs font-bold text-rose-300/80">पेंडिंग विथड्रॉवल</h4>
-                            <div id="adminWithdrawalsList" class="space-y-2 text-xs max-h-[300px] overflow-y-auto"></div>
-                        </div>
-                    </div>
-                    <div id="adminSection-staking" class="admin-sec space-y-3 hidden">
-                        <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <div class="flex justify-between items-center border-b border-rose-500/15 pb-2">
-                                <h4 class="text-xs font-bold text-rose-300/80">स्टेकिंग कॉन्फ़िगरेशन</h4>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-[10px] text-rose-300/40">सक्षम:</span>
-                                    <input type="checkbox" id="adminStakingGloballyEnabled" checked onchange="toggleGlobalStakingState(this.checked)" class="w-4 h-4 accent-rose-500 rounded">
-                                </div>
-                            </div>
-                            <div id="adminStakingPlansConfig" class="grid grid-cols-4 gap-2 text-xs"></div>
-                        </div>
-                        <div class="glass-rose p-4 rounded-2xl space-y-2">
-                            <h4 class="text-xs font-bold text-rose-300/80">सभी स्टेकिंग</h4>
-                            <div id="adminStakingList" class="space-y-2 text-xs max-h-[200px] overflow-y-auto"></div>
-                        </div>
-                    </div>
-                    <div id="adminSection-referrals" class="admin-sec space-y-3 hidden">
-                        <div class="glass-rose p-4 rounded-2xl space-y-2">
-                            <h4 class="text-xs font-bold text-rose-300/80">रेफ़रल ट्रैकर</h4>
-                            <div id="adminReferralsList" class="space-y-2 text-xs max-h-[300px] overflow-y-auto"></div>
-                        </div>
-                    </div>
-                    <div id="adminSection-transfer" class="admin-sec space-y-3 hidden">
-                        <div class="glass-rose p-4 rounded-2xl space-y-3">
-                            <h4 class="text-xs font-bold text-rose-300/80">USDT ट्रांसफर</h4>
-                            <div class="grid grid-cols-2 gap-2 text-xs">
-                                <input type="text" id="adminTransferFrom" placeholder="स्रोत SPX ID" class="col-span-2 p-2 text-xs">
-                                <input type="text" id="adminTransferTo" placeholder="लक्ष्य SPX ID" class="col-span-2 p-2 text-xs">
-                                <input type="number" id="adminTransferAmount" placeholder="USDT संख्या" class="col-span-2 p-2 text-xs">
-                                <button id="btn-admin-transfer" onclick="adminTransferUSDT(this)" class="col-span-2 btn-3d-rose py-2 rounded-xl text-xs">USDT ट्रांसफर करें</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
 
         </main>
@@ -1902,21 +1696,17 @@
         const STAKING_SETTINGS_COLLECTION_ID = "staking_plan_settings";
         const SCREENSHOT_BUCKET_ID = "6a47d26c00001f17b543";
         const STAKING_SETTINGS_DOC_ID = "global_config";
-        const ADMIN_TEAM_ID = "6a4a84580012aed57e61";
         const SECRET_ADMIN_KEY = "";
 
         const EXCHANGE_RATE = 100;
 
-        // ⚡ FAST-LOADING Google Drive images using thumbnail API
         function gdrive(id, size) {
             size = size || 1200;
             return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + size;
         }
 
-        // Fallback image
         const FALLBACK_IMG = "https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
 
-        // Slider images from Google Drive (fast-loading thumbnail API)
         const SLIDER_IMAGES = [
             gdrive("1tMFYEsmqHYhHGEPuOWZYxN3Uvc-fPIms", 1200),
             gdrive("1ZTphMUqbqdg6rnJHo-cANP1dI7CatFJY", 1200),
@@ -1944,7 +1734,6 @@
             gdrive("19zV3C_5v0UF0nCdtzb0GPa8t4pMgaqTA", 1200)
         ];
 
-        // Picsum images for extra slides (20 images)
         const PICSUM_IMAGES = [
             "https://picsum.photos/seed/gold1/1200/600",
             "https://picsum.photos/seed/gold2/1200/600",
@@ -1968,7 +1757,6 @@
             "https://picsum.photos/seed/gold20/1200/600"
         ];
 
-        // Motivation lines (2 lines each)
         const MOTIVATION_LINES = [
             { line1: "सपने वो नहीं जो सोते हुए देखें", line2: "सपने वो हैं जो सोने न दें" },
             { line1: "मेहनत इतनी खामोशी से करो", line2: "कि कामयाबी शोर मचा दे" },
@@ -1997,21 +1785,18 @@
         ];
 
         const LOGIN_POPUP_IMG = gdrive("1YXpoUuOXRryXvYWMj_SpQoIpOx-nUPxn", 800);
-        const APP_LOGO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400);
         const DEFAULT_PROFILE_PHOTO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 200);
 
-        const { Client, Databases, Storage, Account, Teams, Query, ID } = Appwrite;
+        const { Client, Databases, Storage, Account, Query, ID } = Appwrite;
         const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT_ID);
         const databases = new Databases(client);
         const storage = new Storage(client);
         const account = new Account(client);
-        const teams = new Teams(client);
 
         // ============================================================
         // STATE
         // ============================================================
         let currentUser = null;
-        let users = [];
         let adminStakingSettings = {
             globallyEnabled: true,
             plans: [
@@ -2026,8 +1811,6 @@
         let selectedLevel = 0;
         let currentTxHistoryTab = 'deposit';
         let uploadReceiptFile = null;
-        let currentAdminTab = 'users';
-        let isAdminMode = false;
         let receiptData = null;
         let cooldownTimerInterval = null;
         let voiceEnabled = true;
@@ -2036,7 +1819,6 @@
         let sliderIndex = 0;
         let sliderInterval = null;
         let sliderAnimating = false;
-        let miningSpinning = false;
         let selectedVoice = null;
 
         // ============================================================
@@ -2142,17 +1924,10 @@
             showToast(msg || '✅ कॉपी हो गया!');
         }
 
-        function partialHide(str, show = 3) {
-            if (!str) return '****';
-            if (str.length <= show * 2) return str;
-            return str.slice(0, show) + '****' + str.slice(-show);
-        }
-
         // ============================================================
-        // LOGIN POPUP IMAGE HANDLER
+        // LOGIN POPUP IMAGE
         // ============================================================
         function handleLoginPopupImgError(img) {
-            console.log('Login popup image failed, trying fallback...');
             if (!img.dataset.fallbackTried) {
                 img.dataset.fallbackTried = 'true';
                 img.src = FALLBACK_IMG;
@@ -2190,7 +1965,7 @@
         }
 
         // ============================================================
-        // REFERRAL FROM URL
+        // REFERRAL URL
         // ============================================================
         function checkReferralInURL() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -2213,7 +1988,7 @@
         }
 
         // ============================================================
-        // VOICE GUIDE - Google Gemini Bold Female Voice
+        // VOICE GUIDE
         // ============================================================
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
@@ -2256,7 +2031,7 @@
         function closeVoiceToast() { document.getElementById('voiceToast').classList.remove('show'); }
 
         // ============================================================
-        // CLAP + CONFETTI
+        // CONFETTI / CLAP
         // ============================================================
         function playClappingSound(count = 3) {
             try {
@@ -2300,9 +2075,7 @@
             }
         }
 
-        function launchConfetti(count = 70) {
-            launchConfettiTo('confettiContainer', count);
-        }
+        function launchConfetti(count = 70) { launchConfettiTo('confettiContainer', count); }
 
         // ============================================================
         // CONGRATULATIONS POPUP
@@ -2320,12 +2093,10 @@
             }
         }
 
-        function closeCongratsPopup() {
-            document.getElementById('congratsPopup').classList.add('hidden');
-        }
+        function closeCongratsPopup() { document.getElementById('congratsPopup').classList.add('hidden'); }
 
         // ============================================================
-        // APP POPUP
+        // APP DOWNLOAD
         // ============================================================
         function showAppDownloadPopup(event) {
             event.preventDefault();
@@ -2359,9 +2130,7 @@
             preloadLoginImage();
         }
 
-        function closeLoginPopup() {
-            document.getElementById('loginPopup').classList.add('hidden');
-        }
+        function closeLoginPopup() { document.getElementById('loginPopup').classList.add('hidden'); }
 
         // ============================================================
         // WITHDRAW POPUP
@@ -2442,7 +2211,7 @@
         }
 
         // ============================================================
-        // ADMIN
+        // ADMIN SEARCH
         // ============================================================
         function toggleAdminSearch() {
             const box = document.getElementById('adminSearchBox');
@@ -2453,767 +2222,10 @@
         function verifyAdminCode() {
             const code = document.getElementById('adminSecretInput').value.trim();
             if (code === SECRET_ADMIN_KEY) {
-                isAdminMode = true;
-                document.getElementById('userPanelContainer').classList.add('hidden');
-                document.getElementById('adminPanelContainer').classList.remove('hidden');
-                document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
-                document.getElementById('headerSubtitle').innerText = 'Super Admin';
-                document.getElementById('headerBadge').className = 'admin-badge';
-                document.getElementById('headerBadge').innerHTML = '<i class="fa-solid fa-shield-halved mr-1"></i> ADMIN';
-                document.getElementById('adminSearchBox').classList.add('hidden');
-                loadAllData();
-                showToast('✅ एडमिन मोड सक्रिय!', 'success');
+                window.location.href = 'admin.html';
             } else {
                 showToast('❌ गलत कोड!', 'error');
             }
-        }
-
-        function logoutAdmin() {
-            isAdminMode = false;
-            document.getElementById('userPanelContainer').classList.remove('hidden');
-            document.getElementById('adminPanelContainer').classList.add('hidden');
-            document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
-            document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
-            document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
-            document.getElementById('headerBadge').innerHTML = 'User';
-            showToast('एडमिन मोड बंद', 'info');
-        }
-
-        async function loadAllData() {
-            if (!isAdminMode) return;
-            try {
-                const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.limit(500)]);
-                users = res.documents.map(mapUserDoc);
-                await loadStakingSettings();
-                updateAdminStats();
-                renderAdminUsers();
-                renderAdminDeposits();
-                renderAdminWithdrawals();
-                renderAdminStaking();
-                renderAdminReferrals();
-            } catch (e) { showToast('डेटा लोड नहीं हो सका', 'error'); }
-        }
-
-        async function loadStakingSettings() {
-            try {
-                const doc = await databases.getDocument(DATABASE_ID, STAKING_SETTINGS_COLLECTION_ID, STAKING_SETTINGS_DOC_ID);
-                adminStakingSettings.globallyEnabled = !!doc.globallyEnabled;
-                adminStakingSettings.plans = parseJsonSafe(doc.plans, adminStakingSettings.plans);
-            } catch (e) {}
-        }
-
-        function updateAdminStats() {
-            if (!isAdminMode) return;
-            document.getElementById('statTotalUsers').innerText = users.length;
-            const totalDep = users.reduce((a, u) => a + u.approvedDeposits.reduce((s, d) => s + parseFloat(d.amountUSD || 0), 0), 0);
-            document.getElementById('statTotalDeposits').innerText = `$${totalDep.toFixed(2)}`;
-            const totalStaked = users.reduce((a, u) => a + parseFloat(u.staked || 0), 0);
-            document.getElementById('statTotalStaked').innerText = `${totalStaked.toFixed(2)} USDT`;
-            document.getElementById('statPendingDep').innerText = users.filter(u => u.pendingDeposit).length;
-            document.getElementById('statPendingWith').innerText = users.filter(u => u.pendingWithdrawal).length;
-            const totalRefBonus = users.reduce((a, u) => a + u.referrals.reduce((s, r) => s + parseFloat(r.bonusReceived || 0), 0), 0);
-            document.getElementById('statReferrals').innerText = `${totalRefBonus.toFixed(2)} USDT`;
-        }
-
-        function switchAdminTab(tab) {
-            if (!isAdminMode) return;
-            currentAdminTab = tab;
-            document.querySelectorAll('.admin-sec').forEach(s => s.classList.add('hidden'));
-            document.getElementById('adminSection-' + tab).classList.remove('hidden');
-            document.querySelectorAll('#adminDashboardPage .flex button').forEach(b => {
-                b.classList.remove('bg-rose-500', 'text-white');
-                b.classList.add('text-rose-300/40');
-            });
-            const btn = document.getElementById('adminTab-' + tab);
-            if (btn) { btn.classList.remove('text-rose-300/40'); btn.classList.add('bg-rose-500', 'text-white'); }
-            if (tab === 'users') renderAdminUsers();
-            if (tab === 'deposits') renderAdminDeposits();
-            if (tab === 'withdrawals') renderAdminWithdrawals();
-            if (tab === 'staking') renderAdminStaking();
-            if (tab === 'referrals') renderAdminReferrals();
-        }
-
-        function renderAdminUsers() {
-            if (!isAdminMode) return;
-            const list = document.getElementById('adminUserList');
-            list.innerHTML = '';
-            if (users.length === 0) { list.innerHTML = '<p class="text-rose-300/30 text-center py-2">कोई यूजर नहीं</p>'; return; }
-            users.forEach(u => {
-                const emailId = 'aemail' + u.$id, coinxId = 'acoinx' + u.$id;
-                const card = document.createElement('div');
-                card.className = 'bg-black/40 p-3 rounded-xl border border-rose-500/15 space-y-1';
-                card.innerHTML = `
-                    <div class="flex justify-between font-bold text-rose-400"><span>${u.name||'N/A'}</span><span class="text-white">${parseFloat(u.coins||0).toFixed(2)} USDT</span></div>
-                    <div class="text-[10px] text-rose-300/30 grid grid-cols-2 gap-1 pb-1">
-                        <span>ईमेल: ${u.email||'N/A'} <button onclick="copyToClipboard('${emailId}','✅ कॉपी!')" class="copy-btn-sm"><i class="fa-solid fa-copy"></i></button></span>
-                        <span>SPX: ${u.coinxId||'N/A'} <button onclick="copyToClipboard('${coinxId}','✅ कॉपी!')" class="copy-btn-sm"><i class="fa-solid fa-copy"></i></button></span>
-                        <span class="col-span-2">Total Purchased: $${parseFloat(u.totalPurchased||0).toFixed(2)} | Level: L${Math.floor(parseFloat(u.totalPurchased||0)/1000)}</span>
-                    </div>
-                    <div class="flex justify-between items-center pt-1 border-t border-rose-500/10 text-[10px] text-rose-300/30">
-                        <button onclick="toggleBlock('${u.$id}')" class="text-[9px] px-2.5 py-0.5 rounded font-bold ${u.isBlocked?'bg-green-500/20 text-green-400':'bg-red-500/20 text-red-400'}">${u.isBlocked?'Unblock':'Block'}</button>
-                    </div>
-                    <span id="${emailId}" class="hidden">${u.email||''}</span>
-                    <span id="${coinxId}" class="hidden">${u.coinxId||''}</span>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        async function toggleBlock(id) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === id);
-            if (idx === -1) return;
-            const newStatus = !users[idx].isBlocked;
-            try {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, { isBlocked: newStatus });
-                users[idx].isBlocked = newStatus;
-                showToast(`यूजर ${newStatus?'ब्लॉक':'अनब्लॉक'}!`, 'success');
-                renderAdminUsers();
-            } catch (e) { showToast('त्रुटि!', 'error'); }
-        }
-
-        async function updateUserCoinsManually(btn) {
-            if (!isAdminMode) return;
-            const targetId = document.getElementById('adminCoinUserId').value.trim();
-            const coinAmount = parseFloat(document.getElementById('adminCoinAmount').value);
-            const action = document.getElementById('adminCoinAction').value;
-            if (!targetId || !coinAmount || coinAmount <= 0) { showToast('सही जानकारी भरें।', 'error'); return; }
-            setButtonLoading(btn, true);
-            const idx = users.findIndex(u => u.coinxId === targetId || u.email === targetId || u.$id === targetId);
-            if (idx === -1) { setButtonLoading(btn, false); showToast('यूजर नहीं मिला!', 'error'); return; }
-            const current = parseFloat(users[idx].coins || 0);
-            const newBal = action === 'add' ? current + coinAmount : Math.max(0, current - coinAmount);
-            try {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, users[idx].docId, { coins: newBal });
-                users[idx].coins = newBal;
-                showToast(action === 'add' ? `${coinAmount} USDT क्रेडिट!` : `${coinAmount} USDT डेबिट!`, 'success');
-                document.getElementById('adminCoinUserId').value = '';
-                document.getElementById('adminCoinAmount').value = '';
-                updateAdminStats();
-                renderAdminUsers();
-            } catch (e) { showToast('त्रुटि!', 'error'); } finally { setButtonLoading(btn, false); }
-        }
-
-        async function adminTransferUSDT(btn) {
-            if (!isAdminMode) return;
-            const fromId = document.getElementById('adminTransferFrom').value.trim();
-            const toId = document.getElementById('adminTransferTo').value.trim();
-            const amount = parseFloat(document.getElementById('adminTransferAmount').value);
-            if (!fromId || !toId || !amount || amount <= 0) { showToast('सभी फील्ड्स भरें।', 'error'); return; }
-            if (fromId === toId) { showToast('खुद को ट्रांसफर नहीं!', 'error'); return; }
-            setButtonLoading(btn, true);
-            const fromIdx = users.findIndex(u => u.coinxId === fromId || u.email === fromId || u.$id === fromId);
-            const toIdx = users.findIndex(u => u.coinxId === toId || u.email === toId || u.$id === toId);
-            if (fromIdx === -1 || toIdx === -1) { setButtonLoading(btn, false); showToast('SPX ID नहीं मिली!', 'error'); return; }
-            const fromBal = parseFloat(users[fromIdx].coins || 0);
-            if (fromBal < amount) { setButtonLoading(btn, false); showToast('पर्याप्त USDT नहीं!', 'error'); return; }
-            const newFrom = fromBal - amount;
-            const newTo = parseFloat(users[toIdx].coins || 0) + amount;
-            try {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, users[fromIdx].docId, { coins: newFrom });
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, users[toIdx].docId, { coins: newTo });
-                users[fromIdx].coins = newFrom;
-                users[toIdx].coins = newTo;
-                showToast(`✅ ${amount} USDT ट्रांसफर!`, 'success');
-                document.getElementById('adminTransferFrom').value = '';
-                document.getElementById('adminTransferTo').value = '';
-                document.getElementById('adminTransferAmount').value = '';
-                updateAdminStats();
-                renderAdminUsers();
-            } catch (e) { showToast('त्रुटि!', 'error'); } finally { setButtonLoading(btn, false); }
-        }
-
-        function renderAdminDeposits() {
-            if (!isAdminMode) return;
-            const list = document.getElementById('adminDepositsList');
-            list.innerHTML = '';
-            const pending = users.filter(u => u.pendingDeposit && u.pendingDeposit.type === 'user');
-            if (pending.length === 0) { list.innerHTML = '<p class="text-rose-300/30 text-center py-2">कोई पेंडिंग नहीं</p>'; return; }
-            pending.forEach(u => {
-                const d = u.pendingDeposit;
-                const card = document.createElement('div');
-                card.className = 'bg-black/40 p-3 rounded-xl border border-rose-500/15 space-y-2';
-                card.innerHTML = `
-                    <div class="flex justify-between font-bold text-xs"><span class="text-white">${u.name} (${u.email})</span><span class="text-green-400">$${d.amountUSD}</span></div>
-                    <div class="text-[10px] text-rose-300/30">USDT: ${d.coinsAmount} | ${d.dateTime} ${d.level ? '| Level: L'+d.level : ''}</div>
-                    <div class="text-[10px] text-rose-300/30 font-mono">SPX: ${u.coinxId||'N/A'}</div>
-                    ${d.receiptFileId?`<div class="mt-1"><img src="${resolveImageUrl(d.receiptFileId)}" class="w-16 h-16 object-contain cursor-pointer rounded-lg border border-rose-500/20" onclick="openFullscreenImage('${resolveImageUrl(d.receiptFileId)}')"></div>`:''}
-                    <div class="flex gap-2 justify-end">
-                        <button onclick="approveDeposit('${u.$id}')" class="bg-green-500 text-white px-3 py-1 rounded text-[10px]">Approve</button>
-                        <button onclick="rejectDeposit('${u.$id}')" class="bg-red-500 text-white px-3 py-1 rounded text-[10px]">Reject</button>
-                    </div>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        async function approveDeposit(id) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === id);
-            if (idx === -1) return;
-            try {
-                const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, id);
-                const pending = parseJsonSafe(fresh.pending_deposit, null);
-                if (!pending) { showToast('पहले ही प्रोसेस', 'info'); users[idx].pendingDeposit = null; renderAdminDeposits(); return; }
-                const newCoins = parseFloat(fresh.coins || 0) + parseFloat(pending.coinsAmount || 0);
-                const approved = parseJsonSafe(fresh.approved_deposit, []);
-                const receiptId = generateReceiptId();
-                const tx = { ...pending, approvedAt: new Date().toISOString(), receiptId: receiptId };
-                approved.push(tx);
-                const txs = parseJsonSafe(fresh.transactions, []);
-                txs.push({ type: 'deposit', amountUSD: pending.amountUSD, coinsAmount: pending.coinsAmount, receiptFileId: pending.receiptFileId, dateTime: pending.dateTime, status: 'Approved', receiptId: receiptId });
-
-                const oldTotal = parseFloat(fresh.totalPurchased || 0);
-                const newTotal = oldTotal + parseFloat(pending.amountUSD || 0);
-                const oldLevel = Math.floor(oldTotal / 1000);
-                const newLevel = Math.floor(newTotal / 1000);
-
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
-                    coins: newCoins,
-                    approved_deposit: JSON.stringify(approved),
-                    pending_deposit: '',
-                    transactions: JSON.stringify(txs),
-                    totalPurchased: newTotal
-                });
-
-                users[idx].coins = newCoins;
-                users[idx].approvedDeposits = approved;
-                users[idx].pendingDeposit = null;
-                users[idx].transactions = txs;
-                users[idx].totalPurchased = newTotal;
-
-                if (fresh.referredBy) {
-                    await awardReferralBonusOnPurchase(fresh.referredBy, parseFloat(pending.amountUSD || 0), fresh);
-                }
-
-                showToast('✅ डिपॉजिट स्वीकृत', 'success');
-                if (newLevel > oldLevel) {
-                    localStorage.setItem('cx_pending_level_' + fresh.$id, newLevel);
-                }
-                updateAdminStats();
-                renderAdminDeposits();
-            } catch (e) { console.error(e); showToast('त्रुटि', 'error'); }
-        }
-
-        async function awardReferralBonusOnPurchase(referrerId, purchaseAmount, referredUserDoc) {
-            try {
-                let referrer = null;
-                try { referrer = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, referrerId); }
-                catch (e) {
-                    const res = await databases.listDocuments(DATABASE_ID, USERS_COLLECTION_ID, [Query.equal('email', referrerId)]);
-                    if (res.documents.length) referrer = res.documents[0];
-                }
-                if (!referrer) return;
-                const bonus = purchaseAmount * 0.02;
-                const newCoins = parseFloat(referrer.coins || 0) + bonus;
-                const refs = parseJsonSafe(referrer.referrals, []);
-                refs.push({
-                    referredId: referredUserDoc.$id,
-                    referredName: referredUserDoc.name || 'N/A',
-                    referredEmail: referredUserDoc.email || 'N/A',
-                    stakedAmount: purchaseAmount,
-                    bonusReceived: bonus,
-                    type: 'purchase',
-                    dateTime: new Date().toLocaleString('hi-IN'),
-                    timestamp: Date.now()
-                });
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, referrer.$id, {
-                    coins: newCoins, referrals: JSON.stringify(refs)
-                });
-                console.log(`✅ Referral bonus ${bonus} USDT awarded to ${referrer.email}`);
-            } catch (e) { console.error('Referral bonus error:', e); }
-        }
-
-        async function rejectDeposit(id) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === id);
-            if (idx === -1) return;
-            try {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, { pending_deposit: '' });
-                users[idx].pendingDeposit = null;
-                showToast('❌ डिपॉजिट अस्वीकृत', 'info');
-                updateAdminStats();
-                renderAdminDeposits();
-            } catch (e) { showToast('त्रुटि', 'error'); }
-        }
-
-        function renderAdminWithdrawals() {
-            if (!isAdminMode) return;
-            const list = document.getElementById('adminWithdrawalsList');
-            list.innerHTML = '';
-            const pending = users.filter(u => u.pendingWithdrawal);
-            if (pending.length === 0) { list.innerHTML = '<p class="text-rose-300/30 text-center py-2">कोई पेंडिंग नहीं</p>'; return; }
-            pending.forEach(u => {
-                const w = u.pendingWithdrawal;
-                const inrAmount = (parseFloat(w.coinsAmount || 0) * 0.90 * EXCHANGE_RATE).toFixed(2);
-                const card = document.createElement('div');
-                card.className = 'bg-black/40 p-3 rounded-xl border border-rose-500/15 space-y-2';
-                card.innerHTML = `
-                    <div class="flex justify-between font-bold text-xs"><span class="text-white">${u.name}</span><span class="currency-usdt">${w.coinsAmount} USDT</span></div>
-                    <div class="text-[10px] text-rose-300/30">Address: ${u.withdrawal_address||'N/A'} | ${w.dateTime}</div>
-                    <div class="text-[10px] text-rose-300/30 font-mono">SPX: ${u.coinxId||'N/A'}</div>
-                    <div class="text-[10px] currency-inr font-bold">💰 INR: ₹${inrAmount} (10% चार्ज)</div>
-                    ${u.withdrawal_screenshot?`<div class="mt-1"><img src="${resolveImageUrl(u.withdrawal_screenshot)}" class="w-16 h-16 object-contain cursor-pointer rounded-lg border border-rose-500/20" onclick="openFullscreenImage('${resolveImageUrl(u.withdrawal_screenshot)}')"></div>`:''}
-                    <div class="flex gap-2 justify-end">
-                        <button onclick="approveWithdrawal('${u.$id}')" class="bg-green-500 text-white px-3 py-1 rounded text-[10px]">Complete</button>
-                        <button onclick="rejectWithdrawal('${u.$id}')" class="bg-red-500 text-white px-3 py-1 rounded text-[10px]">Reject</button>
-                    </div>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        async function approveWithdrawal(id) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === id);
-            if (idx === -1) return;
-            try {
-                const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, id);
-                const pending = parseJsonSafe(fresh.pending_withdrawal, null);
-                if (!pending) { showToast('पहले ही प्रोसेस', 'info'); users[idx].pendingWithdrawal = null; renderAdminWithdrawals(); return; }
-                const approved = parseJsonSafe(fresh.approved_withdrawal, []);
-                const receiptId = generateReceiptId();
-                const tx = { ...pending, completedAt: new Date().toISOString(), receiptId: receiptId };
-                approved.push(tx);
-                const newWithdrawn = parseFloat(fresh.withdrawal || 0) + parseFloat(pending.coinsAmount || 0);
-                const txs = parseJsonSafe(fresh.transactions, []);
-                txs.push({ type: 'withdrawal', coinsAmount: pending.coinsAmount, dateTime: pending.dateTime, status: 'Completed', receiptId: receiptId });
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
-                    approved_withdrawal: JSON.stringify(approved),
-                    withdrawal: newWithdrawn,
-                    pending_withdrawal: '',
-                    transactions: JSON.stringify(txs)
-                });
-                users[idx].approvedWithdrawals = approved;
-                users[idx].withdrawal = newWithdrawn;
-                users[idx].pendingWithdrawal = null;
-                users[idx].transactions = txs;
-                showToast('✅ विथड्रॉवल पूरा', 'success');
-                updateAdminStats();
-                renderAdminWithdrawals();
-            } catch (e) { showToast('त्रुटि', 'error'); }
-        }
-
-        async function rejectWithdrawal(id) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === id);
-            if (idx === -1) return;
-            try {
-                const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, id);
-                const pending = parseJsonSafe(fresh.pending_withdrawal, null);
-                if (!pending) { showToast('पहले ही प्रोसेस', 'info'); users[idx].pendingWithdrawal = null; renderAdminWithdrawals(); return; }
-                const refund = parseFloat(fresh.coins || 0) + parseFloat(pending.coinsAmount || 0);
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, { coins: refund, pending_withdrawal: '' });
-                users[idx].coins = refund;
-                users[idx].pendingWithdrawal = null;
-                showToast('❌ अस्वीकृत, रिफंड', 'info');
-                updateAdminStats();
-                renderAdminWithdrawals();
-            } catch (e) { showToast('त्रुटि', 'error'); }
-        }
-
-        function renderAdminStaking() {
-            if (!isAdminMode) return;
-            const plansConfig = document.getElementById('adminStakingPlansConfig');
-            plansConfig.innerHTML = '';
-            adminStakingSettings.plans.forEach(p => {
-                plansConfig.innerHTML += `
-                    <label class="flex items-center justify-between bg-black/40 p-2 rounded border border-rose-500/15">
-                        <span class="text-rose-300/50">${p.days}D</span>
-                        <input type="checkbox" ${p.enabled?'checked':''} onchange="togglePlanState(${p.days},this.checked)" class="accent-rose-500 w-3.5 h-3.5">
-                    </label>
-                `;
-            });
-            document.getElementById('adminStakingGloballyEnabled').checked = adminStakingSettings.globallyEnabled;
-
-            const list = document.getElementById('adminStakingList');
-            list.innerHTML = '';
-            let found = false;
-            users.forEach(u => {
-                if (u.staking && u.staking.length > 0) {
-                    u.staking.forEach(s => {
-                        found = true;
-                        const now = Date.now();
-                        const isUnlockable = s.lockUntil <= now;
-                        const div = document.createElement('div');
-                        div.className = 'bg-black/40 p-2.5 rounded-xl border border-rose-500/15 flex justify-between items-center';
-                        div.innerHTML = `
-                            <div>
-                                <div class="text-rose-400 text-xs font-bold">${u.name} (${u.coinxId||'N/A'})</div>
-                                <div class="text-[9px] text-rose-300/30">${s.amount} USDT | ${s.days} days</div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[10px] ${isUnlockable ? 'text-green-400' : 'text-yellow-400'}">${isUnlockable ? '🔓 Ready' : '🔒 Locked'}</span>
-                                ${isUnlockable ? `<button onclick="adminUnlockStake('${u.$id}','${s.stakeId}')" class="bg-rose-500 text-white px-2 py-0.5 rounded text-[9px] mt-1 block">Unlock</button>` : ''}
-                            </div>
-                        `;
-                        list.appendChild(div);
-                    });
-                }
-            });
-            if (!found) list.innerHTML = '<p class="text-rose-300/30 text-center py-2">कोई स्टेकिंग नहीं</p>';
-        }
-
-        async function adminUnlockStake(userId, stakeId) {
-            if (!isAdminMode) return;
-            const idx = users.findIndex(u => u.$id === userId);
-            if (idx === -1) return;
-            const stakeIdx = users[idx].staking.findIndex(s => s.stakeId === stakeId);
-            if (stakeIdx === -1) return;
-            const stake = users[idx].staking[stakeIdx];
-            const newCoins = parseFloat(users[idx].coins || 0) + parseFloat(stake.amount);
-            const newStaked = Math.max(0, parseFloat(users[idx].staked || 0) - parseFloat(stake.amount));
-            const remaining = users[idx].staking.filter(s => s.stakeId !== stakeId);
-            const history = users[idx].stakingHistory || [];
-            history.push({ ...stake, unlockedAt: new Date().toISOString(), unlockedBy: 'admin' });
-            try {
-                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userId, {
-                    coins: newCoins, staked: newStaked,
-                    staking: JSON.stringify(remaining),
-                    stakingHistory: JSON.stringify(history)
-                });
-                users[idx].coins = newCoins;
-                users[idx].staked = newStaked;
-                users[idx].staking = remaining;
-                users[idx].stakingHistory = history;
-                showToast(`✅ ${stake.amount} USDT अनलॉक!`, 'success');
-                renderAdminStaking();
-                updateAdminStats();
-            } catch (e) { showToast('त्रुटि', 'error'); }
-        }
-
-        async function toggleGlobalStakingState(enabled) {
-            if (!isAdminMode) return;
-            adminStakingSettings.globallyEnabled = enabled;
-            try {
-                await databases.updateDocument(DATABASE_ID, STAKING_SETTINGS_COLLECTION_ID, STAKING_SETTINGS_DOC_ID, { globallyEnabled: enabled });
-                showToast(`स्टेकिंग ${enabled?'सक्षम':'अक्षम'}`, 'success');
-            } catch (e) { showToast('सेटिंग सेव नहीं हुई', 'error'); }
-        }
-
-        async function togglePlanState(days, enabled) {
-            if (!isAdminMode) return;
-            const plan = adminStakingSettings.plans.find(p => p.days === days);
-            if (!plan) return;
-            plan.enabled = enabled;
-            try {
-                await databases.updateDocument(DATABASE_ID, STAKING_SETTINGS_COLLECTION_ID, STAKING_SETTINGS_DOC_ID, { plans: JSON.stringify(adminStakingSettings.plans) });
-                showToast(`${days} दिन ${enabled?'सक्रिय':'निष्क्रिय'}`, 'success');
-            } catch (e) { showToast('त्रुटि', 'error'); renderAdminStaking(); }
-        }
-
-        function renderAdminReferrals() {
-            if (!isAdminMode) return;
-            const list = document.getElementById('adminReferralsList');
-            list.innerHTML = '';
-            const all = [];
-            users.forEach(u => {
-                (u.referrals || []).forEach(r => {
-                    all.push({ ...r, referrer: u.name, referrerEmail: u.email, referrerSPX: u.coinxId || 'N/A' });
-                });
-            });
-            if (all.length === 0) { list.innerHTML = '<p class="text-rose-300/30 text-center py-2">कोई रेफरल नहीं</p>'; return; }
-            all.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-            all.forEach(r => {
-                const div = document.createElement('div');
-                div.className = 'bg-black/40 p-2.5 rounded-xl border border-rose-500/15 space-y-1';
-                div.innerHTML = `
-                    <div class="flex justify-between text-xs">
-                        <span class="font-bold text-rose-400">${r.referrer} (${r.referrerSPX})</span>
-                        <span class="currency-usdt">+${Number(r.bonusReceived||0).toFixed(2)} USDT</span>
-                    </div>
-                    <div class="text-[10px] text-rose-300/30">रेफर: ${r.referredName||'N/A'} | इन्वेस्ट: ${Number(r.stakedAmount||0).toFixed(2)} USDT | ${r.dateTime||''}</div>
-                `;
-                list.appendChild(div);
-            });
-        }
-
-        function exportAllUserData() {
-            if (!isAdminMode || users.length === 0) { showToast('कोई डेटा नहीं', 'error'); return; }
-            let csv = "Name,Email,Phone,SPX_ID,USDT_Balance,Staked_USDT,Withdrawn_USDT,TotalPurchased,Level\n";
-            users.forEach(u => {
-                const level = Math.floor(parseFloat(u.totalPurchased||0)/1000);
-                csv += `${u.name||''},${u.email||''},${u.phone||''},${u.coinxId||''},${parseFloat(u.coins||0).toFixed(2)},${parseFloat(u.staked||0).toFixed(2)},${parseFloat(u.withdrawal||0).toFixed(2)},${parseFloat(u.totalPurchased||0).toFixed(2)},L${level}\n`;
-            });
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `suprix_users_${Date.now()}.csv`;
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('✅ डेटा एक्सपोर्ट!', 'success');
-        }
-
-        function openFullscreenImage(src) {
-            document.getElementById('fullscreenImgTarget').src = src;
-            document.getElementById('fullscreenImageModal').classList.remove('hidden');
-        }
-        function closeFullscreenImage() { document.getElementById('fullscreenImageModal').classList.add('hidden'); }
-        function toggleZoomImage(img) {
-            img.classList.toggle('scale-100');
-            img.classList.toggle('scale-150');
-        }
-
-        // ============================================================
-        // RECEIPT
-        // ============================================================
-        function openReceipt(data) {
-            receiptData = data;
-            const modal = document.getElementById('receiptModal');
-            const content = document.getElementById('receiptContent');
-            const isDeposit = data.type === 'deposit';
-            const isWithdrawal = data.type === 'withdrawal';
-            const isDaily = data.type === 'daily';
-            const isReferral = data.type === 'referral';
-
-            const usdtAmount = parseFloat(data.coinsAmount || data.amount || 0);
-            const inrAmount = (usdtAmount * EXCHANGE_RATE).toFixed(2);
-            const usdtDisplay = usdtAmount.toFixed(2);
-
-            let statusBadge = '';
-            if (['Approved', 'Completed', 'SUCCESS'].includes(data.status)) {
-                statusBadge = '<span class="receipt-badge approved">✅ ' + data.status + '</span>';
-            } else if (data.status === 'Pending') {
-                statusBadge = '<span class="receipt-badge pending">⏳ ' + data.status + '</span>';
-            } else if (data.status === 'Rejected') {
-                statusBadge = '<span class="receipt-badge rejected">❌ ' + data.status + '</span>';
-            } else {
-                statusBadge = '<span class="receipt-badge approved">✅ ' + (data.status || 'Completed') + '</span>';
-            }
-
-            let typeLabel = isDeposit ? '💰 डिपॉजिट' : isWithdrawal ? '💸 विथड्रॉवल' : isDaily ? '🌟 डेली रिवॉर्ड' : isReferral ? '🎁 रेफरल बोनस' : '🔄 ट्रांसफर';
-
-            const memberName = currentUser?.name || 'N/A';
-            const memberId = currentUser?.coinxId || 'N/A';
-            const receiptId = data.receiptId || generateReceiptId();
-            const txHash = data.txHash || '0x' + Math.random().toString(16).slice(2, 14) + '...' + Math.random().toString(16).slice(2, 6);
-            const emailPartial = currentUser?.email ? partialHide(currentUser.email, 3) : 'N/A';
-            const phonePartial = currentUser?.phone ? partialHide(currentUser.phone, 3) : 'N/A';
-
-            let receiptHTML = `
-                <div class="receipt-row"><span class="label">📋 लेनदेन प्रकार</span><span class="value highlight">${typeLabel}</span></div>
-                <div class="receipt-currency-box">
-                    <span class="inr-amount">₹${inrAmount}</span>
-                    <span class="inr-label">💵 इंडियन रुपये (INR) — $1 = ₹100</span>
-                    <span class="usdt-amount">${usdtDisplay} USDT</span>
-                    <span class="usdt-label">💲 USDT (BEP-20)</span>
-                </div>
-                <div class="receipt-row"><span class="label">👤 सदस्य का नाम</span><span class="value">${memberName}</span></div>
-                <div class="receipt-row"><span class="label">🆔 सदस्य ID</span><span class="value" style="font-size:13px;font-weight:700;color:#ff6699;">${memberId}</span></div>
-                <div class="receipt-row"><span class="label">🧾 रसीद ID</span><span class="value" style="font-size:11px;">${receiptId}</span></div>
-                <div class="receipt-row"><span class="label">📧 ईमेल</span><span class="value" style="filter:blur(3px);">${emailPartial}</span></div>
-                <div class="receipt-row"><span class="label">📱 मोबाइल</span><span class="value" style="filter:blur(3px);">${phonePartial}</span></div>
-                <div class="receipt-row"><span class="label">🌐 नेटवर्क</span><span class="value currency-usdt">BNB Smart Chain (BEP20)</span></div>
-                <div class="receipt-row"><span class="label">📅 तारीख & समय</span><span class="value">${data.dateTime || 'N/A'}</span></div>
-                <div class="receipt-row"><span class="label">📊 स्थिति</span><span class="value">${statusBadge}</span></div>
-                <div class="receipt-row"><span class="label">🔗 ट्रांजैक्शन हैश</span><span class="value" style="font-size:10px;">${txHash}</span></div>
-                ${isReferral ? `
-                <div class="receipt-row"><span class="label">👥 रेफर किया गया</span><span class="value">${data.referredName || 'N/A'}</span></div>
-                <div class="receipt-row"><span class="label">💰 इन्वेस्टमेंट</span><span class="value">${data.stakedAmount || 0} USDT</span></div>
-                ` : ''}
-                <div class="receipt-row" style="border-bottom:none;padding-bottom:2px;"><span class="label">💱 दर</span><span class="value" style="color:#ff6699;font-weight:600;">$1 = ₹${EXCHANGE_RATE}</span></div>
-                ${data.receiptFileId ? `<div class="receipt-row" style="flex-direction:column;align-items:center;padding:8px 0;"><span class="label" style="margin-bottom:6px;">🧾 रसीद स्क्रीनशॉट</span><img src="${resolveImageUrl(data.receiptFileId)}" class="w-24 h-24 object-contain rounded-lg border border-rose-500/20 cursor-pointer" onclick="openFullscreenImage('${resolveImageUrl(data.receiptFileId)}')"></div>` : ''}
-                <div class="receipt-qr-box"><div id="receiptQrContainer"></div></div>
-                <div style="border-top:1px solid rgba(255,0,85,0.08);margin-top:6px;padding-top:6px;text-align:center;">
-                    <span style="font-size:8px;color:#ff99bb;">🔒 सुरक्षित लेनदेन • SupriX Global • $1 = ₹${EXCHANGE_RATE}</span>
-                </div>
-            `;
-            content.innerHTML = receiptHTML;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            setTimeout(() => {
-                const container = document.getElementById('receiptQrContainer');
-                if (container && typeof QRCode !== 'undefined') {
-                    container.innerHTML = '';
-                    const qrData = `SupriX|${receiptId}|${memberId}|${usdtDisplay}USDT|${data.dateTime}`;
-                    new QRCode(container, { text: qrData, width: 100, height: 100, colorDark: '#ff0055', colorLight: '#ffffff' });
-                }
-            }, 100);
-        }
-
-        function closeReceipt() {
-            document.getElementById('receiptModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            receiptData = null;
-        }
-
-        function downloadReceipt() {
-            if (!receiptData) return;
-            const card = document.getElementById('receiptCard');
-            const clone = card.cloneNode(true);
-            const footer = clone.querySelector('.receipt-footer');
-            if (footer) footer.remove();
-            const html = `
-                <html><head><title>SupriX_Receipt_${receiptData.dateTime || Date.now()}.html</title>
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-                <style>
-                    body { background:#070104; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:20px; font-family:'Poppins',sans-serif; }
-                    .receipt-card { background:#0d0105; border-radius:16px; padding:24px; max-width:480px; width:100%; border:3px solid #ff0055; color:#fff; }
-                    .receipt-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,0,85,0.08); font-size:12px; }
-                    .receipt-row .label { color:rgba(255,255,255,0.5); }
-                    .receipt-row .value { color:#fff; text-align:right; word-break:break-all; max-width:60%; font-family:monospace; }
-                    .receipt-currency-box { border:3px solid #ff0055; border-radius:16px; padding:16px 18px; margin:10px 0 16px 0; background:rgba(34,197,94,0.06); text-align:center; }
-                    .receipt-currency-box .inr-amount { font-size:32px; font-weight:800; color:#22c55e; }
-                    .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
-                </style></head><body>${clone.outerHTML}</body></html>
-            `;
-            const blob = new Blob([html], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `SupriX_Receipt_${Date.now()}.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('✅ रसीद डाउनलोड!', 'success');
-        }
-
-        function printReceipt() {
-            const content = document.getElementById('receiptContent');
-            const win = window.open('', '_blank', 'width=500,height=700');
-            if (!win) { showToast('पॉप-अप ब्लॉक!', 'error'); return; }
-            win.document.write(`
-                <html><head><title>SupriX Receipt</title>
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-                <style>
-                    body { background:#070104; display:flex; justify-content:center; padding:30px 20px; font-family:'Poppins',sans-serif; }
-                    .receipt-card { background:#0d0105; border-radius:16px; padding:24px; max-width:480px; width:100%; border:3px solid #ff0055; color:#fff; }
-                    .receipt-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,0,85,0.08); font-size:12px; }
-                    .receipt-row .label { color:rgba(255,255,255,0.5); }
-                    .receipt-row .value { color:#fff; text-align:right; word-break:break-all; max-width:60%; font-family:monospace; }
-                    .receipt-currency-box { border:3px solid #ff0055; border-radius:16px; padding:16px 18px; margin:10px 0 16px 0; background:rgba(34,197,94,0.06); text-align:center; }
-                    .receipt-currency-box .inr-amount { font-size:32px; font-weight:800; color:#22c55e; }
-                    .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
-                </style></head><body>
-                <div class="receipt-card">
-                    <img src="${APP_LOGO}" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" />
-                    ${content.innerHTML}
-                </div>
-                </body></html>
-            `);
-            win.document.close();
-            setTimeout(() => { win.print(); }, 500);
-        }
-
-        // ============================================================
-        // NAVIGATION
-        // ============================================================
-        function showPage(pageId) {
-            if (isAdminMode) return;
-            document.querySelectorAll('.app-page').forEach(p => p.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-            const bottomBar = document.getElementById('bottomNavBar');
-            const loggedPages = ['dashboardPage', 'purchasePage', 'stakingPage', 'profilePage'];
-            if (loggedPages.includes(pageId)) bottomBar.classList.remove('hidden');
-            else bottomBar.classList.add('hidden');
-            document.querySelectorAll('#bottomNavBar button').forEach(b => {
-                b.classList.remove('text-rose-400', 'active');
-                b.classList.add('text-rose-300/40');
-            });
-            const activeNavBtn = document.getElementById('nav-' + pageId);
-            if (activeNavBtn) {
-                activeNavBtn.classList.remove('text-rose-300/40');
-                activeNavBtn.classList.add('text-rose-400', 'active');
-            }
-            if (currentUser) {
-                autoUnlockMaturedStakes();
-                updateDashboardStats();
-                if (pageId === 'purchasePage') renderPurchaseSlabs();
-                if (pageId === 'stakingPage') renderStakingDetails();
-                if (pageId === 'profilePage') {
-                    renderProfileDetails();
-                    generateReferralQR();
-                    renderLevelAchievements();
-                }
-                if (pageId === 'dashboardPage') startCooldownTimer();
-                else stopCooldownTimer();
-            }
-            if (voiceEnabled) {
-                if (pageId === 'registrationPage') speakHindi('SupriX Global में आपका स्वागत है। कृपया अपना डिटेल्स भरे और रजिस्ट्रेशन करें।');
-                else if (pageId === 'loginPage') speakHindi('कृपया लॉगिन करें। अपनी ईमेल या SPX ID और पासवर्ड दर्ज करें।');
-                else if (pageId === 'dashboardPage' && currentUser && !welcomeVoicePlayed) {
-                    const name = currentUser.name || 'यूज़र';
-                    speakHindi(`स्वागत है ${name}! SupriX Global के साथ जुड़ने के लिए धन्यवाद।`);
-                    welcomeVoicePlayed = true;
-                }
-                else if (pageId === 'purchasePage') speakHindi('कॉइन परचेज पेज पर आपका स्वागत है। कृपया अपना अमाउंट दर्ज करें।');
-                else if (pageId === 'stakingPage') speakHindi('USDT स्टेकिंग पेज पर आपका स्वागत है। कृपया अपना स्टेकिंग अमाउंट दर्ज करें।');
-                else if (pageId === 'profilePage') speakHindi('प्रोफाइल पेज पर आपका स्वागत है।');
-            }
-        }
-
-        // ============================================================
-        // COOLDOWN
-        // ============================================================
-        function startCooldownTimer() {
-            stopCooldownTimer();
-            cooldownTimerInterval = setInterval(() => { updateCooldownDisplay(); }, 1000);
-        }
-        function stopCooldownTimer() {
-            if (cooldownTimerInterval) { clearInterval(cooldownTimerInterval); cooldownTimerInterval = null; }
-        }
-        function updateCooldownDisplay() {
-            if (!currentUser) return;
-            const now = Date.now();
-            const oneDayMs = 24 * 60 * 60 * 1000;
-            const lastClaimed = parseInt(localStorage.getItem('cx_last_claimed_' + currentUser.$id) || '0', 10);
-            const staked = parseFloat(currentUser.staked || 0);
-            const timerText = document.getElementById('miningTimerText');
-            const cooldownBadge = document.getElementById('cooldownBadge');
-            const cooldownTimeDisplay = document.getElementById('cooldownTimeDisplay');
-
-            if (staked < 10) {
-                timerText.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-red-400 mr-1"></i> ⚠️ कम से कम 10 USDT स्टेक करें!`;
-                document.getElementById('stakingWarning')?.classList.remove('hidden');
-                cooldownBadge.classList.add('hidden');
-                return;
-            }
-            document.getElementById('stakingWarning')?.classList.add('hidden');
-            if (lastClaimed && (now - lastClaimed) < oneDayMs) {
-                const diff = lastClaimed + oneDayMs - now;
-                const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
-                const timeStr = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-                timerText.innerHTML = `<i class="fa-solid fa-hourglass-half text-rose-400 animate-spin mr-1"></i> अगला रिलीज: ${h}घं ${m}मि ${s}से`;
-                cooldownBadge.classList.remove('hidden');
-                cooldownTimeDisplay.textContent = timeStr;
-                cooldownBadge.style.display = 'flex';
-            } else {
-                timerText.innerHTML = `<i class="fa-solid fa-circle-play mr-1 text-green-400 animate-pulse"></i> रिलीज के लिए अभी दबाएं!`;
-                cooldownBadge.classList.add('hidden');
-                cooldownBadge.style.display = 'none';
-            }
-        }
-
-        async function autoUnlockMaturedStakes() {
-            if (!currentUser || !currentUser.staking || currentUser.staking.length === 0) return;
-            const now = Date.now();
-            let changed = false;
-            const matured = [], remaining = [];
-            for (const s of currentUser.staking) {
-                if (s.lockUntil <= now) { matured.push(s); changed = true; }
-                else remaining.push(s);
-            }
-            if (!changed) return;
-            let totalMaturedAmount = 0;
-            const history = [...(currentUser.stakingHistory || [])];
-            for (const s of matured) {
-                totalMaturedAmount += parseFloat(s.amount);
-                history.push({ ...s, unlockedAt: new Date().toISOString(), unlockedBy: 'auto' });
-            }
-            const newCoins = parseFloat(currentUser.coins || 0) + totalMaturedAmount;
-            const newStaked = parseFloat(currentUser.staked || 0) - totalMaturedAmount;
-            try {
-                await saveUserFields({ coins: newCoins, staked: Math.max(0, newStaked), staking: JSON.stringify(remaining), stakingHistory: JSON.stringify(history) });
-                currentUser.staking = remaining;
-                currentUser.stakingHistory = history;
-                currentUser.coins = newCoins;
-                currentUser.staked = Math.max(0, newStaked);
-                showToast(`✅ ${totalMaturedAmount.toFixed(2)} USDT स्टेकिंग मैच्योर!`, 'success');
-                if (document.getElementById('stakingPage') && !document.getElementById('stakingPage').classList.contains('hidden')) renderStakingDetails();
-                updateDashboardStats();
-            } catch (e) { console.error('Auto-unlock error:', e); }
         }
 
         // ============================================================
@@ -3538,7 +2550,7 @@
         }
 
         // ============================================================
-        // MINING — SPINNING 3D STAR BUTTON + VOICE
+        // MINING REWARD
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3572,20 +2584,17 @@
                 const txs = [...(currentUser.transactions || [])];
                 txs.push({ type: 'daily_reward', coinsAmount: reward, dateTime: new Date().toLocaleString('hi-IN'), status: 'SUCCESS', receiptId: receiptId, network: 'USDT BEP20' });
 
-                // ⚡ INSTANT UPDATE in local state first
                 currentUser.coins = newCoins;
                 currentUser.transactions = txs;
                 localStorage.setItem('cx_last_claimed_' + currentUser.$id, String(now));
 
-                // ⚡ Update UI immediately
                 updateDashboardStats();
                 if (document.getElementById('stakingPage') && !document.getElementById('stakingPage').classList.contains('hidden')) renderStakingDetails();
 
-                // Then persist to DB (fire and forget)
                 const docId = currentUser.docId || currentUser.$id;
                 if (docId) {
                     databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, { coins: newCoins, transactions: JSON.stringify(txs) })
-                        .catch(e => console.warn('DB update failed, but local state saved:', e));
+                        .catch(e => console.warn('DB update failed:', e));
                 }
 
                 const msg = `🎉 ${userName}, आपका Daily Reward ${reward.toFixed(2)} USDT (₹${(reward * EXCHANGE_RATE).toFixed(2)}) क्रेडिट!`;
@@ -3594,7 +2603,6 @@
                 showToast(`✅ ${reward.toFixed(2)} USDT रिवॉर्ड!`, 'success');
                 openReceipt({ type: 'daily', coinsAmount: reward, dateTime: new Date().toLocaleString('hi-IN'), status: 'SUCCESS', receiptId: receiptId, network: 'USDT BEP20' });
 
-                // Keep spinning for a moment after success
                 setTimeout(() => {
                     if (btn) {
                         btn.classList.remove('spinning');
@@ -3616,7 +2624,6 @@
 
         async function saveUserFields(fields) {
             if (!currentUser) return;
-            // ⚡ INSTANT local update first
             Object.assign(currentUser, fields);
             if ('staking' in fields) currentUser.staking = parseJsonSafe(fields.staking, []);
             if ('stakingHistory' in fields) currentUser.stakingHistory = parseJsonSafe(fields.stakingHistory, []);
@@ -3635,10 +2642,8 @@
             if ('profilePhoto' in fields) currentUser.profilePhoto = fields.profilePhoto;
             if ('totalPurchased' in fields) currentUser.totalPurchased = parseFloat(fields.totalPurchased);
 
-            // ⚡ Update UI immediately
             updateDashboardStats();
 
-            // Then persist to DB
             const docId = currentUser.docId || currentUser.$id;
             if (!docId) throw new Error('User document ID not found');
             await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, fields);
@@ -3713,12 +2718,20 @@
         }
 
         // ============================================================
-        // SUBMIT DEPOSIT — FAST & INSTANT
+        // SUBMIT DEPOSIT (Pending Check + Voice)
         // ============================================================
         async function submitDepositRequest(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
+
+            // PENDING CHECK
+            if (currentUser.pendingDeposit) {
+                const msg = 'आपकी एक Deposite पहले से pending में है success होने के बाद फिर से deposite कर सकते है';
+                showToast('⚠️ ' + msg, 'error');
+                if (voiceEnabled) speakHindi(msg);
+                return;
+            }
+
             if (!uploadReceiptFile) { showToast('स्क्रीनशॉट अपलोड करें।', 'error'); return; }
-            if (currentUser.pendingDeposit) { showToast('पहले से पेंडिंग।', 'error'); return; }
             setButtonLoading(btn, true);
             try {
                 const uploaded = await storage.createFile(SCREENSHOT_BUCKET_ID, ID.unique(), uploadReceiptFile);
@@ -3737,12 +2750,10 @@
                 const oldLevel = Math.floor(oldTotal / 1000);
                 const newLevel = Math.floor(newTotal / 1000);
 
-                // ⚡ INSTANT local update
                 currentUser.pendingDeposit = deposit;
                 currentUser.totalPurchased = newTotal;
                 updateDashboardStats();
 
-                // Persist to DB
                 const docId = currentUser.docId || currentUser.$id;
                 databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, {
                     pending_deposit: JSON.stringify(deposit),
@@ -3953,16 +2964,24 @@
         }
 
         // ============================================================
-        // WITHDRAWAL
+        // WITHDRAWAL (Pending Check + Voice)
         // ============================================================
         async function submitWithdrawal(btn) {
             if (!currentUser) { showToast('लॉगिन करें।', 'error'); return; }
+
+            // PENDING CHECK
+            if (currentUser.pendingWithdrawal) {
+                const msg = 'आपकी एक withdrawal पहले से pending है 24 Hour में एक बार Withdrawal ले सकते है success होने के बाद फिर से withdrawal ले सकते है';
+                showToast('⚠️ ' + msg, 'error');
+                if (voiceEnabled) speakHindi(msg);
+                return;
+            }
+
             const address = document.getElementById('userWithdrawAddress').value.trim();
             const amount = parseFloat(document.getElementById('withdrawAmountInput').value);
             if (!address) { showToast('USDT एड्रेस पेस्ट करें।', 'error'); return; }
             if (!amount || amount < 2) { showToast('न्यूनतम 2 USDT', 'error'); return; }
             if (amount > parseFloat(currentUser.coins || 0)) { showToast('पर्याप्त नहीं!', 'error'); return; }
-            if (currentUser.pendingWithdrawal) { showToast('पहले से पेंडिंग।', 'error'); return; }
             setButtonLoading(btn, true);
             try {
                 const newWithdrawal = { coinsAmount: amount, dateTime: new Date().toLocaleString('hi-IN'), network: 'BEP20 (USDT)' };
@@ -3997,7 +3016,6 @@
                 txs.push(tx);
                 const receiveTx = { type: 'receive_from_suprix_network', amount: netAmount, from: currentUser.email, fromSPX: currentUser.coinxId, dateTime: new Date().toLocaleString('hi-IN'), status: 'completed', network: 'USDT BEP20' };
 
-                // ⚡ INSTANT local update
                 currentUser.coins = newSenderCoins;
                 currentUser.transactions = txs;
                 currentUser.coinxWalletSC = targetSPX;
@@ -4016,7 +3034,7 @@
         }
 
         // ============================================================
-        // REFERRALS, TX, TEAM MODALS
+        // REFERRALS / TX / TEAM
         // ============================================================
         function toggleMyReferralsModal(show) {
             const modal = document.getElementById('myReferralsModal');
@@ -4042,25 +3060,8 @@
                         <span>💰 ${Number(r.stakedAmount || 0).toFixed(2)} USDT</span>
                         <span>🕐 ${r.dateTime || ''}</span>
                     </div>
-                    <button onclick="viewReferralReceipt('${r.referredName||''}','${r.referredEmail||''}','${r.bonusReceived||0}','${r.stakedAmount||0}','${r.dateTime||''}')" class="text-[8px] bg-rose-500/20 border border-rose-500/30 px-2 py-0.5 rounded text-rose-400 hover:bg-rose-500/30 transition-all mt-1">
-                        🧾 View Receipt
-                    </button>
                 `;
                 list.appendChild(div);
-            });
-        }
-
-        function viewReferralReceipt(name, email, bonus, stakedAmount, dateTime) {
-            openReceipt({
-                type: 'referral',
-                coinsAmount: parseFloat(bonus),
-                dateTime: dateTime,
-                status: 'Completed',
-                receiptId: generateReceiptId(),
-                network: 'USDT BEP20',
-                referredName: name,
-                referredEmail: email,
-                stakedAmount: stakedAmount
             });
         }
 
@@ -4102,44 +3103,16 @@
                 div.className = 'bg-black/40 p-2.5 rounded-xl border border-rose-500/15 flex justify-between items-center';
                 const isDaily = e.type === 'daily_reward' || e.type === 'daily';
                 const label = isDaily ? `🌟 ${e.coinsAmount} USDT` : e.amountUSD ? `+$${e.amountUSD}` : `-${e.coinsAmount} USDT`;
-                const isDeposit = e.type === 'deposit' || e.amountUSD;
                 div.innerHTML = `
                     <div>
                         <div class="font-bold text-white text-xs">${label}</div>
                         <div class="text-[9px] text-rose-300/30">${e.dateTime||''} ${e.coinsAmount ? `(${e.coinsAmount} USDT)` : ''}</div>
                     </div>
-                    <div class="text-right flex flex-col items-end gap-1">
+                    <div class="text-right">
                         <span class="px-2 py-0.5 rounded text-[9px] font-bold ${color}">${e.status}</span>
-                        ${(isDeposit && e.receiptFileId) || isDaily || e.receiptId ? `<button onclick="viewReceiptItem('${e.type||'deposit'}','${e.coinsAmount||e.amount||0}','${e.amountUSD||0}','${e.dateTime||''}','${e.status||'SUCCESS'}','${e.receiptFileId||''}','${e.receiptId||''}')" class="text-[8px] bg-rose-500/20 border border-rose-500/30 px-2 py-0.5 rounded text-rose-400">🧾 View</button>` : ''}
-                        ${(!isDeposit && !isDaily && e.coinsAmount) ? `<button onclick="viewWithdrawalReceipt('${e.coinsAmount}','${e.dateTime||''}','${e.status||'Completed'}')" class="text-[8px] bg-rose-500/20 border border-rose-500/30 px-2 py-0.5 rounded text-rose-400">🧾 View</button>` : ''}
                     </div>
                 `;
                 list.appendChild(div);
-            });
-        }
-
-        function viewReceiptItem(type, coinsAmount, amountUSD, dateTime, status, receiptFileId, receiptId) {
-            openReceipt({
-                type: type === 'daily' ? 'daily' : 'deposit',
-                coinsAmount: coinsAmount || amountUSD,
-                amountUSD: amountUSD,
-                dateTime: dateTime,
-                status: status,
-                receiptFileId: receiptFileId || null,
-                receiptId: receiptId || generateReceiptId(),
-                network: 'BEP20 (USDT)'
-            });
-        }
-
-        function viewWithdrawalReceipt(coinsAmount, dateTime, status) {
-            openReceipt({
-                type: 'withdrawal',
-                coinsAmount: coinsAmount,
-                dateTime: dateTime,
-                status: status,
-                receiptFileId: null,
-                receiptId: generateReceiptId(),
-                network: 'BEP20 (USDT)'
             });
         }
 
@@ -4181,7 +3154,7 @@
         }
 
         // ============================================================
-        // SLIDER — Google Drive + Picsum + Motivation Lines
+        // SLIDER
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
@@ -4254,46 +3227,262 @@
         }
 
         // ============================================================
-        // ADMIN LOGIN
+        // STAKING SETTINGS / COOLDOWN
         // ============================================================
-        async function submitAdminLogin(btn) {
-            const username = document.getElementById('adminUsernameInput').value.trim();
-            const password = document.getElementById('adminPasswordInput').value.trim();
-            if (!username || !password) { showToast('एडमिन क्रेडेंशियल भरें।', 'error'); return; }
-            setButtonLoading(btn, true);
+        async function loadStakingSettings() {
             try {
-                try { await account.get(); await account.deleteSession('current'); } catch (e) {}
-                await account.createEmailPasswordSession(username, password);
-                const acc = await account.get();
-                try {
-                    const teamList = await teams.list();
-                    const isAdmin = teamList.teams.some(t => t.$id === ADMIN_TEAM_ID);
-                    if (!isAdmin) {
-                        showToast('आप एडमिन नहीं हैं!', 'error');
-                        await account.deleteSession('current');
-                        return;
-                    }
-                } catch (e) {
-                    showToast('एडमिन वेरिफिकेशन में त्रुटि!', 'error');
-                    await account.deleteSession('current');
-                    return;
+                const doc = await databases.getDocument(DATABASE_ID, STAKING_SETTINGS_COLLECTION_ID, STAKING_SETTINGS_DOC_ID);
+                adminStakingSettings.globallyEnabled = !!doc.globallyEnabled;
+                adminStakingSettings.plans = parseJsonSafe(doc.plans, adminStakingSettings.plans);
+            } catch (e) {}
+        }
+
+        function startCooldownTimer() {
+            stopCooldownTimer();
+            cooldownTimerInterval = setInterval(() => { updateCooldownDisplay(); }, 1000);
+        }
+        function stopCooldownTimer() {
+            if (cooldownTimerInterval) { clearInterval(cooldownTimerInterval); cooldownTimerInterval = null; }
+        }
+        function updateCooldownDisplay() {
+            if (!currentUser) return;
+            const now = Date.now();
+            const oneDayMs = 24 * 60 * 60 * 1000;
+            const lastClaimed = parseInt(localStorage.getItem('cx_last_claimed_' + currentUser.$id) || '0', 10);
+            const staked = parseFloat(currentUser.staked || 0);
+            const timerText = document.getElementById('miningTimerText');
+            const cooldownBadge = document.getElementById('cooldownBadge');
+            const cooldownTimeDisplay = document.getElementById('cooldownTimeDisplay');
+
+            if (staked < 10) {
+                timerText.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-red-400 mr-1"></i> ⚠️ कम से कम 10 USDT स्टेक करें!`;
+                document.getElementById('stakingWarning')?.classList.remove('hidden');
+                cooldownBadge.classList.add('hidden');
+                return;
+            }
+            document.getElementById('stakingWarning')?.classList.add('hidden');
+            if (lastClaimed && (now - lastClaimed) < oneDayMs) {
+                const diff = lastClaimed + oneDayMs - now;
+                const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+                const timeStr = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                timerText.innerHTML = `<i class="fa-solid fa-hourglass-half text-rose-400 animate-spin mr-1"></i> अगला रिलीज: ${h}घं ${m}मि ${s}से`;
+                cooldownBadge.classList.remove('hidden');
+                cooldownTimeDisplay.textContent = timeStr;
+                cooldownBadge.style.display = 'flex';
+            } else {
+                timerText.innerHTML = `<i class="fa-solid fa-circle-play mr-1 text-green-400 animate-pulse"></i> रिलीज के लिए अभी दबाएं!`;
+                cooldownBadge.classList.add('hidden');
+                cooldownBadge.style.display = 'none';
+            }
+        }
+
+        async function autoUnlockMaturedStakes() {
+            if (!currentUser || !currentUser.staking || currentUser.staking.length === 0) return;
+            const now = Date.now();
+            let changed = false;
+            const matured = [], remaining = [];
+            for (const s of currentUser.staking) {
+                if (s.lockUntil <= now) { matured.push(s); changed = true; }
+                else remaining.push(s);
+            }
+            if (!changed) return;
+            let totalMaturedAmount = 0;
+            const history = [...(currentUser.stakingHistory || [])];
+            for (const s of matured) {
+                totalMaturedAmount += parseFloat(s.amount);
+                history.push({ ...s, unlockedAt: new Date().toISOString(), unlockedBy: 'auto' });
+            }
+            const newCoins = parseFloat(currentUser.coins || 0) + totalMaturedAmount;
+            const newStaked = parseFloat(currentUser.staked || 0) - totalMaturedAmount;
+            try {
+                await saveUserFields({ coins: newCoins, staked: Math.max(0, newStaked), staking: JSON.stringify(remaining), stakingHistory: JSON.stringify(history) });
+                currentUser.staking = remaining;
+                currentUser.stakingHistory = history;
+                currentUser.coins = newCoins;
+                currentUser.staked = Math.max(0, newStaked);
+                showToast(`✅ ${totalMaturedAmount.toFixed(2)} USDT स्टेकिंग मैच्योर!`, 'success');
+                if (document.getElementById('stakingPage') && !document.getElementById('stakingPage').classList.contains('hidden')) renderStakingDetails();
+                updateDashboardStats();
+            } catch (e) { console.error('Auto-unlock error:', e); }
+        }
+
+        // ============================================================
+        // RECEIPT
+        // ============================================================
+        function openReceipt(data) {
+            receiptData = data;
+            const modal = document.getElementById('receiptModal');
+            const content = document.getElementById('receiptContent');
+            const isDaily = data.type === 'daily';
+
+            const usdtAmount = parseFloat(data.coinsAmount || data.amount || 0);
+            const inrAmount = (usdtAmount * EXCHANGE_RATE).toFixed(2);
+            const usdtDisplay = usdtAmount.toFixed(2);
+
+            let statusBadge = '<span class="receipt-badge approved">✅ ' + (data.status || 'Completed') + '</span>';
+            let typeLabel = isDaily ? '🌟 डेली रिवॉर्ड' : '💰 लेनदेन';
+
+            const memberName = currentUser?.name || 'N/A';
+            const memberId = currentUser?.coinxId || 'N/A';
+            const receiptId = data.receiptId || generateReceiptId();
+            const txHash = '0x' + Math.random().toString(16).slice(2, 14) + '...' + Math.random().toString(16).slice(2, 6);
+
+            let receiptHTML = `
+                <div class="receipt-row"><span class="label">📋 लेनदेन प्रकार</span><span class="value highlight">${typeLabel}</span></div>
+                <div class="receipt-currency-box">
+                    <span class="inr-amount">₹${inrAmount}</span>
+                    <span class="inr-label">💵 इंडियन रुपये (INR) — $1 = ₹100</span>
+                    <span class="usdt-amount">${usdtDisplay} USDT</span>
+                    <span class="usdt-label">💲 USDT (BEP-20)</span>
+                </div>
+                <div class="receipt-row"><span class="label">👤 सदस्य का नाम</span><span class="value">${memberName}</span></div>
+                <div class="receipt-row"><span class="label">🆔 सदस्य ID</span><span class="value" style="font-size:13px;font-weight:700;color:#ff6699;">${memberId}</span></div>
+                <div class="receipt-row"><span class="label">🧾 रसीद ID</span><span class="value" style="font-size:11px;">${receiptId}</span></div>
+                <div class="receipt-row"><span class="label">🌐 नेटवर्क</span><span class="value currency-usdt">BNB Smart Chain (BEP20)</span></div>
+                <div class="receipt-row"><span class="label">📅 तारीख & समय</span><span class="value">${data.dateTime || 'N/A'}</span></div>
+                <div class="receipt-row"><span class="label">📊 स्थिति</span><span class="value">${statusBadge}</span></div>
+                <div class="receipt-row"><span class="label">🔗 ट्रांजैक्शन हैश</span><span class="value" style="font-size:10px;">${txHash}</span></div>
+                <div class="receipt-row" style="border-bottom:none;padding-bottom:2px;"><span class="label">💱 दर</span><span class="value" style="color:#ff6699;font-weight:600;">$1 = ₹${EXCHANGE_RATE}</span></div>
+                <div class="receipt-qr-box"><div id="receiptQrContainer"></div></div>
+                <div style="border-top:1px solid rgba(255,0,85,0.08);margin-top:6px;padding-top:6px;text-align:center;">
+                    <span style="font-size:8px;color:#ff99bb;">🔒 सुरक्षित लेनदेन • SupriX Global • $1 = ₹${EXCHANGE_RATE}</span>
+                </div>
+            `;
+            content.innerHTML = receiptHTML;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                const container = document.getElementById('receiptQrContainer');
+                if (container && typeof QRCode !== 'undefined') {
+                    container.innerHTML = '';
+                    const qrData = `SupriX|${receiptId}|${memberId}|${usdtDisplay}USDT|${data.dateTime}`;
+                    new QRCode(container, { text: qrData, width: 100, height: 100, colorDark: '#ff0055', colorLight: '#ffffff' });
                 }
-                isAdminMode = true;
-                document.getElementById('userPanelContainer').classList.add('hidden');
-                document.getElementById('adminPanelContainer').classList.remove('hidden');
-                document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
-                document.getElementById('headerSubtitle').innerText = 'Super Admin';
-                document.getElementById('headerBadge').className = 'admin-badge';
-                document.getElementById('headerBadge').innerHTML = '<i class="fa-solid fa-shield-halved mr-1"></i> ADMIN';
-                await loadAllData();
-                showToast('✅ एडमिन लॉगिन सफल!', 'success');
-            } catch (e) {
-                console.error('Admin login error:', e);
-                let msg = '❌ गलत एडमिन क्रेडेंशियल!';
-                if (e.code === 401) msg = '❌ गलत ईमेल या पासवर्ड';
-                else if (e.message) msg = '❌ ' + e.message;
-                showToast(msg, 'error');
-            } finally { setButtonLoading(btn, false); }
+            }, 100);
+        }
+
+        function closeReceipt() {
+            document.getElementById('receiptModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            receiptData = null;
+        }
+
+        function downloadReceipt() {
+            if (!receiptData) return;
+            const card = document.getElementById('receiptCard');
+            const clone = card.cloneNode(true);
+            const footer = clone.querySelector('.receipt-footer');
+            if (footer) footer.remove();
+            const html = `
+                <html><head><title>SupriX_Receipt_${receiptData.dateTime || Date.now()}.html</title>
+                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+                <style>
+                    body { background:#070104; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:20px; font-family:'Poppins',sans-serif; }
+                    .receipt-card { background:#0d0105; border-radius:16px; padding:24px; max-width:480px; width:100%; border:3px solid #ff0055; color:#fff; }
+                    .receipt-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,0,85,0.08); font-size:12px; }
+                    .receipt-row .label { color:rgba(255,255,255,0.5); }
+                    .receipt-row .value { color:#fff; text-align:right; word-break:break-all; max-width:60%; font-family:monospace; }
+                    .receipt-currency-box { border:3px solid #ff0055; border-radius:16px; padding:16px 18px; margin:10px 0 16px 0; background:rgba(34,197,94,0.06); text-align:center; }
+                    .receipt-currency-box .inr-amount { font-size:32px; font-weight:800; color:#22c55e; }
+                    .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
+                </style></head><body>${clone.outerHTML}</body></html>
+            `;
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `SupriX_Receipt_${Date.now()}.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('✅ रसीद डाउनलोड!', 'success');
+        }
+
+        function printReceipt() {
+            const content = document.getElementById('receiptContent');
+            const win = window.open('', '_blank', 'width=500,height=700');
+            if (!win) { showToast('पॉप-अप ब्लॉक!', 'error'); return; }
+            win.document.write(`
+                <html><head><title>SupriX Receipt</title>
+                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+                <style>
+                    body { background:#070104; display:flex; justify-content:center; padding:30px 20px; font-family:'Poppins',sans-serif; }
+                    .receipt-card { background:#0d0105; border-radius:16px; padding:24px; max-width:480px; width:100%; border:3px solid #ff0055; color:#fff; }
+                    .receipt-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,0,85,0.08); font-size:12px; }
+                    .receipt-row .label { color:rgba(255,255,255,0.5); }
+                    .receipt-row .value { color:#fff; text-align:right; word-break:break-all; max-width:60%; font-family:monospace; }
+                    .receipt-currency-box { border:3px solid #ff0055; border-radius:16px; padding:16px 18px; margin:10px 0 16px 0; background:rgba(34,197,94,0.06); text-align:center; }
+                    .receipt-currency-box .inr-amount { font-size:32px; font-weight:800; color:#22c55e; }
+                    .receipt-currency-box .usdt-amount { font-size:20px; font-weight:700; color:#34d399; margin-top:6px; display:block; border-top:1px solid rgba(52,211,153,0.2); padding-top:6px; }
+                </style></head><body>
+                <div class="receipt-card">
+                    <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" style="height:32px;width:32px;border-radius:50%;border:2px solid #ff0055;display:block;margin:0 auto 10px;" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" />
+                    ${content.innerHTML}
+                </div>
+                </body></html>
+            `);
+            win.document.close();
+            setTimeout(() => { win.print(); }, 500);
+        }
+
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
+        function showPage(pageId) {
+            document.querySelectorAll('.app-page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            const bottomBar = document.getElementById('bottomNavBar');
+            const loggedPages = ['dashboardPage', 'purchasePage', 'stakingPage', 'profilePage'];
+            if (loggedPages.includes(pageId)) bottomBar.classList.remove('hidden');
+            else bottomBar.classList.add('hidden');
+            document.querySelectorAll('#bottomNavBar button').forEach(b => {
+                b.classList.remove('text-rose-400', 'active');
+                b.classList.add('text-rose-300/40');
+            });
+            const activeNavBtn = document.getElementById('nav-' + pageId);
+            if (activeNavBtn) {
+                activeNavBtn.classList.remove('text-rose-300/40');
+                activeNavBtn.classList.add('text-rose-400', 'active');
+            }
+            if (currentUser) {
+                autoUnlockMaturedStakes();
+                updateDashboardStats();
+                if (pageId === 'purchasePage') renderPurchaseSlabs();
+                if (pageId === 'stakingPage') renderStakingDetails();
+                if (pageId === 'profilePage') {
+                    renderProfileDetails();
+                    generateReferralQR();
+                    renderLevelAchievements();
+                }
+                if (pageId === 'dashboardPage') startCooldownTimer();
+                else stopCooldownTimer();
+            }
+            if (voiceEnabled) {
+                if (pageId === 'registrationPage') speakHindi('SupriX Global में आपका स्वागत है। कृपया अपना डिटेल्स भरे और रजिस्ट्रेशन करें।');
+                else if (pageId === 'loginPage') speakHindi('कृपया लॉगिन करें।');
+                else if (pageId === 'dashboardPage' && currentUser && !welcomeVoicePlayed) {
+                    const name = currentUser.name || 'यूज़र';
+                    speakHindi(`स्वागत है ${name}! SupriX Global के साथ जुड़ने के लिए धन्यवाद।`);
+                    welcomeVoicePlayed = true;
+                }
+                else if (pageId === 'purchasePage') speakHindi('कॉइन परचेज पेज पर आपका स्वागत है। कृपया अपना अमाउंट दर्ज करें।');
+                else if (pageId === 'stakingPage') speakHindi('USDT स्टेकिंग पेज पर आपका स्वागत है। कृपया अपना स्टेकिंग अमाउंट दर्ज करें।');
+                else if (pageId === 'profilePage') speakHindi('प्रोफाइल पेज पर आपका स्वागत है।');
+            }
+        }
+
+        // ============================================================
+        // IMAGE MODAL
+        // ============================================================
+        function openFullscreenImage(src) {
+            document.getElementById('fullscreenImgTarget').src = src;
+            document.getElementById('fullscreenImageModal').classList.remove('hidden');
+        }
+        function closeFullscreenImage() { document.getElementById('fullscreenImageModal').classList.add('hidden'); }
+        function toggleZoomImage(img) {
+            img.classList.toggle('scale-100');
+            img.classList.toggle('scale-150');
         }
 
         // ============================================================
@@ -4313,6 +3502,16 @@
             } else showToast('📲 Browser Menu से "Add to Home Screen" चुनें।', 'info');
         }
 
+        function checkAppInstallation() {
+            if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+                isAppInstalled = true;
+                const btn = document.getElementById('floatingApkBtn');
+                const headerBtn = document.getElementById('headerApkBtn');
+                if (btn) btn.classList.add('hidden-app');
+                if (headerBtn) headerBtn.classList.add('hidden-app');
+            }
+        }
+
         // ============================================================
         // INIT
         // ============================================================
@@ -4323,12 +3522,10 @@
             checkAppInstallation();
             checkReferralInURL();
 
-            // Preload voices for Google Gemini laughing female voice
             try {
                 if (window.speechSynthesis) {
                     window.speechSynthesis.getVoices();
-                    setTimeout(() => { selectedVoice = pickVoice(); }, 500);
-                    window.speechSynthesis.onvoiceschanged = () => { selectedVoice = pickVoice(); };
+                    window.speechSynthesis.onvoiceschanged = () => {};
                 }
             } catch(e) {}
 
@@ -4381,26 +3578,6 @@
             } catch (e) { return false; }
         }
 
-        function checkAppInstallation() {
-            if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-                isAppInstalled = true;
-                const btn = document.getElementById('floatingApkBtn');
-                const headerBtn = document.getElementById('headerApkBtn');
-                if (btn) btn.classList.add('hidden-app');
-                if (headerBtn) headerBtn.classList.add('hidden-app');
-            }
-        }
-
-        window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
-            if (e.matches) {
-                isAppInstalled = true;
-                const btn = document.getElementById('floatingApkBtn');
-                const headerBtn = document.getElementById('headerApkBtn');
-                if (btn) btn.classList.add('hidden-app');
-                if (headerBtn) headerBtn.classList.add('hidden-app');
-            }
-        });
-
         // ============================================================
         // GLOBAL EXPORTS
         // ============================================================
@@ -4427,31 +3604,14 @@
         window.toggleTeamModal = toggleTeamModal;
         window.toggleAdminSearch = toggleAdminSearch;
         window.verifyAdminCode = verifyAdminCode;
-        window.logoutAdmin = logoutAdmin;
-        window.switchAdminTab = switchAdminTab;
-        window.toggleBlock = toggleBlock;
-        window.updateUserCoinsManually = updateUserCoinsManually;
-        window.approveDeposit = approveDeposit;
-        window.rejectDeposit = rejectDeposit;
-        window.approveWithdrawal = approveWithdrawal;
-        window.rejectWithdrawal = rejectWithdrawal;
-        window.adminUnlockStake = adminUnlockStake;
-        window.toggleGlobalStakingState = toggleGlobalStakingState;
-        window.togglePlanState = togglePlanState;
-        window.exportAllUserData = exportAllUserData;
         window.openFullscreenImage = openFullscreenImage;
         window.closeFullscreenImage = closeFullscreenImage;
         window.toggleZoomImage = toggleZoomImage;
-        window.viewReceiptItem = viewReceiptItem;
-        window.viewWithdrawalReceipt = viewWithdrawalReceipt;
-        window.viewReferralReceipt = viewReferralReceipt;
         window.closeReceipt = closeReceipt;
         window.downloadReceipt = downloadReceipt;
         window.printReceipt = printReceipt;
         window.toggleForgotPasswordModal = toggleForgotPasswordModal;
         window.handleForgotPassword = handleForgotPassword;
-        window.adminTransferUSDT = adminTransferUSDT;
-        window.submitAdminLogin = submitAdminLogin;
         window.closeVoiceToast = closeVoiceToast;
         window.installApp = installApp;
         window.toggleVoice = toggleVoice;
