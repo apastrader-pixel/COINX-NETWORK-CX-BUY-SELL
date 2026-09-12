@@ -37,11 +37,6 @@
             position: relative;
         }
 
-        @keyframes dynamicHueFlow {
-            0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
-            50%  { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(0, 230, 255, 0.8)); }
-            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px rgba(255, 0, 85, 0.6)); }
-        }
         @keyframes rainbowBorder {
             0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
             14%  { border-color: #ff00aa; box-shadow: 0 0 15px #ff00aa, inset 0 0 10px rgba(255,0,170,0.3); }
@@ -58,15 +53,6 @@
             40%      { transform: translateY(2px) rotate(3deg) scale(1.02); }
             60%      { transform: translateY(-2px) rotate(-2deg) scale(1.03); }
             80%      { transform: translateY(1px) rotate(1deg) scale(1.01); }
-        }
-        @keyframes spinStar360 {
-            0%   { transform: rotate(0deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
-            50%  { transform: rotate(180deg) scale(1.12); filter: drop-shadow(0 0 35px #00f0ff); }
-            100% { transform: rotate(360deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
-        }
-        @keyframes spinContinuous {
-            0%   { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         @keyframes floatButterfly {
             0%   { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.08; }
@@ -129,9 +115,7 @@
             100% { color: #ff0055; text-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
         }
 
-        .animated-hue-border { animation: rainbowBorder 6s linear infinite; }
         .wobble-btn { animation: headerWobble 3.5s ease-in-out infinite; }
-        .star-spinning { animation: spinStar360 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
         .rainbow-text { animation: rainbowText 3s linear infinite; }
 
         .glass-rose {
@@ -247,6 +231,11 @@
             animation: miningPulse 0.6s ease-in-out infinite;
         }
 
+        @keyframes spinContinuous {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         #starsCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
 
         input, select, textarea {
@@ -299,7 +288,6 @@
             transform: scale(1.2);
         }
 
-        /* ============ SLIDER ============ */
         .slider-container {
             position: relative;
             width: 100%;
@@ -1070,8 +1058,8 @@
 
         <header id="mainHeader" class="w-full glass-rose py-2 px-3 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px; min-height: 58px;">
             <div class="flex items-center gap-2 flex-1 min-w-0">
-                <img id="headerLogo" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="SupriX Global" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover; flex-shrink: 0;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
-                <h1 id="headerTitle" class="rainbow-text font-extrabold tracking-wider leading-none truncate" style="font-size: 1.6rem; animation: rainbowText 3s linear infinite;">SUPRIX GLOBAL 🌍</h1>
+                <img id="headerLogo" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover; flex-shrink: 0;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                <h1 id="headerTitle" class="rainbow-text font-extrabold tracking-wider leading-none truncate" style="font-size: 1.6rem;">SUPRIX GLOBAL 🌍</h1>
             </div>
             <div class="flex items-center gap-1 flex-shrink-0">
                 <button onclick="toggleVoice()" id="voiceToggleBtn" class="voice-toggle-btn" title="वॉइस गाइड ऑन/ऑफ" style="padding: 3px 8px; font-size: 8px; width: 26px; height: 26px; justify-content: center;">
@@ -1101,9 +1089,13 @@
                 <!-- REGISTRATION -->
                 <section id="registrationPage" class="app-page w-full space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                        <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">रजिस्ट्रेशन करें</h2>
                         <p class="text-xs text-rose-300/60">SupriX Global परिवार में आपका स्वागत है</p>
+                        <div id="referralBanner" class="hidden mt-3 bg-green-500/10 border border-green-500/30 rounded-xl p-2">
+                            <p class="text-xs text-green-400 font-bold"><i class="fa-solid fa-gift mr-1"></i> 🎁 Referral Code Applied!</p>
+                            <p id="referralBannerCode" class="text-[10px] text-green-300 font-mono"></p>
+                        </div>
                     </div>
                     <div class="glass-rose p-6 rounded-3xl space-y-4">
                         <div>
@@ -1181,7 +1173,7 @@
                 <!-- LOGIN -->
                 <section id="loginPage" class="app-page w-full hidden space-y-6">
                     <div class="text-center space-y-2 py-6">
-                        <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                        <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="w-20 h-20 rounded-full mx-auto border-2 border-rose-500 shadow-2xl object-cover" style="box-shadow: 0 0 40px rgba(255,0,85,0.5);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                         <h2 class="text-2xl font-extrabold rose-text-gradient tracking-wide mt-2">लॉगिन अकाउंट</h2>
                         <p class="text-xs text-rose-300/60">सुरक्षित माइनिंग डैशबोर्ड में प्रवेश करें</p>
                     </div>
@@ -1219,7 +1211,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="dashboardProfilePhoto" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                                <img id="dashboardProfilePhoto" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="Profile" class="profile-photo" style="width: 48px; height: 48px;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                             </div>
                             <div>
                                 <h4 id="userWelcomeName" class="font-bold text-sm text-white">User</h4>
@@ -1419,7 +1411,7 @@
                     <div class="glass-rose p-4 rounded-2xl flex items-center justify-between">
                         <div class="flex items-center gap-3">
                             <div class="profile-photo-wrapper">
-                                <img id="profilePhoto" src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="Profile" class="profile-photo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                                <img id="profilePhoto" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="Profile" class="profile-photo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                                 <label for="profilePhotoInput" class="edit-icon">
                                     <i class="fa-solid fa-camera"></i>
                                 </label>
@@ -1434,7 +1426,6 @@
 
                     <div class="glass-rose p-4 rounded-2xl space-y-3">
                         <h4 class="text-xs font-bold text-rose-400"><i class="fa-solid fa-id-card mr-1.5"></i> आपकी जानकारी</h4>
-                        
                         <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
                             <div>
                                 <span style="font-size: 9px; color: #ff99bb; display: block;">🆔 SPX ID</span>
@@ -1442,7 +1433,6 @@
                             </div>
                             <button onclick="copyToClipboard('profileCoinXIdDisplay', '✅ SPX ID कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                         </div>
-
                         <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
                             <div>
                                 <span style="font-size: 9px; color: #ff99bb; display: block;">📧 ईमेल</span>
@@ -1450,7 +1440,6 @@
                             </div>
                             <button onclick="copyToClipboard('profileEmailDisplay', '✅ ईमेल कॉपी!')" class="copy-btn"><i class="fa-solid fa-copy mr-1"></i> कॉपी</button>
                         </div>
-
                         <div style="background: rgba(0,0,0,0.5); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border: 1.5px solid rgba(255,0,85,0.3);">
                             <div>
                                 <span style="font-size: 9px; color: #ff99bb; display: block;">🎁 रेफरल कोड</span>
@@ -1734,7 +1723,7 @@
         <!-- APP DOWNLOAD POPUP -->
         <div id="appDownloadPopup" class="app-popup hidden">
             <div class="app-card">
-                <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w400" alt="SupriX Global" class="app-logo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="app-logo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                 <h3 class="text-lg font-extrabold rose-text-gradient">SupriX Global</h3>
                 <p class="text-[10px] text-rose-300/60 mb-3">Premium • Gold Edition</p>
                 <div class="glass-rose-light p-3 rounded-xl text-left space-y-1.5 mb-4">
@@ -1799,7 +1788,7 @@
         <div id="receiptModal" class="receipt-modal hidden">
             <div class="receipt-card" id="receiptCard">
                 <div class="receipt-logo" style="text-align: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,0,85,0.1);">
-                    <img src="https://lh3.googleusercontent.com/d/1SAozsk8oWOON2naYvGkFCUu85NRMXkJR=w200" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                    <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; display: inline-block; border: 2px solid var(--rose-primary);" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
                     <small style="display: block; font-size: 9px; color: #ff99bb; letter-spacing: 2px;">Premium • Gold Edition</small>
                 </div>
                 <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 mb-3">
@@ -1918,16 +1907,13 @@
 
         const EXCHANGE_RATE = 100;
 
-        // ⚡ Google Drive images — lh3.googleusercontent.com format (hotlink-friendly)
         function gdrive(id, size) {
             size = size || 1200;
             return "https://lh3.googleusercontent.com/d/" + id + "=w" + size;
         }
 
-        // Fallback image
         const FALLBACK_IMG = "https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png";
 
-        // Slider images from Google Drive (24 images)
         const SLIDER_IMAGES = [
             gdrive("1tMFYEsmqHYhHGEPuOWZYxN3Uvc-fPIms", 1200),
             gdrive("1ZTphMUqbqdg6rnJHo-cANP1dI7CatFJY", 1200),
@@ -1955,7 +1941,6 @@
             gdrive("19zV3C_5v0UF0nCdtzb0GPa8t4pMgaqTA", 1200)
         ];
 
-        // Picsum images (20 reliable id-based images)
         const PICSUM_IMAGES = [
             "https://picsum.photos/id/1015/1200/600",
             "https://picsum.photos/id/1016/1200/600",
@@ -1979,7 +1964,6 @@
             "https://picsum.photos/id/1038/1200/600"
         ];
 
-        // Motivation lines (2 lines each)
         const MOTIVATION_LINES = [
             { line1: "सपने वो नहीं जो सोते हुए देखें", line2: "सपने वो हैं जो सोने न दें" },
             { line1: "मेहनत इतनी खामोशी से करो", line2: "कि कामयाबी शोर मचा दे" },
@@ -2123,11 +2107,24 @@
             const colors = { success: 'rgba(34,197,94,0.3)', error: 'rgba(239,68,68,0.3)', info: 'rgba(255,0,85,0.25)' };
             toast.style.borderColor = colors[type] || colors.info;
             toast.classList.add('show');
+            toast.style.opacity = '1';
+            toast.style.pointerEvents = 'auto';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
             clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => toast.classList.remove('show'), 4000);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+                toast.style.opacity = '0';
+                toast.style.pointerEvents = 'none';
+                toast.style.transform = 'translateX(-50%) translateY(-20px)';
+            }, 4000);
         }
 
-        function hideToast() { document.getElementById('toastNotification').classList.remove('show'); }
+        function hideToast() {
+            const toast = document.getElementById('toastNotification');
+            toast.classList.remove('show');
+            toast.style.opacity = '0';
+            toast.style.pointerEvents = 'none';
+        }
 
         function copyToClipboard(elementId, successText) {
             const elem = document.getElementById(elementId);
@@ -2157,6 +2154,26 @@
             if (!str) return '****';
             if (str.length <= show * 2) return str;
             return str.slice(0, show) + '****' + str.slice(-show);
+        }
+
+        // ============================================================
+        // ⚡ REFERRAL URL HELPER (NEW — uses Admin Base URL)
+        // ============================================================
+        function getReferralBaseUrl() {
+            // Admin ne jo URL save kiya hai wahi use karo
+            let baseUrl = localStorage.getItem('suprix_referral_base_url');
+            if (!baseUrl) {
+                // Fallback: current origin
+                baseUrl = window.location.origin + window.location.pathname;
+            }
+            // Remove query string and trailing slash
+            baseUrl = baseUrl.split('?')[0].split('#')[0];
+            return baseUrl;
+        }
+
+        function buildReferralUrl(refId) {
+            if (!refId) return '';
+            return getReferralBaseUrl() + '?ref=' + refId;
         }
 
         // ============================================================
@@ -2201,25 +2218,54 @@
         }
 
         // ============================================================
-        // REFERRAL FROM URL
+        // ⚡ REFERRAL FROM URL (NEW — auto-open Registration)
         // ============================================================
         function checkReferralInURL() {
             const urlParams = new URLSearchParams(window.location.search);
-            const ref = urlParams.get('ref');
+            let ref = urlParams.get('ref');
+
+            // Also check hash parameter (some browsers/shorteners use #ref=)
+            if (!ref && window.location.hash) {
+                const hashParams = new URLSearchParams(window.location.hash.substring(1));
+                ref = hashParams.get('ref');
+            }
+
             if (ref) {
+                localStorage.setItem('cx_pending_referral_code', ref);
+                localStorage.setItem('cx_auto_referral', '1');
+
+                // Fill referral input
                 const regReferralInput = document.getElementById('regReferral');
                 const referralNote = document.getElementById('referralNote');
+                const referralBanner = document.getElementById('referralBanner');
+                const referralBannerCode = document.getElementById('referralBannerCode');
+
                 if (regReferralInput) {
                     regReferralInput.value = ref;
                     regReferralInput.readOnly = true;
                     regReferralInput.style.background = 'rgba(34,197,94,0.1)';
                     regReferralInput.style.borderColor = 'rgba(34,197,94,0.5)';
-                    if (referralNote) {
-                        referralNote.innerHTML = '✅ रेफरल कोड ऑटो-फिल हो गया! आपको 2% बोनस मिलेगा।';
-                        referralNote.style.color = '#22c55e';
-                    }
                 }
-                localStorage.setItem('cx_pending_referral_code', ref);
+                if (referralNote) {
+                    referralNote.innerHTML = '✅ रेफरल कोड ऑटो-फिल हो गया! आपको 2% बोनस मिलेगा।';
+                    referralNote.style.color = '#22c55e';
+                }
+                if (referralBanner && referralBannerCode) {
+                    referralBannerCode.textContent = ref;
+                    referralBanner.classList.remove('hidden');
+                }
+
+                // ⚡ FORCE REGISTRATION PAGE OPEN
+                // Wait until DOM ready, then redirect if user not logged in
+                setTimeout(() => {
+                    if (!currentUser) {
+                        showPage('registrationPage');
+                        showToast('🎁 रेफरल कोड लागू हो गया!', 'success');
+                        if (voiceEnabled) {
+                            setTimeout(() => speakHindi('रेफरल कोड लागू हो गया। कृपया रजिस्ट्रेशन पूरा करें।'), 800);
+                        }
+                    }
+                }, 400);
             }
         }
 
@@ -2229,12 +2275,15 @@
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
             const btn = document.getElementById('voiceToggleBtn');
+            const label = document.getElementById('voiceToggleLabel');
             if (voiceEnabled) {
                 btn.classList.remove('off');
+                if (label) label.innerText = 'ऑन';
                 showToast('🔊 वॉइस गाइड सक्रिय', 'info');
                 speakHindi('वॉइस गाइड सक्रिय हो गया है।');
             } else {
                 btn.classList.add('off');
+                if (label) label.innerText = 'ऑफ';
                 showToast('🔇 वॉइस गाइड बंद', 'info');
             }
         }
@@ -2471,6 +2520,7 @@
                 document.getElementById('userPanelContainer').classList.add('hidden');
                 document.getElementById('adminPanelContainer').classList.remove('hidden');
                 document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
+                document.getElementById('headerSubtitle').innerText = 'Super Admin';
                 document.getElementById('headerBadge').className = 'admin-badge';
                 document.getElementById('headerBadge').innerHTML = '<i class="fa-solid fa-shield-halved mr-1"></i> ADMIN';
                 document.getElementById('adminSearchBox').classList.add('hidden');
@@ -2486,6 +2536,7 @@
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
             document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
+            document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
             document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
             document.getElementById('headerBadge').innerHTML = 'User';
             showToast('एडमिन मोड बंद', 'info');
@@ -2732,7 +2783,6 @@
                 await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, referrer.$id, {
                     coins: newCoins, referrals: JSON.stringify(refs)
                 });
-                console.log(`✅ Referral bonus ${bonus} USDT awarded to ${referrer.email}`);
             } catch (e) { console.error('Referral bonus error:', e); }
         }
 
@@ -3907,7 +3957,10 @@
             document.getElementById('profileEmailDisplay').innerText = currentUser.email || 'N/A';
             const ref = currentUser.$id;
             document.getElementById('profileReferralCode').innerText = ref;
-            document.getElementById('referralShareLink').innerText = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
+
+            // ⚡ Use Admin configured base URL for share link
+            const shareUrl = buildReferralUrl(ref);
+            document.getElementById('referralShareLink').innerText = shareUrl;
             document.getElementById('withdrawAvailable').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
 
             const savedPhoto = localStorage.getItem('suprix_profile_photo_' + currentUser.$id);
@@ -3926,13 +3979,15 @@
             renderLevelAchievements();
         }
 
+        // ⚡ UPDATED: uses Admin base URL
         function generateReferralQR() {
             const container = document.getElementById('referralQrContainer');
             if (!container) return;
             container.innerHTML = '';
             const ref = currentUser?.$id;
             if (!ref) return;
-            const url = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
+
+            const url = buildReferralUrl(ref);
             if (typeof QRCode !== 'undefined') {
                 try {
                     new QRCode(container, { text: url, width: 120, height: 120, colorDark: '#ff0055', colorLight: '#ffffff' });
@@ -3956,10 +4011,11 @@
             } catch (err) { showToast('त्रुटि!', 'error'); }
         }
 
+        // ⚡ UPDATED: uses Admin base URL
         function shareReferralLink() {
             const ref = currentUser?.$id;
             if (!ref) return;
-            const url = `${window.location.origin}${window.location.pathname}?ref=${ref}`;
+            const url = buildReferralUrl(ref);
             const text = `SupriX Global पर माइनिंग शुरू करें! रेफरल: ${ref} ${url}`;
             if (navigator.share) { navigator.share({ title: 'SupriX Global', text, url }).catch(() => {}); }
             else { legacyCopyFallback(text, '✅ शेयर टेक्स्ट कॉपी!'); }
@@ -4203,7 +4259,7 @@
         }
 
         // ============================================================
-        // SLIDER — Google Drive (lh3) + Picsum (id) + Motivation Lines
+        // SLIDER
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
@@ -4344,7 +4400,6 @@
             createButterflies();
             renderSlider();
             checkAppInstallation();
-            checkReferralInURL();
 
             try {
                 if (window.speechSynthesis) {
@@ -4352,6 +4407,11 @@
                     window.speechSynthesis.onvoiceschanged = () => {};
                 }
             } catch(e) {}
+
+            // ⚡ IMPORTANT: Check referral BEFORE loading user data
+            // But we need to know if user is logged in first
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasReferral = urlParams.get('ref') || (window.location.hash && new URLSearchParams(window.location.hash.substring(1)).get('ref'));
 
             try {
                 const loaded = await loadCurrentUserData();
@@ -4370,13 +4430,17 @@
                     showLoginPopup();
                 } else {
                     showPage('loginPage');
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const ref = urlParams.get('ref');
-                    if (ref) {
-                        document.getElementById('regReferral').value = ref;
-                        showPage('registrationPage');
+                    // ⚡ If referral in URL, show registration page
+                    if (hasReferral) {
+                        checkReferralInURL();
+                    } else {
+                        const ref = urlParams.get('ref');
+                        if (ref) {
+                            document.getElementById('regReferral').value = ref;
+                            showPage('registrationPage');
+                        }
                     }
-                    if (voiceEnabled) {
+                    if (voiceEnabled && !hasReferral) {
                         setTimeout(() => {
                             speakHindi('SupriX Global में आपका स्वागत है। कृपया अपना डिटेल्स भरे और रजिस्ट्रेशन करें।');
                         }, 1500);
@@ -4384,7 +4448,9 @@
                 }
             } catch (e) {
                 showPage('loginPage');
-                checkReferralInURL();
+                if (hasReferral) {
+                    checkReferralInURL();
+                }
             }
         };
 
