@@ -2699,23 +2699,33 @@
                 const txs = parseJsonSafe(fresh.transactions, []);
                 txs.push({ type: 'deposit', amountUSD: pending.amountUSD, coinsAmount: pending.coinsAmount, receiptFileId: pending.receiptFileId, dateTime: pending.dateTime, status: 'Approved', receiptId: receiptId });
 
+                const oldTotal = parseFloat(fresh.totalPurchased || 0);
+                const newTotal = oldTotal + parseFloat(pending.amountUSD || 0);
+                const oldLevel = Math.floor(oldTotal / 1000);
+                const newLevel = Math.floor(newTotal / 1000);
+
                 await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, id, {
                     coins: newCoins,
                     approved_deposit: JSON.stringify(approved),
                     pending_deposit: '',
-                    transactions: JSON.stringify(txs)
+                    transactions: JSON.stringify(txs),
+                    totalPurchased: newTotal
                 });
 
                 users[idx].coins = newCoins;
                 users[idx].approvedDeposits = approved;
                 users[idx].pendingDeposit = null;
                 users[idx].transactions = txs;
+                users[idx].totalPurchased = newTotal;
 
                 if (fresh.referredBy) {
                     await awardReferralBonusOnPurchase(fresh.referredBy, parseFloat(pending.amountUSD || 0), fresh);
                 }
 
                 showToast('✅ डिपॉजिट स्वीकृत', 'success');
+                if (newLevel > oldLevel) {
+                    localStorage.setItem('cx_pending_level_' + fresh.$id, newLevel);
+                }
                 updateAdminStats();
                 renderAdminDeposits();
             } catch (e) { console.error(e); showToast('त्रुटि', 'error'); }
