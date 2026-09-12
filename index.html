@@ -321,7 +321,7 @@
         .slider-track .slide-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             position: absolute;
             top: 0; left: 0;
@@ -1056,26 +1056,22 @@
 
     <div id="appContainer" class="w-full max-w-md mx-auto relative z-10">
 
-        <header id="mainHeader" class="w-full glass-rose py-3 px-4 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px;">
-            <div class="flex items-center gap-2">
-                <img id="headerLogo" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
-                <div>
-                    <h1 id="headerTitle" class="font-extrabold text-sm tracking-wider leading-none rose-text-gradient">SUPRIX GLOBAL</h1>
-                    <span id="headerSubtitle" class="text-[8px] text-rose-300/60">Premium • Gold Edition</span>
-                </div>
+        <header id="mainHeader" class="w-full glass-rose py-2 px-3 flex items-center justify-between sticky top-0 z-40 shadow-xl" style="border-radius: 0 0 20px 20px;">
+            <div class="flex items-center gap-2 flex-1 min-w-0">
+                <img id="headerLogo" src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w200" alt="SupriX Global" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--rose-primary); object-fit: cover; flex-shrink: 0;" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
+                <h1 id="headerTitle" class="font-extrabold text-xl tracking-wider leading-none rose-text-gradient truncate" style="font-size: 1.35rem;">SUPRIX GLOBAL 🌍</h1>
             </div>
-            <div class="flex items-center gap-1.5">
-                <span style="background: rgba(255,0,85,0.12); border: 1px solid rgba(255,0,85,0.25); border-radius: 30px; padding: 2px 10px; font-size: 8px; color: #ff6699; font-weight: 600;"><i class="fa-solid fa-indian-rupee-sign"></i> $1 = ₹100</span>
-                <button onclick="toggleVoice()" id="voiceToggleBtn" class="voice-toggle-btn" title="वॉइस गाइड ऑन/ऑफ">
+            <div class="flex items-center gap-1 flex-shrink-0">
+                <button onclick="toggleVoice()" id="voiceToggleBtn" class="voice-toggle-btn" title="वॉइस गाइड ऑन/ऑफ" style="padding: 3px 8px; font-size: 8px;">
                     <i class="fa-solid fa-volume-high"></i> <span id="voiceToggleLabel">ऑन</span>
                 </button>
-                <a id="headerApkBtn" class="header-apk-btn web-only wobble-btn" href="#" onclick="showAppDownloadPopup(event)" title="ऐप डाउनलोड करें">
+                <a id="headerApkBtn" class="header-apk-btn web-only wobble-btn" href="#" onclick="showAppDownloadPopup(event)" title="ऐप डाउनलोड करें" style="width: 28px; height: 28px; font-size: 12px;">
                     <i class="fa-solid fa-download"></i>
                 </a>
-                <button onclick="toggleAdminSearch()" class="text-rose-300/50 hover:text-rose-400 transition-all text-sm">
+                <button onclick="toggleAdminSearch()" class="text-rose-300/50 hover:text-rose-400 transition-all text-xs">
                     <i class="fa-solid fa-search"></i>
                 </button>
-                <span id="headerBadge" class="text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold">User</span>
+                <span id="headerBadge" class="text-[7px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-1.5 py-0.5 rounded-full font-bold">User</span>
             </div>
         </header>
 
@@ -2217,22 +2213,68 @@
         }
 
         // ============================================================
-        // CONGRATULATIONS POPUP
+        // VOICE GUIDE - Google Gemini Bold Female Voice
         // ============================================================
-        function showCongratsPopup(level, amount) {
-            document.getElementById('congratsLevel').textContent = 'L' + level;
-            document.getElementById('congratsMsg').textContent = `आपका L${level} अचीवमेंट पूरा हुआ!`;
-            document.getElementById('congratsAmount').textContent = `$${amount.toLocaleString()} USDT / ₹${(amount * EXCHANGE_RATE).toLocaleString('en-IN')}`;
-            document.getElementById('congratsPopup').classList.remove('hidden');
-            setTimeout(() => launchConfettiTo('congratsConfetti', 60), 200);
-            playClappingSound(5);
+        function toggleVoice() {
+            voiceEnabled = !voiceEnabled;
+            const btn = document.getElementById('voiceToggleBtn');
+            const label = document.getElementById('voiceToggleLabel');
             if (voiceEnabled) {
-                speakHindi(`बधाई हो! आपने लेवल ${level} हासिल कर लिया है। ${amount} यूएसडीटी का इन्वेस्टमेंट पूरा हुआ।`);
+                btn.classList.remove('off');
+                label.innerText = 'ऑन';
+                showToast('🔊 वॉइस गाइड सक्रिय', 'info');
+                speakHindi('वॉइस गाइड सक्रिय हो गया है।');
+            } else {
+                btn.classList.add('off');
+                label.innerText = 'ऑफ';
+                showToast('🔇 वॉइस गाइड बंद', 'info');
             }
         }
 
-        function closeCongratsPopup() {
-            document.getElementById('congratsPopup').classList.add('hidden');
+        function speakHindi(text) {
+            if (!voiceEnabled) return;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'hi-IN';
+                utterance.pitch = 1.0;
+                utterance.rate = 0.95;
+                const voices = window.speechSynthesis.getVoices();
+                const gv = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google'));
+                if (gv) utterance.voice = gv;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function showVoiceToast(msg) {
+            const el = document.getElementById('voiceToast');
+            document.getElementById('voiceToastMsg').innerText = msg;
+            el.classList.add('show');
+            clearTimeout(el._timer);
+            el._timer = setTimeout(() => el.classList.remove('show'), 6000);
+        }
+        function closeVoiceToast() { document.getElementById('voiceToast').classList.remove('show'); }
+
+        // ============================================================
+        // CLAP + CONFETTI
+        // ============================================================
+        function playClappingSound(count = 3) {
+            try {
+                const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                const now = audioCtx.currentTime;
+                for (let i = 0; i < count; i++) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'square';
+                    osc.frequency.value = 800 + Math.random() * 400;
+                    gain.gain.setValueAtTime(0.06, now + i * 0.2);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.2 + 0.06);
+                    osc.start(now + i * 0.2);
+                    osc.stop(now + i * 0.2 + 0.06);
+                }
+            } catch (e) {}
         }
 
         function launchConfettiTo(containerId, count = 70) {
@@ -2258,6 +2300,30 @@
             }
         }
 
+        function launchConfetti(count = 70) {
+            launchConfettiTo('confettiContainer', count);
+        }
+
+        // ============================================================
+        // CONGRATULATIONS POPUP
+        // ============================================================
+        function showCongratsPopup(level, amount) {
+            document.getElementById('congratsLevel').textContent = 'L' + level;
+            document.getElementById('congratsMsg').textContent = `आपका L${level} अचीवमेंट पूरा हुआ!`;
+            document.getElementById('congratsAmount').textContent = `$${amount.toLocaleString()} USDT / ₹${(amount * EXCHANGE_RATE).toLocaleString('en-IN')}`;
+            document.getElementById('congratsPopup').classList.remove('hidden');
+            setTimeout(() => launchConfettiTo('congratsConfetti', 60), 200);
+            playClappingSound(5);
+            if (voiceEnabled) {
+                const userName = currentUser?.name || 'यूज़र';
+                speakHindi(`बधाई हो ${userName}! आपने लेवल ${level} हासिल कर लिया है। ${amount} यूएसडीटी का इन्वेस्टमेंट पूरा हुआ।`);
+            }
+        }
+
+        function closeCongratsPopup() {
+            document.getElementById('congratsPopup').classList.add('hidden');
+        }
+
         // ============================================================
         // APP POPUP
         // ============================================================
@@ -2276,6 +2342,7 @@
             link.click();
             document.body.removeChild(link);
             showToast('📲 एपीके डाउनलोड शुरू हो रहा है...', 'info');
+            if (voiceEnabled) speakHindi('एपीके डाउनलोड शुरू हो रहा है।');
             closeAppDownloadPopup();
         }
 
@@ -2310,111 +2377,8 @@
                     b.classList.remove('text-rose-400', 'active');
                     b.classList.add('text-rose-300/40');
                 });
+                if (voiceEnabled) speakHindi('विथड्रॉवल पॉपअप खुल गया है। कृपया अपना USDT वॉलेट एड्रेस दर्ज करें।');
             }
-        }
-
-        // ============================================================
-        // VOICE — Google Gemini Laughing Female Voice Guide
-        // ============================================================
-        function toggleVoice() {
-            voiceEnabled = !voiceEnabled;
-            const btn = document.getElementById('voiceToggleBtn');
-            const label = document.getElementById('voiceToggleLabel');
-            if (voiceEnabled) {
-                btn.classList.remove('off');
-                label.innerText = 'ऑन';
-                showToast('🔊 वॉइस गाइड सक्रिय', 'info');
-            } else {
-                btn.classList.add('off');
-                label.innerText = 'ऑफ';
-                showToast('🔇 वॉइस गाइड बंद', 'info');
-            }
-        }
-
-        function pickVoice() {
-            const voices = window.speechSynthesis.getVoices();
-            if (!voices || voices.length === 0) return null;
-            // Priority list for Google Gemini-like laughing bold female Hindi voices
-            const priorityPatterns = [
-                { lang: 'hi-IN', name: 'Google' },
-                { lang: 'hi-IN', name: 'Swara' },
-                { lang: 'hi-IN', name: 'Heera' },
-                { lang: 'hi-IN', name: 'Female' },
-                { lang: 'en-IN', name: 'Google' },
-                { lang: 'en-IN', name: 'Female' },
-                { lang: 'en-IN', name: 'Neerja' },
-                { lang: 'en-GB', name: 'Google UK English Female' },
-                { lang: 'en-US', name: 'Google US English' }
-            ];
-            for (const p of priorityPatterns) {
-                const v = voices.find(v => v.lang === p.lang && v.name.includes(p.name));
-                if (v) return v;
-            }
-            return voices.find(v => v.lang === 'hi-IN') || voices[0];
-        }
-
-        // Google Gemini Laughing Bold Female Voice Guide
-        function speakHindi(text, callback) {
-            if (!voiceEnabled) { if (callback) callback(); return; }
-            try {
-                window.speechSynthesis.cancel();
-                // Add a subtle laughing giggle prefix on certain emotional cues
-                const laughPrefixes = ['ही ही! ', 'हा हा! ', 'ही ही ही! '];
-                const shouldLaugh = /बधाई|स्वागत|सफल|रिवॉर्ड|जीत|कॉन्ग्रैच्युलेशन|Congratulations/i.test(text);
-                const finalText = shouldLaugh ? laughPrefixes[Math.floor(Math.random()*laughPrefixes.length)] + text : text;
-                const speech = new SpeechSynthesisUtterance(finalText);
-                speech.lang = 'hi-IN';
-                speech.rate = 0.95;
-                speech.pitch = 1.6;
-                speech.volume = 1;
-                if (!selectedVoice) selectedVoice = pickVoice();
-                if (selectedVoice) speech.voice = selectedVoice;
-                // Add slight variation for laughing feel
-                speech.onstart = function() {
-                    if (shouldLaugh) {
-                        setTimeout(() => {
-                            try { window.speechSynthesis.pause(); setTimeout(() => window.speechSynthesis.resume(), 80); } catch(e){}
-                        }, 250);
-                    }
-                };
-                window.speechSynthesis.speak(speech);
-                if (callback) setTimeout(callback, Math.max(2500, finalText.length * 70));
-            } catch (e) { if (callback) callback(); }
-        }
-
-        function showVoiceToast(msg) {
-            const el = document.getElementById('voiceToast');
-            document.getElementById('voiceToastMsg').innerText = msg;
-            el.classList.add('show');
-            clearTimeout(el._timer);
-            el._timer = setTimeout(() => el.classList.remove('show'), 6000);
-        }
-        function closeVoiceToast() { document.getElementById('voiceToast').classList.remove('show'); }
-
-        // ============================================================
-        // CLAP + CONFETTI
-        // ============================================================
-        function playClappingSound(count = 3) {
-            try {
-                const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-                const now = audioCtx.currentTime;
-                for (let i = 0; i < count; i++) {
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    osc.connect(gain);
-                    gain.connect(audioCtx.destination);
-                    osc.type = 'square';
-                    osc.frequency.value = 800 + Math.random() * 400;
-                    gain.gain.setValueAtTime(0.06, now + i * 0.2);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.2 + 0.06);
-                    osc.start(now + i * 0.2);
-                    osc.stop(now + i * 0.2 + 0.06);
-                }
-            } catch (e) {}
-        }
-
-        function launchConfetti(count = 70) {
-            launchConfettiTo('confettiContainer', count);
         }
 
         // ============================================================
@@ -2508,7 +2472,7 @@
             isAdminMode = false;
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
-            document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL';
+            document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
             document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
             document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
             document.getElementById('headerBadge').innerHTML = 'User';
@@ -3168,11 +3132,15 @@
             }
             if (voiceEnabled) {
                 if (pageId === 'registrationPage') speakHindi('SupriX Global में आपका स्वागत है। कृपया अपना डिटेल्स भरे और रजिस्ट्रेशन करें।');
-                else if (pageId === 'loginPage') speakHindi('कृपया लॉगिन करें।');
+                else if (pageId === 'loginPage') speakHindi('कृपया लॉगिन करें। अपनी ईमेल या SPX ID और पासवर्ड दर्ज करें।');
                 else if (pageId === 'dashboardPage' && currentUser && !welcomeVoicePlayed) {
-                    speakHindi('SupriX Global के साथ जुड़ने के लिए धन्यवाद।');
+                    const name = currentUser.name || 'यूज़र';
+                    speakHindi(`स्वागत है ${name}! SupriX Global के साथ जुड़ने के लिए धन्यवाद।`);
                     welcomeVoicePlayed = true;
                 }
+                else if (pageId === 'purchasePage') speakHindi('कॉइन परचेज पेज पर आपका स्वागत है। कृपया अपना अमाउंट दर्ज करें।');
+                else if (pageId === 'stakingPage') speakHindi('USDT स्टेकिंग पेज पर आपका स्वागत है। कृपया अपना स्टेकिंग अमाउंट दर्ज करें।');
+                else if (pageId === 'profilePage') speakHindi('प्रोफाइल पेज पर आपका स्वागत है।');
             }
         }
 
@@ -3331,6 +3299,11 @@
                 showToast('✅ लॉगिन सफल!', 'success');
                 showPage('dashboardPage');
                 startCooldownTimer();
+
+                if (voiceEnabled) {
+                    const name = currentUser.name || 'यूज़र';
+                    speakHindi(`स्वागत है ${name}! आपका लॉगिन सफल हो गया है।`);
+                }
             } catch (e) {
                 console.error('Login error:', e);
                 let msg = '❌ गलत ईमेल/SPX ID या पासवर्ड';
@@ -3350,6 +3323,7 @@
             welcomeVoicePlayed = false;
             stopCooldownTimer();
             showToast('लॉगआउट हो गया', 'info');
+            if (voiceEnabled) speakHindi('आप लॉगआउट हो गए हैं।');
             showPage('loginPage');
         }
 
@@ -3408,7 +3382,7 @@
                 setTimeout(() => { launchConfetti(70); }, 300);
                 if (voiceEnabled) {
                     setTimeout(() => {
-                        speakHindi('बधाई हो! आपका रजिस्ट्रेशन सफलतापूर्वक पूर्ण हुआ।');
+                        speakHindi(`बधाई हो ${name}! आपका रजिस्ट्रेशन सफलतापूर्वक पूर्ण हुआ।`);
                         setTimeout(() => speakHindi('SupriX Global में आपका स्वागत है।'), 2000);
                     }, 600);
                 }
@@ -3441,6 +3415,7 @@
             try {
                 await account.createRecovery(email, window.location.origin + window.location.pathname);
                 showToast('✅ पासवर्ड रीसेट लिंक भेजा गया!', 'success');
+                if (voiceEnabled) speakHindi('पासवर्ड रीसेट लिंक आपके ईमेल पर भेज दिया गया है।');
                 toggleForgotPasswordModal(false);
             } catch (e) {
                 showToast('❌ ' + (e.message || 'त्रुटि'), 'error');
@@ -3563,15 +3538,16 @@
         }
 
         // ============================================================
-        // MINING — NEW SPINNING 3D STAR BUTTON + INSTANT USDT UPDATE
+        // MINING — SPINNING 3D STAR BUTTON + VOICE
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
+            const userName = currentUser.name || 'यूज़र';
             const staked = parseFloat(currentUser.staked || 0);
             if (staked < 10) {
                 document.getElementById('stakingWarning')?.classList.remove('hidden');
                 showToast('⚠️ कम से कम 10 USDT स्टेक करें!', 'info');
-                if (voiceEnabled) speakHindi('कम से कम 10 USDT स्टेक करें।');
+                if (voiceEnabled) speakHindi(`${userName}, कम से कम 10 USDT स्टेक करें।`);
                 return;
             }
             const now = Date.now();
@@ -3580,8 +3556,9 @@
             if (last && (now - last) < oneDayMs) {
                 const diff = last + oneDayMs - now;
                 const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
-                const msg = `⏳ आप आज का डेली रिवॉर्ड पहले ही प्राप्त कर चुके हैं। कृपया ${h} घंटे ${m} मिनट ${s} सेकंड प्रतीक्षा करें।`;
+                const msg = `⏳ ${userName}, आप आज का डेली रिवॉर्ड पहले ही प्राप्त कर चुके हैं। कृपया ${h} घंटे ${m} मिनट ${s} सेकंड प्रतीक्षा करें।`;
                 showVoiceToast(msg);
+                if (voiceEnabled) speakHindi(`${userName}, 24 घंटे बाद फिर से आपका इंतजार करूंगी। आज का Daily reward प्राप्त हो चुका है।`);
                 return;
             }
             if (btn) {
@@ -3611,11 +3588,12 @@
                         .catch(e => console.warn('DB update failed, but local state saved:', e));
                 }
 
-                const msg = `🎉 आपका Daily Reward ${reward.toFixed(2)} USDT (₹${(reward * EXCHANGE_RATE).toFixed(2)}) क्रेडिट!`;
+                const msg = `🎉 ${userName}, आपका Daily Reward ${reward.toFixed(2)} USDT (₹${(reward * EXCHANGE_RATE).toFixed(2)}) क्रेडिट!`;
                 showVoiceToast(msg);
-                if (voiceEnabled) speakHindi(`बधाई हो! आपका आज का डेली रिवॉर्ड ${reward.toFixed(2)} यूएसडीटी सफलतापूर्वक जोड़ा गया।`);
+                if (voiceEnabled) speakHindi(`बधाई हो ${userName}! आपका आज का डेली रिवॉर्ड ${reward.toFixed(2)} यूएसडीटी सफलतापूर्वक जोड़ा गया।`);
                 showToast(`✅ ${reward.toFixed(2)} USDT रिवॉर्ड!`, 'success');
                 openReceipt({ type: 'daily', coinsAmount: reward, dateTime: new Date().toLocaleString('hi-IN'), status: 'SUCCESS', receiptId: receiptId, network: 'USDT BEP20' });
+
                 // Keep spinning for a moment after success
                 setTimeout(() => {
                     if (btn) {
@@ -3729,6 +3707,7 @@
                 preview.classList.remove('hidden');
                 preview.classList.add('flex');
                 showToast('✅ स्क्रीनशॉट लोड हुआ!', 'success');
+                if (voiceEnabled) speakHindi('स्क्रीनशॉट सफलतापूर्वक लोड हो गया।');
             };
             reader.readAsDataURL(file);
         }
@@ -4202,7 +4181,7 @@
         }
 
         // ============================================================
-        // SLIDER — FAST-LOADING Google Drive + Picsum + Motivation Lines
+        // SLIDER — Google Drive + Picsum + Motivation Lines
         // ============================================================
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
