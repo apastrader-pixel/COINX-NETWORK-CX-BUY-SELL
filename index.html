@@ -54,6 +54,15 @@
             60%      { transform: translateY(-2px) rotate(-2deg) scale(1.03); }
             80%      { transform: translateY(1px) rotate(1deg) scale(1.01); }
         }
+        @keyframes spinStar360 {
+            0%   { transform: rotate(0deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
+            50%  { transform: rotate(180deg) scale(1.12); filter: drop-shadow(0 0 35px #00f0ff); }
+            100% { transform: rotate(360deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
+        }
+        @keyframes spinContinuous {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         @keyframes floatButterfly {
             0%   { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.08; }
             25%  { transform: translate(80px, -120px) rotate(12deg) scale(1.1); opacity: 0.3; }
@@ -229,11 +238,6 @@
         }
         .mining-btn-3d.spinning .mining-pulse-ring {
             animation: miningPulse 0.6s ease-in-out infinite;
-        }
-
-        @keyframes spinContinuous {
-            0%   { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         #starsCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
@@ -1727,7 +1731,7 @@
                 <h3 class="text-lg font-extrabold rose-text-gradient">SupriX Global</h3>
                 <p class="text-[10px] text-rose-300/60 mb-3">Premium • Gold Edition</p>
                 <div class="glass-rose-light p-3 rounded-xl text-left space-y-1.5 mb-4">
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">App Size:</span><span class="text-white font-bold">16.48 MB</span></div>
+                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">App Size:</span><span class="text-white font-bold">12.98 MB</span></div>
                     <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Version:</span><span class="text-white font-bold">2.0.0</span></div>
                     <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Updated:</span><span class="text-white font-bold">Sep 2026</span></div>
                     <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Requires:</span><span class="text-white font-bold">Android 8.0+</span></div>
@@ -1902,11 +1906,12 @@
         const STAKING_SETTINGS_COLLECTION_ID = "staking_plan_settings";
         const SCREENSHOT_BUCKET_ID = "6a47d26c00001f17b543";
         const STAKING_SETTINGS_DOC_ID = "global_config";
-        const ADMIN_TEAM_ID = "6a4a84580012aed57e61";
+        const ADMIN_TEAM_ID = "6a9508a4002c7bb3b799";
         const SECRET_ADMIN_KEY = "";
 
         const EXCHANGE_RATE = 100;
 
+        // ⚡ GOOGLE DRIVE IMAGE HELPER
         function gdrive(id, size) {
             size = size || 1200;
             return "https://lh3.googleusercontent.com/d/" + id + "=w" + size;
@@ -1995,6 +2000,10 @@
         const APP_LOGO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400);
         const DEFAULT_PROFILE_PHOTO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 200);
 
+        // ⚡ NEW APK DOWNLOAD LINK (12.98 MB)
+        const APK_FILE_ID = "1SzgBIisYlgSDZqwLojcdOlQO-mHL4p4-";
+        const APK_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=" + APK_FILE_ID;
+
         const { Client, Databases, Storage, Account, Teams, Query, ID } = Appwrite;
         const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT_ID);
         const databases = new Databases(client);
@@ -2027,16 +2036,13 @@
         let cooldownTimerInterval = null;
         let voiceEnabled = true;
         let welcomeVoicePlayed = false;
+        let patrioVoicePlayed = false;
         let isAppInstalled = false;
         let sliderIndex = 0;
         let sliderInterval = null;
         let sliderAnimating = false;
-        let miningSpinning = false;
         let selectedVoice = null;
 
-        // ============================================================
-        // UTILS
-        // ============================================================
         function parseJsonSafe(value, fallback) {
             if (!value) return fallback;
             if (typeof value !== 'string') return value;
@@ -2156,17 +2162,10 @@
             return str.slice(0, show) + '****' + str.slice(-show);
         }
 
-        // ============================================================
-        // ⚡ REFERRAL URL HELPER (NEW — uses Admin Base URL)
-        // ============================================================
+        // ⚡ REFERRAL URL HELPERS
         function getReferralBaseUrl() {
-            // Admin ne jo URL save kiya hai wahi use karo
             let baseUrl = localStorage.getItem('suprix_referral_base_url');
-            if (!baseUrl) {
-                // Fallback: current origin
-                baseUrl = window.location.origin + window.location.pathname;
-            }
-            // Remove query string and trailing slash
+            if (!baseUrl) baseUrl = window.location.origin + window.location.pathname;
             baseUrl = baseUrl.split('?')[0].split('#')[0];
             return baseUrl;
         }
@@ -2180,7 +2179,6 @@
         // LOGIN POPUP IMAGE HANDLER
         // ============================================================
         function handleLoginPopupImgError(img) {
-            console.log('Login popup image failed, trying fallback...');
             if (!img.dataset.fallbackTried) {
                 img.dataset.fallbackTried = 'true';
                 img.src = FALLBACK_IMG;
@@ -2218,28 +2216,22 @@
         }
 
         // ============================================================
-        // ⚡ REFERRAL FROM URL (NEW — auto-open Registration)
+        // REFERRAL FROM URL
         // ============================================================
         function checkReferralInURL() {
             const urlParams = new URLSearchParams(window.location.search);
             let ref = urlParams.get('ref');
-
-            // Also check hash parameter (some browsers/shorteners use #ref=)
             if (!ref && window.location.hash) {
                 const hashParams = new URLSearchParams(window.location.hash.substring(1));
                 ref = hashParams.get('ref');
             }
-
             if (ref) {
                 localStorage.setItem('cx_pending_referral_code', ref);
                 localStorage.setItem('cx_auto_referral', '1');
-
-                // Fill referral input
                 const regReferralInput = document.getElementById('regReferral');
                 const referralNote = document.getElementById('referralNote');
                 const referralBanner = document.getElementById('referralBanner');
                 const referralBannerCode = document.getElementById('referralBannerCode');
-
                 if (regReferralInput) {
                     regReferralInput.value = ref;
                     regReferralInput.readOnly = true;
@@ -2254,9 +2246,6 @@
                     referralBannerCode.textContent = ref;
                     referralBanner.classList.remove('hidden');
                 }
-
-                // ⚡ FORCE REGISTRATION PAGE OPEN
-                // Wait until DOM ready, then redirect if user not logged in
                 setTimeout(() => {
                     if (!currentUser) {
                         showPage('registrationPage');
@@ -2275,16 +2264,13 @@
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
             const btn = document.getElementById('voiceToggleBtn');
-            const label = document.getElementById('voiceToggleLabel');
             if (voiceEnabled) {
                 btn.classList.remove('off');
-                if (label) label.innerText = 'ऑन';
-                showToast('🔊 वॉइस गाइड सक्रिय', 'info');
+                showToast('🔊 वॉइस सक्रिय', 'info');
                 speakHindi('वॉइस गाइड सक्रिय हो गया है।');
             } else {
                 btn.classList.add('off');
-                if (label) label.innerText = 'ऑफ';
-                showToast('🔇 वॉइस गाइड बंद', 'info');
+                showToast('🔇 वॉइस बंद', 'info');
             }
         }
 
@@ -2382,29 +2368,43 @@
         }
 
         // ============================================================
-        // APP POPUP
+        // ⚡ APP POPUP — NEW DOWNLOAD
         // ============================================================
         function showAppDownloadPopup(event) {
-            event.preventDefault();
+            if (event) event.preventDefault();
             document.getElementById('appDownloadPopup').classList.remove('hidden');
         }
         function closeAppDownloadPopup() { document.getElementById('appDownloadPopup').classList.add('hidden'); }
+
+        // ⚡ DIRECT APK DOWNLOAD — Click पर तुरंत download शुरू
         function downloadApkDirect(event) {
-            event.preventDefault();
-            const apkUrl = "https://drive.google.com/uc?export=download&id=1SoHGsDNb83Yo0-wv8ocKEqZvERrYYfkZ";
+            if (event) event.preventDefault();
+
+            showToast('📲 डाउनलोड शुरू हो रहा है... (12.98 MB)', 'info');
+            if (voiceEnabled) speakHindi('एपीके डाउनलोड शुरू हो रहा है। 12.98 एमबी।');
+
+            // ⚡ MULTIPLE METHODS — ensure download starts
+            const apkUrl = APK_DOWNLOAD_URL;
+
+            // Method 1: Direct anchor click
             const link = document.createElement('a');
             link.href = apkUrl;
-            link.download = 'SupriX_Global.apk';
+            link.setAttribute('download', 'SupriX_Global.apk');
+            link.setAttribute('target', '_blank');
+            link.rel = 'noopener noreferrer';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            showToast('📲 एपीके डाउनलोड शुरू हो रहा है...', 'info');
-            if (voiceEnabled) speakHindi('एपीके डाउनलोड शुरू हो रहा है।');
-            closeAppDownloadPopup();
+
+            // Method 2: Fallback - open in new window if download doesn't start
+            setTimeout(() => {
+                // Silent - just close popup after successful trigger
+                closeAppDownloadPopup();
+            }, 800);
         }
 
         // ============================================================
-        // LOGIN POPUP
+        // LOGIN POPUP — With Patriotic Voice
         // ============================================================
         function showLoginPopup() {
             const popup = document.getElementById('loginPopup');
@@ -2414,6 +2414,14 @@
             img.dataset.fallbackTried = '';
             document.getElementById('loginPopupImgFallback').style.display = 'none';
             preloadLoginImage();
+
+            // ⚡ PATRIOTIC VOICE — once per session after login popup
+            if (!patrioVoicePlayed && voiceEnabled) {
+                setTimeout(() => {
+                    speakHindi('हमारा लक्ष्य है आत्मनिर्भर भारत बनाना');
+                    patrioVoicePlayed = true;
+                }, 2500);
+            }
         }
 
         function closeLoginPopup() {
@@ -2520,7 +2528,6 @@
                 document.getElementById('userPanelContainer').classList.add('hidden');
                 document.getElementById('adminPanelContainer').classList.remove('hidden');
                 document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
-                document.getElementById('headerSubtitle').innerText = 'Super Admin';
                 document.getElementById('headerBadge').className = 'admin-badge';
                 document.getElementById('headerBadge').innerHTML = '<i class="fa-solid fa-shield-halved mr-1"></i> ADMIN';
                 document.getElementById('adminSearchBox').classList.add('hidden');
@@ -2536,7 +2543,6 @@
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
             document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
-            document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
             document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
             document.getElementById('headerBadge').innerHTML = 'User';
             showToast('एडमिन मोड बंद', 'info');
@@ -3383,6 +3389,7 @@
             try { await account.deleteSession('current'); } catch (e) {}
             currentUser = null;
             welcomeVoicePlayed = false;
+            patrioVoicePlayed = false;
             stopCooldownTimer();
             showToast('लॉगआउट हो गया', 'info');
             if (voiceEnabled) speakHindi('आप लॉगआउट हो गए हैं।');
@@ -3600,7 +3607,7 @@
         }
 
         // ============================================================
-        // MINING — SPINNING 3D STAR BUTTON + VOICE
+        // MINING
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3957,8 +3964,6 @@
             document.getElementById('profileEmailDisplay').innerText = currentUser.email || 'N/A';
             const ref = currentUser.$id;
             document.getElementById('profileReferralCode').innerText = ref;
-
-            // ⚡ Use Admin configured base URL for share link
             const shareUrl = buildReferralUrl(ref);
             document.getElementById('referralShareLink').innerText = shareUrl;
             document.getElementById('withdrawAvailable').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
@@ -3979,14 +3984,12 @@
             renderLevelAchievements();
         }
 
-        // ⚡ UPDATED: uses Admin base URL
         function generateReferralQR() {
             const container = document.getElementById('referralQrContainer');
             if (!container) return;
             container.innerHTML = '';
             const ref = currentUser?.$id;
             if (!ref) return;
-
             const url = buildReferralUrl(ref);
             if (typeof QRCode !== 'undefined') {
                 try {
@@ -4011,7 +4014,6 @@
             } catch (err) { showToast('त्रुटि!', 'error'); }
         }
 
-        // ⚡ UPDATED: uses Admin base URL
         function shareReferralLink() {
             const ref = currentUser?.$id;
             if (!ref) return;
@@ -4408,8 +4410,6 @@
                 }
             } catch(e) {}
 
-            // ⚡ IMPORTANT: Check referral BEFORE loading user data
-            // But we need to know if user is logged in first
             const urlParams = new URLSearchParams(window.location.search);
             const hasReferral = urlParams.get('ref') || (window.location.hash && new URLSearchParams(window.location.hash.substring(1)).get('ref'));
 
@@ -4430,7 +4430,6 @@
                     showLoginPopup();
                 } else {
                     showPage('loginPage');
-                    // ⚡ If referral in URL, show registration page
                     if (hasReferral) {
                         checkReferralInURL();
                     } else {
