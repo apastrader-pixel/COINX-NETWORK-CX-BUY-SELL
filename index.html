@@ -23,9 +23,7 @@
             --amber-accent: #f59e0b;
             --usdt-green: #34d399;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg-dark);
@@ -36,7 +34,6 @@
             min-height: 100vh;
             position: relative;
         }
-
         @keyframes rainbowBorder {
             0%   { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px rgba(255,0,85,0.3); }
             14%  { border-color: #ff00aa; box-shadow: 0 0 15px #ff00aa, inset 0 0 10px rgba(255,0,170,0.3); }
@@ -53,15 +50,6 @@
             40%      { transform: translateY(2px) rotate(3deg) scale(1.02); }
             60%      { transform: translateY(-2px) rotate(-2deg) scale(1.03); }
             80%      { transform: translateY(1px) rotate(1deg) scale(1.01); }
-        }
-        @keyframes spinStar360 {
-            0%   { transform: rotate(0deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
-            50%  { transform: rotate(180deg) scale(1.12); filter: drop-shadow(0 0 35px #00f0ff); }
-            100% { transform: rotate(360deg) scale(1);    filter: drop-shadow(0 0 15px #ff0055); }
-        }
-        @keyframes spinContinuous {
-            0%   { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         @keyframes floatButterfly {
             0%   { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.08; }
@@ -123,10 +111,8 @@
             85%  { color: #ec4899; text-shadow: 0 0 15px #ec4899, 0 0 30px #ec4899; }
             100% { color: #ff0055; text-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
         }
-
         .wobble-btn { animation: headerWobble 3.5s ease-in-out infinite; }
         .rainbow-text { animation: rainbowText 3s linear infinite; }
-
         .glass-rose {
             background: var(--card-bg);
             backdrop-filter: blur(18px);
@@ -144,7 +130,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 0, 85, 0.15);
             animation: rainbowBorder 10s linear infinite;
         }
-
         .btn-3d-rose {
             background: linear-gradient(145deg, #ff0055, #990033);
             color: #ffffff !important;
@@ -160,7 +145,6 @@
             transform: translateY(6px);
             box-shadow: 0 0px 0 #59001a, 0 4px 10px rgba(255, 0, 85, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
         }
-
         .mining-btn-3d {
             position: relative;
             background: radial-gradient(circle at 30% 30%, #ff4d88, #ff0055, #660022);
@@ -225,20 +209,15 @@
         .mining-btn-3d.spinning {
             animation: miningSpinGlow 1.2s linear infinite;
         }
-        .mining-btn-3d.spinning .mining-ring {
-            animation: ringRotate 0.8s linear infinite;
-        }
-        .mining-btn-3d.spinning .mining-ring-2 {
-            animation: ringRotate 1.2s linear infinite reverse;
-        }
+        .mining-btn-3d.spinning .mining-ring { animation: ringRotate 0.8s linear infinite; }
+        .mining-btn-3d.spinning .mining-ring-2 { animation: ringRotate 1.2s linear infinite reverse; }
         .mining-btn-3d.spinning .mining-star-icon i {
             animation: spinContinuous 0.8s linear infinite;
             color: #ffffff;
             text-shadow: 0 0 40px #00f0ff, 0 0 80px #ff00aa, 0 0 120px #22c55e;
         }
-        .mining-btn-3d.spinning .mining-pulse-ring {
-            animation: miningPulse 0.6s ease-in-out infinite;
-        }
+        .mining-btn-3d.spinning .mining-pulse-ring { animation: miningPulse 0.6s ease-in-out infinite; }
+        @keyframes spinContinuous { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         #starsCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
 
@@ -257,17 +236,14 @@
         input::placeholder { color: rgba(255, 255, 255, 0.3); }
 
         .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            max-width: 440px;
-            margin: 0 auto;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            max-width: 440px; margin: 0 auto;
             background: rgba(10, 2, 6, 0.94);
             backdrop-filter: blur(20px);
             border-top: 2px solid var(--rose-primary);
             box-shadow: 0 -10px 40px rgba(255, 0, 85, 0.4);
             padding: 8px 0 14px;
-            display: flex;
-            justify-content: space-around;
+            display: flex; justify-content: space-around;
             border-radius: 25px 25px 0 0;
             z-index: 50;
             animation: rainbowBorder 8s linear infinite;
@@ -275,15 +251,9 @@
         .bottom-nav button {
             color: rgba(255, 255, 255, 0.4);
             font-size: 9px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: none;
-            border: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            padding: 4px 6px;
-            border-radius: 10px;
+            display: flex; flex-direction: column; align-items: center;
+            background: none; border: none; transition: all 0.3s;
+            cursor: pointer; padding: 4px 6px; border-radius: 10px;
         }
         .bottom-nav button.active { color: #ff6699; transform: translateY(-4px); }
         .bottom-nav button.active i {
@@ -291,130 +261,80 @@
             color: var(--rose-primary);
             transform: scale(1.2);
         }
-
         .slider-container {
-            position: relative;
-            width: 100%;
-            height: 340px;
-            overflow: hidden;
-            border-radius: 20px;
-            border: 3px solid var(--rose-primary);
+            position: relative; width: 100%; height: 340px; overflow: hidden;
+            border-radius: 20px; border: 3px solid var(--rose-primary);
             box-shadow: 0 0 30px rgba(255, 0, 85, 0.4), inset 0 0 20px rgba(255, 0, 85, 0.15);
             background: #0d0105;
             animation: rainbowBorder 8s linear infinite;
         }
         .slider-track {
-            display: flex;
-            height: 100%;
+            display: flex; height: 100%;
             transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-            width: 100%;
+            will-change: transform; width: 100%;
         }
         .slider-track .slide-item {
-            min-width: 100%;
-            width: 100%;
-            height: 100%;
-            flex-shrink: 0;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0d0105;
-            overflow: hidden;
+            min-width: 100%; width: 100%; height: 100%;
+            flex-shrink: 0; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            background: #0d0105; overflow: hidden;
         }
         .slider-track .slide-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            position: absolute;
-            top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: contain;
+            display: block; position: absolute; top: 0; left: 0;
         }
         .slider-track .slide-item .slide-text {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
             padding: 30px 16px 16px;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            text-align: center;
-            z-index: 2;
+            text-align: center; z-index: 2;
         }
         .slider-track .slide-item .slide-text .line1 {
-            font-size: 17px;
-            font-weight: 800;
-            color: #fff;
+            font-size: 17px; font-weight: 800; color: #fff;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 0, 85, 0.6);
-            display: block;
-            line-height: 1.4;
+            display: block; line-height: 1.4;
         }
         .slider-track .slide-item .slide-text .line2 {
-            font-size: 13px;
-            font-weight: 600;
-            color: #ff99bb;
+            font-size: 13px; font-weight: 600; color: #ff99bb;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-            display: block;
-            margin-top: 3px;
-            line-height: 1.4;
+            display: block; margin-top: 3px; line-height: 1.4;
         }
         .slider-dots {
-            position: absolute;
-            bottom: 10px; left: 0; right: 0;
-            text-align: center;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            flex-wrap: wrap;
-            padding: 0 8px;
+            position: absolute; bottom: 10px; left: 0; right: 0;
+            text-align: center; z-index: 10;
+            display: flex; justify-content: center; gap: 5px;
+            flex-wrap: wrap; padding: 0 8px;
         }
         .slider-dots span {
-            display: inline-block;
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transition: all 0.5s;
-            cursor: pointer;
+            display: inline-block; width: 7px; height: 7px;
+            border-radius: 50%; background: rgba(255, 255, 255, 0.4);
+            transition: all 0.5s; cursor: pointer;
         }
         .slider-dots span.active {
-            background: var(--rose-primary);
-            width: 20px;
+            background: var(--rose-primary); width: 20px;
             border-radius: 10px;
             box-shadow: 0 0 16px rgba(255, 0, 85, 0.8);
         }
-
         .butterfly-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
         .butterfly-bg .bfly {
-            position: absolute;
-            font-size: 22px;
-            opacity: 0.2;
+            position: absolute; font-size: 22px; opacity: 0.2;
             animation: floatButterfly linear infinite;
             will-change: transform;
         }
-
         .confetti-piece {
-            position: fixed;
-            z-index: 999;
+            position: fixed; z-index: 999;
             animation: confetti-fall linear forwards;
-            pointer-events: none;
-            font-size: 28px;
-            line-height: 1;
+            pointer-events: none; font-size: 28px; line-height: 1;
         }
-
         #loadingOverlay {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(7, 1, 4, 0.9);
             backdrop-filter: blur(8px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            z-index: 9999; display: none;
+            align-items: center; justify-content: center;
             flex-direction: column;
         }
         #loadingOverlay.show { display: flex; }
@@ -426,82 +346,58 @@
             animation: spin 0.8s linear infinite;
         }
         #loadingOverlay p { margin-top: 12px; font-size: 13px; color: #ff99bb; font-weight: 500; }
-
         .voice-toast {
-            position: fixed;
-            bottom: 90px;
-            left: 50%;
+            position: fixed; bottom: 90px; left: 50%;
             transform: translateX(-50%);
-            max-width: 400px;
-            width: 92%;
+            max-width: 400px; width: 92%;
             background: rgba(18, 4, 10, 0.95);
             backdrop-filter: blur(20px);
             border: 2px solid var(--rose-primary);
-            border-radius: 20px;
-            padding: 16px 20px;
+            border-radius: 20px; padding: 16px 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-            z-index: 998;
-            text-align: center;
-            animation: fadeIn 0.4s ease;
-            display: none;
+            z-index: 998; text-align: center;
+            animation: fadeIn 0.4s ease; display: none;
         }
         .voice-toast.show { display: block; }
         .voice-toast .voice-icon {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 6px;
+            font-size: 32px; display: block; margin-bottom: 6px;
             color: var(--rose-primary);
         }
         .voice-toast .voice-msg { font-size: 13px; font-weight: 500; color: #fff; }
         .voice-toast .voice-close {
             margin-top: 8px;
             background: rgba(255, 0, 85, 0.15);
-            border: none;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 10px;
-            color: #ff99bb;
-            cursor: pointer;
+            border: none; padding: 4px 16px;
+            border-radius: 20px; font-size: 10px;
+            color: #ff99bb; cursor: pointer;
         }
-
         .admin-badge {
             background: linear-gradient(135deg, #ff0055, #990033);
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 10px;
+            color: #fff; padding: 4px 14px;
+            border-radius: 30px; font-size: 10px;
             font-weight: 700;
             box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
         }
-
         .receipt-modal {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            z-index: 100; display: flex;
+            align-items: center; justify-content: center;
+            padding: 20px; animation: fadeIn 0.3s ease;
         }
         .receipt-modal .receipt-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 480px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 28px 24px;
-            color: #fff;
+            max-width: 480px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            padding: 28px 24px; color: #fff;
             animation: rainbowBorder 8s linear infinite;
         }
         .receipt-row {
-            display: flex;
-            justify-content: space-between;
+            display: flex; justify-content: space-between;
             padding: 5px 0;
             border-bottom: 1px solid rgba(255, 0, 85, 0.08);
             font-size: 12px;
@@ -509,11 +405,9 @@
         .receipt-row .label { color: rgba(255, 255, 255, 0.5); }
         .receipt-row .value { color: #fff; font-weight: 500; text-align: right; word-break: break-all; max-width: 60%; font-family: monospace; }
         .receipt-row .value.highlight { color: #ff6699; font-weight: 600; }
-
         .receipt-currency-box {
             border: 3px solid var(--rose-primary);
-            border-radius: 16px;
-            padding: 16px 18px;
+            border-radius: 16px; padding: 16px 18px;
             margin: 10px 0 16px 0;
             background: rgba(34, 197, 94, 0.06);
             text-align: center;
@@ -522,53 +416,33 @@
         .receipt-currency-box .inr-label { font-size: 14px; font-weight: 600; color: #22c55e; display: block; margin-top: 2px; }
         .receipt-currency-box .usdt-amount { font-size: 20px; font-weight: 700; color: #34d399; margin-top: 6px; display: block; border-top: 1px solid rgba(52, 211, 153, 0.2); padding-top: 6px; }
         .receipt-currency-box .usdt-label { font-size: 12px; font-weight: 500; color: #34d399; }
-
         .receipt-badge {
-            display: inline-block;
-            padding: 2px 14px;
-            border-radius: 20px;
-            font-size: 9px;
-            font-weight: 700;
+            display: inline-block; padding: 2px 14px;
+            border-radius: 20px; font-size: 9px; font-weight: 700;
         }
         .receipt-badge.approved { background: rgba(34, 197, 94, 0.12); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2); }
         .receipt-badge.pending { background: rgba(255, 0, 85, 0.12); color: #ff6699; border: 1px solid rgba(255, 0, 85, 0.2); }
         .receipt-badge.completed { background: rgba(34, 197, 94, 0.12); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2); }
         .receipt-badge.rejected { background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
-
         .receipt-qr-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 0;
-            padding: 8px;
-            background: #fff;
-            border-radius: 12px;
+            display: flex; justify-content: center; align-items: center;
+            margin: 10px 0; padding: 8px;
+            background: #fff; border-radius: 12px;
             border: 1px solid rgba(255, 0, 85, 0.2);
         }
         .receipt-qr-box canvas { max-width: 100px; height: auto; }
-
         .receipt-footer {
-            margin-top: 18px;
-            padding-top: 14px;
+            margin-top: 18px; padding-top: 14px;
             border-top: 1px solid rgba(255, 0, 85, 0.15);
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            display: flex; gap: 10px; flex-wrap: wrap;
         }
         .receipt-footer button {
-            flex: 1;
-            min-width: 100px;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
+            flex: 1; min-width: 100px;
+            padding: 10px 16px; border-radius: 12px;
+            font-size: 11px; font-weight: 600;
+            border: none; cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
         }
         .receipt-footer .btn-download {
             background: linear-gradient(145deg, #ff0055, #990033);
@@ -580,260 +454,319 @@
             color: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 0, 85, 0.2);
         }
-
         .withdraw-popup {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            z-index: 200; display: flex;
+            align-items: center; justify-content: center;
+            padding: 20px; animation: fadeIn 0.3s ease;
         }
         .withdraw-popup .withdraw-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 440px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 440px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
             padding: 24px 20px;
             animation: rainbowBorder 8s linear infinite;
         }
 
+        /* ⚡ PREMIUM APP DOWNLOAD POPUP */
         .app-popup {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 300;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(18px);
+            z-index: 300; display: flex;
+            align-items: center; justify-content: center;
+            padding: 16px; animation: fadeIn 0.35s ease;
         }
         .app-popup .app-card {
-            background: #0d0105;
-            border: 3px solid var(--rose-primary);
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 380px;
-            width: 100%;
-            padding: 28px 24px;
+            position: relative;
+            background: linear-gradient(160deg, #1a0510 0%, #0d0105 60%, #1a0510 100%);
+            border: 3px solid transparent;
+            border-radius: 28px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 60px rgba(255, 0, 85, 0.35);
+            max-width: 400px; width: 100%;
+            padding: 26px 22px 22px;
             text-align: center;
-            animation: rainbowBorder 8s linear infinite;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            background-clip: padding-box;
+            overflow: hidden;
+        }
+        .app-popup .app-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 28px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ff0055, #ff00aa, #00f0ff, #22c55e, #f59e0b, #ff0055);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rainbowBorder 6s linear infinite;
+            pointer-events: none;
+        }
+        .app-popup .app-card::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 0, 85, 0.15), transparent 60%);
+            pointer-events: none;
         }
         .app-popup .app-logo {
-            width: 80px; height: 80px;
-            border-radius: 20px;
+            width: 88px; height: 88px;
+            border-radius: 22px;
             object-fit: cover;
             border: 3px solid var(--rose-primary);
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+            box-shadow: 0 0 40px rgba(255, 0, 85, 0.6), inset 0 0 10px rgba(255,0,85,0.3);
             margin: 0 auto 12px;
+            display: block;
+            position: relative; z-index: 2;
+            background: #0d0105;
+        }
+        .app-premium-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: linear-gradient(135deg, #ffd700, #f59e0b, #b45309);
+            color: #1a0510;
+            font-size: 9px; font-weight: 900;
+            letter-spacing: 1.5px;
+            padding: 4px 12px; border-radius: 30px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+            text-transform: uppercase;
+            position: relative; z-index: 2;
+        }
+        .app-popup .app-title {
+            font-size: 22px; font-weight: 900;
+            background: linear-gradient(135deg, #ff99bb, #ff0055, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+            position: relative; z-index: 2;
+        }
+        .app-popup .app-subtitle {
+            font-size: 10px; color: #ff99bb;
+            letter-spacing: 3px; font-weight: 600;
+            margin-bottom: 14px; text-transform: uppercase;
+            position: relative; z-index: 2;
+        }
+        .app-info-grid {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1.5px solid rgba(255, 0, 85, 0.3);
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 10px;
+            position: relative; z-index: 2;
+        }
+        .app-info-grid .info-item {
+            display: flex; flex-direction: column;
+            align-items: flex-start; text-align: left;
+        }
+        .app-info-grid .info-label {
+            font-size: 8.5px; color: rgba(255, 153, 187, 0.65);
+            letter-spacing: 0.5px; text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .app-info-grid .info-value {
+            font-size: 12px; font-weight: 700; color: #fff;
+            text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+        }
+        .app-info-grid .info-value.highlight-green { color: #34d399; text-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
+        .app-info-grid .info-value.highlight-gold { color: #fbbf24; text-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
+
+        .btn-download-premium {
+            position: relative;
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #ff0055 0%, #cc0044 50%, #990033 100%);
+            color: #fff !important;
+            font-size: 14px;
+            font-weight: 900;
+            border: 2.5px solid #ff6699;
+            box-shadow: 0 8px 0 #59001a, 0 15px 35px rgba(255, 0, 85, 0.55), inset 0 2px 6px rgba(255, 255, 255, 0.45);
+            cursor: pointer;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.5px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative; z-index: 2;
+            animation: glowPulse 2.2s ease-in-out infinite;
+        }
+        .btn-download-premium::before {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            animation: shine 2.5s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 200%; }
+        }
+        .btn-download-premium:active {
+            transform: translateY(8px);
+            box-shadow: 0 0px 0 #59001a, 0 5px 15px rgba(255, 0, 85, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.45);
+        }
+        .btn-cancel-app {
+            width: 100%;
+            background: rgba(255, 0, 85, 0.08);
+            color: rgba(255, 153, 187, 0.85);
+            border: 1.5px solid rgba(255, 0, 85, 0.3);
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 11px; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+            position: relative; z-index: 2;
+        }
+        .btn-cancel-app:hover {
+            background: rgba(255, 0, 85, 0.15);
+            color: #fff;
         }
 
         .login-popup {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
-            z-index: 250;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            z-index: 250; display: flex;
+            align-items: center; justify-content: center;
+            padding: 20px; animation: fadeIn 0.3s ease;
         }
         .login-popup .login-card {
             background: #0d0105;
             border: 3px solid var(--rose-primary);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 0, 85, 0.6);
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            text-align: center;
+            max-width: 400px; width: 100%;
+            padding: 20px; text-align: center;
             animation: rainbowBorder 8s linear infinite;
         }
         .login-popup .welcome-img {
-            width: 100%;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            object-fit: contain;
-            max-height: 300px;
-            background: #1a0510;
+            width: 100%; border-radius: 16px;
+            margin-bottom: 12px; object-fit: contain;
+            max-height: 300px; background: #1a0510;
             border: 2px solid rgba(255,0,85,0.3);
             display: block;
         }
-
         .congrats-popup {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(15px);
-            z-index: 400;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            z-index: 400; display: flex;
+            align-items: center; justify-content: center;
+            padding: 20px; animation: fadeIn 0.3s ease;
         }
         .congrats-popup .congrats-card {
             background: linear-gradient(145deg, #0d0105, #1a0510);
             border: 4px solid #22c55e;
             border-radius: 28px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 60px rgba(34, 197, 94, 0.6);
-            max-width: 380px;
-            width: 100%;
-            padding: 32px 24px;
-            text-align: center;
+            max-width: 380px; width: 100%;
+            padding: 32px 24px; text-align: center;
             animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
         .congrats-popup .congrats-card .trophy {
-            font-size: 72px;
-            display: block;
-            margin-bottom: 8px;
+            font-size: 72px; display: block; margin-bottom: 8px;
             animation: bounceIn 0.8s ease-out;
             filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.8));
         }
         .congrats-popup .congrats-card .level-badge-big {
             display: inline-block;
             background: linear-gradient(145deg, #22c55e, #16a34a);
-            color: #fff;
-            padding: 8px 28px;
-            border-radius: 30px;
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
+            color: #fff; padding: 8px 28px;
+            border-radius: 30px; font-size: 24px;
+            font-weight: 900; letter-spacing: 2px;
             margin: 8px 0;
             box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), inset 0 2px 4px rgba(255,255,255,0.4);
             animation: glowPulse 2s ease-in-out infinite;
         }
         .congrats-popup .congrats-card .check-mark {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px; height: 60px;
-            border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 60px; height: 60px; border-radius: 50%;
             background: rgba(34, 197, 94, 0.2);
-            border: 3px solid #22c55e;
-            color: #22c55e;
-            font-size: 32px;
-            margin: 12px 0;
+            border: 3px solid #22c55e; color: #22c55e;
+            font-size: 32px; margin: 12px 0;
             animation: checkPop 0.8s ease-out 0.3s both;
         }
-
         .floating-apk-btn {
-            position: fixed;
-            bottom: 100px; right: 16px;
-            z-index: 60;
-            width: 52px; height: 52px;
+            position: fixed; bottom: 100px; right: 16px;
+            z-index: 60; width: 52px; height: 52px;
             border-radius: 50%;
             background: linear-gradient(145deg, #ff0055, #990033);
             box-shadow: 0 4px 25px rgba(255, 0, 85, 0.6), 0 0 40px rgba(255, 0, 85, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease;
             animation: headerWobble 3s ease-in-out infinite;
             border: 2px solid #ff6699;
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
+            color: #fff; font-size: 20px; text-decoration: none;
         }
         .floating-apk-btn.hidden-app { display: none !important; }
         .floating-apk-btn.web-only { display: flex; }
-
         .header-apk-btn {
             background: linear-gradient(145deg, #ff0055, #990033);
             border: 2px solid #ff6699;
             border-radius: 50%;
             width: 34px; height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s ease;
             animation: headerWobble 2.8s ease-in-out infinite;
             box-shadow: 0 2px 15px rgba(255, 0, 85, 0.5);
-            color: #fff;
-            font-size: 14px;
-            text-decoration: none;
+            color: #fff; font-size: 14px; text-decoration: none;
             flex-shrink: 0;
         }
         .header-apk-btn.hidden-app { display: none !important; }
-
         .voice-toggle-btn {
             background: rgba(255, 0, 85, 0.15);
             border: 1px solid rgba(255, 0, 85, 0.4);
-            color: #ff6699;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 9px;
-            font-weight: 600;
-            cursor: pointer;
+            color: #ff6699; padding: 4px 10px;
+            border-radius: 30px; font-size: 9px;
+            font-weight: 600; cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            display: flex; align-items: center; gap: 4px;
             animation: headerWobble 3.2s ease-in-out infinite;
         }
         .voice-toggle-btn.off { color: rgba(255, 255, 255, 0.3); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); }
-
         .profile-photo-wrapper { position: relative; display: inline-block; }
         .profile-photo-wrapper .edit-icon {
-            position: absolute;
-            bottom: 0; right: 0;
-            background: var(--rose-primary);
-            color: #fff;
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 2px solid #0d0105;
+            position: absolute; bottom: 0; right: 0;
+            background: var(--rose-primary); color: #fff;
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; border: 2px solid #0d0105;
             cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
             transition: all 0.3s;
         }
         .profile-photo {
             width: 72px; height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
+            border-radius: 50%; object-fit: cover;
             border: 3px solid var(--rose-primary);
             box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
             background: #0d0105;
         }
-
         .level-grid-container {
-            max-height: 350px;
-            overflow-y: auto;
+            max-height: 350px; overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--rose-primary) #1a050f;
         }
         .level-grid-container::-webkit-scrollbar { width: 4px; }
         .level-grid-container::-webkit-scrollbar-thumb { background: var(--rose-primary); border-radius: 10px; }
-
         .level-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 7px 10px;
-            border-radius: 10px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 7px 10px; border-radius: 10px;
             border: 1.5px solid rgba(255, 0, 85, 0.2);
             background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 4px;
-            transition: all 0.3s;
+            margin-bottom: 4px; transition: all 0.3s;
             cursor: pointer;
         }
         .level-item:hover { border-color: rgba(255, 0, 85, 0.5); background: rgba(255, 0, 85, 0.05); }
@@ -849,51 +782,36 @@
         .level-item .level-check.pending { color: rgba(255, 255, 255, 0.15); }
         .level-item.achieved .level-check { animation: checkPop 0.5s ease-out; }
         .level-item.active-level { border-color: #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
-
         .history-item {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 0, 85, 0.12);
-            border-radius: 12px;
-            padding: 12px 14px;
+            border-radius: 12px; padding: 12px 14px;
             transition: all 0.3s;
         }
-
         .copy-btn {
             background: rgba(255, 0, 85, 0.15);
             border: 1px solid rgba(255, 0, 85, 0.3);
-            color: #ff6699;
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 9px;
-            cursor: pointer;
-            transition: all 0.3s;
+            color: #ff6699; padding: 2px 10px;
+            border-radius: 6px; font-size: 9px;
+            cursor: pointer; transition: all 0.3s;
         }
         .copy-btn-sm {
             background: rgba(255, 0, 85, 0.1);
             border: 1px solid rgba(255, 0, 85, 0.2);
-            color: #ff6699;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 8px;
+            color: #ff6699; padding: 2px 6px;
+            border-radius: 4px; font-size: 8px;
             cursor: pointer;
         }
-
         .crypto-address-box {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 0, 85, 0.3);
-            border-radius: 12px;
-            padding: 10px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            border-radius: 12px; padding: 10px 12px;
+            display: flex; align-items: center; justify-content: space-between;
         }
         .crypto-address-box .address {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: monospace;
-            word-break: break-all;
+            font-size: 10px; color: rgba(255, 255, 255, 0.6);
+            font-family: monospace; word-break: break-all;
         }
-
         .currency-usdt { color: #34d399 !important; text-shadow: 0 0 10px rgba(52, 211, 153, 0.5); }
         .currency-inr { color: #22c55e !important; text-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
         .rose-text-gradient {
@@ -902,7 +820,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .hidden { display: none !important; }
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
@@ -973,38 +890,28 @@
         .z-30 { z-index: 30; }
         .z-40 { z-index: 40; }
         .z-50 { z-index: 50; }
-
         .quick-action-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 8px;
-            border-radius: 16px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 14px 8px; border-radius: 16px;
             background: var(--card-bg);
             backdrop-filter: blur(14px);
             border: 2px solid var(--rose-primary);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 0, 85, 0.15);
-            transition: all 0.3s;
-            cursor: pointer;
+            transition: all 0.3s; cursor: pointer;
             animation: rainbowBorder 8s linear infinite;
         }
         .quick-action-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255, 0, 85, 0.3); }
         .quick-action-btn i { font-size: 24px; color: var(--rose-primary); margin-bottom: 4px; filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.6)); }
         .quick-action-btn span { font-size: 11px; font-weight: 700; color: #fff; }
         .quick-action-btn small { font-size: 8px; color: rgba(255, 255, 255, 0.5); }
-
         .staking-plan-btn {
-            transition: all 0.3s;
-            cursor: pointer;
+            transition: all 0.3s; cursor: pointer;
             background: rgba(0, 0, 0, 0.4);
             border: 1.5px solid rgba(255, 0, 85, 0.2);
             color: rgba(255, 255, 255, 0.5);
-            text-align: center;
-            padding: 8px 4px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
+            text-align: center; padding: 8px 4px;
+            border-radius: 12px; font-size: 11px; font-weight: 600;
         }
         .staking-plan-btn.active {
             background: rgba(255, 0, 85, 0.2);
@@ -1013,28 +920,21 @@
             box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }
         .staking-plan-btn:hover:not(.active) { border-color: rgba(255, 0, 85, 0.5); }
-
         .withdraw-big-btn {
-            width: 100%;
-            padding: 18px;
+            width: 100%; padding: 18px;
             border-radius: 18px;
             background: linear-gradient(145deg, #ff0055, #990033);
-            color: #fff;
-            font-size: 18px;
-            font-weight: 900;
+            color: #fff; font-size: 18px; font-weight: 900;
             border: 3px solid #ff6699;
             box-shadow: 0 8px 0 #59001a, 0 15px 35px rgba(255, 0, 85, 0.6), inset 0 2px 6px rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.15s;
+            cursor: pointer; transition: all 0.15s;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-            letter-spacing: 1px;
-            margin-top: 12px;
+            letter-spacing: 1px; margin-top: 12px;
         }
         .withdraw-big-btn:active {
             transform: translateY(8px);
             box-shadow: 0 0px 0 #59001a, 0 5px 15px rgba(255, 0, 85, 0.5);
         }
-
         @media (max-width: 440px) {
             .bottom-nav button i { font-size: 16px; }
             .bottom-nav button { font-size: 7.5px; padding: 2px 3px; }
@@ -1046,9 +946,11 @@
             .receipt-currency-box .inr-amount { font-size: 24px; }
             .receipt-currency-box .usdt-amount { font-size: 16px; }
             .withdraw-popup .withdraw-card { padding: 18px 14px; }
-            .app-popup .app-card { padding: 20px 16px; }
+            .app-popup .app-card { padding: 22px 18px; }
             .congrats-popup .congrats-card { padding: 24px 18px; }
             .mining-btn-3d .mining-star-icon i { font-size: 2.8rem; }
+            .app-popup .app-logo { width: 76px; height: 76px; }
+            .app-popup .app-title { font-size: 19px; }
         }
     </style>
 </head>
@@ -1724,23 +1626,46 @@
             </div>
         </div>
 
-        <!-- APP DOWNLOAD POPUP -->
+        <!-- ⚡ PREMIUM APP DOWNLOAD POPUP -->
         <div id="appDownloadPopup" class="app-popup hidden">
             <div class="app-card">
+                <span class="app-premium-badge"><i class="fa-solid fa-crown"></i> PREMIUM • GOLD</span>
                 <img src="https://drive.google.com/thumbnail?id=1SAozsk8oWOON2naYvGkFCUu85NRMXkJR&sz=w400" alt="SupriX Global" class="app-logo" onerror="this.onerror=null;this.src='https://i.ibb.co/hJg8qHkt/Chat-GPT-Image-Sep-10-2026-02-03-43-PM.png';" />
-                <h3 class="text-lg font-extrabold rose-text-gradient">SupriX Global</h3>
-                <p class="text-[10px] text-rose-300/60 mb-3">Premium • Gold Edition</p>
-                <div class="glass-rose-light p-3 rounded-xl text-left space-y-1.5 mb-4">
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">App Size:</span><span class="text-white font-bold">12.98 MB</span></div>
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Version:</span><span class="text-white font-bold">2.0.0</span></div>
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Updated:</span><span class="text-white font-bold">Sep 2026</span></div>
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Requires:</span><span class="text-white font-bold">Android 8.0+</span></div>
-                    <div class="flex justify-between text-[11px]"><span class="text-rose-300/60">Downloads:</span><span class="text-white font-bold">10K+</span></div>
+                <h3 class="app-title">SupriX Global</h3>
+                <p class="app-subtitle">Premium Gold Edition</p>
+
+                <div class="app-info-grid">
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-weight-hanging"></i> App Size</span>
+                        <span class="info-value highlight-green">12.98 MB</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-code-branch"></i> Version</span>
+                        <span class="info-value">2.0.0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-calendar"></i> Updated</span>
+                        <span class="info-value">Sep 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-mobile-screen"></i> Requires</span>
+                        <span class="info-value">Android 8.0+</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-download"></i> Downloads</span>
+                        <span class="info-value highlight-gold">10K+</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fa-solid fa-shield-halved"></i> Security</span>
+                        <span class="info-value highlight-green">Verified</span>
+                    </div>
                 </div>
-                <button onclick="downloadApkDirect(event)" class="w-full btn-3d-rose py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 mb-2">
-                    <i class="fa-solid fa-download"></i> डाउनलोड करें (APK)
+
+                <button onclick="downloadApkDirect(event)" class="btn-download-premium">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                    <span>डाउनलोड करें (APK)</span>
                 </button>
-                <button onclick="closeAppDownloadPopup()" class="w-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 py-2.5 rounded-xl text-xs font-semibold">
+                <button onclick="closeAppDownloadPopup()" class="btn-cancel-app">
                     रद्द करें
                 </button>
             </div>
@@ -1906,12 +1831,12 @@
         const STAKING_SETTINGS_COLLECTION_ID = "staking_plan_settings";
         const SCREENSHOT_BUCKET_ID = "6a47d26c00001f17b543";
         const STAKING_SETTINGS_DOC_ID = "global_config";
-        const ADMIN_TEAM_ID = "6a9508a4002c7bb3b799";
+        const ADMIN_TEAM_ID = "6a4a84580012aed57e61";
         const SECRET_ADMIN_KEY = "";
 
         const EXCHANGE_RATE = 100;
+        const APK_DRIVE_ID = "1SzgBIisYlgSDZqwLojcdOlQO-mHL4p4-";
 
-        // ⚡ GOOGLE DRIVE IMAGE HELPER
         function gdrive(id, size) {
             size = size || 1200;
             return "https://lh3.googleusercontent.com/d/" + id + "=w" + size;
@@ -2000,10 +1925,6 @@
         const APP_LOGO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 400);
         const DEFAULT_PROFILE_PHOTO = gdrive("1SAozsk8oWOON2naYvGkFCUu85NRMXkJR", 200);
 
-        // ⚡ NEW APK DOWNLOAD LINK (12.98 MB)
-        const APK_FILE_ID = "1SzgBIisYlgSDZqwLojcdOlQO-mHL4p4-";
-        const APK_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=" + APK_FILE_ID;
-
         const { Client, Databases, Storage, Account, Teams, Query, ID } = Appwrite;
         const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT_ID);
         const databases = new Databases(client);
@@ -2036,13 +1957,16 @@
         let cooldownTimerInterval = null;
         let voiceEnabled = true;
         let welcomeVoicePlayed = false;
-        let patrioVoicePlayed = false;
         let isAppInstalled = false;
         let sliderIndex = 0;
         let sliderInterval = null;
         let sliderAnimating = false;
+        let miningSpinning = false;
         let selectedVoice = null;
 
+        // ============================================================
+        // UTILS
+        // ============================================================
         function parseJsonSafe(value, fallback) {
             if (!value) return fallback;
             if (typeof value !== 'string') return value;
@@ -2103,7 +2027,9 @@
                 coinxId: cid,
                 coinxWalletSC: doc.coinxWalletSC || '',
                 profilePhoto: doc.profilePhoto || '',
-                totalPurchased: parseFloat(doc.totalPurchased || 0)
+                totalPurchased: parseFloat(doc.totalPurchased || 0),
+                // ⚡ NEW: Server-side stored daily reward timestamp
+                lastDailyClaim: parseInt(doc.lastDailyClaim || 0, 10)
             };
         }
 
@@ -2162,10 +2088,12 @@
             return str.slice(0, show) + '****' + str.slice(-show);
         }
 
-        // ⚡ REFERRAL URL HELPERS
+        // ⚡ REFERRAL URL HELPER
         function getReferralBaseUrl() {
             let baseUrl = localStorage.getItem('suprix_referral_base_url');
-            if (!baseUrl) baseUrl = window.location.origin + window.location.pathname;
+            if (!baseUrl) {
+                baseUrl = window.location.origin + window.location.pathname;
+            }
             baseUrl = baseUrl.split('?')[0].split('#')[0];
             return baseUrl;
         }
@@ -2179,6 +2107,7 @@
         // LOGIN POPUP IMAGE HANDLER
         // ============================================================
         function handleLoginPopupImgError(img) {
+            console.log('Login popup image failed, trying fallback...');
             if (!img.dataset.fallbackTried) {
                 img.dataset.fallbackTried = 'true';
                 img.src = FALLBACK_IMG;
@@ -2264,29 +2193,42 @@
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
             const btn = document.getElementById('voiceToggleBtn');
+            const label = document.getElementById('voiceToggleLabel');
             if (voiceEnabled) {
                 btn.classList.remove('off');
-                showToast('🔊 वॉइस सक्रिय', 'info');
+                if (label) label.innerText = 'ऑन';
+                showToast('🔊 वॉइस गाइड सक्रिय', 'info');
                 speakHindi('वॉइस गाइड सक्रिय हो गया है।');
             } else {
                 btn.classList.add('off');
-                showToast('🔇 वॉइस बंद', 'info');
+                if (label) label.innerText = 'ऑफ';
+                showToast('🔇 वॉइस गाइड बंद', 'info');
             }
         }
 
         function speakHindi(text) {
             if (!voiceEnabled) return;
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'hi-IN';
-                utterance.pitch = 1.0;
-                utterance.rate = 0.95;
-                const voices = window.speechSynthesis.getVoices();
-                const gv = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google'));
-                if (gv) utterance.voice = gv;
-                window.speechSynthesis.speak(utterance);
+                try {
+                    window.speechSynthesis.cancel();
+                    let utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'hi-IN';
+                    utterance.pitch = 1.0;
+                    utterance.rate = 0.95;
+                    const voices = window.speechSynthesis.getVoices();
+                    const gv = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google'));
+                    if (gv) utterance.voice = gv;
+                    window.speechSynthesis.speak(utterance);
+                } catch(e) { console.warn('Voice error:', e); }
             }
+        }
+
+        // ⚡ NEW: Welcome voice message with the requested format
+        function speakWelcomeMessage(userName) {
+            if (!voiceEnabled) return;
+            const name = (userName || 'यूज़र').trim();
+            const msg = `Mr ${name}, SupriX Global के साथ जुड़ने के लिए धन्यवाद, हमारा लक्ष्य है आत्मनिर्भर भारत बनाना।`;
+            speakHindi(msg);
         }
 
         function showVoiceToast(msg) {
@@ -2368,43 +2310,42 @@
         }
 
         // ============================================================
-        // ⚡ APP POPUP — NEW DOWNLOAD
+        // APP POPUP
         // ============================================================
         function showAppDownloadPopup(event) {
             if (event) event.preventDefault();
             document.getElementById('appDownloadPopup').classList.remove('hidden');
+            if (voiceEnabled) speakHindi('SupriX Global ऐप डाउनलोड करें।');
         }
         function closeAppDownloadPopup() { document.getElementById('appDownloadPopup').classList.add('hidden'); }
 
-        // ⚡ DIRECT APK DOWNLOAD — Click पर तुरंत download शुरू
+        // ⚡ UPDATED: Direct download from Google Drive with new file ID
         function downloadApkDirect(event) {
             if (event) event.preventDefault();
-
-            showToast('📲 डाउनलोड शुरू हो रहा है... (12.98 MB)', 'info');
-            if (voiceEnabled) speakHindi('एपीके डाउनलोड शुरू हो रहा है। 12.98 एमबी।');
-
-            // ⚡ MULTIPLE METHODS — ensure download starts
-            const apkUrl = APK_DOWNLOAD_URL;
-
-            // Method 1: Direct anchor click
+            const apkUrl = `https://drive.google.com/uc?export=download&id=${APK_DRIVE_ID}`;
+            const apkUrlAlt = `https://drive.usercontent.google.com/download?id=${APK_DRIVE_ID}&export=download&confirm=t`;
+            // Open direct download in new tab — browser will download APK
             const link = document.createElement('a');
             link.href = apkUrl;
-            link.setAttribute('download', 'SupriX_Global.apk');
+            link.download = 'SupriX_Global.apk';
             link.setAttribute('target', '_blank');
-            link.rel = 'noopener noreferrer';
+            link.setAttribute('rel', 'noopener');
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
-
-            // Method 2: Fallback - open in new window if download doesn't start
             setTimeout(() => {
-                // Silent - just close popup after successful trigger
-                closeAppDownloadPopup();
-            }, 800);
+                document.body.removeChild(link);
+                // Fallback if browser blocked
+                if (!document.hidden) {
+                    window.open(apkUrlAlt, '_blank');
+                }
+            }, 400);
+            showToast('📲 12.98 MB APK डाउनलोड शुरू हो रहा है...', 'success');
+            if (voiceEnabled) speakHindi('बारह पॉइंट नौ आठ मेगाबाइट का ऐप डाउनलोड शुरू हो रहा है।');
+            closeAppDownloadPopup();
         }
 
         // ============================================================
-        // LOGIN POPUP — With Patriotic Voice
+        // LOGIN POPUP
         // ============================================================
         function showLoginPopup() {
             const popup = document.getElementById('loginPopup');
@@ -2414,14 +2355,6 @@
             img.dataset.fallbackTried = '';
             document.getElementById('loginPopupImgFallback').style.display = 'none';
             preloadLoginImage();
-
-            // ⚡ PATRIOTIC VOICE — once per session after login popup
-            if (!patrioVoicePlayed && voiceEnabled) {
-                setTimeout(() => {
-                    speakHindi('हमारा लक्ष्य है आत्मनिर्भर भारत बनाना');
-                    patrioVoicePlayed = true;
-                }, 2500);
-            }
         }
 
         function closeLoginPopup() {
@@ -2528,6 +2461,7 @@
                 document.getElementById('userPanelContainer').classList.add('hidden');
                 document.getElementById('adminPanelContainer').classList.remove('hidden');
                 document.getElementById('headerTitle').innerText = 'SUPRIX ADMIN';
+                document.getElementById('headerSubtitle').innerText = 'Super Admin';
                 document.getElementById('headerBadge').className = 'admin-badge';
                 document.getElementById('headerBadge').innerHTML = '<i class="fa-solid fa-shield-halved mr-1"></i> ADMIN';
                 document.getElementById('adminSearchBox').classList.add('hidden');
@@ -2543,6 +2477,7 @@
             document.getElementById('userPanelContainer').classList.remove('hidden');
             document.getElementById('adminPanelContainer').classList.add('hidden');
             document.getElementById('headerTitle').innerText = 'SUPRIX GLOBAL 🌍';
+            document.getElementById('headerSubtitle').innerText = 'Premium • Gold Edition';
             document.getElementById('headerBadge').className = 'text-[8px] bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold';
             document.getElementById('headerBadge').innerHTML = 'User';
             showToast('एडमिन मोड बंद', 'info');
@@ -3202,8 +3137,8 @@
                 if (pageId === 'registrationPage') speakHindi('SupriX Global में आपका स्वागत है। कृपया अपना डिटेल्स भरे और रजिस्ट्रेशन करें।');
                 else if (pageId === 'loginPage') speakHindi('कृपया लॉगिन करें। अपनी ईमेल या SPX ID और पासवर्ड दर्ज करें।');
                 else if (pageId === 'dashboardPage' && currentUser && !welcomeVoicePlayed) {
-                    const name = currentUser.name || 'यूज़र';
-                    speakHindi(`स्वागत है ${name}! SupriX Global के साथ जुड़ने के लिए धन्यवाद।`);
+                    // ⚡ NEW: Speak the requested welcome message with user's name
+                    speakWelcomeMessage(currentUser.name);
                     welcomeVoicePlayed = true;
                 }
                 else if (pageId === 'purchasePage') speakHindi('कॉइन परचेज पेज पर आपका स्वागत है। कृपया अपना अमाउंट दर्ज करें।');
@@ -3213,7 +3148,7 @@
         }
 
         // ============================================================
-        // COOLDOWN
+        // COOLDOWN — uses SERVER-SIDE timestamp (currentUser.lastDailyClaim)
         // ============================================================
         function startCooldownTimer() {
             stopCooldownTimer();
@@ -3226,7 +3161,8 @@
             if (!currentUser) return;
             const now = Date.now();
             const oneDayMs = 24 * 60 * 60 * 1000;
-            const lastClaimed = parseInt(localStorage.getItem('cx_last_claimed_' + currentUser.$id) || '0', 10);
+            // ⚡ SERVER-SIDE: Reads from currentUser (loaded from DB)
+            const lastClaimed = parseInt(currentUser.lastDailyClaim || 0, 10);
             const staked = parseFloat(currentUser.staked || 0);
             const timerText = document.getElementById('miningTimerText');
             const cooldownBadge = document.getElementById('cooldownBadge');
@@ -3327,7 +3263,8 @@
                         referrals: JSON.stringify([]), transactions: JSON.stringify([]),
                         tradeHistory: JSON.stringify([]), buySellWallet: 0, tradeWallet: 0,
                         coinxId: coinxId, referredBy: null, isBlocked: false,
-                        coinxWalletSC: '', profilePhoto: '', totalPurchased: 0
+                        coinxWalletSC: '', profilePhoto: '', totalPurchased: 0,
+                        lastDailyClaim: 0
                     };
                     try {
                         userDoc = await databases.createDocument(DATABASE_ID, USERS_COLLECTION_ID, acc.$id, userData);
@@ -3363,15 +3300,15 @@
                     }, 1500);
                 }
 
+                // Reset welcome voice flag for fresh login
+                welcomeVoicePlayed = false;
+
                 showLoginPopup();
                 showToast('✅ लॉगिन सफल!', 'success');
+
+                // showPage will trigger the welcome voice with user's name
                 showPage('dashboardPage');
                 startCooldownTimer();
-
-                if (voiceEnabled) {
-                    const name = currentUser.name || 'यूज़र';
-                    speakHindi(`स्वागत है ${name}! आपका लॉगिन सफल हो गया है।`);
-                }
             } catch (e) {
                 console.error('Login error:', e);
                 let msg = '❌ गलत ईमेल/SPX ID या पासवर्ड';
@@ -3389,7 +3326,6 @@
             try { await account.deleteSession('current'); } catch (e) {}
             currentUser = null;
             welcomeVoicePlayed = false;
-            patrioVoicePlayed = false;
             stopCooldownTimer();
             showToast('लॉगआउट हो गया', 'info');
             if (voiceEnabled) speakHindi('आप लॉगआउट हो गए हैं।');
@@ -3438,7 +3374,8 @@
                     referrals: JSON.stringify([]), transactions: JSON.stringify([]),
                     tradeHistory: JSON.stringify([]), buySellWallet: 0, tradeWallet: 0,
                     coinxId, referredBy: referral || null, isBlocked: false,
-                    coinxWalletSC: '', profilePhoto: '', totalPurchased: 0
+                    coinxWalletSC: '', profilePhoto: '', totalPurchased: 0,
+                    lastDailyClaim: 0
                 };
                 await databases.createDocument(DATABASE_ID, USERS_COLLECTION_ID, newAccount.$id, userData);
                 if (referral) localStorage.setItem('cx_pending_referral_code', referral);
@@ -3607,7 +3544,7 @@
         }
 
         // ============================================================
-        // MINING
+        // MINING — 24-Hour Server-Side Reward Check
         // ============================================================
         async function triggerMiningReward(btn) {
             if (!currentUser) { showToast('कृपया लॉगिन करें।', 'error'); return; }
@@ -3619,21 +3556,26 @@
                 if (voiceEnabled) speakHindi(`${userName}, कम से कम 10 USDT स्टेक करें।`);
                 return;
             }
+
+            // ⚡ SERVER-SIDE 24h check (works across devices)
             const now = Date.now();
             const oneDayMs = 24 * 60 * 60 * 1000;
-            const last = parseInt(localStorage.getItem('cx_last_claimed_' + currentUser.$id) || '0', 10);
-            if (last && (now - last) < oneDayMs) {
-                const diff = last + oneDayMs - now;
+            const lastClaimed = parseInt(currentUser.lastDailyClaim || 0, 10);
+
+            if (lastClaimed && (now - lastClaimed) < oneDayMs) {
+                const diff = lastClaimed + oneDayMs - now;
                 const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
                 const msg = `⏳ ${userName}, आप आज का डेली रिवॉर्ड पहले ही प्राप्त कर चुके हैं। कृपया ${h} घंटे ${m} मिनट ${s} सेकंड प्रतीक्षा करें।`;
                 showVoiceToast(msg);
                 if (voiceEnabled) speakHindi(`${userName}, 24 घंटे बाद फिर से आपका इंतजार करूंगी। आज का Daily reward प्राप्त हो चुका है।`);
                 return;
             }
+
             if (btn) {
                 btn.disabled = true;
                 btn.classList.add('spinning');
             }
+
             try {
                 const reward = staked * 0.005;
                 const newCoins = parseFloat(currentUser.coins || 0) + reward;
@@ -3641,18 +3583,23 @@
                 const txs = [...(currentUser.transactions || [])];
                 txs.push({ type: 'daily_reward', coinsAmount: reward, dateTime: new Date().toLocaleString('hi-IN'), status: 'SUCCESS', receiptId: receiptId, network: 'USDT BEP20' });
 
+                // ⚡ SAVE TO DB FIRST (with new lastDailyClaim) — ensures no duplicate reward across devices
+                const docId = currentUser.docId || currentUser.$id;
+                if (!docId) throw new Error('User ID not found');
+
+                await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, {
+                    coins: newCoins,
+                    transactions: JSON.stringify(txs),
+                    lastDailyClaim: now
+                });
+
+                // Update local state AFTER successful DB write
                 currentUser.coins = newCoins;
                 currentUser.transactions = txs;
-                localStorage.setItem('cx_last_claimed_' + currentUser.$id, String(now));
+                currentUser.lastDailyClaim = now;
 
                 updateDashboardStats();
                 if (document.getElementById('stakingPage') && !document.getElementById('stakingPage').classList.contains('hidden')) renderStakingDetails();
-
-                const docId = currentUser.docId || currentUser.$id;
-                if (docId) {
-                    databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, docId, { coins: newCoins, transactions: JSON.stringify(txs) })
-                        .catch(e => console.warn('DB update failed, but local state saved:', e));
-                }
 
                 const msg = `🎉 ${userName}, आपका Daily Reward ${reward.toFixed(2)} USDT (₹${(reward * EXCHANGE_RATE).toFixed(2)}) क्रेडिट!`;
                 showVoiceToast(msg);
@@ -3698,6 +3645,7 @@
             if ('staked' in fields) currentUser.staked = parseFloat(fields.staked);
             if ('profilePhoto' in fields) currentUser.profilePhoto = fields.profilePhoto;
             if ('totalPurchased' in fields) currentUser.totalPurchased = parseFloat(fields.totalPurchased);
+            if ('lastDailyClaim' in fields) currentUser.lastDailyClaim = parseInt(fields.lastDailyClaim || 0, 10);
 
             updateDashboardStats();
 
@@ -3964,6 +3912,7 @@
             document.getElementById('profileEmailDisplay').innerText = currentUser.email || 'N/A';
             const ref = currentUser.$id;
             document.getElementById('profileReferralCode').innerText = ref;
+
             const shareUrl = buildReferralUrl(ref);
             document.getElementById('referralShareLink').innerText = shareUrl;
             document.getElementById('withdrawAvailable').innerHTML = `${parseFloat(currentUser.coins||0).toFixed(2)} <span class="currency-usdt">USDT</span>`;
@@ -3990,6 +3939,7 @@
             container.innerHTML = '';
             const ref = currentUser?.$id;
             if (!ref) return;
+
             const url = buildReferralUrl(ref);
             if (typeof QRCode !== 'undefined') {
                 try {
@@ -4425,6 +4375,8 @@
                             localStorage.removeItem('cx_pending_level_' + currentUser.$id);
                         }, 1500);
                     }
+                    // ⚡ Reset welcomeVoicePlayed so welcome voice plays on auto-login
+                    welcomeVoicePlayed = false;
                     showPage('dashboardPage');
                     startCooldownTimer();
                     showLoginPopup();
