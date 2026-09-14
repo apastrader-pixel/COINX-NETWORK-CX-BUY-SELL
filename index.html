@@ -2214,7 +2214,7 @@
                     let utterance = new SpeechSynthesisUtterance(text);
                     utterance.lang = 'hi-IN';
                     utterance.pitch = 1.0;
-                    utterance.rate = 0.95;
+                    utterance.rate = 0.75;
                     const voices = window.speechSynthesis.getVoices();
                     const gv = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google'));
                     if (gv) utterance.voice = gv;
@@ -2227,7 +2227,7 @@
         function speakWelcomeMessage(userName) {
             if (!voiceEnabled) return;
             const name = (userName || 'यूज़र').trim();
-            const msg = `Mr ${name}, SupriX Global के साथ जुड़ने के लिए धन्यवाद, हमारा लक्ष्य है आत्मनिर्भर भारत बनाना।`;
+            const msg = ` ${name}, SupriX Global के साथ जुड़ने के लिए धन्यवाद, हमारा लक्ष्य है आत्मनिर्भर भारत बनाना।`;
             speakHindi(msg);
         }
 
